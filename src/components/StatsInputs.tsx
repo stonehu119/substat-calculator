@@ -1,23 +1,21 @@
-import { useState } from 'react'
-
 type StatState = {
   checked: boolean
   value: string
 }
 
-export default function StatsInputs() {
-  const initial: Record<number, StatState> = {}
-  for (let i = 1; i <= 9; i++) initial[i] = { checked: true, value: '' }
+interface StatsInputsProps {
+  stats: Record<number, StatState>
+  onStatsChange: (stats: Record<number, StatState>) => void
+}
 
-  const [stats, setStats] = useState<Record<number, StatState>>(initial)
-
+export default function StatsInputs({ stats, onStatsChange }: StatsInputsProps) {
   const toggleChecked = (i: number) => {
-    setStats(prev => ({ ...prev, [i]: { ...prev[i], checked: !prev[i].checked } }))
+    onStatsChange({ ...stats, [i]: { ...stats[i], checked: !stats[i].checked } })
   }
 
   const setValue = (i: number, v: string) => {
     // allow empty or numeric strings; validation can be added later
-    setStats(prev => ({ ...prev, [i]: { ...prev[i], value: v } }))
+    onStatsChange({ ...stats, [i]: { ...stats[i], value: v } })
   }
 
   return (
