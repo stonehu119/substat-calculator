@@ -6,7 +6,7 @@ type OutputStatsProps = {
 
 export default function OutputStats({ low, mid, high }: OutputStatsProps) {
   return (
-    <div className="mt-4 bg-gray-700 rounded p-6">
+    <div className="mt-4 bg-gray-700 rounded p-4">
       <div className="grid grid-cols-3 gap-4">
         <div className="text-center">
           <div className="text-sm text-gray-400 mb-2">Low</div>

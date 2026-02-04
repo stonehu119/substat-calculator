@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import CharacterDropdown from './components/CharacterDropdown'
 import LightCone from './components/LightCone'
 import RelicSets from './components/RelicSets'
@@ -10,6 +10,8 @@ type StatState = {
   checked: boolean
   value: string
 }
+
+const STORAGE_KEY = 'substats-calculator-state'
 
 function App() {
   const [character, setCharacter] = useState<string>('')
@@ -22,6 +24,42 @@ function App() {
     for (let i = 1; i <= 9; i++) initial[i] = { checked: true, value: '' }
     return initial
   })
+  const isInitialMount = useRef(true)
+
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (saved) {
+      try {
+        const data = JSON.parse(saved)
+        console.log('Loaded data:', data)
+        setCharacter(data.character || '')
+        setLightCone(data.lightCone || '')
+        setSuperimposition(data.superimposition || '')
+        setRelicSet1(data.relicSet1 || '')
+        setRelicSet2(data.relicSet2 || '')
+        setStats(data.stats || {})
+      } catch (e) {
+        console.error('Failed to load saved data:', e)
+        // TODO: ignore errors and load default values
+      }
+    }
+    return () => { isInitialMount.current = false }
+  }, [])
+
+  
+  useEffect(() => {
+    if (isInitialMount.current) return
+    const data = {
+      character,
+      lightCone,
+      superimposition,
+      relicSet1,
+      relicSet2,
+      stats,
+    }
+    console.log('Saving data:')
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+  }, [character, lightCone, superimposition, relicSet1, relicSet2, stats])
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center px-2 pt-6 pb-4">
