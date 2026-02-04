@@ -4,6 +4,7 @@ import CharacterDropdown from './components/CharacterDropdown'
 import LightCone from './components/LightCone'
 import RelicSets from './components/RelicSets'
 import StatsInputs from './components/StatsInputs'
+import OutputStats from './components/OutputStats'
 
 type StatState = {
   checked: boolean
@@ -45,27 +46,12 @@ function App() {
             />
             <StatsInputs stats={stats} onStatsChange={setStats} />
           </div>
-          {/* Output Placeholder */}
-          <div className="mt-4 bg-gray-700 rounded p-6">
-            <div className="grid grid-cols-3 gap-4">
-              <div className="text-center">
-                <div className="text-sm text-gray-400 mb-2">Low</div>
-                <div className="text-2xl font-semibold text-blue-300">45</div>
-              </div>
-              <div className="text-center">
-                <div className="text-sm text-gray-400 mb-2">Mid</div>
-                <div className="text-2xl font-semibold text-blue-300">40</div>
-              </div>
-              <div className="text-center">
-                <div className="text-sm text-gray-400 mb-2">High</div>
-                <div className="text-2xl font-semibold text-blue-300">35</div>
-              </div>
-            </div>
-          </div>
+          <OutputStats low={45} mid={40} high={35} />
         </div>
       </div>
       <footer className="mt-8 text-xs text-gray-500 text-center">
-        &copy; {new Date().getFullYear()} Substat Counter
+        This is a fan-made tool for Honkai: Star Rail players.<br />
+        Website is not affiliated with HoYoverse.
       </footer>
     </div>
   );
