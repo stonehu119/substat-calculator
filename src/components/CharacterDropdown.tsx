@@ -8,12 +8,15 @@ interface CharacterDropdownProps {
 
 export default function CharacterDropdown({ value, onChange }: CharacterDropdownProps) {
   return (
-    <SearchableDropdown
-      options={CHARACTERS}
-      value={value}
-      onChange={onChange}
-      label="Character"
-      placeholder="Select character"
-    />
+    <div className="flex flex-col gap-2">
+      <label className="text-sm text-gray-300 font-semibold">Character</label>
+      <SearchableDropdown
+        options={CHARACTERS}
+        value={value}
+        onChange={onChange}
+        label="Name"
+        placeholder="Select character"
+      />
+    </div>
   )
 }
