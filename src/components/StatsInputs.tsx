@@ -1,3 +1,5 @@
+import { statsMap } from "../data/stats"
+
 type StatState = {
   checked: boolean
   value: string
@@ -34,7 +36,7 @@ export default function StatsInputs({ stats, onStatsChange }: StatsInputsProps) 
                 checked={s.checked}
                 onChange={() => toggleChecked(i)}
               />
-              <label className="text-xs text-gray-400 truncate flex-shrink-0">CR</label>
+              <label className="text-xs text-gray-400 truncate flex-shrink-0 w-8">{statsMap[i]}</label>
               <input
                 type="number"
                 placeholder="0"
