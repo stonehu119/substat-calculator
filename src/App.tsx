@@ -43,6 +43,15 @@ function App() {
     }))
   }
 
+  // Placeholder rolls calculation: for now, just parse the numeric value of each stat.
+  // Replace this with your actual "# Rolls" computation logic.
+  const statRolls: Record<number, number> = Object.fromEntries(
+    Object.entries(formState.stats).map(([key, s]) => {
+      const numeric = parseFloat(s.value || '0')
+      return [Number(key), Number.isFinite(numeric) ? numeric : 0]
+    })
+  )
+
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center px-2 pt-6 pb-4">
       <div className="flex flex-col items-center w-full gap-8">
@@ -80,6 +89,7 @@ function App() {
             <StatsInputs
               stats={formState.stats}
               onStatsChange={(stats) => updateFormField('stats', stats)}
+              rolls={statRolls}
             />
           </div>
           <OutputStats low={45} mid={40} high={35} />
