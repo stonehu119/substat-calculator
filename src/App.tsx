@@ -31,6 +31,7 @@ function App() {
     if (saved) {
       try {
         const data = JSON.parse(saved)
+        console.log('Loaded saved data:', data)
         setCharacter(data.character || '')
         setLightCone(data.lightCone || '')
         setSuperimposition(data.superimposition || '')
@@ -57,6 +58,7 @@ function App() {
       stats,
     }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
+    console.log('Saved data:', data)
   }, [character, lightCone, superimposition, relicSet1, relicSet2, stats])
 
   return (
