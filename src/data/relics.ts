@@ -1,25 +1,25 @@
 export const BODY_MAIN_STATS = [
+  'Crit Rate',
+  'Crit DMG',
+  'EHR',
+  'Outgoing Healing',
   'HP%',
   'ATK%',
   'DEF%',
-  'EHR',
-  'Outgoing Healing',
-  'Crit Rate',
-  'Crit DMG',
 ]
 
 export const FEET_MAIN_STATS = [
+  'SPD',
   'HP%',
   'ATK%',
   'DEF%',
-  'SPD',
 ]
 
 export const ORB_MAIN_STATS = [
+  'DMG Bonus',
   'HP%',
   'ATK%',
   'DEF%',
-  'DMG Bonus',
 ]
 
 export const ROPE_MAIN_STATS = [
@@ -28,4 +28,64 @@ export const ROPE_MAIN_STATS = [
   'DEF%',
   'Break Effect',
   'Energy Regeneration Rate',
+]
+
+export const RELIC_SETS = [
+  "Ever-Glorious Magical Girl",
+  "Diviner of Distant Reach",
+  "Self-Enshrouded Recluse",
+  "World-Remaking Deliverer",
+  "Wavestrider Captain",
+  "Warrior Goddess of Sun and Thunder",
+  "Poet of Mourning Collapse",
+  "Hero of Triumphant Song",
+  "Scholar Lost in Erudition",
+  "Sacerdos' Relived Ordeal",
+  "The Wind-Soaring Valorous",
+  "Iron Cavalry Against the Scourge",
+  "Watchmaker, Master of Dream Machinations",
+  "Pioneer Diver of Dead Waters",
+  "Prisoner in Deep Confinement",
+  "The Ashblazing Grand Duke",
+  "Messenger Traversing Hackerspace",
+  "Longevous Disciple",
+  "Wastelander of Banditry Desert",
+  "Thief of Shooting Meteor",
+  "Band of Sizzling Thunder",
+  "Genius of Brilliant Stars",
+  "Firesmith of Lava-Forging",
+  "Guard of Wuthering Snow",
+  "Champion of Streetwise Boxing",
+  "Eagle of Twilight Line",
+  "Hunter of Glacial Forest",
+  "Knight of Purity Palace",
+  "Musketeer of Wild Wheat",
+  "Passerby of Wandering Cloud",
+]
+
+export const PLANAR_SETS = [
+  "Tengoku@Livestream",
+  "Amphoreus, The Eternal Land",
+  "Revelry by the Sea",
+  "Arcadia of Woven Dreams",
+  "Giant Tree of Rapt Brooding",
+  "Bone Collection's Serene Demesne",
+  "The Wondrous BananAmusement Park",
+  "Lushaka, the Sunken Seas",
+  "Forge of the Kalpagni Lantern",
+  "Duran, Dynasty of Running Wolves",
+  "Izumo Gensei and Takama Divine Realm",
+  "Sigonia, the Unclaimed Desolation",
+  "Penacony, Land of the Dreams",
+  "Firmament Frontline: Glamoth",
+  "Broken Keel",
+  "Rutilant Arena",
+  "Sprightly Vonwacq",
+  "Talia: Kingdom of Banditry",
+  "Inert Salsotto",
+  "Celestial Differentiator",
+  "Belobog of the Architects",
+  "Pan-Cosmic Commercial Enterprise",
+  "Fleet of the Ageless",
+  "Space Sealing Station",
 ]

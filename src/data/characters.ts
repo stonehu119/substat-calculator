@@ -1,4 +1,6 @@
 export const CHARACTERS = [
+  'Sparxie',
+  'Yao Guang',
   'The Dahlia',
   'Cyrene',
   'Dan Heng PT',

@@ -1,11 +1,5 @@
+import { PLANAR_SETS, RELIC_SETS } from '../data/relics'
 import SearchableDropdown from './SearchableDropdown'
-
-const RELIC_SETS = [
-  'Placeholder Relic Set A',
-  'Placeholder Relic Set B',
-  'Placeholder Relic Set C',
-  'Placeholder Relic Set D',
-]
 
 interface RelicSetsProps {
   set1: string
@@ -28,15 +22,15 @@ export default function RelicSets({
           options={RELIC_SETS}
           value={set1}
           onChange={onSet1Change}
-          label="Set 1"
+          label="Relic set"
           placeholder="Select relic set"
         />
         <SearchableDropdown
-          options={RELIC_SETS}
+          options={PLANAR_SETS}
           value={set2}
           onChange={onSet2Change}
-          label="Set 2"
-          placeholder="Select relic set"
+          label="Planar set"
+          placeholder="Select planar set"
         />
       </div>
     </div>

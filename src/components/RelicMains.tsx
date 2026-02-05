@@ -30,14 +30,14 @@ export default function RelicMains({
           options={BODY_MAIN_STATS}
           value={mainStat1}
           onChange={onMainStat1Change}
-          label="Body"
+          label="Chest"
           placeholder="Select main stat"
         />
         <SearchableDropdown
           options={FEET_MAIN_STATS}
           value={mainStat2}
           onChange={onMainStat2Change}
-          label="Feet"
+          label="Boots"
           placeholder="Select main stat"
         />
         <SearchableDropdown
