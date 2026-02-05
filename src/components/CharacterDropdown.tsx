@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface CharacterDropdownProps {
   value: string
@@ -17,6 +17,11 @@ const CHARACTERS = [
 export default function CharacterDropdown({ value, onChange }: CharacterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [inputValue, setInputValue] = useState(value)
+
+  useEffect(() => {
+    setInputValue(value)
+  }, [value])
+
   const isValid = value && CHARACTERS.includes(value)
   
   const filtered = CHARACTERS.filter((char) =>
