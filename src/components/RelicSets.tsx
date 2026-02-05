@@ -1,3 +1,12 @@
+import SearchableDropdown from './SearchableDropdown'
+
+const RELIC_SETS = [
+  'Placeholder Relic Set A',
+  'Placeholder Relic Set B',
+  'Placeholder Relic Set C',
+  'Placeholder Relic Set D',
+]
+
 interface RelicSetsProps {
   set1: string
   onSet1Change: (value: string) => void
@@ -15,26 +24,20 @@ export default function RelicSets({
     <div className="flex flex-col gap-2">
       <label className="text-sm text-gray-300 font-semibold">Relic Sets</label>
       <div className="flex flex-col gap-2">
-        <div className="flex flex-col">
-          <label className="mb-1 text-xs text-gray-400">Set 1</label>
-          <input
-            type="text"
-            value={set1}
-            onChange={(e) => onSet1Change(e.target.value)}
-            placeholder="Select relic set"
-            className="bg-gray-700 rounded px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="mb-1 text-xs text-gray-400">Set 2</label>
-          <input
-            type="text"
-            value={set2}
-            onChange={(e) => onSet2Change(e.target.value)}
-            placeholder="Select relic set"
-            className="bg-gray-700 rounded px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+        <SearchableDropdown
+          options={RELIC_SETS}
+          value={set1}
+          onChange={onSet1Change}
+          label="Set 1"
+          placeholder="Select relic set"
+        />
+        <SearchableDropdown
+          options={RELIC_SETS}
+          value={set2}
+          onChange={onSet2Change}
+          label="Set 2"
+          placeholder="Select relic set"
+        />
       </div>
     </div>
   )

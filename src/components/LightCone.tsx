@@ -1,3 +1,6 @@
+import { LIGHT_CONES, SUPERIMPOSITION_LEVELS } from '../data/lightcones'
+import SearchableDropdown from './SearchableDropdown'
+
 interface LightConeProps {
   lightCone: string
   onLightConeChange: (value: string) => void
@@ -13,28 +16,22 @@ export default function LightCone({
 }: LightConeProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm text-gray-300 font-semibold">Light Cone</label>
+      <label className="text-sm text-gray-300 font-semibold">Light cone</label>
       <div className="flex flex-col gap-2">
-        <div className="flex flex-col">
-          <label className="mb-1 text-xs text-gray-400">Light Cone</label>
-          <input
-            type="text"
-            value={lightCone}
-            onChange={(e) => onLightConeChange(e.target.value)}
-            placeholder="Select light cone"
-            className="bg-gray-700 rounded px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="mb-1 text-xs text-gray-400">Superimposition</label>
-          <input
-            type="text"
-            value={superimposition}
-            onChange={(e) => onSuperimpositionChange(e.target.value)}
-            placeholder="Select level"
-            className="bg-gray-700 rounded px-3 py-2 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+        <SearchableDropdown
+          options={LIGHT_CONES}
+          value={lightCone}
+          onChange={onLightConeChange}
+          label="Name"
+          placeholder="Select light cone"
+        />
+        <SearchableDropdown
+          options={SUPERIMPOSITION_LEVELS}
+          value={superimposition}
+          onChange={onSuperimpositionChange}
+          label="Superimposition"
+          placeholder="Select level"
+        />
       </div>
     </div>
   )
