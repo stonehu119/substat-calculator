@@ -1,9 +1,5 @@
 import { statsMap } from "../data/stats"
-
-type StatState = {
-  checked: boolean
-  value: string
-}
+import type { StatState } from "../types/formState"
 
 interface StatsInputsProps {
   stats: Record<number, StatState>
