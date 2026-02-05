@@ -1,5 +1,5 @@
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import CharacterDropdown from './components/CharacterDropdown'
 import LightCone from './components/LightCone'
 import RelicSets from './components/RelicSets'
@@ -11,7 +11,7 @@ type StatState = {
   value: string
 }
 
-const STORAGE_KEY = 'substats-calculator-state'
+const STORAGE_KEY = 'sub-counter-state'
 
 function App() {
   const [character, setCharacter] = useState<string>('')
@@ -24,7 +24,7 @@ function App() {
     for (let i = 1; i <= 9; i++) initial[i] = { checked: true, value: '' }
     return initial
   })
-  const isInitialMount = useRef(true)
+  const [hydrated, setHydrated] = useState(false)
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY)
@@ -43,12 +43,12 @@ function App() {
         // TODO: ignore errors and load default values
       }
     }
-    return () => { isInitialMount.current = false }
+    setHydrated(true)
   }, [])
 
   
   useEffect(() => {
-    if (isInitialMount.current) return
+    if (!hydrated) return
     const data = {
       character,
       lightCone,
