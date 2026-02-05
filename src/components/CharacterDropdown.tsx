@@ -1,18 +1,10 @@
 import { useEffect, useState } from 'react'
+import { CHARACTERS } from '../data/characters'
 
 interface CharacterDropdownProps {
   value: string
   onChange: (value: string) => void
 }
-
-const CHARACTERS = [
-  'Seele',
-  'Jing Yuan',
-  'Silver Wolf',
-  'Luocha',
-  'Blade',
-  'Kafka',
-]
 
 export default function CharacterDropdown({ value, onChange }: CharacterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
