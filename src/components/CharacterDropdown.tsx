@@ -16,32 +16,34 @@ const CHARACTERS = [
 
 export default function CharacterDropdown({ value, onChange }: CharacterDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
-  // const [inputValue, setInputValue] = useState(value)
+  const [inputValue, setInputValue] = useState(value)
   const isValid = value && CHARACTERS.includes(value)
   
   const filtered = CHARACTERS.filter((char) =>
-    char.toLowerCase().includes(value.toLowerCase())
+    char.toLowerCase().includes(inputValue.toLowerCase())
   )
 
   const onFocus = () => {
     setIsOpen(true)
-    onChange('')
+    setInputValue('')
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value
-    onChange(newValue)
+    setInputValue(newValue)
     setIsOpen(true)
   }
 
   const handleSelect = (character: string) => {
-    onChange(character)
+    setInputValue(character)
     setIsOpen(false)
   }
 
   const handleBlur = () => {
-    if (!CHARACTERS.includes(value)) {
+    if (!CHARACTERS.includes(inputValue)) {
       onChange('')
+    } else {
+      onChange(inputValue)
     }
     setIsOpen(false)
   }
@@ -52,7 +54,7 @@ export default function CharacterDropdown({ value, onChange }: CharacterDropdown
       <div className="relative">
         <input
           type="text"
-          value={value}
+          value={inputValue}
           onChange={handleInputChange}
           onFocus={() => onFocus()}
           onBlur={handleBlur}
