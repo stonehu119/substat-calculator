@@ -47,7 +47,7 @@ function App() {
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center px-2 pt-6 pb-4">
       <div className="flex flex-col items-center w-full gap-8">
         <h1 className="text-4xl md:text-5xl font-extrabold text-blue-400 text-center mt-0 drop-shadow-lg tracking-wide">
-          Star Rail<br />Substat Counter
+          Star Rail Substat Counter
         </h1>
         <div className="w-full max-w-md bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
           <div className="flex flex-col gap-4">
