@@ -2,15 +2,15 @@ import type { FormState, StatState } from '../types/formState'
 
 export const createDefaultStats = (): Record<number, StatState> => {
   const initial: Record<number, StatState> = {}
-  initial[1] = { checked: true, value: '5401' }
-  initial[2] = { checked: false, value: '1347' }
-  initial[3] = { checked: false, value: '1184' }
-  initial[4] = { checked: true, value: '199.8' }
-  initial[5] = { checked: true, value: '59.2' }
-  initial[6] = { checked: true, value: '130.0' }
-  initial[7] = { checked: false, value: '12.9' }
-  initial[8] = { checked: false, value: '0.0' }
-  initial[9] = { checked: false, value: '8.2' }
+  initial[0] = { checked: true, value: '5401' }
+  initial[1] = { checked: false, value: '1347' }
+  initial[2] = { checked: false, value: '1184' }
+  initial[3] = { checked: true, value: '199.8' }
+  initial[4] = { checked: true, value: '59.2' }
+  initial[5] = { checked: true, value: '130.0' }
+  initial[6] = { checked: false, value: '12.9' }
+  initial[7] = { checked: false, value: '0.0' }
+  initial[8] = { checked: false, value: '8.2' }
   return initial
 }
 
@@ -26,4 +26,3 @@ export const createDefaultFormState = (): FormState => ({
   relicMainStat4: 'HP%',
   stats: createDefaultStats(),
 })
-

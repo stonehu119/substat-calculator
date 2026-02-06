@@ -14,6 +14,7 @@ function App() {
   const [formState, setFormState] = useState<FormState>(createDefaultFormState())
   const [hydrated, setHydrated] = useState(false)
 
+  // Try to load data from storage
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY)
     if (saved) {
@@ -31,6 +32,7 @@ function App() {
     setHydrated(true)
   }, [])
 
+  // Save data to storage when fields update
   useEffect(() => {
     if (!hydrated) return
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formState))
