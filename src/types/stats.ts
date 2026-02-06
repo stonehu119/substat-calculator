@@ -7,7 +7,7 @@ export const statNames = [
   'Crit DMG',
   'Break Effect',
   'Effect Hit Rate',
-  'Effect Res',
+  'Effect RES',
 ] as const
 
 export type Substat = typeof statNames[number]
@@ -21,13 +21,21 @@ export const statIds: Record<Substat, number> = {
   'Crit DMG' : 5,
   'Break Effect' : 6,
   'Effect Hit Rate' : 7,
-  'Effect Res' : 8,
+  'Effect RES' : 8,
 } as const
 
 export class StatSet {
-  stats: Record<Substat, number> = Object.fromEntries(
-    statNames.map(k => [k, 0] as const)
-  ) as Record<Substat, number>
+  stats: Record<Substat, number>
+
+  constructor(initialValues?: Partial<Record<Substat, number>>, fillValue?: number) {
+    fillValue = fillValue ?? 0
+    this.stats = Object.fromEntries(
+      statNames.map(k => [k, fillValue] as const)
+    ) as Record<Substat, number>
+    for (const stat in initialValues) {
+      this.stats[stat as Substat] = initialValues[stat as Substat] ?? this.stats[stat as Substat]
+    }
+  }
 
   add(other?: StatSet): void {
     if (!other) return

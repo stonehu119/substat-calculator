@@ -79,4 +79,4 @@ export const CHARACTERS = [
   'Tingyun',
   'Welt',
   'Yanqing'
-]
+] as const

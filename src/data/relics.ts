@@ -1,34 +1,4 @@
-export const BODY_MAIN_STATS = [
-  'Crit Rate',
-  'Crit DMG',
-  'EHR',
-  'Outgoing Healing',
-  'HP%',
-  'ATK%',
-  'DEF%',
-]
-
-export const FEET_MAIN_STATS = [
-  'SPD',
-  'HP%',
-  'ATK%',
-  'DEF%',
-]
-
-export const ORB_MAIN_STATS = [
-  'DMG Bonus',
-  'HP%',
-  'ATK%',
-  'DEF%',
-]
-
-export const ROPE_MAIN_STATS = [
-  'HP%',
-  'ATK%',
-  'DEF%',
-  'Break Effect',
-  'Energy Regeneration Rate',
-]
+import { StatSet, type StatModifier } from "../types/stats"
 
 export const RELIC_SETS = [
   "Ever-Glorious Magical Girl",
@@ -61,7 +31,42 @@ export const RELIC_SETS = [
   "Knight of Purity Palace",
   "Musketeer of Wild Wheat",
   "Passerby of Wandering Cloud",
-]
+] as const
+
+export type RelicSet = typeof RELIC_SETS[number]
+
+export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = {
+  "Ever-Glorious Magical Girl" : { flat: new StatSet({"Crit DMG" : 16}) },
+  "Diviner of Distant Reach" : { percent: new StatSet({"SPD" : 6}) },
+  "Self-Enshrouded Recluse" : {},
+  "World-Remaking Deliverer" : { flat: new StatSet({"Crit Rate": 8}) },
+  "Wavestrider Captain" : { flat: new StatSet({"Crit DMG": 16}) },
+  "Warrior Goddess of Sun and Thunder" : { percent: new StatSet({"SPD": 6}) },
+  "Poet of Mourning Collapse" : { percent: new StatSet({"SPD": -8}) },
+  "Hero of Triumphant Song" : { percent: new StatSet({"ATK": 12}) },
+  "Scholar Lost in Erudition" : { flat: new StatSet({"Crit Rate": 8}) },
+  "Sacerdos' Relived Ordeal" : { percent: new StatSet({"SPD": 6}) },
+  "The Wind-Soaring Valorous" : { percent: new StatSet({"ATK": 12}), flat: new StatSet({"Crit Rate": 6}) },
+  "Iron Cavalry Against the Scourge" : { flat: new StatSet({"Break Effect": 16}) },
+  "Watchmaker, Master of Dream Machinations" : { flat: new StatSet({"Break Effect": 16}) },
+  "Pioneer Diver of Dead Waters" : { flat: new StatSet({"Crit Rate": 4}) },
+  "Prisoner in Deep Confinement" : { percent: new StatSet({"ATK": 12}) },
+  "The Ashblazing Grand Duke" : {},
+  "Messenger Traversing Hackerspace" : { percent: new StatSet({"SPD": 6}) },
+  "Longevous Disciple" : { percent: new StatSet({"HP": 12}) },
+  "Wastelander of Banditry Desert" : {},
+  "Thief of Shooting Meteor" : { flat: new StatSet({"Break Effect": 32}) },
+  "Band of Sizzling Thunder" : {},
+  "Genius of Brilliant Stars" : {},
+  "Firesmith of Lava-Forging" : {},
+  "Guard of Wuthering Snow" : {},
+  "Champion of Streetwise Boxing" : {},
+  "Eagle of Twilight Line" : {},
+  "Hunter of Glacial Forest" : {},
+  "Knight of Purity Palace" : { percent: new StatSet({"DEF": 15}) },
+  "Musketeer of Wild Wheat" : { percent: new StatSet({"ATK": 12, "SPD": 6}) },
+  "Passerby of Wandering Cloud" : {},
+}
 
 export const PLANAR_SETS = [
   "Tengoku@Livestream",
@@ -88,4 +93,65 @@ export const PLANAR_SETS = [
   "Pan-Cosmic Commercial Enterprise",
   "Fleet of the Ageless",
   "Space Sealing Station",
+] as const
+
+export type PlanarSet = typeof PLANAR_SETS[number]
+
+export const PLANAR_SET_DATA: Record<PlanarSet, StatModifier> = {
+  "Tengoku@Livestream" : { flat: new StatSet({"Crit DMG": 16}) },
+  "Amphoreus, The Eternal Land" : { flat: new StatSet({"Crit Rate": 8}) },
+  "Revelry by the Sea" : { percent: new StatSet({"ATK": 12}) },
+  "Arcadia of Woven Dreams" : {},
+  "Giant Tree of Rapt Brooding" : { percent: new StatSet({"SPD": 6}) },
+  "Bone Collection's Serene Demesne" : { percent: new StatSet({"HP": 12}) },
+  "The Wondrous BananAmusement Park" : { flat: new StatSet({"Crit DMG": 16}) },
+  "Lushaka, the Sunken Seas" : {},
+  "Forge of the Kalpagni Lantern" : { percent: new StatSet({"SPD": 6}) },
+  "Duran, Dynasty of Running Wolves" : {},
+  "Izumo Gensei and Takama Divine Realm" : { percent: new StatSet({"ATK": 12}) },
+  "Sigonia, the Unclaimed Desolation" : { flat: new StatSet({"Crit Rate": 4}) },
+  "Penacony, Land of the Dreams" : {},
+  "Firmament Frontline: Glamoth" : { percent: new StatSet({"ATK": 12}) },
+  "Broken Keel" : { flat: new StatSet({"Effect RES": 10}) },
+  "Rutilant Arena" : { flat: new StatSet({"Crit Rate": 8}) },
+  "Sprightly Vonwacq" : {},
+  "Talia: Kingdom of Banditry" : { flat: new StatSet({"Break Effect": 16}) },
+  "Inert Salsotto" : { flat: new StatSet({"Crit Rate": 8}) },
+  "Celestial Differentiator" : { flat: new StatSet({"Crit DMG": 16}) },
+  "Belobog of the Architects" : { percent: new StatSet({"DEF": 15}) },
+  "Pan-Cosmic Commercial Enterprise" : { flat: new StatSet({"Effect Hit Rate": 10}) },
+  "Fleet of the Ageless" : { percent: new StatSet({"HP": 12}) },
+  "Space Sealing Station" : { percent: new StatSet({"ATK": 12}) },
+}
+
+export const BODY_MAIN_STATS = [
+  'Crit Rate',
+  'Crit DMG',
+  'EHR',
+  'Outgoing Healing',
+  'HP%',
+  'ATK%',
+  'DEF%',
+]
+
+export const FEET_MAIN_STATS = [
+  'SPD',
+  'HP%',
+  'ATK%',
+  'DEF%',
+]
+
+export const ORB_MAIN_STATS = [
+  'DMG Bonus',
+  'HP%',
+  'ATK%',
+  'DEF%',
+]
+
+export const ROPE_MAIN_STATS = [
+  'HP%',
+  'ATK%',
+  'DEF%',
+  'Break Effect',
+  'Energy Regeneration Rate',
 ]

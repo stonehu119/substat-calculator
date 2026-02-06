@@ -157,4 +157,4 @@ export const LIGHT_CONES = [
   "Hidden Shadow",
   "Loop",
   "Void",
-]
+] as const
