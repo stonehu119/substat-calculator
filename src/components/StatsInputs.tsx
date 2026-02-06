@@ -1,4 +1,4 @@
-import { statNames } from "../types/stats"
+import { STAT_NAMES } from "../types/stats"
 import type { StatState } from "../types/formState"
 
 interface StatsInputsProps {
@@ -50,7 +50,7 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
                   checked={s.checked}
                   onChange={() => toggleChecked(i)}
                 />
-                <span className="truncate">{statNames[i]}</span>
+                <span className="truncate">{STAT_NAMES[i]}</span>
               </label>
 
               {/* Numeric input */}

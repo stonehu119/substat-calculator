@@ -1,4 +1,4 @@
-export const statNames = [
+export const STAT_NAMES = [
   'HP',
   'ATK',
   'DEF',
@@ -10,7 +10,7 @@ export const statNames = [
   'Effect RES',
 ] as const
 
-export type Substat = typeof statNames[number]
+export type Substat = typeof STAT_NAMES[number]
 
 export const statIds: Record<Substat, number> = {
   'HP' : 0,
@@ -24,13 +24,27 @@ export const statIds: Record<Substat, number> = {
   'Effect RES' : 8,
 } as const
 
+const COMMON_STATS = [
+  'HP',
+  'ATK',
+  'DEF',
+  'SPD',
+]
+const SPECIAL_STATS = [
+  'Crit Rate',
+  'Crit DMG',
+  'Break Effect',
+  'Effect Hit Rate',
+  'Effect RES',
+]
+
 export class StatSet {
   stats: Record<Substat, number>
 
   constructor(initialValues?: Partial<Record<Substat, number>>, fillValue?: number) {
     fillValue = fillValue ?? 0
     this.stats = Object.fromEntries(
-      statNames.map(k => [k, fillValue] as const)
+      STAT_NAMES.map(k => [k, fillValue] as const)
     ) as Record<Substat, number>
     for (const stat in initialValues) {
       this.stats[stat as Substat] = initialValues[stat as Substat] ?? this.stats[stat as Substat]
@@ -41,6 +55,22 @@ export class StatSet {
     if (!other) return
     for (const stat in this.stats) {
       this.stats[stat as Substat] += other.stats[stat as Substat]
+    }
+  }
+
+  // special case for convenience. Try not to use
+  addCommonStat(other?: StatSet): void {
+    if (!other) return
+    for (const stat in this.stats) {
+      if (COMMON_STATS.includes(stat)) this.stats[stat as Substat] += other.stats[stat as Substat]
+    }
+  }
+
+  // special case for convenience. Try not to use
+  addSpecialStat(other?: StatSet): void {
+    if (!other) return
+    for (const stat in this.stats) {
+      if (SPECIAL_STATS.includes(stat)) this.stats[stat as Substat] += other.stats[stat as Substat]
     }
   }
 
@@ -65,4 +95,5 @@ export interface StatModifier {
   base?: StatSet,
   percent?: StatSet,
   flat?: StatSet,
+  default?: StatSet, // assumes HP, ATK, and DEF are % stats, others are flat stats. Try not to use
 }

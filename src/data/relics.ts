@@ -66,7 +66,7 @@ export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = {
   "Knight of Purity Palace" : { percent: new StatSet({"DEF": 15}) },
   "Musketeer of Wild Wheat" : { percent: new StatSet({"ATK": 12, "SPD": 6}) },
   "Passerby of Wandering Cloud" : {},
-}
+} as const
 
 export const PLANAR_SETS = [
   "Tengoku@Livestream",
@@ -122,7 +122,7 @@ export const PLANAR_SET_DATA: Record<PlanarSet, StatModifier> = {
   "Pan-Cosmic Commercial Enterprise" : { flat: new StatSet({"Effect Hit Rate": 10}) },
   "Fleet of the Ageless" : { percent: new StatSet({"HP": 12}) },
   "Space Sealing Station" : { percent: new StatSet({"ATK": 12}) },
-}
+} as const
 
 export const BODY_MAIN_STATS = [
   'Crit Rate',
