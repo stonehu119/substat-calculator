@@ -7,11 +7,11 @@ export interface FormState {
   character: string;
   lightCone: string;
   superimposition: string;
-  relicSet1: string;
-  relicSet2: string;
-  relicMainStat1: string;
-  relicMainStat2: string;
-  relicMainStat3: string;
-  relicMainStat4: string;
+  relicSet: string;
+  planarSet: string;
+  relicBody: string;
+  relicFeet: string;
+  relicOrb: string;
+  relicRope: string;
   stats: Record<number, StatState>;
 }

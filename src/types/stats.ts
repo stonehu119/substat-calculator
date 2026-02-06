@@ -28,9 +28,9 @@ const COMMON_STATS = [
   'HP',
   'ATK',
   'DEF',
-  'SPD',
 ]
 const SPECIAL_STATS = [
+  'SPD',
   'Crit Rate',
   'Crit DMG',
   'Break Effect',

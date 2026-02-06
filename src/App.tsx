@@ -7,6 +7,7 @@ import StatsInputs from './components/StatsInputs'
 import OutputStats from './components/OutputStats'
 import type { FormState } from './types/formState'
 import { createDefaultFormState } from './data/defaults'
+import { combineStatModifiers, createStatModList } from './data/logic'
 
 const STORAGE_KEY = 'sub-counter-state'
 
@@ -47,12 +48,7 @@ function App() {
 
   // Placeholder rolls calculation: for now, just parse the numeric value of each stat.
   // Replace this with your actual "# Rolls" computation logic.
-  const statRolls: Record<number, number> = Object.fromEntries(
-    Object.entries(formState.stats).map(([key, s]) => {
-      const numeric = parseFloat(s.value || '0')
-      return [Number(key), Number.isFinite(numeric) ? numeric : 0]
-    })
-  )
+  const statRolls: Record<number, number> = combineStatModifiers(createStatModList(formState)).convertFormat()
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center px-2 pt-6 pb-4">
@@ -73,20 +69,20 @@ function App() {
               onSuperimpositionChange={(value) => updateFormField('superimposition', value)}
             />
             <RelicSets 
-              set1={formState.relicSet1} 
-              onSet1Change={(value) => updateFormField('relicSet1', value)}
-              set2={formState.relicSet2}
-              onSet2Change={(value) => updateFormField('relicSet2', value)}
+              set1={formState.relicSet} 
+              onSet1Change={(value) => updateFormField('relicSet', value)}
+              set2={formState.planarSet}
+              onSet2Change={(value) => updateFormField('planarSet', value)}
             />
             <RelicMains
-              mainStat1={formState.relicMainStat1}
-              onMainStat1Change={(value) => updateFormField('relicMainStat1', value)}
-              mainStat2={formState.relicMainStat2}
-              onMainStat2Change={(value) => updateFormField('relicMainStat2', value)}
-              mainStat3={formState.relicMainStat3}
-              onMainStat3Change={(value) => updateFormField('relicMainStat3', value)}
-              mainStat4={formState.relicMainStat4}
-              onMainStat4Change={(value) => updateFormField('relicMainStat4', value)}
+              mainStat1={formState.relicBody}
+              onMainStat1Change={(value) => updateFormField('relicBody', value)}
+              mainStat2={formState.relicFeet}
+              onMainStat2Change={(value) => updateFormField('relicFeet', value)}
+              mainStat3={formState.relicOrb}
+              onMainStat3Change={(value) => updateFormField('relicOrb', value)}
+              mainStat4={formState.relicRope}
+              onMainStat4Change={(value) => updateFormField('relicRope', value)}
             />
             <StatsInputs
               stats={formState.stats}

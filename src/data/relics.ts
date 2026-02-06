@@ -155,3 +155,24 @@ export const ROPE_MAIN_STATS = [
   'Break Effect',
   'Energy Regeneration Rate',
 ] as const
+
+export type BodyMainStat = typeof BODY_MAIN_STATS[number]
+export type FeetMainStat = typeof FEET_MAIN_STATS[number]
+export type OrbMainStat = typeof ORB_MAIN_STATS[number]
+export type RopeMainStat = typeof ROPE_MAIN_STATS[number]
+
+export type MainStat = BodyMainStat | FeetMainStat | OrbMainStat | RopeMainStat
+
+export const MAIN_STAT_VALUES: Record<MainStat, StatModifier> = {
+  'HP%' : { percent: new StatSet({"HP" : 43.2}) },
+  'ATK%' : { percent: new StatSet({"ATK" : 43.2}) },
+  'DEF%' : { percent: new StatSet({"DEF" : 54}) },
+  'SPD' : { flat: new StatSet({"SPD" : 25.032}) },
+  'Crit Rate' : { flat: new StatSet({"Crit Rate" : 32.4}) },
+  'Crit DMG' : { flat: new StatSet({"Crit DMG" : 64.8}) },
+  'EHR' : { flat: new StatSet({"Effect Hit Rate" : 43.2}) },
+  'Outgoing Healing' : {},
+  'DMG Bonus' : {},
+  'Break Effect' : { flat: new StatSet({"Break Effect" : 64.8}) },
+  'Energy Regeneration Rate' : {},
+} as const

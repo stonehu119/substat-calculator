@@ -69,7 +69,7 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
 
               {/* Rolls output (placeholder) */}
               <div className="text-center text-xs text-gray-300 tabular-nums min-w-[3rem]">
-                {stats[i].checked && rolls[i] ? rolls[i] : '—'}
+                {stats[i].checked ? rolls[i].toFixed(2) : '—'}
               </div>
             </div>
           )
