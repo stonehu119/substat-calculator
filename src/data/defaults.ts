@@ -5,7 +5,7 @@ export const createDefaultStats = (): Record<number, StatState> => {
   initial[0] = { checked: true, value: '5401' }
   initial[1] = { checked: false, value: '1347' }
   initial[2] = { checked: false, value: '1184' }
-  initial[3] = { checked: true, value: '199.8' }
+  initial[3] = { checked: true, value: '193.8' }
   initial[4] = { checked: true, value: '59.2' }
   initial[5] = { checked: true, value: '130.0' }
   initial[6] = { checked: false, value: '12.9' }

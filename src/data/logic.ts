@@ -1,4 +1,4 @@
-import type { FormState } from "../types/formState";
+import type { FormState, StatState } from "../types/formState";
 import { StatSet, type StatModifier, } from "../types/stats";
 import { CHARACTER_DATA, type Character } from "./characters";
 import { LIGHT_CONE_BASE_STATS, type LightCone } from "./lightcones";
@@ -13,13 +13,14 @@ import {
   type RelicSet,
   type RopeMainStat
 } from "./relics";
+import { STAT_NAMES, SUBSTAT_VALUES } from "./substats";
 
 // collect all stat modifiers
-export function createStatModList(formState: FormState): Array<StatModifier> {
+function createStatModList(formState: FormState): Array<StatModifier> {
   const out: Array<StatModifier> = []
-  const baseCrit: StatModifier = { flat: new StatSet({"Crit Rate": 5, "Crit DMG": 50}) }
+  const defaultStats: StatModifier = { flat: new StatSet({"HP": 705.6, "ATK": 352.8, "Crit Rate": 5, "Crit DMG": 50}) }
   try {
-    out.push(baseCrit)
+    out.push(defaultStats)
     out.push(CHARACTER_DATA[formState.character as Character])
     out.push(LIGHT_CONE_BASE_STATS[formState.lightCone as LightCone])
     // Light cone path stats need to be added here
@@ -37,7 +38,7 @@ export function createStatModList(formState: FormState): Array<StatModifier> {
 
 // Given an array of stat modifiers, combine them
 // to output the final stat values
-export function combineStatModifiers(modList: Array<StatModifier>): StatSet {
+function combineStatModifiers(modList: Array<StatModifier>): StatModifier {
   const base = new StatSet
   const flat = new StatSet
   const percent = new StatSet({}, 1)
@@ -48,11 +49,50 @@ export function combineStatModifiers(modList: Array<StatModifier>): StatSet {
     const percentsAdjusted = new StatSet({}, 0.01) // adjust to represent percentage values
     const defaultsAdjusted = new StatSet({}, 0.01)
     percentsAdjusted.multiply(mod.percent)
-    percentsAdjusted.multiply(mod.default)
+    defaultsAdjusted.multiply(mod.default)
     percent.add(percentsAdjusted)
     percent.addCommonStat(defaultsAdjusted)
   }
-  base.multiply(percent)
-  base.add(flat)
-  return base
+  return { base: base, flat: flat, percent: percent }
+}
+
+function calculateStatsNoSubs(statData: StatModifier): StatSet {
+  const out = new StatSet
+  out.add(statData.base)
+  out.multiply(statData.percent)
+  out.add(statData.flat)
+  return out
+}
+
+function calculateRollCount(statData: StatModifier, inputStats: Record<number, StatState>): StatSet {
+  const baseStats = statData.base
+  const statsNoSubs = calculateStatsNoSubs(statData)
+  const finalStats = new StatSet
+  for (const statId in inputStats) {
+    const statName = STAT_NAMES[statId]
+    finalStats.stats[statName] = inputStats[statId].checked ? +inputStats[statId].value : statsNoSubs.stats[statName]
+  }
+  finalStats.subtract(statsNoSubs)
+  finalStats.divide(new StatSet(SUBSTAT_VALUES))
+  finalStats.divideCommonStat(baseStats)
+  return finalStats
+}
+
+export function inputFormToRollCount(formState: FormState): StatSet {
+  const modList = createStatModList(formState)
+  const combinedStats = combineStatModifiers(modList)
+  return calculateRollCount(combinedStats, formState.stats)
+}
+
+export function countTotalRolls(rollCounts: StatSet) {
+  const mid = rollCounts.sum()
+  let low = rollCounts.sum("SPD")
+  let high = rollCounts.sum("SPD")
+
+  low = low * 9 / 8
+  high = high * 9 / 10
+
+  low += rollCounts.stats["SPD"] / 0.86956521739
+  high += rollCounts.stats["SPD"] / 1.13043478261
+  return [low, mid, high]
 }

@@ -1,4 +1,4 @@
-import { STAT_NAMES } from "../types/stats"
+import { STAT_NAMES } from "../data/substats"
 import type { StatState } from "../types/formState"
 
 interface StatsInputsProps {

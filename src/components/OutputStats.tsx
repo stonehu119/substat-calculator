@@ -1,7 +1,7 @@
 type OutputStatsProps = {
-  low: number
-  mid: number
-  high: number
+  low: string
+  mid: string
+  high: string
 }
 
 export default function OutputStats({ low, mid, high }: OutputStatsProps) {

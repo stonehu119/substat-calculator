@@ -7,7 +7,7 @@ import StatsInputs from './components/StatsInputs'
 import OutputStats from './components/OutputStats'
 import type { FormState } from './types/formState'
 import { createDefaultFormState } from './data/defaults'
-import { combineStatModifiers, createStatModList } from './data/logic'
+import { countTotalRolls, inputFormToRollCount } from './data/logic'
 
 const STORAGE_KEY = 'sub-counter-state'
 
@@ -46,9 +46,10 @@ function App() {
     }))
   }
 
-  // Placeholder rolls calculation: for now, just parse the numeric value of each stat.
-  // Replace this with your actual "# Rolls" computation logic.
-  const statRolls: Record<number, number> = combineStatModifiers(createStatModList(formState)).convertFormat()
+  // computation logic here
+  const rollCounts = inputFormToRollCount(formState)
+  const statRolls: Record<number, number> = rollCounts.convertFormat()
+  const [low, mid, high] = countTotalRolls(rollCounts)
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center px-2 pt-6 pb-4">
@@ -90,7 +91,7 @@ function App() {
               rolls={statRolls}
             />
           </div>
-          <OutputStats low={45} mid={40} high={35} />
+          <OutputStats low={low.toFixed(2)} mid={mid.toFixed(2)} high={high.toFixed(2)} />
         </div>
       </div>
       <footer className="mt-8 text-xs text-gray-500 text-center">

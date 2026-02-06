@@ -1,16 +1,4 @@
-export const STAT_NAMES = [
-  'HP',
-  'ATK',
-  'DEF',
-  'SPD',
-  'Crit Rate',
-  'Crit DMG',
-  'Break Effect',
-  'Effect Hit Rate',
-  'Effect RES',
-] as const
-
-export type Substat = typeof STAT_NAMES[number]
+import { STAT_NAMES, type Substat } from "../data/substats"
 
 export const statIds: Record<Substat, number> = {
   'HP' : 0,
@@ -58,7 +46,6 @@ export class StatSet {
     }
   }
 
-  // special case for convenience. Try not to use
   addCommonStat(other?: StatSet): void {
     if (!other) return
     for (const stat in this.stats) {
@@ -66,7 +53,6 @@ export class StatSet {
     }
   }
 
-  // special case for convenience. Try not to use
   addSpecialStat(other?: StatSet): void {
     if (!other) return
     for (const stat in this.stats) {
@@ -74,10 +60,30 @@ export class StatSet {
     }
   }
 
-  multiply(other?: StatSet): void {
+  subtract(other?: StatSet): void {
     if (!other) return
     for (const stat in this.stats) {
-      this.stats[stat as Substat] *= other.stats[stat as Substat]
+      this.stats[stat as Substat] -= other.stats[stat as Substat]
+    }
+  }
+
+  multiply(other?: StatSet): void {
+    for (const stat in this.stats) {
+      this.stats[stat as Substat] *= (other?.stats[stat as Substat] ?? 0) // multiplying by undefined should make everything 0
+    }
+  }
+
+  divide(other?: StatSet): void {
+    if (!other) return
+    for (const stat in this.stats) {
+      this.stats[stat as Substat] /= other.stats[stat as Substat]
+    }
+  }
+
+  divideCommonStat(other?: StatSet): void {
+    if (!other) return
+    for (const stat in this.stats) {
+      if (COMMON_STATS.includes(stat)) this.stats[stat as Substat] /= other.stats[stat as Substat]
     }
   }
 
@@ -86,6 +92,14 @@ export class StatSet {
     for (const stat in this.stats) {
       const key = statIds[stat as Substat]
       out[key] = this.stats[stat as Substat]
+    }
+    return out
+  }
+
+  sum(exclude?: Substat): number {
+    let out = 0
+    for (const stat in this.stats) {
+      out += stat == exclude ? 0 : this.stats[stat as Substat]
     }
     return out
   }
