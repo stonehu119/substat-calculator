@@ -1,7 +1,7 @@
 import type { FormState, StatState } from "../types/formState";
 import { StatSet, type StatModifier, } from "../types/stats";
 import { CHARACTER_DATA, type Character } from "./characters";
-import { LIGHT_CONE_BASE_STATS, type LightCone } from "./lightcones";
+import { LIGHT_CONE_BASE_STATS, LIGHT_CONE_PATH_STATS, type LightCone } from "./lightcones";
 import { 
   MAIN_STAT_VALUES,
   PLANAR_SET_DATA,
@@ -19,11 +19,12 @@ import { STAT_NAMES, SUBSTAT_VALUES } from "./substats";
 function createStatModList(formState: FormState): Array<StatModifier> {
   const out: Array<StatModifier> = []
   const defaultStats: StatModifier = { flat: new StatSet({"HP": 705.6, "ATK": 352.8, "Crit Rate": 5, "Crit DMG": 50}) }
+  const superimposeIndex = +formState.superimposition[1] - 1
   try {
     out.push(defaultStats)
     out.push(CHARACTER_DATA[formState.character as Character])
     out.push(LIGHT_CONE_BASE_STATS[formState.lightCone as LightCone])
-    // Light cone path stats need to be added here
+    out.push(LIGHT_CONE_PATH_STATS[formState.lightCone as LightCone][superimposeIndex])
     out.push(RELIC_SET_DATA[formState.relicSet as RelicSet])
     out.push(PLANAR_SET_DATA[formState.planarSet as PlanarSet])
     out.push(MAIN_STAT_VALUES[formState.relicBody as BodyMainStat])
