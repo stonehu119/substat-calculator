@@ -132,21 +132,21 @@ export const BODY_MAIN_STATS = [
   'HP%',
   'ATK%',
   'DEF%',
-]
+] as const
 
 export const FEET_MAIN_STATS = [
   'SPD',
   'HP%',
   'ATK%',
   'DEF%',
-]
+] as const
 
 export const ORB_MAIN_STATS = [
   'DMG Bonus',
   'HP%',
   'ATK%',
   'DEF%',
-]
+] as const
 
 export const ROPE_MAIN_STATS = [
   'HP%',
@@ -154,4 +154,4 @@ export const ROPE_MAIN_STATS = [
   'DEF%',
   'Break Effect',
   'Energy Regeneration Rate',
-]
+] as const
