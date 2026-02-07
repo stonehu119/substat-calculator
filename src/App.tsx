@@ -83,7 +83,7 @@ function App() {
     </div>
   )
 
-  const statsSection = (
+  const statsSectionMobile = (
     <div className="flex flex-col gap-6">
       <StatsInputs
         stats={formState.stats}
@@ -104,7 +104,7 @@ function App() {
         {/* Mobile: single stacked layout */}
         <div className="w-full max-w-md lg:hidden bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
           {buildSection}
-          {statsSection}
+          {statsSectionMobile}
         </div>
 
         {/* Desktop: two columns, build left, stats + result right */}
@@ -119,11 +119,11 @@ function App() {
             {buildSection}
           </section>
           <section
-            className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col min-h-0"
-            aria-label="Stats Input and result"
+            className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4 min-h-0"
+            aria-label="Stats input and result"
           >
-            <h2 className="text-lg font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1">
-            Stats Input & Result
+            <h2 className="text-lg font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1 ">
+              Stats Input & Result
             </h2>
             <StatsInputs
               stats={formState.stats}
