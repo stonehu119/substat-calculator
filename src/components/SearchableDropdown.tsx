@@ -1,4 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+
+const LIST_MAX_HEIGHT_PX = 160 // max-h-40 = 10rem
+const SPACE_BUFFER_PX = 16
 
 export interface SearchableDropdownProps {
   options: readonly string[]
@@ -16,12 +19,22 @@ export default function SearchableDropdown({
   placeholder,
 }: SearchableDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
+  const [openAbove, setOpenAbove] = useState(false)
   const [inputValue, setInputValue] = useState(value)
   const inputRef = useRef<HTMLInputElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setInputValue(value)
   }, [value])
+
+  useLayoutEffect(() => {
+    if (!isOpen || !containerRef.current) return
+    const rect = containerRef.current.getBoundingClientRect()
+    const spaceBelow = window.innerHeight - rect.bottom
+    const minNeeded = LIST_MAX_HEIGHT_PX + SPACE_BUFFER_PX
+    setOpenAbove(spaceBelow < minNeeded)
+  }, [isOpen])
 
   const isValid = value && options.includes(value)
 
@@ -59,7 +72,7 @@ export default function SearchableDropdown({
   return (
     <div className="flex flex-col relative">
       <label className="mb-1 text-sm text-gray-300">{label}</label>
-      <div className="relative">
+      <div ref={containerRef} className="relative">
         <input
           ref={inputRef}
           type="text"
@@ -80,7 +93,11 @@ export default function SearchableDropdown({
       </div>
 
       {isOpen && filtered.length > 0 && (
-        <ul className="absolute top-full left-0 right-0 mt-1 bg-gray-700 border border-gray-600 rounded max-h-40 overflow-y-auto z-10">
+        <ul
+          className={`absolute left-0 right-0 bg-gray-700 border border-gray-600 rounded max-h-40 overflow-y-auto z-10 ${
+            openAbove ? 'bottom-full mb-1' : 'top-full mt-1'
+          }`}
+        >
           {filtered.map((item) => (
             <li key={item}>
               <button
