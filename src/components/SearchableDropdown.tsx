@@ -41,6 +41,7 @@ export default function SearchableDropdown({
 
   const handleSelect = (item: string) => {
     setInputValue(item)
+    onChange(item)
     setIsOpen(false)
   }
 
@@ -81,7 +82,8 @@ export default function SearchableDropdown({
             <li key={item}>
               <button
                 type="button"
-                onMouseDown={() => handleSelect(item)}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() => handleSelect(item)}
                 className="w-full text-left px-3 py-2 text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer"
               >
                 {item}
