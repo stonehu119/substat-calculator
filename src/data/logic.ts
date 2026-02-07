@@ -1,7 +1,7 @@
 import type { FormState, StatState } from "../types/formState";
 import { StatSet, type StatModifier, } from "../types/stats";
-import { CHARACTER_DATA, type Character } from "./characters";
-import { LIGHT_CONE_BASE_STATS, LIGHT_CONE_PATH_STATS, type LightCone } from "./lightcones";
+import { CHARACTER_DATA, CHARACTER_PATH, type Character } from "./characters";
+import { LIGHT_CONE_BASE_STATS, LIGHT_CONE_PATH, LIGHT_CONE_PATH_STATS, type LightCone } from "./lightcones";
 import { 
   MAIN_STAT_VALUES,
   PLANAR_SET_DATA,
@@ -15,6 +15,16 @@ import {
 } from "./relics";
 import { STAT_NAMES, SUBSTAT_VALUES } from "./substats";
 
+export function characterPathMatchesLC(formState: FormState): boolean {
+  try {
+    const characterPath = CHARACTER_PATH[formState.character as Character]
+    const lightConePath = LIGHT_CONE_PATH[formState.lightCone as LightCone]
+    return characterPath == lightConePath
+  } catch {
+    return false
+  }
+}
+
 // collect all stat modifiers
 function createStatModList(formState: FormState): Array<StatModifier> {
   const out: Array<StatModifier> = []
@@ -24,7 +34,7 @@ function createStatModList(formState: FormState): Array<StatModifier> {
     out.push(defaultStats)
     out.push(CHARACTER_DATA[formState.character as Character])
     out.push(LIGHT_CONE_BASE_STATS[formState.lightCone as LightCone])
-    out.push(LIGHT_CONE_PATH_STATS[formState.lightCone as LightCone][superimposeIndex])
+    characterPathMatchesLC(formState) && out.push(LIGHT_CONE_PATH_STATS[formState.lightCone as LightCone][superimposeIndex])
     out.push(RELIC_SET_DATA[formState.relicSet as RelicSet])
     out.push(PLANAR_SET_DATA[formState.planarSet as PlanarSet])
     out.push(MAIN_STAT_VALUES[formState.relicBody as BodyMainStat])

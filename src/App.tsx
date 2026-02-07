@@ -7,7 +7,7 @@ import StatsInputs from './components/StatsInputs'
 import OutputStats from './components/OutputStats'
 import type { FormState } from './types/formState'
 import { createDefaultFormState } from './data/defaults'
-import { countTotalRolls, inputFormToRollCount } from './data/logic'
+import { characterPathMatchesLC, countTotalRolls, inputFormToRollCount } from './data/logic'
 
 const STORAGE_KEY = 'sub-counter-state'
 
@@ -68,6 +68,7 @@ function App() {
               onLightConeChange={(value) => updateFormField('lightCone', value)}
               superimposition={formState.superimposition}
               onSuperimpositionChange={(value) => updateFormField('superimposition', value)}
+              pathMatches={characterPathMatchesLC(formState)}
             />
             <RelicSets 
               set1={formState.relicSet} 

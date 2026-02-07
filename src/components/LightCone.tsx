@@ -6,6 +6,7 @@ interface LightConeProps {
   onLightConeChange: (value: string) => void
   superimposition: string
   onSuperimpositionChange: (value: string) => void
+  pathMatches?: boolean
 }
 
 export default function LightCone({
@@ -13,6 +14,7 @@ export default function LightCone({
   onLightConeChange,
   superimposition,
   onSuperimpositionChange,
+  pathMatches = true,
 }: LightConeProps) {
   return (
     <div className="flex flex-col gap-2">
@@ -25,6 +27,11 @@ export default function LightCone({
           label="Name"
           placeholder="Select light cone"
         />
+        {lightCone && !pathMatches && (
+          <p className="text-[10px] text-gray-500">
+            Path doesn't match character - passive won't apply.
+          </p>
+        )}
         <SearchableDropdown
           options={SUPERIMPOSITION_LEVELS}
           value={superimposition}
