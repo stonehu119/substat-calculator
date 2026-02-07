@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export interface SearchableDropdownProps {
   options: readonly string[]
@@ -17,6 +17,7 @@ export default function SearchableDropdown({
 }: SearchableDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [inputValue, setInputValue] = useState(value)
+  const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     setInputValue(value)
@@ -43,6 +44,7 @@ export default function SearchableDropdown({
     setInputValue(item)
     onChange(item)
     setIsOpen(false)
+    inputRef.current?.blur()
   }
 
   const handleBlur = () => {
@@ -59,6 +61,7 @@ export default function SearchableDropdown({
       <label className="mb-1 text-sm text-gray-300">{label}</label>
       <div className="relative">
         <input
+          ref={inputRef}
           type="text"
           value={inputValue}
           onChange={handleInputChange}
