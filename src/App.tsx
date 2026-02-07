@@ -101,13 +101,13 @@ function App() {
           Star Rail Substat Counter
         </h1>
 
-        {/* Mobile: single stacked card (unchanged) */}
+        {/* Mobile: single stacked layout */}
         <div className="w-full max-w-md lg:hidden bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
           {buildSection}
           {statsSection}
         </div>
 
-        {/* Desktop: two columns — build left, stats + result right (same height, space between stats and result) */}
+        {/* Desktop: two columns, build left, stats + result right */}
         <div className="hidden lg:grid lg:grid-cols-[1fr_1fr] lg:gap-6 lg:w-full lg:items-stretch">
           <section
             className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4"
