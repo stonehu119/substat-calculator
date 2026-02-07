@@ -16,6 +16,7 @@ export default function CharacterDropdown({ value, onChange }: CharacterDropdown
         onChange={onChange}
         label="Name"
         placeholder="Select character"
+        customHeight="15.25rem"
       />
     </div>
   )

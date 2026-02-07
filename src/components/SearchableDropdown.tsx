@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
-const LIST_MAX_HEIGHT_PX = 160 // max-h-40 = 10rem
+const LIST_MAX_HEIGHT_PX = 204 // max-h-51 = 12.75rem
 const SPACE_BUFFER_PX = 16
 
 export interface SearchableDropdownProps {
@@ -9,6 +9,7 @@ export interface SearchableDropdownProps {
   onChange: (value: string) => void
   label: string
   placeholder: string
+  customHeight?: string
 }
 
 export default function SearchableDropdown({
@@ -17,6 +18,7 @@ export default function SearchableDropdown({
   onChange,
   label,
   placeholder,
+  customHeight,
 }: SearchableDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [openAbove, setOpenAbove] = useState(false)
@@ -94,9 +96,12 @@ export default function SearchableDropdown({
 
       {isOpen && filtered.length > 0 && (
         <ul
-          className={`absolute left-0 right-0 bg-gray-700 border border-gray-600 rounded max-h-40 overflow-y-auto z-10 ${
+          className={`absolute left-0 right-0 bg-gray-700 border border-gray-600 rounded overflow-y-auto z-10 ${
             openAbove ? 'bottom-full mb-1' : 'top-full mt-1'
           }`}
+          style={{
+            maxHeight: customHeight ?? "12.75rem"
+          }}
         >
           {filtered.map((item) => (
             <li key={item}>
