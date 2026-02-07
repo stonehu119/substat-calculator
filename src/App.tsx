@@ -51,48 +51,88 @@ function App() {
   const statRolls: Record<number, number> = rollCounts.convertFormat()
   const [low, mid, high] = countTotalRolls(rollCounts)
 
+  const buildSection = (
+    <div className="flex flex-col gap-4">
+      <CharacterDropdown
+        value={formState.character}
+        onChange={(value) => updateFormField('character', value)}
+      />
+      <LightCone
+        lightCone={formState.lightCone}
+        onLightConeChange={(value) => updateFormField('lightCone', value)}
+        superimposition={formState.superimposition}
+        onSuperimpositionChange={(value) => updateFormField('superimposition', value)}
+        pathMatches={characterPathMatchesLC(formState)}
+      />
+      <RelicSets
+        set1={formState.relicSet}
+        onSet1Change={(value) => updateFormField('relicSet', value)}
+        set2={formState.planarSet}
+        onSet2Change={(value) => updateFormField('planarSet', value)}
+      />
+      <RelicMains
+        mainStat1={formState.relicBody}
+        onMainStat1Change={(value) => updateFormField('relicBody', value)}
+        mainStat2={formState.relicFeet}
+        onMainStat2Change={(value) => updateFormField('relicFeet', value)}
+        mainStat3={formState.relicOrb}
+        onMainStat3Change={(value) => updateFormField('relicOrb', value)}
+        mainStat4={formState.relicRope}
+        onMainStat4Change={(value) => updateFormField('relicRope', value)}
+      />
+    </div>
+  )
+
+  const statsSection = (
+    <div className="flex flex-col gap-6">
+      <StatsInputs
+        stats={formState.stats}
+        onStatsChange={(stats) => updateFormField('stats', stats)}
+        rolls={statRolls}
+      />
+      <OutputStats low={low.toFixed(2)} mid={mid.toFixed(2)} high={high.toFixed(2)} />
+    </div>
+  )
+
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center justify-center px-2 pt-6 pb-4">
-      <div className="flex flex-col items-center w-full gap-8">
+    <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center px-2 pt-6 pb-4">
+      <div className="flex flex-col items-center w-full gap-8 max-w-6xl">
         <h1 className="text-4xl md:text-5xl font-extrabold text-blue-400 text-center mt-0 drop-shadow-lg tracking-wide">
           Star Rail Substat Counter
         </h1>
-        <div className="w-full max-w-md bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
-          <div className="flex flex-col gap-4">
-            <CharacterDropdown
-              value={formState.character}
-              onChange={(value) => updateFormField('character', value)}
-            />
-            <LightCone 
-              lightCone={formState.lightCone} 
-              onLightConeChange={(value) => updateFormField('lightCone', value)}
-              superimposition={formState.superimposition}
-              onSuperimpositionChange={(value) => updateFormField('superimposition', value)}
-              pathMatches={characterPathMatchesLC(formState)}
-            />
-            <RelicSets 
-              set1={formState.relicSet} 
-              onSet1Change={(value) => updateFormField('relicSet', value)}
-              set2={formState.planarSet}
-              onSet2Change={(value) => updateFormField('planarSet', value)}
-            />
-            <RelicMains
-              mainStat1={formState.relicBody}
-              onMainStat1Change={(value) => updateFormField('relicBody', value)}
-              mainStat2={formState.relicFeet}
-              onMainStat2Change={(value) => updateFormField('relicFeet', value)}
-              mainStat3={formState.relicOrb}
-              onMainStat3Change={(value) => updateFormField('relicOrb', value)}
-              mainStat4={formState.relicRope}
-              onMainStat4Change={(value) => updateFormField('relicRope', value)}
-            />
+
+        {/* Mobile: single stacked card (unchanged) */}
+        <div className="w-full max-w-md lg:hidden bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
+          {buildSection}
+          {statsSection}
+        </div>
+
+        {/* Desktop: two columns — build left, stats + result right (same height, space between stats and result) */}
+        <div className="hidden lg:grid lg:grid-cols-[1fr_1fr] lg:gap-6 lg:w-full lg:items-stretch">
+          <section
+            className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4"
+            aria-label="Character and build"
+          >
+            <h2 className="text-lg font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1">
+              Build
+            </h2>
+            {buildSection}
+          </section>
+          <section
+            className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col min-h-0"
+            aria-label="Stats Input and result"
+          >
+            <h2 className="text-lg font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1">
+            Stats Input & Result
+            </h2>
             <StatsInputs
               stats={formState.stats}
               onStatsChange={(stats) => updateFormField('stats', stats)}
               rolls={statRolls}
             />
-          </div>
-          <OutputStats low={low.toFixed(2)} mid={mid.toFixed(2)} high={high.toFixed(2)} />
+            <div className="flex-1 min-h-4" />
+            <OutputStats low={low.toFixed(2)} mid={mid.toFixed(2)} high={high.toFixed(2)} />
+          </section>
         </div>
       </div>
       <footer className="mt-8 text-xs text-gray-500 text-center">
