@@ -37,7 +37,7 @@ export default function LightCone({
       </div>
       {lightCone && !pathMatches && (
         <p className="text-[10px] text-gray-500">
-          Path doesn't match character - passive won't apply.
+          Path doesn't match character - passive won't apply
         </p>
       )}
     </div>
