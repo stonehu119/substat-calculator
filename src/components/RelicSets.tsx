@@ -16,7 +16,7 @@ export default function RelicSets({
 }: RelicSetsProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm text-gray-300 font-semibold">Relic Sets</label>
+      <label className="text-sm text-gray-300 font-semibold">Relic sets</label>
       <div className="flex flex-col gap-2">
         <SearchableDropdown
           options={RELIC_SETS}

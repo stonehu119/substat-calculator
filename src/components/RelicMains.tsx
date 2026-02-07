@@ -24,7 +24,7 @@ export default function RelicMains({
 }: RelicMainsProps) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-sm text-gray-300 font-semibold">Relic Main Stats</label>
+      <label className="text-sm text-gray-300 font-semibold">Relic main stats</label>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         <SearchableDropdown
           options={BODY_MAIN_STATS}
