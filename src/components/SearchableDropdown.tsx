@@ -90,7 +90,7 @@ export default function SearchableDropdown({
           }`}
         />
         {value && !isValid && !isOpen && (
-          <p className="mt-1 text-xs text-red-400">Invalid selection. Please choose from the list.</p>
+          <p className="mt-1 text-xs text-red-400">Invalid selection</p>
         )}
       </div>
 
