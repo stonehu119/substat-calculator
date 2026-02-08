@@ -164,6 +164,18 @@ export const PLANAR_SET_DATA: Record<PlanarSet, StatModifier> = {
   "(None)" : {},
 } as const
 
+const appendText = (set: string, text: string) => set + (set == NONE ? "" : text )
+
+export const RELIC_SETS_2PC = RELIC_SETS.map(set => appendText(set, " (2pc)"))
+export const RELIC_SETS_4PC = RELIC_SETS.map(set => appendText(set, " (4pc)"))
+
+export function getRelicStatMod(displayString: string): StatModifier {
+  if (displayString == NONE) return RELIC_SET_DATA[NONE]
+  if (displayString.slice(-4, -3) == '2') return RELIC_SET_DATA[displayString.slice(0, -6) as RelicSet]
+  if (displayString.slice(-4, -3) == '4') return RELIC_SET_4PC_DATA[displayString.slice(0, -6) as RelicSet]
+  throw new Error("Could not resolve relic set input value")
+}
+
 export const BODY_MAIN_STATS = [
   'Crit Rate',
   'Crit DMG',
