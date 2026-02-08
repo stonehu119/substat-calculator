@@ -3,14 +3,13 @@ import { StatSet, type StatModifier, } from "../types/stats";
 import { CHARACTER_DATA, CHARACTER_PATH, type Character } from "./characters";
 import { LIGHT_CONE_BASE_STATS, LIGHT_CONE_PATH, LIGHT_CONE_PATH_STATS, type LightCone } from "./lightcones";
 import { 
+  getRelicStatMod,
   MAIN_STAT_VALUES,
   PLANAR_SET_DATA,
-  RELIC_SET_DATA,
   type BodyMainStat,
   type FeetMainStat,
   type OrbMainStat,
   type PlanarSet,
-  type RelicSet,
   type RopeMainStat
 } from "./relics";
 import { STAT_NAMES, SUBSTAT_VALUES } from "./substats";
@@ -35,7 +34,8 @@ function createStatModList(formState: FormState): Array<StatModifier> {
     out.push(CHARACTER_DATA[formState.character as Character])
     out.push(LIGHT_CONE_BASE_STATS[formState.lightCone as LightCone])
     characterPathMatchesLC(formState) && out.push(LIGHT_CONE_PATH_STATS[formState.lightCone as LightCone][superimposeIndex])
-    out.push(RELIC_SET_DATA[formState.relicSet as RelicSet])
+    out.push(getRelicStatMod(formState.relicSet1))
+    out.push(getRelicStatMod(formState.relicSet2))
     out.push(PLANAR_SET_DATA[formState.planarSet as PlanarSet])
     out.push(MAIN_STAT_VALUES[formState.relicBody as BodyMainStat])
     out.push(MAIN_STAT_VALUES[formState.relicFeet as FeetMainStat])
@@ -43,6 +43,8 @@ function createStatModList(formState: FormState): Array<StatModifier> {
     out.push(MAIN_STAT_VALUES[formState.relicRope as RopeMainStat])
   } catch {
     console.error("Form inputs are invalid")
+    localStorage.clear()
+    out.length = 0
   }
   return out
 }

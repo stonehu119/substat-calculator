@@ -19,7 +19,7 @@ export default function LightCone({
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm text-gray-300 font-semibold">Light cone</label>
-      <div className="flex flex-col gap-2">
+      <div className="grid grid-cols-1 sm:grid-cols-[minmax(0,1fr)_7rem] gap-2">
         <SearchableDropdown
           options={LIGHT_CONES}
           value={lightCone}
@@ -27,11 +27,6 @@ export default function LightCone({
           label="Name"
           placeholder="Select light cone"
         />
-        {lightCone && !pathMatches && (
-          <p className="text-[10px] text-gray-500">
-            Path doesn't match character - passive won't apply.
-          </p>
-        )}
         <SearchableDropdown
           options={SUPERIMPOSITION_LEVELS}
           value={superimposition}
@@ -40,6 +35,11 @@ export default function LightCone({
           placeholder="Select level"
         />
       </div>
+      {lightCone && !pathMatches && (
+        <p className="text-[10px] text-gray-500">
+          Path doesn't match character - passive won't apply
+        </p>
+      )}
     </div>
   )
 }

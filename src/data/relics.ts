@@ -1,6 +1,9 @@
 import { StatSet, type StatModifier } from "../types/stats"
 
+export const NONE = "(None)"
+
 export const RELIC_SETS = [
+  NONE,
   "Ever-Glorious Magical Girl",
   "Diviner of Distant Reach",
   "Self-Enshrouded Recluse",
@@ -42,20 +45,20 @@ export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = {
   "World-Remaking Deliverer" : { flat: new StatSet({"Crit Rate": 8}) },
   "Wavestrider Captain" : { flat: new StatSet({"Crit DMG": 16}) },
   "Warrior Goddess of Sun and Thunder" : { percent: new StatSet({"SPD": 6}) },
-  "Poet of Mourning Collapse" : { percent: new StatSet({"SPD": -8}) },
+  "Poet of Mourning Collapse" : {},
   "Hero of Triumphant Song" : { percent: new StatSet({"ATK": 12}) },
   "Scholar Lost in Erudition" : { flat: new StatSet({"Crit Rate": 8}) },
   "Sacerdos' Relived Ordeal" : { percent: new StatSet({"SPD": 6}) },
-  "The Wind-Soaring Valorous" : { percent: new StatSet({"ATK": 12}), flat: new StatSet({"Crit Rate": 6}) },
+  "The Wind-Soaring Valorous" : { percent: new StatSet({"ATK": 12}) },
   "Iron Cavalry Against the Scourge" : { flat: new StatSet({"Break Effect": 16}) },
   "Watchmaker, Master of Dream Machinations" : { flat: new StatSet({"Break Effect": 16}) },
-  "Pioneer Diver of Dead Waters" : { flat: new StatSet({"Crit Rate": 4}) },
+  "Pioneer Diver of Dead Waters" : {},
   "Prisoner in Deep Confinement" : { percent: new StatSet({"ATK": 12}) },
   "The Ashblazing Grand Duke" : {},
   "Messenger Traversing Hackerspace" : { percent: new StatSet({"SPD": 6}) },
   "Longevous Disciple" : { percent: new StatSet({"HP": 12}) },
   "Wastelander of Banditry Desert" : {},
-  "Thief of Shooting Meteor" : { flat: new StatSet({"Break Effect": 32}) },
+  "Thief of Shooting Meteor" : { flat: new StatSet({"Break Effect": 16}) },
   "Band of Sizzling Thunder" : {},
   "Genius of Brilliant Stars" : {},
   "Firesmith of Lava-Forging" : {},
@@ -64,11 +67,47 @@ export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = {
   "Eagle of Twilight Line" : {},
   "Hunter of Glacial Forest" : {},
   "Knight of Purity Palace" : { percent: new StatSet({"DEF": 15}) },
-  "Musketeer of Wild Wheat" : { percent: new StatSet({"ATK": 12, "SPD": 6}) },
+  "Musketeer of Wild Wheat" : { percent: new StatSet({"ATK": 12}) },
   "Passerby of Wandering Cloud" : {},
+  "(None)" : {},
+} as const
+
+export const RELIC_SET_4PC_DATA: Record<RelicSet, StatModifier> = {
+  "Ever-Glorious Magical Girl" : {},
+  "Diviner of Distant Reach" : {},
+  "Self-Enshrouded Recluse" : {},
+  "World-Remaking Deliverer" : {},
+  "Wavestrider Captain" : {},
+  "Warrior Goddess of Sun and Thunder" : {},
+  "Poet of Mourning Collapse" : { percent: new StatSet({"SPD": -8}) },
+  "Hero of Triumphant Song" : {},
+  "Scholar Lost in Erudition" : {},
+  "Sacerdos' Relived Ordeal" : {},
+  "The Wind-Soaring Valorous" : { flat: new StatSet({"Crit Rate": 6}) },
+  "Iron Cavalry Against the Scourge" : {},
+  "Watchmaker, Master of Dream Machinations" : {},
+  "Pioneer Diver of Dead Waters" : { flat: new StatSet({"Crit Rate": 4}) },
+  "Prisoner in Deep Confinement" : {},
+  "The Ashblazing Grand Duke" : {},
+  "Messenger Traversing Hackerspace" : {},
+  "Longevous Disciple" : {},
+  "Wastelander of Banditry Desert" : {},
+  "Thief of Shooting Meteor" : { flat: new StatSet({"Break Effect": 16}) },
+  "Band of Sizzling Thunder" : {},
+  "Genius of Brilliant Stars" : {},
+  "Firesmith of Lava-Forging" : {},
+  "Guard of Wuthering Snow" : {},
+  "Champion of Streetwise Boxing" : {},
+  "Eagle of Twilight Line" : {},
+  "Hunter of Glacial Forest" : {},
+  "Knight of Purity Palace" : {},
+  "Musketeer of Wild Wheat" : { percent: new StatSet({"SPD": 6}) },
+  "Passerby of Wandering Cloud" : {},
+  "(None)" : {},
 } as const
 
 export const PLANAR_SETS = [
+  NONE,
   "Tengoku@Livestream",
   "Amphoreus, The Eternal Land",
   "Revelry by the Sea",
@@ -122,7 +161,20 @@ export const PLANAR_SET_DATA: Record<PlanarSet, StatModifier> = {
   "Pan-Cosmic Commercial Enterprise" : { flat: new StatSet({"Effect Hit Rate": 10}) },
   "Fleet of the Ageless" : { percent: new StatSet({"HP": 12}) },
   "Space Sealing Station" : { percent: new StatSet({"ATK": 12}) },
+  "(None)" : {},
 } as const
+
+const appendText = (set: string, text: string) => set + (set == NONE ? "" : text )
+
+export const RELIC_SETS_2PC = RELIC_SETS.map(set => appendText(set, " (2pc)"))
+export const RELIC_SETS_4PC = RELIC_SETS.map(set => appendText(set, " (4pc)"))
+
+export function getRelicStatMod(displayString: string): StatModifier {
+  if (displayString == NONE) return RELIC_SET_DATA[NONE]
+  if (displayString.slice(-4, -3) == '2') return RELIC_SET_DATA[displayString.slice(0, -6) as RelicSet]
+  if (displayString.slice(-4, -3) == '4') return RELIC_SET_4PC_DATA[displayString.slice(0, -6) as RelicSet]
+  throw new Error("Could not resolve relic set input value")
+}
 
 export const BODY_MAIN_STATS = [
   'Crit Rate',
