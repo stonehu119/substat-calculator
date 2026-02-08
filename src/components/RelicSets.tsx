@@ -6,6 +6,8 @@ interface RelicSetsProps {
   onSet1Change: (value: string) => void
   set2: string
   onSet2Change: (value: string) => void
+  planarSet: string
+  onPlanarChange: (value: string) => void
 }
 
 export default function RelicSets({
@@ -13,6 +15,8 @@ export default function RelicSets({
   onSet1Change,
   set2,
   onSet2Change,
+  planarSet,
+  onPlanarChange,
 }: RelicSetsProps) {
   return (
     <div className="flex flex-col gap-2">
@@ -22,13 +26,20 @@ export default function RelicSets({
           options={RELIC_SETS}
           value={set1}
           onChange={onSet1Change}
-          label="Relic set"
-          placeholder="Select relic set"
+          label="Relic set 1"
+          placeholder="Select relic set 1"
+        />
+        <SearchableDropdown
+          options={RELIC_SETS}
+          value={set2}
+          onChange={onSet2Change}
+          label="Relic set 2"
+          placeholder="Select relic set 2"
         />
         <SearchableDropdown
           options={PLANAR_SETS}
-          value={set2}
-          onChange={onSet2Change}
+          value={planarSet}
+          onChange={onPlanarChange}
           label="Planar set"
           placeholder="Select planar set"
         />

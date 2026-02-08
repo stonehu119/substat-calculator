@@ -65,10 +65,12 @@ function App() {
         pathMatches={characterPathMatchesLC(formState)}
       />
       <RelicSets
-        set1={formState.relicSet}
-        onSet1Change={(value) => updateFormField('relicSet', value)}
-        set2={formState.planarSet}
-        onSet2Change={(value) => updateFormField('planarSet', value)}
+        set1={formState.relicSet1}
+        onSet1Change={(value) => updateFormField('relicSet1', value)}
+        set2={formState.relicSet2}
+        onSet2Change={(value) => updateFormField('relicSet2', value)}
+        planarSet={formState.planarSet}
+        onPlanarChange={(value) => updateFormField('planarSet', value)}
       />
       <RelicMains
         mainStat1={formState.relicBody}

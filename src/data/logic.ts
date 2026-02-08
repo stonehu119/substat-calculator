@@ -5,6 +5,7 @@ import { LIGHT_CONE_BASE_STATS, LIGHT_CONE_PATH, LIGHT_CONE_PATH_STATS, type Lig
 import { 
   MAIN_STAT_VALUES,
   PLANAR_SET_DATA,
+  RELIC_SET_4PC_DATA,
   RELIC_SET_DATA,
   type BodyMainStat,
   type FeetMainStat,
@@ -35,7 +36,13 @@ function createStatModList(formState: FormState): Array<StatModifier> {
     out.push(CHARACTER_DATA[formState.character as Character])
     out.push(LIGHT_CONE_BASE_STATS[formState.lightCone as LightCone])
     characterPathMatchesLC(formState) && out.push(LIGHT_CONE_PATH_STATS[formState.lightCone as LightCone][superimposeIndex])
-    out.push(RELIC_SET_DATA[formState.relicSet as RelicSet])
+    out.push(RELIC_SET_DATA[formState.relicSet1 as RelicSet])
+    const relic4pc = formState.relicSet1 == formState.relicSet2
+    if (relic4pc) {
+      out.push(RELIC_SET_4PC_DATA[formState.relicSet2 as RelicSet])
+    } else {
+      out.push(RELIC_SET_DATA[formState.relicSet2 as RelicSet])
+    }
     out.push(PLANAR_SET_DATA[formState.planarSet as PlanarSet])
     out.push(MAIN_STAT_VALUES[formState.relicBody as BodyMainStat])
     out.push(MAIN_STAT_VALUES[formState.relicFeet as FeetMainStat])

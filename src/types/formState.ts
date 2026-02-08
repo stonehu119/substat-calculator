@@ -7,7 +7,8 @@ export interface FormState {
   character: string;
   lightCone: string;
   superimposition: string;
-  relicSet: string;
+  relicSet1: string;
+  relicSet2: string;
   planarSet: string;
   relicBody: string;
   relicFeet: string;
