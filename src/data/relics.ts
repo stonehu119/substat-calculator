@@ -219,7 +219,7 @@ export const MAIN_STAT_VALUES: Record<MainStat, StatModifier> = {
   'HP%' : { percent: new StatSet({"HP" : 43.2}) },
   'ATK%' : { percent: new StatSet({"ATK" : 43.2}) },
   'DEF%' : { percent: new StatSet({"DEF" : 54}) },
-  'SPD' : { flat: new StatSet({"SPD" : 25.032}) },
+  'SPD' : { flat: new StatSet({"SPD" : 25.0}) },
   'Crit Rate' : { flat: new StatSet({"Crit Rate" : 32.4}) },
   'Crit DMG' : { flat: new StatSet({"Crit DMG" : 64.8}) },
   'EHR' : { flat: new StatSet({"Effect Hit Rate" : 43.2}) },
