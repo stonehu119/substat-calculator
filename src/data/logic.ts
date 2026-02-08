@@ -43,6 +43,8 @@ function createStatModList(formState: FormState): Array<StatModifier> {
     out.push(MAIN_STAT_VALUES[formState.relicRope as RopeMainStat])
   } catch {
     console.error("Form inputs are invalid")
+    localStorage.clear()
+    out.length = 0
   }
   return out
 }

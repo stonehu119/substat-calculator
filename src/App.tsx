@@ -28,6 +28,7 @@ function App() {
         }))
       } catch (e) {
         console.error('Failed to load saved data:', e)
+        localStorage.clear()
       }
     }
     setHydrated(true)
