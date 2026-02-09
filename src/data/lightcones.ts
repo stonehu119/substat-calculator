@@ -4,6 +4,8 @@ import type { Path } from "./characters"
 export const SUPERIMPOSITION_LEVELS = ['S1', 'S2', 'S3', 'S4', 'S5']
 
 export const LIGHT_CONES = [
+  "The Finale of a Lie",
+  "Elation Brimming With Blessings",
   "Dazzled by a Flowery World",
   "When She Decided to See",
   "Mushy Shroomy's Adventures",
@@ -165,6 +167,8 @@ export const LIGHT_CONES = [
 export type LightCone = typeof LIGHT_CONES[number]
 
 export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
+  "The Finale of a Lie" : { base: new StatSet({"HP": 1058, "ATK": 582, "DEF": 463}) },
+  "Elation Brimming With Blessings" : { base: new StatSet({"HP": 953, "ATK": 529, "DEF": 463}) },
   "Dazzled by a Flowery World" : { base: new StatSet({"HP": 1058, "ATK": 582, "DEF": 463}) },
   "When She Decided to See" : { base: new StatSet({"HP": 1058, "ATK": 529, "DEF": 529}) },
   "Mushy Shroomy's Adventures" : { base: new StatSet({"HP": 847, "ATK": 476, "DEF": 397}) },
@@ -324,6 +328,8 @@ export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
 } as const
 
 export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
+  "The Finale of a Lie" : [{ flat: new StatSet({"Crit Rate": 18}) }, { flat: new StatSet({"Crit Rate": 21}) }, { flat: new StatSet({"Crit Rate": 24}) }, { flat: new StatSet({"Crit Rate": 27}) }, { flat: new StatSet({"Crit Rate": 30}) }],
+  "Elation Brimming With Blessings" : [{ percent: new StatSet({"ATK": 20}) }, { percent: new StatSet({"ATK": 25}) }, { percent: new StatSet({"ATK": 30}) }, { percent: new StatSet({"ATK": 35}) }, { percent: new StatSet({"ATK": 40}) }],
   "Dazzled by a Flowery World" : [{ flat: new StatSet({"Crit DMG": 48}) }, { flat: new StatSet({"Crit DMG": 56}) }, { flat: new StatSet({"Crit DMG": 64}) }, { flat: new StatSet({"Crit DMG": 72}) }, { flat: new StatSet({"Crit DMG": 80}) }],
   "When She Decided to See" : [{ percent: new StatSet({"SPD": 18}) }, { percent: new StatSet({"SPD": 21}) }, { percent: new StatSet({"SPD": 24}) }, { percent: new StatSet({"SPD": 27}) }, { percent: new StatSet({"SPD": 30}) }],
   "Never Forget Her Flame" : [{ flat: new StatSet({"Break Effect": 60}) }, { flat: new StatSet({"Break Effect": 75}) }, { flat: new StatSet({"Break Effect": 90}) }, { flat: new StatSet({"Break Effect": 105}) }, { flat: new StatSet({"Break Effect": 120}) }],
@@ -483,6 +489,8 @@ export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
 }
 
 export const LIGHT_CONE_PATH: Record<LightCone, Path> = {
+  "The Finale of a Lie" : "Hunt",
+  "Elation Brimming With Blessings" : "Elation",
   "Dazzled by a Flowery World" : "Elation",
   "When She Decided to See" : "Elation",
   "Never Forget Her Flame" : "Nihility",
