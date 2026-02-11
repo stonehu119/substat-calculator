@@ -12,6 +12,7 @@ import type { Character } from './data/characters'
 
 const OLD_STORAGE_KEY = 'sub-counter-state'
 const STORAGE_KEY = 'sub-counter-data'
+const ACTIVE_CHARACTER_KEY = 'active-character'
 
 type SaveData = Partial<Record<Character, Partial<FormState>>>
 
@@ -51,7 +52,8 @@ function App() {
   // Try to load data from storage
   useEffect(() => {
     localStorage.removeItem(OLD_STORAGE_KEY) // remove old data in case of conflicts with new data
-    loadFormData(formState.character)
+    const activeCharacter = localStorage.getItem(ACTIVE_CHARACTER_KEY) ?? createDefaultFormState().character
+    loadFormData(activeCharacter)
   }, [])
 
   const updateFormField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
@@ -61,6 +63,7 @@ function App() {
     }
     setFormState(newState)
     if (key == "character") {
+      localStorage.setItem(ACTIVE_CHARACTER_KEY, value as Character)
       loadFormData(value as Character)
     } else {
       saveFormData(newState)
