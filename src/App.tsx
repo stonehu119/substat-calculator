@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import CharacterDropdown from './components/CharacterDropdown'
 import LightCone from './components/LightCone'
 import RelicSets from './components/RelicSets'
@@ -8,43 +8,63 @@ import OutputStats from './components/OutputStats'
 import type { FormState } from './types/formState'
 import { createDefaultFormState } from './data/defaults'
 import { characterPathMatchesLC, countTotalRolls, inputFormToRollCount } from './data/logic'
+import type { Character } from './data/characters'
 
-const STORAGE_KEY = 'sub-counter-state'
+const OLD_STORAGE_KEY = 'sub-counter-state'
+const STORAGE_KEY = 'sub-counter-data'
+
+type SaveData = Partial<Record<Character, Partial<FormState>>>
 
 function App() {
   const [formState, setFormState] = useState<FormState>(createDefaultFormState())
-  const [hydrated, setHydrated] = useState(false)
+
+  const saveFormData = useCallback((newFormState: FormState) => {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    try {
+      const saveData = saved ? JSON.parse(saved) as SaveData : {}
+      saveData[newFormState.character as Character] = newFormState
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(saveData))
+    } catch (e) {
+      console.error('Failed to save data', e)
+      localStorage.clear()
+    }
+  }, [formState])
+
+  const loadFormData = useCallback((character: string) => {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    if (!saved) return
+    try {
+      const saveData = JSON.parse(saved) as SaveData
+      const charData = saveData[character as Character] ?? {}
+
+      setFormState((prev) => ({
+        ...prev,
+        ...charData,
+        stats: charData.stats ?? prev.stats,
+      }))
+    } catch (e) {
+      console.error('Failed to load saved data:', e)
+      localStorage.clear()
+    }
+  }, [])
 
   // Try to load data from storage
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved) {
-      try {
-        const data = JSON.parse(saved) as Partial<FormState>
-        setFormState((prev) => ({
-          ...prev,
-          ...data,
-          stats: data.stats ?? prev.stats,
-        }))
-      } catch (e) {
-        console.error('Failed to load saved data:', e)
-        localStorage.clear()
-      }
-    }
-    setHydrated(true)
+    localStorage.removeItem(OLD_STORAGE_KEY) // remove old data in case of conflicts with new data
+    loadFormData(formState.character)
   }, [])
 
-  // Save data to storage when fields update
-  useEffect(() => {
-    if (!hydrated) return
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(formState))
-  }, [formState, hydrated])
-
   const updateFormField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
-    setFormState((prev) => ({
-      ...prev,
-      [key]: value,
-    }))
+    const newState = {
+      ...formState,
+      [key]: value
+    }
+    setFormState(newState)
+    if (key == "character") {
+      loadFormData(value as Character)
+    } else {
+      saveFormData(newState)
+    }
   }
 
   // computation logic here
