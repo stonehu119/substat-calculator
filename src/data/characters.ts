@@ -89,7 +89,7 @@ export const CHARACTERS = [
 export type Character = typeof CHARACTERS[number]
 
 export const CHARACTER_DATA: Record<Character, StatModifier> = {
-  "Ashveil" : { base: new StatSet({"HP": 1009.01, "ATK": 640.33, "DEF": 485.10, "SPD": 105}), percent: new StatSet({"ATK" : 10}), flat: new StatSet({"Crit DMG": 37.3}) },
+  "Ashveil" : { base: new StatSet({"HP": 853, "ATK": 776.16, "DEF": 388.08, "SPD": 106}), percent: new StatSet({"ATK" : 10}), flat: new StatSet({"Crit DMG": 37.3}) },
   "Sparxie" : { base: new StatSet({"HP": 1047.82, "ATK": 640.33, "DEF": 460.85, "SPD": 107}), flat: new StatSet({"Crit DMG": 13.3, "Crit Rate": 12}) },
   "Yao Guang" : { base: new StatSet({"HP": 1241.86, "ATK": 465.7, "DEF": 654.88, "SPD": 101}), flat: new StatSet({"Crit Rate": 18.7, "SPD": 9}) },
   "The Dahlia" : { base: new StatSet({"HP": 1086.62, "ATK": 679.14, "DEF": 606.38, "SPD": 96}), flat: new StatSet({"Break Effect": 37.3, "Effect RES": 18, "SPD": 5}) },

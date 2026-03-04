@@ -167,7 +167,7 @@ export const LIGHT_CONES = [
 export type LightCone = typeof LIGHT_CONES[number]
 
 export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
-  "The Finale of a Lie" : { base: new StatSet({"HP": 1058, "ATK": 582, "DEF": 463}) },
+  "The Finale of a Lie" : { base: new StatSet({"HP": 846, "ATK": 635, "DEF": 529}) },
   "Elation Brimming With Blessings" : { base: new StatSet({"HP": 953, "ATK": 529, "DEF": 463}) },
   "Dazzled by a Flowery World" : { base: new StatSet({"HP": 1058, "ATK": 582, "DEF": 463}) },
   "When She Decided to See" : { base: new StatSet({"HP": 1058, "ATK": 529, "DEF": 529}) },
