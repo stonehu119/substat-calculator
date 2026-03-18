@@ -1,6 +1,8 @@
 import { StatSet, type StatModifier } from "../types/stats"
 
 export const CHARACTERS = [
+  "Evanescia",
+  'Silver Wolf Lv.999',
   'Ashveil',
   'Sparxie',
   'Yao Guang',
@@ -89,6 +91,8 @@ export const CHARACTERS = [
 export type Character = typeof CHARACTERS[number]
 
 export const CHARACTER_DATA: Record<Character, StatModifier> = {
+  "Evanescia" : {base: new StatSet({"HP": 1047.82, "ATK": 737.35, "DEF": 460.845, "SPD": 104}), flat: new StatSet({"SPD": 5, "Crit Rate": 18.7})},
+  "Silver Wolf Lv.999" : { base: new StatSet({"HP": 1125.43, "ATK": 543.312, "DEF": 679.14, "SPD": 99}), flat: new StatSet({"Crit Rate": 18.7, "Crit DMG": 13.3}) },
   "Ashveil" : { base: new StatSet({"HP": 853.78, "ATK": 776.16, "DEF": 388.08, "SPD": 106}), percent: new StatSet({"ATK" : 10}), flat: new StatSet({"Crit DMG": 37.3}) },
   "Sparxie" : { base: new StatSet({"HP": 1047.82, "ATK": 640.33, "DEF": 460.85, "SPD": 107}), flat: new StatSet({"Crit DMG": 13.3, "Crit Rate": 12}) },
   "Yao Guang" : { base: new StatSet({"HP": 1241.86, "ATK": 465.7, "DEF": 654.88, "SPD": 101}), flat: new StatSet({"Crit Rate": 18.7, "SPD": 9}) },
@@ -190,6 +194,8 @@ export const PATHS = [
 export type Path = typeof PATHS[number]
 
 export const CHARACTER_PATH: Record<Character, Path> = {
+  "Evanescia" : "Elation",
+  "Silver Wolf Lv.999": "Elation",
   "Ashveil" : "Hunt",
   "Sparxie" : "Elation",
   "Yao Guang" : "Elation",
