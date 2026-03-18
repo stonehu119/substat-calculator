@@ -6,6 +6,7 @@ export const SUPERIMPOSITION_LEVELS = ['S1', 'S2', 'S3', 'S4', 'S5']
 export const LIGHT_CONES = [
   "A Rendezvous in the Next Flower Season",
   "Welcome to Cosmic City",
+  "We'll Face the Hereafter Together",
   "The Finale of a Lie",
   "Elation Brimming With Blessings",
   "Dazzled by a Flowery World",
@@ -171,6 +172,7 @@ export type LightCone = typeof LIGHT_CONES[number]
 export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
   "A Rendezvous in the Next Flower Season" : { base: new StatSet({"HP": 952.6, "ATK": 635, "DEF": 463}) },
   "Welcome to Cosmic City" : { base: new StatSet({"HP": 952.6, "ATK": 635, "DEF": 463}) },
+  "We'll Face the Hereafter Together" : { base: new StatSet({"HP": 952.6, "ATK": 476.3, "DEF": 330.8}) },
   "The Finale of a Lie" : { base: new StatSet({"HP": 846.7, "ATK": 635, "DEF": 529.2}) },
   "Elation Brimming With Blessings" : { base: new StatSet({"HP": 952.6, "ATK": 529.2, "DEF": 463}) },
   "Dazzled by a Flowery World" : { base: new StatSet({"HP": 1058.4, "ATK": 582.1, "DEF": 463}) },
@@ -334,6 +336,7 @@ export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
 export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
   "A Rendezvous in the Next Flower Season" : [{ flat: new StatSet({"Crit DMG": 60}) }, { flat: new StatSet({"Crit DMG": 82.5}) }, { flat: new StatSet({"Crit DMG": 105}) }, { flat: new StatSet({"Crit DMG": 127.5}) }, { flat: new StatSet({"Crit DMG": 150}) }],
   "Welcome to Cosmic City" : [{ percent: new StatSet({"ATK": 64}) }, { percent: new StatSet({"ATK": 80}) }, { percent: new StatSet({"ATK": 96}) }, { percent: new StatSet({"ATK": 112}) }, { percent: new StatSet({"ATK": 128}) }],
+  "We'll Face the Hereafter Together" : [{ flat: new StatSet({"Crit DMG": 12}) }, { flat: new StatSet({"Crit DMG": 15}) }, { flat: new StatSet({"Crit DMG": 18}) }, { flat: new StatSet({"Crit DMG": 21}) }, { flat: new StatSet({"Crit DMG": 24}) }],
   "The Finale of a Lie" : [{ flat: new StatSet({"Crit Rate": 18}) }, { flat: new StatSet({"Crit Rate": 21}) }, { flat: new StatSet({"Crit Rate": 24}) }, { flat: new StatSet({"Crit Rate": 27}) }, { flat: new StatSet({"Crit Rate": 30}) }],
   "Elation Brimming With Blessings" : [{ percent: new StatSet({"ATK": 20}) }, { percent: new StatSet({"ATK": 25}) }, { percent: new StatSet({"ATK": 30}) }, { percent: new StatSet({"ATK": 35}) }, { percent: new StatSet({"ATK": 40}) }],
   "Dazzled by a Flowery World" : [{ flat: new StatSet({"Crit DMG": 48}) }, { flat: new StatSet({"Crit DMG": 56}) }, { flat: new StatSet({"Crit DMG": 64}) }, { flat: new StatSet({"Crit DMG": 72}) }, { flat: new StatSet({"Crit DMG": 80}) }],
@@ -497,6 +500,7 @@ export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
 export const LIGHT_CONE_PATH: Record<LightCone, Path> = {
   "A Rendezvous in the Next Flower Season" : "Elation",
   "Welcome to Cosmic City" : "Elation",
+  "We'll Face the Hereafter Together" : "Elation",
   "The Finale of a Lie" : "Hunt",
   "Elation Brimming With Blessings" : "Elation",
   "Dazzled by a Flowery World" : "Elation",
