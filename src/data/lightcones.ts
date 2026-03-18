@@ -4,6 +4,8 @@ import type { Path } from "./characters"
 export const SUPERIMPOSITION_LEVELS = ['S1', 'S2', 'S3', 'S4', 'S5']
 
 export const LIGHT_CONES = [
+  "A Rendezvous in the Next Flower Season",
+  "Welcome to Cosmic City",
   "The Finale of a Lie",
   "Elation Brimming With Blessings",
   "Dazzled by a Flowery World",
@@ -167,13 +169,15 @@ export const LIGHT_CONES = [
 export type LightCone = typeof LIGHT_CONES[number]
 
 export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
-  "The Finale of a Lie" : { base: new StatSet({"HP": 846, "ATK": 635, "DEF": 529}) },
-  "Elation Brimming With Blessings" : { base: new StatSet({"HP": 953, "ATK": 529, "DEF": 463}) },
-  "Dazzled by a Flowery World" : { base: new StatSet({"HP": 1058, "ATK": 582, "DEF": 463}) },
-  "When She Decided to See" : { base: new StatSet({"HP": 1058, "ATK": 529, "DEF": 529}) },
-  "Mushy Shroomy's Adventures" : { base: new StatSet({"HP": 847, "ATK": 476, "DEF": 397}) },
-  "Today's Good Luck" : { base: new StatSet({"HP": 953, "ATK": 529, "DEF": 397}) },
-  "Sneering" : { base: new StatSet({"HP": 741, "ATK": 370, "DEF": 265}) },
+  "A Rendezvous in the Next Flower Season" : { base: new StatSet({"HP": 952.6, "ATK": 635, "DEF": 463}) },
+  "Welcome to Cosmic City" : { base: new StatSet({"HP": 952.6, "ATK": 635, "DEF": 463}) },
+  "The Finale of a Lie" : { base: new StatSet({"HP": 846.7, "ATK": 635, "DEF": 529.2}) },
+  "Elation Brimming With Blessings" : { base: new StatSet({"HP": 952.6, "ATK": 529.2, "DEF": 463}) },
+  "Dazzled by a Flowery World" : { base: new StatSet({"HP": 1058.4, "ATK": 582.1, "DEF": 463}) },
+  "When She Decided to See" : { base: new StatSet({"HP": 1058.4, "ATK": 529.2, "DEF": 529.2}) },
+  "Mushy Shroomy's Adventures" : { base: new StatSet({"HP": 846.7, "ATK": 476.3, "DEF": 396.9}) },
+  "Today's Good Luck" : { base: new StatSet({"HP": 952.6, "ATK": 529.2, "DEF": 396.9}) },
+  "Sneering" : { base: new StatSet({"HP": 741, "ATK": 370, "DEF": 265}) }, // TODO: add decimals for this and the entry below
   "Lingering Tears" : { base: new StatSet({"HP": 847, "ATK": 318, "DEF": 265}) },
   "Never Forget Her Flame" : { base: new StatSet({"HP": 1164.2, "ATK": 529.2, "DEF": 463.05}) },
   "This Love, Forever" : { base: new StatSet({"HP": 1270.1, "ATK": 476.28, "DEF": 463.05}) },
@@ -328,6 +332,8 @@ export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
 } as const
 
 export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
+  "A Rendezvous in the Next Flower Season" : [{ flat: new StatSet({"Crit DMG": 60}) }, { flat: new StatSet({"Crit DMG": 82.5}) }, { flat: new StatSet({"Crit DMG": 105}) }, { flat: new StatSet({"Crit DMG": 127.5}) }, { flat: new StatSet({"Crit DMG": 150}) }],
+  "Welcome to Cosmic City" : [{ percent: new StatSet({"ATK": 64}) }, { percent: new StatSet({"ATK": 80}) }, { percent: new StatSet({"ATK": 96}) }, { percent: new StatSet({"ATK": 112}) }, { percent: new StatSet({"ATK": 128}) }],
   "The Finale of a Lie" : [{ flat: new StatSet({"Crit Rate": 18}) }, { flat: new StatSet({"Crit Rate": 21}) }, { flat: new StatSet({"Crit Rate": 24}) }, { flat: new StatSet({"Crit Rate": 27}) }, { flat: new StatSet({"Crit Rate": 30}) }],
   "Elation Brimming With Blessings" : [{ percent: new StatSet({"ATK": 20}) }, { percent: new StatSet({"ATK": 25}) }, { percent: new StatSet({"ATK": 30}) }, { percent: new StatSet({"ATK": 35}) }, { percent: new StatSet({"ATK": 40}) }],
   "Dazzled by a Flowery World" : [{ flat: new StatSet({"Crit DMG": 48}) }, { flat: new StatSet({"Crit DMG": 56}) }, { flat: new StatSet({"Crit DMG": 64}) }, { flat: new StatSet({"Crit DMG": 72}) }, { flat: new StatSet({"Crit DMG": 80}) }],
@@ -489,6 +495,8 @@ export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
 }
 
 export const LIGHT_CONE_PATH: Record<LightCone, Path> = {
+  "A Rendezvous in the Next Flower Season" : "Elation",
+  "Welcome to Cosmic City" : "Elation",
   "The Finale of a Lie" : "Hunt",
   "Elation Brimming With Blessings" : "Elation",
   "Dazzled by a Flowery World" : "Elation",
