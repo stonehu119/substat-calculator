@@ -93,8 +93,12 @@ function calculateRollCount(statData: StatModifier, inputStats: Record<number, S
 
 export function inputFormToRollCount(formState: FormState): StatSet {
   const modList = createStatModList(formState)
-  const combinedStats = combineStatModifiers(modList)
-  return calculateRollCount(combinedStats, formState.stats)
+  try {
+    const combinedStats = combineStatModifiers(modList)
+    return calculateRollCount(combinedStats, formState.stats)
+  } catch {
+    return new StatSet()
+  }
 }
 
 export function countTotalRolls(rollCounts: StatSet) {

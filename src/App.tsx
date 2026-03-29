@@ -14,7 +14,7 @@ const OLD_STORAGE_KEY = 'sub-counter-state'
 const STORAGE_KEY = 'sub-counter-data'
 const ACTIVE_CHARACTER_KEY = 'active-character'
 
-type SaveData = Partial<Record<Character, Partial<FormState>>>
+type SaveData = Partial<Record<Character, FormState>>
 
 function App() {
   const [formState, setFormState] = useState<FormState>(createDefaultFormState())
@@ -36,12 +36,12 @@ function App() {
     if (!saved) return
     try {
       const saveData = JSON.parse(saved) as SaveData
-      const charData = saveData[character as Character] ?? {}
+      const charData = saveData[character as Character] as FormState
 
       setFormState((prev) => ({
         ...prev,
         ...charData,
-        stats: charData.stats ?? prev.stats,
+        stats: charData?.stats ?? prev.stats,
       }))
     } catch (e) {
       console.error('Failed to load saved data:', e)
@@ -70,7 +70,7 @@ function App() {
     }
   }
 
-  // computation logic here
+  // computation logic
   const rollCounts = inputFormToRollCount(formState)
   const statRolls: Record<number, number> = rollCounts.convertFormat()
   const [low, mid, high] = countTotalRolls(rollCounts)
