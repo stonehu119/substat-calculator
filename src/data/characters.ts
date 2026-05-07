@@ -1,6 +1,7 @@
 import { StatSet, type StatModifier } from "../types/stats"
 
 export const CHARACTERS = [
+  "Mortenax Blade",
   "Evanescia",
   'Silver Wolf Lv.999',
   'Ashveil',
@@ -91,6 +92,7 @@ export const CHARACTERS = [
 export type Character = typeof CHARACTERS[number]
 
 export const CHARACTER_DATA: Record<Character, StatModifier> = {
+  "Mortenax Blade" : {base: new StatSet({"HP": 1358.28, "ATK": 543.312, "DEF": 485.10, "SPD": 107}), flat: new StatSet({"Crit Rate": 12}), percent: new StatSet({"HP": 10})},
   "Evanescia" : {base: new StatSet({"HP": 1047.82, "ATK": 737.35, "DEF": 460.845, "SPD": 104}), flat: new StatSet({"SPD": 5, "Crit Rate": 18.7})},
   "Silver Wolf Lv.999" : { base: new StatSet({"HP": 1047.82, "ATK": 388.08, "DEF": 654.89, "SPD": 110}), flat: new StatSet({"Crit Rate": 18.7, "SPD": 9}) },
   "Ashveil" : { base: new StatSet({"HP": 853.78, "ATK": 776.16, "DEF": 388.08, "SPD": 106}), percent: new StatSet({"ATK" : 10}), flat: new StatSet({"Crit DMG": 37.3}) },
@@ -194,6 +196,7 @@ export const PATHS = [
 export type Path = typeof PATHS[number]
 
 export const CHARACTER_PATH: Record<Character, Path> = {
+  "Mortenax Blade" : "Nihility",
   "Evanescia" : "Elation",
   "Silver Wolf Lv.999": "Elation",
   "Ashveil" : "Hunt",

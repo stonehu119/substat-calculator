@@ -4,6 +4,8 @@ export const NONE = "(None)"
 
 export const RELIC_SETS = [
   NONE,
+  "As Navigator Isee Sees it",
+  "Divine-Querying Master Smith",
   "Ever-Glorious Magical Girl",
   "Diviner of Distant Reach",
   "Self-Enshrouded Recluse",
@@ -39,6 +41,8 @@ export const RELIC_SETS = [
 export type RelicSet = typeof RELIC_SETS[number]
 
 export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = {
+  "As Navigator Isee Sees it" : { percent: new StatSet({"ATK" : 12}) },
+  "Divine-Querying Master Smith" : { percent: new StatSet({"HP" : 12}) },
   "Ever-Glorious Magical Girl" : { flat: new StatSet({"Crit DMG" : 16}) },
   "Diviner of Distant Reach" : { percent: new StatSet({"SPD" : 6}) },
   "Self-Enshrouded Recluse" : {},
@@ -73,6 +77,8 @@ export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = {
 } as const
 
 export const RELIC_SET_4PC_DATA: Record<RelicSet, StatModifier> = {
+  "As Navigator Isee Sees it" : {},
+  "Divine-Querying Master Smith" : {},
   "Ever-Glorious Magical Girl" : {},
   "Diviner of Distant Reach" : {},
   "Self-Enshrouded Recluse" : {},

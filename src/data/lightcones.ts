@@ -4,6 +4,7 @@ import type { Path } from "./characters"
 export const SUPERIMPOSITION_LEVELS = ['S1', 'S2', 'S3', 'S4', 'S5']
 
 export const LIGHT_CONES = [
+  "Reforged in Hellfire",
   "Until the Flowers Bloom Again",
   "Welcome to the Cosmic City",
   "Tomorrow, Together",
@@ -170,6 +171,7 @@ export const LIGHT_CONES = [
 export type LightCone = typeof LIGHT_CONES[number]
 
 export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
+  "Reforged in Hellfire" : { base: new StatSet({"HP": 1270.08, "ATK": 476.28, "DEF": 463}) },
   "Until the Flowers Bloom Again" : { base: new StatSet({"HP": 952.6, "ATK": 635, "DEF": 463}) },
   "Welcome to the Cosmic City" : { base: new StatSet({"HP": 1164.24, "ATK": 476.28, "DEF": 529.20}) },
   "Tomorrow, Together" : { base: new StatSet({"HP": 952.6, "ATK": 476.28, "DEF": 330.8}) },
@@ -334,6 +336,7 @@ export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
 } as const
 
 export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
+  "Reforged in Hellfire" : [{ percent: new StatSet({"HP": 24}) }, { percent: new StatSet({"HP": 30}) }, { percent: new StatSet({"HP": 36}) }, { percent: new StatSet({"HP": 42}) }, { percent: new StatSet({"HP": 48}) }],
   "Until the Flowers Bloom Again" : [{ flat: new StatSet({"Crit DMG": 60}) }, { flat: new StatSet({"Crit DMG": 75}) }, { flat: new StatSet({"Crit DMG": 90}) }, { flat: new StatSet({"Crit DMG": 105}) }, { flat: new StatSet({"Crit DMG": 120}) }],
   "Welcome to the Cosmic City" : [{ percent: new StatSet({"SPD": 18}) }, { percent: new StatSet({"SPD": 21}) }, { percent: new StatSet({"SPD": 24}) }, { percent: new StatSet({"SPD": 27}) }, { percent: new StatSet({"SPD": 30}) }],
   "Tomorrow, Together" : [{ flat: new StatSet({"Crit DMG": 12}) }, { flat: new StatSet({"Crit DMG": 15}) }, { flat: new StatSet({"Crit DMG": 18}) }, { flat: new StatSet({"Crit DMG": 21}) }, { flat: new StatSet({"Crit DMG": 24}) }],
@@ -498,6 +501,7 @@ export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
 }
 
 export const LIGHT_CONE_PATH: Record<LightCone, Path> = {
+  "Reforged in Hellfire" : "Nihility",
   "Until the Flowers Bloom Again" : "Elation",
   "Welcome to the Cosmic City" : "Elation",
   "Tomorrow, Together" : "Elation",
