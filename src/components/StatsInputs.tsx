@@ -68,8 +68,10 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
               />
 
               {/* Rolls output (placeholder) */}
-              <div className="text-center text-xs text-gray-300 tabular-nums min-w-[3rem]">
-                {stats[i].checked ? rolls[i].toFixed(2) : '—'}
+              <div className={`text-center text-xs tabular-nums min-w-[3rem] ${
+                s.checked && rolls[i] < 0 ? 'text-red-400' : 'text-gray-300'
+              }`}>
+                {s.checked ? rolls[i].toFixed(2) : '—'}
               </div>
             </div>
           )

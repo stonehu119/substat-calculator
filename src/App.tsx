@@ -73,6 +73,9 @@ function App() {
   // computation logic
   const rollCounts = inputFormToRollCount(formState)
   const statRolls: Record<number, number> = rollCounts.convertFormat()
+  const hasNegativeRoll = Object.keys(formState.stats).some(
+    (key) => formState.stats[Number(key)].checked && statRolls[Number(key)] < 0
+  )
   const [low, mid, high] = countTotalRolls(rollCounts)
 
   const buildSection = (
@@ -116,7 +119,11 @@ function App() {
         onStatsChange={(stats) => updateFormField('stats', stats)}
         rolls={statRolls}
       />
-      <OutputStats low={low.toFixed(2)} mid={mid.toFixed(2)} high={high.toFixed(2)} />
+      <OutputStats
+        low={hasNegativeRoll ? null : low}
+        mid={hasNegativeRoll ? null : mid}
+        high={hasNegativeRoll ? null : high}
+      />
     </div>
   )
 
@@ -157,7 +164,11 @@ function App() {
               rolls={statRolls}
             />
             <div className="flex-1 min-h-4" />
-            <OutputStats low={low.toFixed(2)} mid={mid.toFixed(2)} high={high.toFixed(2)} />
+            <OutputStats
+              low={hasNegativeRoll ? null : low}
+              mid={hasNegativeRoll ? null : mid}
+              high={hasNegativeRoll ? null : high}
+            />
           </section>
         </div>
       </div>
