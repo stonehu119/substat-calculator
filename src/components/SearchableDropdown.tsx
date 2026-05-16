@@ -10,6 +10,8 @@ export interface SearchableDropdownProps {
   label: string
   placeholder: string
   customHeight?: string
+  getIconUrl?: (value: string) => string | undefined
+  showIcons?: boolean
 }
 
 export default function SearchableDropdown({
@@ -19,6 +21,8 @@ export default function SearchableDropdown({
   label,
   placeholder,
   customHeight,
+  getIconUrl,
+  showIcons = true,
 }: SearchableDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [openAbove, setOpenAbove] = useState(false)
@@ -39,6 +43,9 @@ export default function SearchableDropdown({
   }, [isOpen])
 
   const isValid = value && options.includes(value)
+
+  const iconsActive = showIcons && !!getIconUrl
+  const selectedIconUrl = iconsActive && value && !isOpen ? getIconUrl!(value) : undefined
 
   const filtered = options.filter((item) =>
     item.toLowerCase().includes(inputValue.toLowerCase())
@@ -75,6 +82,13 @@ export default function SearchableDropdown({
     <div className="flex flex-col relative">
       <label className="mb-1 text-sm text-gray-300">{label}</label>
       <div ref={containerRef} className="relative">
+        {selectedIconUrl && (
+          <img
+            src={selectedIconUrl}
+            alt=""
+            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 object-cover pointer-events-none z-[1]"
+          />
+        )}
         <input
           ref={inputRef}
           type="text"
@@ -83,7 +97,9 @@ export default function SearchableDropdown({
           onFocus={onFocus}
           onBlur={handleBlur}
           placeholder={placeholder}
-          className={`w-full rounded px-3 py-2 focus:outline-none focus:ring-2 ${
+          className={`w-full rounded py-2 focus:outline-none focus:ring-2 ${
+            selectedIconUrl ? 'pl-11 pr-3' : 'px-3'
+          } ${
             value && !isValid && !isOpen
               ? 'bg-red-900 text-red-100 placeholder-red-400 focus:ring-red-500'
               : 'bg-gray-700 text-gray-100 placeholder-gray-500 focus:ring-blue-500'
@@ -103,18 +119,24 @@ export default function SearchableDropdown({
             maxHeight: customHeight ?? "12.75rem"
           }}
         >
-          {filtered.map((item) => (
-            <li key={item}>
-              <button
-                type="button"
-                onMouseDown={(e) => e.preventDefault()}
-                onClick={() => handleSelect(item)}
-                className="w-full text-left px-3 py-2 text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer"
-              >
-                {item}
-              </button>
-            </li>
-          ))}
+          {filtered.map((item) => {
+            const itemIconUrl = iconsActive ? getIconUrl!(item) : undefined
+            return (
+              <li key={item}>
+                <button
+                  type="button"
+                  onMouseDown={(e) => e.preventDefault()}
+                  onClick={() => handleSelect(item)}
+                  className="w-full text-left px-3 py-2 text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer flex items-center gap-2"
+                >
+                  {itemIconUrl && (
+                    <img src={itemIconUrl} alt="" className="w-8 h-8 object-cover flex-shrink-0" />
+                  )}
+                  {item}
+                </button>
+              </li>
+            )
+          })}
         </ul>
       )}
     </div>

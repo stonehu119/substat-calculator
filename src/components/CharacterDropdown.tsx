@@ -1,5 +1,6 @@
 import SearchableDropdown from './SearchableDropdown'
-import { CHARACTERS } from '../data/characters'
+import { CHARACTERS, type Character } from '../data/characters'
+import { CHARACTER_ICONS } from '../data/icons'
 
 interface CharacterDropdownProps {
   value: string
@@ -17,6 +18,7 @@ export default function CharacterDropdown({ value, onChange }: CharacterDropdown
         label=""
         placeholder="Select character"
         customHeight="15.25rem"
+        getIconUrl={(v) => CHARACTER_ICONS[v as Character]}
       />
     </div>
   )
