@@ -86,7 +86,7 @@ export default function SearchableDropdown({
           <img
             src={selectedIconUrl}
             alt=""
-            className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 object-cover pointer-events-none z-[1]"
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 object-cover pointer-events-none z-[1] rounded-md"
           />
         )}
         <input
@@ -97,8 +97,8 @@ export default function SearchableDropdown({
           onFocus={onFocus}
           onBlur={handleBlur}
           placeholder={placeholder}
-          className={`w-full rounded py-2 focus:outline-none focus:ring-2 ${
-            selectedIconUrl ? 'pl-11 pr-3' : 'px-3'
+          className={`w-full rounded py-2.5 focus:outline-none focus:ring-2 ${
+            selectedIconUrl ? 'pl-12 pr-3' : 'px-3'
           } ${
             value && !isValid && !isOpen
               ? 'bg-red-900 text-red-100 placeholder-red-400 focus:ring-red-500'
@@ -130,7 +130,7 @@ export default function SearchableDropdown({
                   className="w-full text-left px-3 py-2 text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer flex items-center gap-2"
                 >
                   {itemIconUrl && (
-                    <img src={itemIconUrl} alt="" className="w-8 h-8 object-cover flex-shrink-0" />
+                    <img src={itemIconUrl} alt="" className="w-8 h-8 object-cover flex-shrink-0 rounded-md" />
                   )}
                   {item}
                 </button>
