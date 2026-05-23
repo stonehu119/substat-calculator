@@ -115,7 +115,7 @@ export const RELIC_SET_4PC_DATA: Record<RelicSet, StatModifier> = {
 export const PLANAR_SETS = [
   NONE,
   "Punklorde Stage Zero",
-  "City of Myriad Forms",
+  "City of Converging Stars",
   "Tengoku@Livestream",
   "Amphoreus, The Eternal Land",
   "Revelry by the Sea",
@@ -146,7 +146,7 @@ export type PlanarSet = typeof PLANAR_SETS[number]
 
 export const PLANAR_SET_DATA: Record<PlanarSet, StatModifier> = {
   "Punklorde Stage Zero" : {},
-  "City of Myriad Forms" : {},
+  "City of Converging Stars" : {},
   "Tengoku@Livestream" : { flat: new StatSet({"Crit DMG": 16}) },
   "Amphoreus, The Eternal Land" : { flat: new StatSet({"Crit Rate": 8}) },
   "Revelry by the Sea" : { percent: new StatSet({"ATK": 12}) },
