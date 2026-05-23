@@ -1,5 +1,33 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
+function LazyImg({ src, alt, className, rootRef }: {
+  src: string
+  alt: string
+  className: string
+  rootRef: React.RefObject<HTMLUListElement | null>
+}) {
+  const imgRef = useRef<HTMLImageElement>(null)
+  const [activeSrc, setActiveSrc] = useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    const el = imgRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setActiveSrc(src)
+          observer.disconnect()
+        }
+      },
+      { root: rootRef.current, threshold: 0 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [src, rootRef])
+
+  return <img ref={imgRef} src={activeSrc} alt={alt} className={className} />
+}
+
 const LIST_MAX_HEIGHT_PX = 204 // max-h-51 = 12.75rem
 const SPACE_BUFFER_PX = 16
 
@@ -29,6 +57,7 @@ export default function SearchableDropdown({
   const [inputValue, setInputValue] = useState(value)
   const inputRef = useRef<HTMLInputElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
+  const ulRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
     setInputValue(value)
@@ -112,6 +141,7 @@ export default function SearchableDropdown({
 
       {isOpen && filtered.length > 0 && (
         <ul
+          ref={ulRef}
           className={`absolute left-0 right-0 bg-gray-700 border border-gray-600 rounded overflow-y-auto z-10 ${
             openAbove ? 'bottom-full mb-1' : 'top-full mt-1'
           }`}
@@ -130,7 +160,7 @@ export default function SearchableDropdown({
                   className="w-full text-left px-3 py-2 text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer flex items-center gap-2"
                 >
                   {itemIconUrl && (
-                    <img src={itemIconUrl} alt="" className="w-8 h-8 object-cover flex-shrink-0 rounded-md" />
+                    <LazyImg src={itemIconUrl} alt="" className="w-8 h-8 object-cover flex-shrink-0 rounded-md" rootRef={ulRef} />
                   )}
                   {item}
                 </button>
