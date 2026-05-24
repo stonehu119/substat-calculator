@@ -12,6 +12,6 @@ export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferenc
   "Cyrene": {
     lightCones: ["This Love, Forever", "Memory's Curtain Never Falls", "Long May Rainbows Adorn the Sky"],
     relicSets: ["World-Remaking Deliverer", "Messenger Traversing Hackerspace"],
-    planarSets: ["Lushaka, the Sunken Seas", "Penacony, Land of the Dreams", "Amphoreus, The Eternal Land"],
+    planarSets: ["Amphoreus, The Eternal Land", "Lushaka, the Sunken Seas", "Penacony, Land of the Dreams"],
   },
 }
