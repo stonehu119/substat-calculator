@@ -40,6 +40,7 @@ export interface SearchableDropdownProps {
   customHeight?: string
   getIconUrl?: (value: string) => string | undefined
   showIcons?: boolean
+  iconSize?: 'sm' | 'lg'
 }
 
 export default function SearchableDropdown({
@@ -51,7 +52,12 @@ export default function SearchableDropdown({
   customHeight,
   getIconUrl,
   showIcons = true,
+  iconSize = 'sm',
 }: SearchableDropdownProps) {
+  // left + size must sum to ≤ pl-12 (48px) so the input text start doesn't shift
+  const icon = iconSize === 'lg'
+    ? { size: 'w-10 h-10', left: 'left-1' }       // 4px + 40px = 44px
+    : { size: 'w-8 h-8 rounded-md', left: 'left-2.5' } // 10px + 32px = 42px
   const [isOpen, setIsOpen] = useState(false)
   const [openAbove, setOpenAbove] = useState(false)
   const [inputValue, setInputValue] = useState(value)
@@ -115,7 +121,7 @@ export default function SearchableDropdown({
           <img
             src={selectedIconUrl}
             alt=""
-            className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 object-cover pointer-events-none z-[1] rounded-md"
+            className={`absolute ${icon.left} top-1/2 -translate-y-1/2 ${icon.size} object-cover pointer-events-none z-[1]`}
           />
         )}
         <input
@@ -160,7 +166,7 @@ export default function SearchableDropdown({
                   className="w-full text-left px-3 py-2 text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer flex items-center gap-2"
                 >
                   {itemIconUrl && (
-                    <LazyImg src={itemIconUrl} alt="" className="w-8 h-8 object-cover flex-shrink-0 rounded-md" rootRef={ulRef} />
+                    <LazyImg src={itemIconUrl} alt="" className={`${icon.size} object-cover flex-shrink-0`} rootRef={ulRef} />
                   )}
                   {item}
                 </button>

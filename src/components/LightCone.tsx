@@ -28,6 +28,7 @@ export default function LightCone({
           label="Name"
           placeholder="Select light cone"
           getIconUrl={(v) => LIGHT_CONE_ICONS[v as LightConeType]}
+          iconSize="lg"
         />
         <SearchableDropdown
           options={SUPERIMPOSITION_LEVELS}
