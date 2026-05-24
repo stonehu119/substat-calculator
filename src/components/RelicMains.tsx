@@ -32,6 +32,7 @@ export default function RelicMains({
           onChange={onMainStat1Change}
           label="Chest"
           placeholder="Select main stat"
+          noMobileKeyboard
         />
         <SearchableDropdown
           options={FEET_MAIN_STATS}
@@ -39,6 +40,7 @@ export default function RelicMains({
           onChange={onMainStat2Change}
           label="Boots"
           placeholder="Select main stat"
+          noMobileKeyboard
         />
         <SearchableDropdown
           options={ORB_MAIN_STATS}
@@ -46,6 +48,7 @@ export default function RelicMains({
           onChange={onMainStat3Change}
           label="Orb"
           placeholder="Select main stat"
+          noMobileKeyboard
         />
         <SearchableDropdown
           options={ROPE_MAIN_STATS}
@@ -53,6 +56,7 @@ export default function RelicMains({
           onChange={onMainStat4Change}
           label="Rope"
           placeholder="Select main stat"
+          noMobileKeyboard
         />
       </div>
     </div>
