@@ -1,6 +1,7 @@
 import type { Character } from './characters'
 import type { LightCone } from './lightcones'
 import type { RelicSet, PlanarSet } from './relics'
+import noneIconUrl from '../assets/none-icon.svg'
 
 export const CHARACTER_ICONS: Partial<Record<Character, string>> = {
     "Mortenax Blade": "https://static.wikia.nocookie.net/houkai-star-rail/images/4/4a/Character_Mortenax_Blade_Icon.png",
@@ -257,6 +258,7 @@ export const LIGHT_CONE_ICONS: Partial<Record<LightCone, string>> = {
 }
 
 export const RELIC_SET_ICONS: Partial<Record<RelicSet, string>> = {
+    "(None)": noneIconUrl,
     "World-Remaking Deliverer": "https://static.wikia.nocookie.net/houkai-star-rail/images/7/74/Item_World-Remaking_Deliverer.png",
     "Ever-Glorious Magical Girl": "https://static.wikia.nocookie.net/houkai-star-rail/images/f/f1/Item_Ever-Glorious_Magical_Girl.png",
     "Diviner of Distant Reach": "https://static.wikia.nocookie.net/houkai-star-rail/images/f/f1/Item_Diviner_of_Distant_Reach.png",
@@ -290,6 +292,7 @@ export const RELIC_SET_ICONS: Partial<Record<RelicSet, string>> = {
 }
 
 export const PLANAR_SET_ICONS: Partial<Record<PlanarSet, string>> = {
+    "(None)": noneIconUrl,
     "Amphoreus, The Eternal Land": "https://static.wikia.nocookie.net/houkai-star-rail/images/f/f1/Item_Amphoreus%2C_The_Eternal_Land.png",
     "Punklorde Stage Zero": "https://static.wikia.nocookie.net/houkai-star-rail/images/1/12/Item_Punklorde_Stage_Zero.png",
     "City of Converging Stars": "https://static.wikia.nocookie.net/houkai-star-rail/images/5/54/Item_City_of_Converging_Stars.png",

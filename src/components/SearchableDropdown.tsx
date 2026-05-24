@@ -31,7 +31,7 @@ function LazyImg({ src, alt, className, rootRef }: {
   return (
     <img
       ref={imgRef}
-      src={activeSrc ?? unknownIconUrl}
+      src={activeSrc ?? (src ? undefined : unknownIconUrl)}
       alt={alt}
       className={className}
       onError={() => setActiveSrc(unknownIconUrl)}

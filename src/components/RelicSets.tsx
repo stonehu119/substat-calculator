@@ -3,13 +3,12 @@ import SearchableDropdown from './SearchableDropdown'
 import { PLANAR_SET_ICONS, RELIC_SET_ICONS } from '../data/icons'
 
 const getRelicIconUrl = (displayValue: string): string | undefined => {
-  if (displayValue === NONE) return undefined
   const baseName = displayValue.replace(/ \([24]pc\)$/, '') as RelicSet
   return RELIC_SET_ICONS[baseName]
 }
 
 const getPlanarIconUrl = (displayValue: string): string | undefined =>
-  displayValue === NONE ? undefined : PLANAR_SET_ICONS[displayValue as PlanarSet]
+  PLANAR_SET_ICONS[displayValue as PlanarSet]
 
 interface RelicSetsProps {
   set1: string
