@@ -172,7 +172,7 @@ function App() {
           </section>
         </div>
       </div>
-      <footer className="mt-8 text-xs text-gray-500 text-center">
+      <footer className="mt-6 text-xs text-gray-500 text-center">
         This is a fan-made tool for Honkai: Star Rail players.<br />
         Website is not affiliated with HoYoverse.
       </footer>
