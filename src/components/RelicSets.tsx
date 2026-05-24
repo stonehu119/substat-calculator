@@ -1,4 +1,4 @@
-import { NONE, PLANAR_SETS, RELIC_SETS_2PC, RELIC_SETS_4PC, type PlanarSet, type RelicSet } from '../data/relics'
+import { PLANAR_SETS, RELIC_SETS_2PC, RELIC_SETS_4PC, type PlanarSet, type RelicSet } from '../data/relics'
 import SearchableDropdown from './SearchableDropdown'
 import { PLANAR_SET_ICONS, RELIC_SET_ICONS } from '../data/icons'
 
