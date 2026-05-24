@@ -8,6 +8,7 @@ interface LightConeProps {
   superimposition: string
   onSuperimpositionChange: (value: string) => void
   pathMatches?: boolean
+  priorityLightCones?: readonly string[]
 }
 
 export default function LightCone({
@@ -16,6 +17,7 @@ export default function LightCone({
   superimposition,
   onSuperimpositionChange,
   pathMatches = true,
+  priorityLightCones,
 }: LightConeProps) {
   return (
     <div className="flex flex-col gap-2">
@@ -29,6 +31,7 @@ export default function LightCone({
           placeholder="Select light cone"
           getIconUrl={(v) => LIGHT_CONE_ICONS[v as LightConeType]}
           iconSize="lg"
+          priorityItems={priorityLightCones}
         />
         <SearchableDropdown
           options={SUPERIMPOSITION_LEVELS}
