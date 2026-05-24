@@ -153,10 +153,10 @@ export default function SearchableDropdown({
               : 'bg-gray-700 text-gray-100 placeholder-gray-500 focus:ring-blue-500'
           }`}
         />
-        {value && !isValid && !isOpen && (
-          <p className="mt-1 text-xs text-red-400">Invalid selection</p>
-        )}
       </div>
+      {value && !isValid && !isOpen && (
+        <p className="mt-1 text-xs text-red-400">Invalid selection</p>
+      )}
 
       {isOpen && filtered.length > 0 && (
         <ul
