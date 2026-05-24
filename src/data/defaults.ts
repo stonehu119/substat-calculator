@@ -23,7 +23,7 @@ export const createDefaultFormState = (): FormState => ({
   planarSet: "Duran, Dynasty of Running Wolves",
   relicBody: "Crit Rate",
   relicFeet: "ATK%",
-  relicOrb: "ATK%",
+  relicOrb: "DMG Bonus",
   relicRope: "ATK%",
   stats: createDefaultStats(),
 })
