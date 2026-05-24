@@ -36,6 +36,7 @@ export default function LightCone({
           onChange={onSuperimpositionChange}
           label="Superimposition"
           placeholder="Select level"
+          noMobileKeyboard
         />
       </div>
       {lightCone && !pathMatches && (

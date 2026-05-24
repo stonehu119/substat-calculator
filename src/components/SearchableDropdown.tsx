@@ -52,6 +52,7 @@ export interface SearchableDropdownProps {
   getIconUrl?: (value: string) => string | undefined
   showIcons?: boolean
   iconSize?: 'sm' | 'lg'
+  noMobileKeyboard?: boolean
 }
 
 export default function SearchableDropdown({
@@ -64,6 +65,7 @@ export default function SearchableDropdown({
   getIconUrl,
   showIcons = true,
   iconSize = 'sm',
+  noMobileKeyboard = false,
 }: SearchableDropdownProps) {
   // left + size must sum to ≤ pl-12 (48px) so the input text start doesn't shift
   const icon = iconSize === 'lg'
@@ -140,6 +142,7 @@ export default function SearchableDropdown({
         <input
           ref={inputRef}
           type="text"
+          inputMode={noMobileKeyboard ? 'none' : undefined}
           value={inputValue}
           onChange={handleInputChange}
           onFocus={onFocus}
