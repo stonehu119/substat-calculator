@@ -9,6 +9,7 @@ import type { FormState } from './types/formState'
 import { createDefaultFormState } from './data/defaults'
 import { characterPathMatchesLC, countTotalRolls, inputFormToRollCount } from './data/logic'
 import type { Character } from './data/characters'
+import { CHARACTER_PREFERENCES } from './data/characterPreferences'
 
 const OLD_STORAGE_KEY = 'sub-counter-state'
 const STORAGE_KEY = 'sub-counter-data'
@@ -70,6 +71,8 @@ function App() {
     }
   }
 
+  const preferences = CHARACTER_PREFERENCES[formState.character as Character]
+
   // computation logic
   const rollCounts = inputFormToRollCount(formState)
   const statRolls: Record<number, number> = rollCounts.convertFormat()
@@ -90,6 +93,7 @@ function App() {
         superimposition={formState.superimposition}
         onSuperimpositionChange={(value) => updateFormField('superimposition', value)}
         pathMatches={characterPathMatchesLC(formState)}
+        priorityLightCones={preferences?.lightCones}
       />
       <RelicSets
         set1={formState.relicSet1}
@@ -98,6 +102,8 @@ function App() {
         onSet2Change={(value) => updateFormField('relicSet2', value)}
         planarSet={formState.planarSet}
         onPlanarChange={(value) => updateFormField('planarSet', value)}
+        priorityRelicSets={preferences?.relicSets}
+        priorityPlanarSets={preferences?.planarSets}
       />
       <RelicMains
         mainStat1={formState.relicBody}

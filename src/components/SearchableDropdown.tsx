@@ -53,6 +53,7 @@ export interface SearchableDropdownProps {
   showIcons?: boolean
   iconSize?: 'sm' | 'lg'
   noMobileKeyboard?: boolean
+  priorityItems?: readonly string[]
 }
 
 export default function SearchableDropdown({
@@ -66,6 +67,7 @@ export default function SearchableDropdown({
   showIcons = true,
   iconSize = 'sm',
   noMobileKeyboard = false,
+  priorityItems,
 }: SearchableDropdownProps) {
   // left + size must sum to ≤ pl-12 (48px) so the input text start doesn't shift
   const icon = iconSize === 'lg'
@@ -96,9 +98,13 @@ export default function SearchableDropdown({
   const showSelectedIcon = iconsActive && !!value && !isOpen
   const selectedIconUrl = showSelectedIcon ? getIconUrl!(value) : undefined
 
-  const filtered = options.filter((item) =>
-    item.toLowerCase().includes(inputValue.toLowerCase())
-  )
+  const query = inputValue.toLowerCase()
+  const prioritySet = new Set(priorityItems ?? [])
+  const filteredAll = options.filter((item) => item.toLowerCase().includes(query))
+  const filteredAllSet = new Set(filteredAll)
+  const filteredPriority = (priorityItems ?? []).filter((item) => filteredAllSet.has(item))
+  const filteredRest = filteredAll.filter((item) => !prioritySet.has(item))
+  const filtered = filteredPriority.length > 0 || filteredRest.length > 0
 
   const onFocus = () => {
     setIsOpen(true)
@@ -161,7 +167,7 @@ export default function SearchableDropdown({
         <p className="mt-1 text-xs text-red-400">Invalid selection</p>
       )}
 
-      {isOpen && filtered.length > 0 && (
+      {isOpen && filtered && (
         <ul
           ref={ulRef}
           className={`absolute left-0 right-0 bg-gray-700 border border-gray-600 rounded overflow-y-auto z-10 ${
@@ -171,10 +177,12 @@ export default function SearchableDropdown({
             maxHeight: customHeight ?? "12.75rem"
           }}
         >
-          {filtered.map((item) => {
+          {[...filteredPriority, ...filteredRest].map((item, index) => {
             const itemIconUrl = iconsActive ? getIconUrl!(item) : undefined
+            const showDivider = index === filteredPriority.length && filteredPriority.length > 0 && filteredRest.length > 0
             return (
               <li key={item}>
+                {showDivider && <div className="border-t border-gray-500 my-1" />}
                 <button
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
