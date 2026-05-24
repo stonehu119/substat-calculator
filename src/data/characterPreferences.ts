@@ -9,10 +9,9 @@ export interface CharacterPreferences {
 }
 
 export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferences>> = {
-  // Populate entries here, e.g.:
-  // "Feixiao": {
-  //   lightCones: ["The Hunt Begins"],
-  //   relicSets: ["The Wind-Soaring Valorous"],
-  //   planarSets: ["Space Sealing Station"],
-  // },
+  "Cyrene": {
+    lightCones: ["This Love, Forever", "Memory's Curtain Never Falls", "Long May Rainbows Adorn the Sky"],
+    relicSets: ["World-Remaking Deliverer", "Messenger Traversing Hackerspace"],
+    planarSets: ["Lushaka, the Sunken Seas", "Penacony, Land of the Dreams", "Amphoreus, The Eternal Land"],
+  },
 }
