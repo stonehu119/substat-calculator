@@ -1,7 +1,8 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import unknownIconUrl from '../assets/unknown-icon.svg'
 
 function LazyImg({ src, alt, className, rootRef }: {
-  src: string
+  src: string | undefined
   alt: string
   className: string
   rootRef: React.RefObject<HTMLUListElement | null>
@@ -10,6 +11,8 @@ function LazyImg({ src, alt, className, rootRef }: {
   const [activeSrc, setActiveSrc] = useState<string | undefined>(undefined)
 
   useEffect(() => {
+    setActiveSrc(undefined)
+    if (!src) return
     const el = imgRef.current
     if (!el) return
     const observer = new IntersectionObserver(
@@ -25,7 +28,15 @@ function LazyImg({ src, alt, className, rootRef }: {
     return () => observer.disconnect()
   }, [src, rootRef])
 
-  return <img ref={imgRef} src={activeSrc} alt={alt} className={className} />
+  return (
+    <img
+      ref={imgRef}
+      src={activeSrc ?? unknownIconUrl}
+      alt={alt}
+      className={className}
+      onError={() => setActiveSrc(unknownIconUrl)}
+    />
+  )
 }
 
 const LIST_MAX_HEIGHT_PX = 204 // max-h-51 = 12.75rem
@@ -80,7 +91,8 @@ export default function SearchableDropdown({
   const isValid = value && options.includes(value)
 
   const iconsActive = showIcons && !!getIconUrl
-  const selectedIconUrl = iconsActive && value && !isOpen ? getIconUrl!(value) : undefined
+  const showSelectedIcon = iconsActive && !!value && !isOpen
+  const selectedIconUrl = showSelectedIcon ? getIconUrl!(value) : undefined
 
   const filtered = options.filter((item) =>
     item.toLowerCase().includes(inputValue.toLowerCase())
@@ -117,11 +129,12 @@ export default function SearchableDropdown({
     <div className="flex flex-col relative">
       <label className="mb-1 text-sm text-gray-300">{label}</label>
       <div ref={containerRef} className="relative">
-        {selectedIconUrl && (
+        {showSelectedIcon && (
           <img
-            src={selectedIconUrl}
+            src={selectedIconUrl ?? unknownIconUrl}
             alt=""
             className={`absolute ${icon.left} top-1/2 -translate-y-1/2 ${icon.size} object-cover pointer-events-none z-[1]`}
+            onError={(e) => { e.currentTarget.src = unknownIconUrl }}
           />
         )}
         <input
@@ -133,7 +146,7 @@ export default function SearchableDropdown({
           onBlur={handleBlur}
           placeholder={placeholder}
           className={`w-full rounded py-2.5 focus:outline-none focus:ring-2 ${
-            selectedIconUrl ? 'pl-12 pr-3' : 'px-3'
+            showSelectedIcon ? 'pl-12 pr-3' : 'px-3'
           } ${
             value && !isValid && !isOpen
               ? 'bg-red-900 text-red-100 placeholder-red-400 focus:ring-red-500'
@@ -165,7 +178,7 @@ export default function SearchableDropdown({
                   onClick={() => handleSelect(item)}
                   className="w-full text-left px-3 py-2 text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer flex items-center gap-2"
                 >
-                  {itemIconUrl && (
+                  {iconsActive && (
                     <LazyImg src={itemIconUrl} alt="" className={`${icon.size} object-cover flex-shrink-0`} rootRef={ulRef} />
                   )}
                   {item}
