@@ -100,9 +100,11 @@ export default function SearchableDropdown({
 
   const query = inputValue.toLowerCase()
   const prioritySet = new Set(priorityItems ?? [])
-  const filtered = options.filter((item) => item.toLowerCase().includes(query))
-  const filteredPriority = filtered.filter((item) => prioritySet.has(item))
-  const filteredRest = filtered.filter((item) => !prioritySet.has(item))
+  const filteredAll = options.filter((item) => item.toLowerCase().includes(query))
+  const filteredAllSet = new Set(filteredAll)
+  const filteredPriority = (priorityItems ?? []).filter((item) => filteredAllSet.has(item))
+  const filteredRest = filteredAll.filter((item) => !prioritySet.has(item))
+  const filtered = filteredPriority.length > 0 || filteredRest.length > 0
 
   const onFocus = () => {
     setIsOpen(true)
@@ -165,7 +167,7 @@ export default function SearchableDropdown({
         <p className="mt-1 text-xs text-red-400">Invalid selection</p>
       )}
 
-      {isOpen && filtered.length > 0 && (
+      {isOpen && filtered && (
         <ul
           ref={ulRef}
           className={`absolute left-0 right-0 bg-gray-700 border border-gray-600 rounded overflow-y-auto z-10 ${
