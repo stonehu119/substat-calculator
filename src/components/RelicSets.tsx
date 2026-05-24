@@ -41,6 +41,11 @@ export default function RelicSets({
 
   const priorityRelicDisplay = priorityRelicSets?.map(toRelicDisplay2pc)
 
+  const set14pc = (set1 && set1 !== NONE) ? relic4pcOptions[0] : undefined
+  const prioritySet2 = set14pc
+    ? [set14pc, ...(priorityRelicDisplay ?? []).filter((item) => item !== set14pc)]
+    : priorityRelicDisplay
+
   return (
     <div className="flex flex-col gap-2">
       <label className="text-sm text-gray-300 font-semibold">Relic sets</label>
@@ -61,7 +66,7 @@ export default function RelicSets({
           label="Relic set 2"
           placeholder="Select relic set 2"
           getIconUrl={getRelicIconUrl}
-          priorityItems={priorityRelicDisplay}
+          priorityItems={prioritySet2}
         />
         <SearchableDropdown
           options={PLANAR_SETS}
