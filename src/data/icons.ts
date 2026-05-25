@@ -274,6 +274,8 @@ export const LIGHT_CONE_ICONS: Partial<Record<LightCone, string>> = {
 
 export const RELIC_SET_ICONS: Partial<Record<RelicSet, string>> = {
     "(None)": noneIconUrl,
+    "Divine-Querying Master Smith": relicIcon("Divine-Querying Master Smith"),
+    "As Navigator Isee Sees it": relicIcon("As Navigator Isee Sees it"),
     "World-Remaking Deliverer": relicIcon("World-Remaking Deliverer"),
     "Ever-Glorious Magical Girl": relicIcon("Ever-Glorious Magical Girl"),
     "Diviner of Distant Reach": relicIcon("Diviner of Distant Reach"),
