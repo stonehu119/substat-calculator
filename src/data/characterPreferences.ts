@@ -61,7 +61,7 @@ export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferenc
   },
   "Anaxa": {
     lightCones: ["Life Should Be Cast to Flames", "The Great Cosmic Enterprise"],
-    relicSets: ["Genius of Brilliant Stars", "Eagle of Twilight Line"],
+    relicSets: ["Genius of Brilliant Stars", "Eagle of Twilight Line", "Wavestrider Captain"],
     planarSets: ["Rutilant Arena"],
   },
   "Archer": {
