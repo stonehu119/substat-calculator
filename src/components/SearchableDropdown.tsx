@@ -139,7 +139,7 @@ export default function SearchableDropdown({
       <div ref={containerRef} className="relative">
         {showSelectedIcon && (
           <img
-            src={selectedIconUrl ?? unknownIconUrl}
+            src={selectedIconUrl || unknownIconUrl}
             alt=""
             className={`absolute ${icon.left} top-1/2 -translate-y-1/2 ${icon.size} object-cover pointer-events-none z-[1]`}
             onError={(e) => { e.currentTarget.src = unknownIconUrl }}
