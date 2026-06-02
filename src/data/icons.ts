@@ -111,9 +111,9 @@ export const CHARACTER_ICONS: Record<Character, string> = {
 }
 
 export const LIGHT_CONE_ICONS: Record<LightCone, string> = {
-    "Flickering Stars": "",
-    "I Am As You Behold": "",
-    "A Star That Lights the Night": "",
+    "Flickering Stars": lcIcon("Flickering Stars"),
+    "I Am As You Behold": lcIcon("I Am As You Behold"),
+    "A Star That Lights the Night": lcIcon("A Star That Lights the Night"),
     "Reforged in Hellfire": lcIcon("Reforged in Hellfire"),
     "Until the Flowers Bloom Again": lcIcon("Until the Flowers Bloom Again"),
     "Welcome to the Cosmic City": lcIcon("Welcome to the Cosmic City"),
@@ -316,8 +316,8 @@ export const RELIC_SET_ICONS: Record<RelicSet, string> = {
 
 export const PLANAR_SET_ICONS: Record<PlanarSet, string> = {
     "(None)": noneIconUrl,
-    "Fallen Star Anchorage": "",
-    "Cosmic Life Sciences Institute": "",
+    "Fallen Star Anchorage": planarIcon("Fallen Star Anchorage"),
+    "Cosmic Life Sciences Institute": planarIcon("Cosmic Life Sciences Institute"),
     "Amphoreus, The Eternal Land": planarIcon("Amphoreus, The Eternal Land"),
     "Punklorde Stage Zero": planarIcon("Punklorde Stage Zero"),
     "City of Converging Stars": planarIcon("City of Converging Stars"),
