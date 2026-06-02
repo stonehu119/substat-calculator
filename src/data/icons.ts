@@ -18,6 +18,9 @@ function relicIcon(name: string): string { return relicIconFiles[`../assets/icon
 function planarIcon(name: string): string { return planarIconFiles[`../assets/icons/planar-sets/${sanitize(name)}.webp`] }
 
 export const CHARACTER_ICONS: Record<Character, string> = {
+    "Rin Tohsaka": "",
+    "Gilgamesh": "",
+    "Himeko • Nova": "",
     "Mortenax Blade": charIcon("Mortenax Blade"),
     "Evanescia": charIcon("Evanescia"),
     "Silver Wolf Lv.999": charIcon("Silver Wolf Lv.999"),
