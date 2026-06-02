@@ -9,6 +9,21 @@ export interface CharacterPreferences {
 }
 
 export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferences>> = {
+  "Himeko • Nova": {
+    lightCones: ["A Star That Lights the Night"],
+    relicSets: ["As Navigator Isee Sees it"],
+    planarSets: ["Fallen Star Anchorage"],
+  },
+  "Rin Tohsaka": {
+    lightCones: ["Flickering Stars"],
+    relicSets: [],
+    planarSets: ["Tengoku@Livestream"],
+  },
+  "Gilgamesh": {
+    lightCones: ["I Am As You Behold"],
+    relicSets: [],
+    planarSets: ["Cosmic Life Sciences Institute"],
+  },
   "Mortenax Blade": {
     lightCones: ["Reforged in Hellfire", "Resolution Shines As Pearls of Sweat"],
     relicSets: ["Divine-Querying Master Smith", "Eagle of Twilight Line"],
