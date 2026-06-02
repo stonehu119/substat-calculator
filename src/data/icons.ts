@@ -13,7 +13,7 @@ function sanitize(name: string): string {
 }
 
 function charIcon(name: string): string { return charIconFiles[`../assets/icons/characters/${sanitize(name)}.webp`] }
-function lcIcon(name: string): string | undefined { return lcIconFiles[`../assets/icons/light-cones/${sanitize(name)}.webp`] }
+function lcIcon(name: string): string { return lcIconFiles[`../assets/icons/light-cones/${sanitize(name)}.webp`] }
 function relicIcon(name: string): string { return relicIconFiles[`../assets/icons/relic-sets/${sanitize(name)}.webp`] }
 function planarIcon(name: string): string { return planarIconFiles[`../assets/icons/planar-sets/${sanitize(name)}.webp`] }
 
@@ -110,7 +110,10 @@ export const CHARACTER_ICONS: Record<Character, string> = {
     "Yanqing": charIcon("Yanqing"),
 }
 
-export const LIGHT_CONE_ICONS: Partial<Record<LightCone, string>> = {
+export const LIGHT_CONE_ICONS: Record<LightCone, string> = {
+    "Flickering Stars": "",
+    "I Am As You Behold": "",
+    "A Star That Lights the Night": "",
     "Reforged in Hellfire": lcIcon("Reforged in Hellfire"),
     "Until the Flowers Bloom Again": lcIcon("Until the Flowers Bloom Again"),
     "Welcome to the Cosmic City": lcIcon("Welcome to the Cosmic City"),
