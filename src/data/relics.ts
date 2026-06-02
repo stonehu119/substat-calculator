@@ -114,6 +114,8 @@ export const RELIC_SET_4PC_DATA: Record<RelicSet, StatModifier> = {
 
 export const PLANAR_SETS = [
   NONE,
+  "Cosmic Life Sciences Institute",
+  "Fallen Star Anchorage",
   "Punklorde Stage Zero",
   "City of Converging Stars",
   "Tengoku@Livestream",
@@ -145,6 +147,8 @@ export const PLANAR_SETS = [
 export type PlanarSet = typeof PLANAR_SETS[number]
 
 export const PLANAR_SET_DATA: Record<PlanarSet, StatModifier> = {
+  "Cosmic Life Sciences Institute": {},
+  "Fallen Star Anchorage": { flat: new StatSet({"Crit Rate": 8}) },
   "Punklorde Stage Zero" : {},
   "City of Converging Stars" : {},
   "Tengoku@Livestream" : { flat: new StatSet({"Crit DMG": 16}) },

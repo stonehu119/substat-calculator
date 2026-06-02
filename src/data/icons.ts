@@ -278,7 +278,7 @@ export const LIGHT_CONE_ICONS: Record<LightCone, string> = {
     "The Forever Victual": lcIcon("The Forever Victual"),
 }
 
-export const RELIC_SET_ICONS: Partial<Record<RelicSet, string>> = {
+export const RELIC_SET_ICONS: Record<RelicSet, string> = {
     "(None)": noneIconUrl,
     "Divine-Querying Master Smith": relicIcon("Divine-Querying Master Smith"),
     "As Navigator Isee Sees it": relicIcon("As Navigator Isee Sees it"),
@@ -314,8 +314,10 @@ export const RELIC_SET_ICONS: Partial<Record<RelicSet, string>> = {
     "Passerby of Wandering Cloud": relicIcon("Passerby of Wandering Cloud"),
 }
 
-export const PLANAR_SET_ICONS: Partial<Record<PlanarSet, string>> = {
+export const PLANAR_SET_ICONS: Record<PlanarSet, string> = {
     "(None)": noneIconUrl,
+    "Fallen Star Anchorage": "",
+    "Cosmic Life Sciences Institute": "",
     "Amphoreus, The Eternal Land": planarIcon("Amphoreus, The Eternal Land"),
     "Punklorde Stage Zero": planarIcon("Punklorde Stage Zero"),
     "City of Converging Stars": planarIcon("City of Converging Stars"),
