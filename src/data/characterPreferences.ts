@@ -15,13 +15,13 @@ export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferenc
     planarSets: ["Fallen Star Anchorage"],
   },
   "Rin Tohsaka": {
-    lightCones: ["Flickering Stars"],
+    lightCones: ["Flickering Stars", "Night on the Milky Way"],
     relicSets: ["Genius of Brilliant Stars", "Scholar Lost in Erudition"],
-    planarSets: ["Tengoku@Livestream"],
+    planarSets: ["Rutilant Arena", "Tengoku@Livestream"],
   },
   "Gilgamesh": {
     lightCones: ["I Am As You Behold"],
-    relicSets: [],
+    relicSets: ["Scholar Lost in Erudition"],
     planarSets: ["Cosmic Life Sciences Institute"],
   },
   "Mortenax Blade": {
