@@ -16,7 +16,7 @@ export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferenc
   },
   "Rin Tohsaka": {
     lightCones: ["Flickering Stars"],
-    relicSets: [],
+    relicSets: ["Genius of Brilliant Stars", "Scholar Lost in Erudition"],
     planarSets: ["Tengoku@Livestream"],
   },
   "Gilgamesh": {
@@ -106,7 +106,7 @@ export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferenc
   },
   "Saber": {
     lightCones: ["A Thankless Coronation", "On the Fall of an Aeon"],
-    relicSets: ["Wavestrider Captain"],
+    relicSets: ["Wavestrider Captain", "Eagle of Twilight Line"],
   },
   "Phainon": {
     lightCones: ["Thus Burns the Dawn", "On the Fall of an Aeon"],
