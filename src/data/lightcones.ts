@@ -175,7 +175,7 @@ export type LightCone = typeof LIGHT_CONES[number]
 
 export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
   "Flickering Stars": { base: new StatSet({"HP": 846.72, "ATK": 635.04, "DEF": 529.2 }) },
-  "I Am As You Behold": { base: new StatSet({"HP": 846.72, "ATK": 635.04, "DEF": 529.2 }) },
+  "I Am As You Behold": { base: new StatSet({"HP": 952.56, "ATK": 635.04, "DEF": 463.05 }) },
   "A Star That Lights the Night" : { base: new StatSet({"HP": 846.72, "ATK": 635.04, "DEF": 529.2 }) },
   "Reforged in Hellfire" : { base: new StatSet({"HP": 1270.08, "ATK": 476.28, "DEF": 463}) },
   "Until the Flowers Bloom Again" : { base: new StatSet({"HP": 952.6, "ATK": 635, "DEF": 463}) },
