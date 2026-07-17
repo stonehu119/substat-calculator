@@ -4,6 +4,10 @@ import type { Path } from "./characters"
 export const SUPERIMPOSITION_LEVELS = ['S1', 'S2', 'S3', 'S4', 'S5']
 
 export const LIGHT_CONES = [
+  "Rise and Sing",
+  "Summer Rides the Surf",
+  "A Little Getaway",
+  "Race to the Horizon",
   "Flickering Stars",
   "I Am As You Behold",
   "A Star That Lights the Night",
@@ -174,6 +178,10 @@ export const LIGHT_CONES = [
 export type LightCone = typeof LIGHT_CONES[number]
 
 export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
+  "Rise and Sing" : { base: new StatSet({"HP": 1164.24, "ATK": 582.12, "DEF": 396.90 }) },
+  "Summer Rides the Surf" : { base: new StatSet({"HP": 952.56, "ATK": 582.12, "DEF": 529.2 }) },
+  "A Little Getaway": { base: new StatSet({"HP": 423.36, "ATK": 396.90, "DEF": 952.56 }) },
+  "Race to the Horizon": { base: new StatSet({"HP": 476.28, "ATK": 396.90, "DEF": 846.72 }) },
   "Flickering Stars": { base: new StatSet({"HP": 846.72, "ATK": 635.04, "DEF": 529.2 }) },
   "I Am As You Behold": { base: new StatSet({"HP": 952.56, "ATK": 635.04, "DEF": 463.05 }) },
   "A Star That Lights the Night" : { base: new StatSet({"HP": 846.72, "ATK": 635.04, "DEF": 529.2 }) },
@@ -342,6 +350,10 @@ export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
 } as const
 
 export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
+  "Rise and Sing" : [{ percent: new StatSet({"HP": 30}) }, { percent: new StatSet({"HP": 37.5}) }, { percent: new StatSet({"HP": 45}) }, { percent: new StatSet({"HP": 52.5}) }, { percent: new StatSet({"HP": 60}) }],
+  "Summer Rides the Surf" : [{ flat: new StatSet({"Crit Rate": 18}) }, { flat: new StatSet({"Crit Rate": 21}) }, { flat: new StatSet({"Crit Rate": 24}) }, { flat: new StatSet({"Crit Rate": 27}) }, { flat: new StatSet({"Crit Rate": 30}) }],
+  "A Little Getaway" : [{}, {}, {}, {}, {}],
+  "Race to the Horizon" : [{ percent: new StatSet({"ATK": 12}) }, { percent: new StatSet({"ATK": 15}) }, { percent: new StatSet({"ATK": 18}) }, { percent: new StatSet({"ATK": 21}) }, { percent: new StatSet({"ATK": 24}) }],
   "Flickering Stars": [{ flat: new StatSet({"Crit Rate": 18}) }, { flat: new StatSet({"Crit Rate": 21}) }, { flat: new StatSet({"Crit Rate": 24}) }, { flat: new StatSet({"Crit Rate": 27}) }, { flat: new StatSet({"Crit Rate": 30}) }],
   "I Am As You Behold": [{ percent: new StatSet({"ATK": 18}) }, { percent: new StatSet({"ATK": 21}) }, { percent: new StatSet({"ATK": 24}) }, { percent: new StatSet({"ATK": 27}) }, { percent: new StatSet({"ATK": 30}) }],
   "A Star That Lights the Night": [{ percent: new StatSet({"ATK": 40}) }, { percent: new StatSet({"ATK": 50}) }, { percent: new StatSet({"ATK": 60}) }, { percent: new StatSet({"ATK": 70}) }, { percent: new StatSet({"ATK": 80}) }],
@@ -510,6 +522,10 @@ export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = {
 }
 
 export const LIGHT_CONE_PATH: Record<LightCone, Path> = {
+  "A Little Getaway": "Elation",
+  "Race to the Horizon": "Hunt",
+  "Rise and Sing": "Remembrance",
+  "Summer Rides the Surf": "Elation",
   "Flickering Stars": "Erudition",
   "I Am As You Behold": "Destruction",
   "A Star That Lights the Night": "Erudition",

@@ -9,6 +9,16 @@ export interface CharacterPreferences {
 }
 
 export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferences>> = {
+  "Robin • Summeretto": {
+    lightCones: ["Rise and Sing", "Memory's Curtain Never Falls", "The Story's Next Page"],
+    relicSets: ["World-Remaking Deliverer", "Sacerdos' Relived Ordeal", "Messenger Traversing Hackerspace"],
+    planarSets: ["Sprightly Vonwacq", "Amphoreus, The Eternal Land", "Lushaka, the Sunken Seas"]
+  },
+  "Aventurine • Waveflair": {
+    lightCones: ["Summer Rides the Surf", "A Little Getaway", "Today's Good Luck"],
+    relicSets: ["Ever-Glorious Magical Girl", "Genius of Brilliant Stars"],
+    planarSets: ["Punklorde Stage Zero"]
+  },
   "Himeko • Nova": {
     lightCones: ["A Star That Lights the Night"],
     relicSets: ["As Navigator Isee Sees it"],

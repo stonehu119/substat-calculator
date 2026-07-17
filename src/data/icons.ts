@@ -18,6 +18,8 @@ function relicIcon(name: string): string { return relicIconFiles[`../assets/icon
 function planarIcon(name: string): string { return planarIconFiles[`../assets/icons/planar-sets/${sanitize(name)}.webp`] }
 
 export const CHARACTER_ICONS: Record<Character, string> = {
+    "Robin • Summeretto": charIcon("Robin • Summeretto"),
+    "Aventurine • Waveflair": charIcon("Aventurine • Waveflair"),
     "Rin Tohsaka": charIcon("Rin Tohsaka"),
     "Gilgamesh": charIcon("Gilgamesh"),
     "Himeko • Nova": charIcon("Himeko Nova"),
@@ -111,6 +113,10 @@ export const CHARACTER_ICONS: Record<Character, string> = {
 }
 
 export const LIGHT_CONE_ICONS: Record<LightCone, string> = {
+    "A Little Getaway": lcIcon("A Little Getaway"),
+    "Race to the Horizon": lcIcon("Race to the Horizon"),
+    "Rise and Sing": lcIcon("Rise and Sing"),
+    "Summer Rides the Surf": lcIcon("Summer Rides the Surf"),
     "Flickering Stars": lcIcon("Flickering Stars"),
     "I Am As You Behold": lcIcon("I Am As You Behold"),
     "A Star That Lights the Night": lcIcon("A Star That Lights the Night"),

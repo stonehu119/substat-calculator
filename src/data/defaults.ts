@@ -2,12 +2,12 @@ import type { FormState, StatState } from '../types/formState'
 
 export const createDefaultStats = (): Record<number, StatState> => {
   const initial: Record<number, StatState> = {}
-  initial[0] = { checked: false, value: '2857' }
-  initial[1] = { checked: true, value: '4625' }
-  initial[2] = { checked: false, value: '1105' }
-  initial[3] = { checked: false, value: '105.0' }
-  initial[4] = { checked: true, value: '86.2' }
-  initial[5] = { checked: true, value: '112.9' }
+  initial[0] = { checked: true, value: '5530' }
+  initial[1] = { checked: false, value: '1776' }
+  initial[2] = { checked: false, value: '1176' }
+  initial[3] = { checked: true, value: '192' }
+  initial[4] = { checked: true, value: '22.6' }
+  initial[5] = { checked: true, value: '80.4' }
   initial[6] = { checked: false, value: '0.0' }
   initial[7] = { checked: false, value: '0.0' }
   initial[8] = { checked: false, value: '0.0' }
@@ -15,15 +15,15 @@ export const createDefaultStats = (): Record<number, StatState> => {
 }
 
 export const createDefaultFormState = (): FormState => ({
-  character: "Himeko • Nova",
-  lightCone: "A Star That Lights the Night",
-  superimposition: "S1",
-  relicSet1: "As Navigator Isee Sees it (2pc)",
-  relicSet2: "As Navigator Isee Sees it (4pc)",
-  planarSet: "Fallen Star Anchorage",
-  relicBody: "Crit Rate",
-  relicFeet: "ATK%",
-  relicOrb: "DMG Bonus",
-  relicRope: "ATK%",
+  character: "Robin • Summeretto",
+  lightCone: "Memory's Curtain Never Falls",
+  superimposition: "S5",
+  relicSet1: "World-Remaking Deliverer (2pc)",
+  relicSet2: "World-Remaking Deliverer (4pc)",
+  planarSet: "Sprightly Vonwacq",
+  relicBody: "HP%",
+  relicFeet: "SPD",
+  relicOrb: "HP%",
+  relicRope: "Energy Regeneration Rate",
   stats: createDefaultStats(),
 })
