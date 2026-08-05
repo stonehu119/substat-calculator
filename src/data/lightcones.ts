@@ -180,8 +180,8 @@ export type LightCone = typeof LIGHT_CONES[number]
 export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = {
   "Rise and Sing" : { base: new StatSet({"HP": 1164.24, "ATK": 582.12, "DEF": 396.90 }) },
   "Summer Rides the Surf" : { base: new StatSet({"HP": 952.56, "ATK": 582.12, "DEF": 529.2 }) },
-  "A Little Getaway": { base: new StatSet({"HP": 423.36, "ATK": 396.90, "DEF": 952.56 }) },
-  "Race to the Horizon": { base: new StatSet({"HP": 476.28, "ATK": 396.90, "DEF": 846.72 }) },
+  "A Little Getaway": { base: new StatSet({"HP": 952.56, "ATK": 423.36, "DEF": 396.90 }) },
+  "Race to the Horizon": { base: new StatSet({"HP": 846.72, "ATK": 476.28, "DEF": 396.90 }) },
   "Flickering Stars": { base: new StatSet({"HP": 846.72, "ATK": 635.04, "DEF": 529.2 }) },
   "I Am As You Behold": { base: new StatSet({"HP": 952.56, "ATK": 635.04, "DEF": 463.05 }) },
   "A Star That Lights the Night" : { base: new StatSet({"HP": 846.72, "ATK": 635.04, "DEF": 529.2 }) },
