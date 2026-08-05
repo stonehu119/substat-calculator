@@ -16,7 +16,7 @@ export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferenc
   },
   "Aventurine • Waveflair": {
     lightCones: ["Summer Rides the Surf", "A Little Getaway", "Today's Good Luck"],
-    relicSets: ["Ever-Glorious Magical Girl", "Genius of Brilliant Stars"],
+    relicSets: ["Ever-Glorious Magical Girl", "Diviner of Distant Reach", "Genius of Brilliant Stars"],
     planarSets: ["Punklorde Stage Zero"]
   },
   "Himeko • Nova": {
@@ -55,7 +55,7 @@ export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferenc
     planarSets: ["Amphoreus, The Eternal Land", "Lushaka, the Sunken Seas", "Sprightly Vonwacq"],
   },
   "Ashveil": {
-    lightCones: ["The Finale of a Lie", "Cruising in the Stellar Sea"],
+    lightCones: ["The Finale of a Lie", "Race to the Horizon", "Cruising in the Stellar Sea"],
     relicSets: ["The Ashblazing Grand Duke", "Pioneer Diver of Dead Waters"],
     planarSets: ["City of Converging Stars", "Duran, Dynasty of Running Wolves"],
   },
