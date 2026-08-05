@@ -136,9 +136,12 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center px-2 pt-6 pb-4">
       <div className="flex flex-col items-center w-full gap-8 max-w-6xl">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-blue-400 text-center mt-0 drop-shadow-lg tracking-wide">
-          Star Rail Substat Counter
-        </h1>
+        <div className="flex flex-col items-center gap-1">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-blue-400 text-center mt-0 drop-shadow-lg tracking-wide">
+            Star Rail Substat Counter
+          </h1>
+          <span className="text-xs text-gray-500">Last updated for 4.5v4</span>
+        </div>
 
         {/* Mobile: single stacked layout */}
         <div className="w-full max-w-md lg:hidden bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
