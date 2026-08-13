@@ -1,7 +1,55 @@
 import { StatSet, type StatModifier } from "../types/stats"
-import type { Path } from "./characters"
-import lightconeData from "./lightconeData.json"
 import type { Substat } from "./substats"
+
+import characterData from "./characterData.json"
+import lightconeData from "./lightconeData.json"
+
+
+// -------------------------------- PATH DATA ---------------------------------
+
+export const PATHS = [
+  "Preservation",
+  "Hunt",
+  "Erudition",
+  "Nihility",
+  "Harmony",
+  "Destruction",
+  "Abundance",
+  "Remembrance",
+  "Elation",
+] as const
+
+export type Path = typeof PATHS[number]
+
+// ------------------------------ CHARACTER DATA ------------------------------
+
+export const CHARACTERS = Object.keys(characterData)
+export type Character = keyof typeof characterData
+
+interface CharData {
+  path: string,
+  stats: {
+    base: Partial<Record<Substat, number>>,
+    percent?: Partial<Record<Substat, number>>,
+    flat?: Partial<Record<Substat, number>>,
+  }
+}
+
+const charData = characterData satisfies Record<Character, CharData> as Record<Character, CharData>
+
+export const CHARACTER_DATA: Record<Character, StatModifier> = Object.fromEntries(
+  Object.entries(charData).map(([name, data]) => [name, {
+    base: new StatSet(data.stats.base),
+    percent: data.stats.percent && new StatSet(data.stats.percent),
+    flat: data.stats.flat && new StatSet(data.stats.flat),
+  }])
+) as Record<Character, StatModifier>
+
+export const CHARACTER_PATH: Record<Character, Path> = Object.fromEntries(
+  Object.entries(characterData).map(([name, data]) => [name, data.path])
+) as Record<Character, Path>
+
+// --------------------------------- LC DATA ----------------------------------
 
 export const SUPERIMPOSITION_LEVELS = ['S1', 'S2', 'S3', 'S4', 'S5']
 

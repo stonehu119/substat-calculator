@@ -1,4 +1,4 @@
-import { LIGHT_CONES, SUPERIMPOSITION_LEVELS, type LightCone as LightConeType } from '../data/lightcones'
+import { LIGHT_CONES, SUPERIMPOSITION_LEVELS, type LightCone as LightConeType } from '../data/data'
 import SearchableDropdown from './SearchableDropdown'
 import { LIGHT_CONE_ICONS } from '../data/icons'
 

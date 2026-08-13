@@ -1,5 +1,5 @@
 import SearchableDropdown from './SearchableDropdown'
-import { CHARACTERS, type Character } from '../data/characters'
+import { CHARACTERS, type Character } from '../data/data'
 import { CHARACTER_ICONS } from '../data/icons'
 
 interface CharacterDropdownProps {

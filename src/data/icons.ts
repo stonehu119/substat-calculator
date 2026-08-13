@@ -1,5 +1,4 @@
-import type { Character } from './characters'
-import type { LightCone } from './lightcones'
+import type { Character, LightCone } from './data'
 import type { RelicSet, PlanarSet } from './relics'
 import noneIconUrl from '../assets/none-icon.svg'
 

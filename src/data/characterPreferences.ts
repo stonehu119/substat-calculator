@@ -1,5 +1,4 @@
-import type { Character } from './characters'
-import type { LightCone } from './lightcones'
+import type { Character, LightCone } from './data'
 import type { PlanarSet, RelicSet } from './relics'
 
 export interface CharacterPreferences {

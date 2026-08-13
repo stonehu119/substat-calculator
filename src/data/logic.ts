@@ -1,8 +1,15 @@
 import type { FormState, StatState } from "../types/formState";
 import { StatSet, type StatModifier, } from "../types/stats";
-import { CHARACTER_DATA, CHARACTER_PATH, type Character } from "./characters";
-import { LIGHT_CONE_BASE_STATS, LIGHT_CONE_PATH, LIGHT_CONE_PATH_STATS, type LightCone } from "./lightcones";
-import { 
+import {
+  CHARACTER_DATA,
+  CHARACTER_PATH,
+  LIGHT_CONE_BASE_STATS,
+  LIGHT_CONE_PATH,
+  LIGHT_CONE_PATH_STATS,
+  type LightCone,
+  type Character
+} from "./data";
+import {
   getRelicStatMod,
   MAIN_STAT_VALUES,
   PLANAR_SET_DATA,
@@ -27,7 +34,7 @@ export function characterPathMatchesLC(formState: FormState): boolean {
 // collect all stat modifiers
 function createStatModList(formState: FormState): Array<StatModifier> {
   const out: Array<StatModifier> = []
-  const defaultStats: StatModifier = { flat: new StatSet({"HP": 705.6, "ATK": 352.8, "Crit Rate": 5, "Crit DMG": 50}) }
+  const defaultStats: StatModifier = { flat: new StatSet({ "HP": 705.6, "ATK": 352.8, "Crit Rate": 5, "Crit DMG": 50 }) }
   const superimposeIndex = +formState.superimposition[1] - 1
   try {
     out.push(defaultStats)
