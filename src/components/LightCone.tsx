@@ -1,6 +1,6 @@
-import { LIGHT_CONES, SUPERIMPOSITION_LEVELS, type LightCone as LightConeType } from '../data/data'
+import { LIGHT_CONES, SUPERIMPOSITION_LEVELS } from '../data/data'
 import SearchableDropdown from './SearchableDropdown'
-import { LIGHT_CONE_ICONS } from '../data/icons'
+import { lcIcon } from '../data/icons'
 
 interface LightConeProps {
   lightCone: string
@@ -29,7 +29,7 @@ export default function LightCone({
           onChange={onLightConeChange}
           label="Name"
           placeholder="Select light cone"
-          getIconUrl={(v) => LIGHT_CONE_ICONS[v as LightConeType]}
+          getIconUrl={lcIcon}
           iconSize="lg"
           priorityItems={priorityLightCones}
         />
