@@ -4292,9 +4292,9 @@
   "Sneering": {
     "path": "Elation",
     "baseStats": {
-      "HP": 741,
-      "ATK": 370,
-      "DEF": 265
+      "HP": 740.88,
+      "ATK": 370.44,
+      "DEF": 264.6
     },
     "pathStats": [
       {},
@@ -4307,9 +4307,9 @@
   "Lingering Tears": {
     "path": "Elation",
     "baseStats": {
-      "HP": 847,
-      "ATK": 318,
-      "DEF": 265
+      "HP": 846.72,
+      "ATK": 317.52,
+      "DEF": 264.6
     },
     "pathStats": [
       {},
