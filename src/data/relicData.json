@@ -1,0 +1,230 @@
+{
+  "(None)": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "As Navigator Isee Sees it": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    },
+    "4pc": {}
+  },
+  "Divine-Querying Master Smith": {
+    "2pc": {
+      "percent": {
+        "HP": 12
+      }
+    },
+    "4pc": {}
+  },
+  "Ever-Glorious Magical Girl": {
+    "2pc": {
+      "flat": {
+        "Crit DMG": 16
+      }
+    },
+    "4pc": {}
+  },
+  "Diviner of Distant Reach": {
+    "2pc": {
+      "percent": {
+        "SPD": 6
+      }
+    },
+    "4pc": {}
+  },
+  "Self-Enshrouded Recluse": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "World-Remaking Deliverer": {
+    "2pc": {
+      "flat": {
+        "Crit Rate": 8
+      }
+    },
+    "4pc": {}
+  },
+  "Wavestrider Captain": {
+    "2pc": {
+      "flat": {
+        "Crit DMG": 16
+      }
+    },
+    "4pc": {}
+  },
+  "Warrior Goddess of Sun and Thunder": {
+    "2pc": {
+      "percent": {
+        "SPD": 6
+      }
+    },
+    "4pc": {}
+  },
+  "Poet of Mourning Collapse": {
+    "2pc": {},
+    "4pc": {
+      "percent": {
+        "SPD": -8
+      }
+    }
+  },
+  "Hero of Triumphant Song": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    },
+    "4pc": {}
+  },
+  "Scholar Lost in Erudition": {
+    "2pc": {
+      "flat": {
+        "Crit Rate": 8
+      }
+    },
+    "4pc": {}
+  },
+  "Sacerdos' Relived Ordeal": {
+    "2pc": {
+      "percent": {
+        "SPD": 6
+      }
+    },
+    "4pc": {}
+  },
+  "The Wind-Soaring Valorous": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    },
+    "4pc": {
+      "flat": {
+        "Crit Rate": 6
+      }
+    }
+  },
+  "Iron Cavalry Against the Scourge": {
+    "2pc": {
+      "flat": {
+        "Break Effect": 16
+      }
+    },
+    "4pc": {}
+  },
+  "Watchmaker, Master of Dream Machinations": {
+    "2pc": {
+      "flat": {
+        "Break Effect": 16
+      }
+    },
+    "4pc": {}
+  },
+  "Pioneer Diver of Dead Waters": {
+    "2pc": {},
+    "4pc": {
+      "flat": {
+        "Crit Rate": 4
+      }
+    }
+  },
+  "Prisoner in Deep Confinement": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    },
+    "4pc": {}
+  },
+  "The Ashblazing Grand Duke": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Messenger Traversing Hackerspace": {
+    "2pc": {
+      "percent": {
+        "SPD": 6
+      }
+    },
+    "4pc": {}
+  },
+  "Longevous Disciple": {
+    "2pc": {
+      "percent": {
+        "HP": 12
+      }
+    },
+    "4pc": {}
+  },
+  "Wastelander of Banditry Desert": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Thief of Shooting Meteor": {
+    "2pc": {
+      "flat": {
+        "Break Effect": 16
+      }
+    },
+    "4pc": {
+      "flat": {
+        "Break Effect": 16
+      }
+    }
+  },
+  "Band of Sizzling Thunder": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Genius of Brilliant Stars": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Firesmith of Lava-Forging": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Guard of Wuthering Snow": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Champion of Streetwise Boxing": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Eagle of Twilight Line": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Hunter of Glacial Forest": {
+    "2pc": {},
+    "4pc": {}
+  },
+  "Knight of Purity Palace": {
+    "2pc": {
+      "percent": {
+        "DEF": 15
+      }
+    },
+    "4pc": {}
+  },
+  "Musketeer of Wild Wheat": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    },
+    "4pc": {
+      "percent": {
+        "SPD": 6
+      }
+    }
+  },
+  "Passerby of Wandering Cloud": {
+    "2pc": {},
+    "4pc": {}
+  }
+}
