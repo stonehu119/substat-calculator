@@ -3,6 +3,7 @@ import type { Substat } from "./substats"
 
 import characterData from "./characterData.json"
 import lightconeData from "./lightconeData.json"
+import relicData from "./relicData.json"
 
 interface StatMod {
   base?: Partial<Record<Substat, number>>,
@@ -84,3 +85,31 @@ export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = Obj
 export const LIGHT_CONE_PATH: Record<LightCone, Path> = Object.fromEntries(
   Object.entries(lcData).map(([name, data]) => [name, data.path])
 ) as Record<LightCone, Path>
+
+// -------------------------------- RELIC DATA --------------------------------
+
+export const RELIC_SETS = Object.keys(relicData)
+export type RelicSet = keyof typeof relicData
+
+interface RelicData {
+  "2pc": StatMod,
+  "4pc": StatMod,
+}
+
+const setData = relicData satisfies Record<RelicSet, RelicData> as Record<RelicSet, RelicData>
+
+export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = Object.fromEntries(
+  Object.entries(setData).map(([name, data]) => [name, {
+    base: data["2pc"].base && new StatSet(data["2pc"].base),
+    percent: data["2pc"].percent && new StatSet(data["2pc"].percent),
+    flat: data["2pc"].flat && new StatSet(data["2pc"].flat),
+  }])
+) as Record<RelicSet, StatModifier>
+
+export const RELIC_SET_4PC_DATA: Record<RelicSet, StatModifier> = Object.fromEntries(
+  Object.entries(setData).map(([name, data]) => [name, {
+    base: data["4pc"].base && new StatSet(data["4pc"].base),
+    percent: data["4pc"].percent && new StatSet(data["4pc"].percent),
+    flat: data["4pc"].flat && new StatSet(data["4pc"].flat),
+  }])
+) as Record<RelicSet, StatModifier>

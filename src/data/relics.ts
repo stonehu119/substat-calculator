@@ -1,116 +1,40 @@
 import { StatSet, type StatModifier } from "../types/stats"
+import relicData from "./relicData.json"
+import type { Substat } from "./substats"
+
+interface StatMod {
+  base?: Partial<Record<Substat, number>>,
+  flat?: Partial<Record<Substat, number>>,
+  percent?: Partial<Record<Substat, number>>,
+}
 
 export const NONE = "(None)"
 
-export const RELIC_SETS = [
-  NONE,
-  "As Navigator Isee Sees it",
-  "Divine-Querying Master Smith",
-  "Ever-Glorious Magical Girl",
-  "Diviner of Distant Reach",
-  "Self-Enshrouded Recluse",
-  "World-Remaking Deliverer",
-  "Wavestrider Captain",
-  "Warrior Goddess of Sun and Thunder",
-  "Poet of Mourning Collapse",
-  "Hero of Triumphant Song",
-  "Scholar Lost in Erudition",
-  "Sacerdos' Relived Ordeal",
-  "The Wind-Soaring Valorous",
-  "Iron Cavalry Against the Scourge",
-  "Watchmaker, Master of Dream Machinations",
-  "Pioneer Diver of Dead Waters",
-  "Prisoner in Deep Confinement",
-  "The Ashblazing Grand Duke",
-  "Messenger Traversing Hackerspace",
-  "Longevous Disciple",
-  "Wastelander of Banditry Desert",
-  "Thief of Shooting Meteor",
-  "Band of Sizzling Thunder",
-  "Genius of Brilliant Stars",
-  "Firesmith of Lava-Forging",
-  "Guard of Wuthering Snow",
-  "Champion of Streetwise Boxing",
-  "Eagle of Twilight Line",
-  "Hunter of Glacial Forest",
-  "Knight of Purity Palace",
-  "Musketeer of Wild Wheat",
-  "Passerby of Wandering Cloud",
-] as const
+export const RELIC_SETS = Object.keys(relicData)
+export type RelicSet = keyof typeof relicData
 
-export type RelicSet = typeof RELIC_SETS[number]
+interface RelicData {
+  "2pc": StatMod,
+  "4pc": StatMod,
+}
 
-export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = {
-  "As Navigator Isee Sees it" : { percent: new StatSet({"ATK" : 12}) },
-  "Divine-Querying Master Smith" : { percent: new StatSet({"HP" : 12}) },
-  "Ever-Glorious Magical Girl" : { flat: new StatSet({"Crit DMG" : 16}) },
-  "Diviner of Distant Reach" : { percent: new StatSet({"SPD" : 6}) },
-  "Self-Enshrouded Recluse" : {},
-  "World-Remaking Deliverer" : { flat: new StatSet({"Crit Rate": 8}) },
-  "Wavestrider Captain" : { flat: new StatSet({"Crit DMG": 16}) },
-  "Warrior Goddess of Sun and Thunder" : { percent: new StatSet({"SPD": 6}) },
-  "Poet of Mourning Collapse" : {},
-  "Hero of Triumphant Song" : { percent: new StatSet({"ATK": 12}) },
-  "Scholar Lost in Erudition" : { flat: new StatSet({"Crit Rate": 8}) },
-  "Sacerdos' Relived Ordeal" : { percent: new StatSet({"SPD": 6}) },
-  "The Wind-Soaring Valorous" : { percent: new StatSet({"ATK": 12}) },
-  "Iron Cavalry Against the Scourge" : { flat: new StatSet({"Break Effect": 16}) },
-  "Watchmaker, Master of Dream Machinations" : { flat: new StatSet({"Break Effect": 16}) },
-  "Pioneer Diver of Dead Waters" : {},
-  "Prisoner in Deep Confinement" : { percent: new StatSet({"ATK": 12}) },
-  "The Ashblazing Grand Duke" : {},
-  "Messenger Traversing Hackerspace" : { percent: new StatSet({"SPD": 6}) },
-  "Longevous Disciple" : { percent: new StatSet({"HP": 12}) },
-  "Wastelander of Banditry Desert" : {},
-  "Thief of Shooting Meteor" : { flat: new StatSet({"Break Effect": 16}) },
-  "Band of Sizzling Thunder" : {},
-  "Genius of Brilliant Stars" : {},
-  "Firesmith of Lava-Forging" : {},
-  "Guard of Wuthering Snow" : {},
-  "Champion of Streetwise Boxing" : {},
-  "Eagle of Twilight Line" : {},
-  "Hunter of Glacial Forest" : {},
-  "Knight of Purity Palace" : { percent: new StatSet({"DEF": 15}) },
-  "Musketeer of Wild Wheat" : { percent: new StatSet({"ATK": 12}) },
-  "Passerby of Wandering Cloud" : {},
-  "(None)" : {},
-} as const
+const setData = relicData satisfies Record<RelicSet, RelicData> as Record<RelicSet, RelicData>
 
-export const RELIC_SET_4PC_DATA: Record<RelicSet, StatModifier> = {
-  "As Navigator Isee Sees it" : {},
-  "Divine-Querying Master Smith" : {},
-  "Ever-Glorious Magical Girl" : {},
-  "Diviner of Distant Reach" : {},
-  "Self-Enshrouded Recluse" : {},
-  "World-Remaking Deliverer" : {},
-  "Wavestrider Captain" : {},
-  "Warrior Goddess of Sun and Thunder" : {},
-  "Poet of Mourning Collapse" : { percent: new StatSet({"SPD": -8}) },
-  "Hero of Triumphant Song" : {},
-  "Scholar Lost in Erudition" : {},
-  "Sacerdos' Relived Ordeal" : {},
-  "The Wind-Soaring Valorous" : { flat: new StatSet({"Crit Rate": 6}) },
-  "Iron Cavalry Against the Scourge" : {},
-  "Watchmaker, Master of Dream Machinations" : {},
-  "Pioneer Diver of Dead Waters" : { flat: new StatSet({"Crit Rate": 4}) },
-  "Prisoner in Deep Confinement" : {},
-  "The Ashblazing Grand Duke" : {},
-  "Messenger Traversing Hackerspace" : {},
-  "Longevous Disciple" : {},
-  "Wastelander of Banditry Desert" : {},
-  "Thief of Shooting Meteor" : { flat: new StatSet({"Break Effect": 16}) },
-  "Band of Sizzling Thunder" : {},
-  "Genius of Brilliant Stars" : {},
-  "Firesmith of Lava-Forging" : {},
-  "Guard of Wuthering Snow" : {},
-  "Champion of Streetwise Boxing" : {},
-  "Eagle of Twilight Line" : {},
-  "Hunter of Glacial Forest" : {},
-  "Knight of Purity Palace" : {},
-  "Musketeer of Wild Wheat" : { percent: new StatSet({"SPD": 6}) },
-  "Passerby of Wandering Cloud" : {},
-  "(None)" : {},
-} as const
+export const RELIC_SET_DATA: Record<RelicSet, StatModifier> = Object.fromEntries(
+  Object.entries(setData).map(([name, data]) => [name, {
+    base: data["2pc"].base && new StatSet(data["2pc"].base),
+    percent: data["2pc"].percent && new StatSet(data["2pc"].percent),
+    flat: data["2pc"].flat && new StatSet(data["2pc"].flat),
+  }])
+) as Record<RelicSet, StatModifier>
+
+export const RELIC_SET_4PC_DATA: Record<RelicSet, StatModifier> = Object.fromEntries(
+  Object.entries(setData).map(([name, data]) => [name, {
+    base: data["4pc"].base && new StatSet(data["4pc"].base),
+    percent: data["4pc"].percent && new StatSet(data["4pc"].percent),
+    flat: data["4pc"].flat && new StatSet(data["4pc"].flat),
+  }])
+) as Record<RelicSet, StatModifier>
 
 export const PLANAR_SETS = [
   NONE,
