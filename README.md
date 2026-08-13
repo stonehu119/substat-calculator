@@ -7,4 +7,4 @@ Updated for v4.2v2
 Built using React + Vite + Tailwind and Typescript
 
 ## Adding data
-All the character/lightcone/relic data is added in `src/data`. All stats are stored as a `StatModifier` object, which is a set of base stats, percent stats, and flat stats. Should be pretty self explanatory from there.
+All the character/lightcone/relic data is added in `src/data/json`. Should be pretty self explanatory from there.

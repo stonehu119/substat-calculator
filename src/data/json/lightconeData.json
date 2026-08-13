@@ -1,0 +1,4657 @@
+{
+  "Rise and Sing": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1164.24,
+      "ATK": 582.12,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 30
+        }
+      },
+      {
+        "percent": {
+          "HP": 37.5
+        }
+      },
+      {
+        "percent": {
+          "HP": 45
+        }
+      },
+      {
+        "percent": {
+          "HP": 52.5
+        }
+      },
+      {
+        "percent": {
+          "HP": 60
+        }
+      }
+    ]
+  },
+  "Summer Rides the Surf": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 952.56,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 27
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 30
+        }
+      }
+    ]
+  },
+  "A Little Getaway": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 952.56,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Race to the Horizon": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 846.72,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 12
+        }
+      },
+      {
+        "percent": {
+          "ATK": 15
+        }
+      },
+      {
+        "percent": {
+          "ATK": 18
+        }
+      },
+      {
+        "percent": {
+          "ATK": 21
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      }
+    ]
+  },
+  "Flickering Stars": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 846.72,
+      "ATK": 635.04,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 27
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 30
+        }
+      }
+    ]
+  },
+  "I Am As You Behold": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 952.56,
+      "ATK": 635.04,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 18
+        }
+      },
+      {
+        "percent": {
+          "ATK": 21
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 27
+        }
+      },
+      {
+        "percent": {
+          "ATK": 30
+        }
+      }
+    ]
+  },
+  "A Star That Lights the Night": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 846.72,
+      "ATK": 635.04,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 40
+        }
+      },
+      {
+        "percent": {
+          "ATK": 50
+        }
+      },
+      {
+        "percent": {
+          "ATK": 60
+        }
+      },
+      {
+        "percent": {
+          "ATK": 70
+        }
+      },
+      {
+        "percent": {
+          "ATK": 80
+        }
+      }
+    ]
+  },
+  "Reforged in Hellfire": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1270.08,
+      "ATK": 476.28,
+      "DEF": 463
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 24
+        }
+      },
+      {
+        "percent": {
+          "HP": 30
+        }
+      },
+      {
+        "percent": {
+          "HP": 36
+        }
+      },
+      {
+        "percent": {
+          "HP": 42
+        }
+      },
+      {
+        "percent": {
+          "HP": 48
+        }
+      }
+    ]
+  },
+  "Until the Flowers Bloom Again": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 635,
+      "DEF": 463
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 60
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 75
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 90
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 105
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 120
+        }
+      }
+    ]
+  },
+  "Welcome to the Cosmic City": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 1164.24,
+      "ATK": 476.28,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "SPD": 18
+        }
+      },
+      {
+        "percent": {
+          "SPD": 21
+        }
+      },
+      {
+        "percent": {
+          "SPD": 24
+        }
+      },
+      {
+        "percent": {
+          "SPD": 27
+        }
+      },
+      {
+        "percent": {
+          "SPD": 30
+        }
+      }
+    ]
+  },
+  "Tomorrow, Together": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.8
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 15
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 24
+        }
+      }
+    ]
+  },
+  "The Finale of a Lie": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 635,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 27
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 30
+        }
+      }
+    ]
+  },
+  "Elation Brimming With Blessings": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 529.2,
+      "DEF": 463
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 25
+        }
+      },
+      {
+        "percent": {
+          "ATK": 30
+        }
+      },
+      {
+        "percent": {
+          "ATK": 35
+        }
+      },
+      {
+        "percent": {
+          "ATK": 40
+        }
+      }
+    ]
+  },
+  "Dazzled by a Flowery World": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.1,
+      "DEF": 463
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 48
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 56
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 64
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 72
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 80
+        }
+      }
+    ]
+  },
+  "When She Decided to See": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "SPD": 18
+        }
+      },
+      {
+        "percent": {
+          "SPD": 21
+        }
+      },
+      {
+        "percent": {
+          "SPD": 24
+        }
+      },
+      {
+        "percent": {
+          "SPD": 27
+        }
+      },
+      {
+        "percent": {
+          "SPD": 30
+        }
+      }
+    ]
+  },
+  "Mushy Shroomy's Adventures": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Today's Good Luck": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 529.2,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 14
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 20
+        }
+      }
+    ]
+  },
+  "Never Forget Her Flame": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 529.2,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 60
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 75
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 90
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 105
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 120
+        }
+      }
+    ]
+  },
+  "This Love, Forever": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1270.1,
+      "ATK": 476.28,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "SPD": 18
+        }
+      },
+      {
+        "percent": {
+          "SPD": 21
+        }
+      },
+      {
+        "percent": {
+          "SPD": 24
+        }
+      },
+      {
+        "percent": {
+          "SPD": 27
+        }
+      },
+      {
+        "percent": {
+          "SPD": 30
+        }
+      }
+    ]
+  },
+  "Fly Into a Pink Tomorrow": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 846.72,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 15
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 24
+        }
+      }
+    ]
+  },
+  "Though Worlds Apart": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 30
+        }
+      },
+      {
+        "percent": {
+          "ATK": 36
+        }
+      },
+      {
+        "percent": {
+          "ATK": 42
+        }
+      },
+      {
+        "percent": {
+          "ATK": 48
+        }
+      }
+    ]
+  },
+  "To Evernight's Stars": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 529.2,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 30
+        }
+      },
+      {
+        "percent": {
+          "HP": 37.5
+        }
+      },
+      {
+        "percent": {
+          "HP": 45
+        }
+      },
+      {
+        "percent": {
+          "HP": 52.5
+        }
+      },
+      {
+        "percent": {
+          "HP": 60
+        }
+      }
+    ]
+  },
+  "Epoch Etched in Golden Blood": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 635.04,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 64
+        }
+      },
+      {
+        "percent": {
+          "ATK": 80
+        }
+      },
+      {
+        "percent": {
+          "ATK": 96
+        }
+      },
+      {
+        "percent": {
+          "ATK": 112
+        }
+      },
+      {
+        "percent": {
+          "ATK": 128
+        }
+      }
+    ]
+  },
+  "Why Does the Ocean Sing": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 635.04,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect Hit Rate": 40
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 45
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 50
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 55
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 60
+        }
+      }
+    ]
+  },
+  "The Forever Victual": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      }
+    ]
+  },
+  "A Thankless Coronation": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 36
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 45
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 54
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 63
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 72
+        }
+      }
+    ]
+  },
+  "Thus Burns the Dawn": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 687.96,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "base": {
+          "SPD": 12
+        }
+      },
+      {
+        "base": {
+          "SPD": 14
+        }
+      },
+      {
+        "base": {
+          "SPD": 16
+        }
+      },
+      {
+        "base": {
+          "SPD": 18
+        }
+      },
+      {
+        "base": {
+          "SPD": 20
+        }
+      }
+    ]
+  },
+  "The Hell Where Ideals Burn": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 20
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 28
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 32
+        }
+      }
+    ]
+  },
+  "A Trail of Bygone Blood": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 14
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 20
+        }
+      }
+    ]
+  },
+  "In Pursuit of the Wind": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "The Flower Remembers": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 28
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 32
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 34
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 40
+        }
+      }
+    ]
+  },
+  "The Story's Next Page": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 370.44,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 16
+        }
+      },
+      {
+        "percent": {
+          "HP": 20
+        }
+      },
+      {
+        "percent": {
+          "HP": 24
+        }
+      },
+      {
+        "percent": {
+          "HP": 28
+        }
+      },
+      {
+        "percent": {
+          "HP": 32
+        }
+      }
+    ]
+  },
+  "A Dream Scented in Wheat": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 529.2,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 14
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 20
+        }
+      }
+    ]
+  },
+  "See You at the End": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 529.2,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 28
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 32
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 36
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 40
+        }
+      }
+    ]
+  },
+  "Journey, Forever Peaceful": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 370.44,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Unto Tomorrow's Morrow": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Holiday Thermae Escapade": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Long May Rainbows Adorn the Sky": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 476.28,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "SPD": 18
+        }
+      },
+      {
+        "percent": {
+          "SPD": 21
+        }
+      },
+      {
+        "percent": {
+          "SPD": 24
+        }
+      },
+      {
+        "percent": {
+          "SPD": 27
+        }
+      },
+      {
+        "percent": {
+          "SPD": 30
+        }
+      }
+    ]
+  },
+  "Lies Dance on the Breeze": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "SPD": 18
+        }
+      },
+      {
+        "percent": {
+          "SPD": 21
+        }
+      },
+      {
+        "percent": {
+          "SPD": 24
+        }
+      },
+      {
+        "percent": {
+          "SPD": 27
+        }
+      },
+      {
+        "percent": {
+          "SPD": 30
+        }
+      }
+    ]
+  },
+  "Make Farewells More Beautiful": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1270.1,
+      "ATK": 529.2,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 30
+        }
+      },
+      {
+        "percent": {
+          "HP": 37.5
+        }
+      },
+      {
+        "percent": {
+          "HP": 45
+        }
+      },
+      {
+        "percent": {
+          "HP": 52.5
+        }
+      },
+      {
+        "percent": {
+          "HP": 60
+        }
+      }
+    ]
+  },
+  "Life Should Be Cast to Flames": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "The Great Cosmic Enterprise": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 8
+        }
+      },
+      {
+        "percent": {
+          "ATK": 10
+        }
+      },
+      {
+        "percent": {
+          "ATK": 12
+        }
+      },
+      {
+        "percent": {
+          "ATK": 14
+        }
+      },
+      {
+        "percent": {
+          "ATK": 16
+        }
+      }
+    ]
+  },
+  "Flame of Blood, Blaze My Path": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1375.9,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 18
+        }
+      },
+      {
+        "percent": {
+          "HP": 21
+        }
+      },
+      {
+        "percent": {
+          "HP": 24
+        }
+      },
+      {
+        "percent": {
+          "HP": 27
+        }
+      },
+      {
+        "percent": {
+          "HP": 30
+        }
+      }
+    ]
+  },
+  "If Time Were a Flower": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 1270.1,
+      "ATK": 529.2,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 36
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 42
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 48
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 54
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 60
+        }
+      }
+    ]
+  },
+  "Memory's Curtain Never Falls": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "SPD": 6
+        }
+      },
+      {
+        "percent": {
+          "SPD": 7.5
+        }
+      },
+      {
+        "percent": {
+          "SPD": 9
+        }
+      },
+      {
+        "percent": {
+          "SPD": 10.5
+        }
+      },
+      {
+        "percent": {
+          "SPD": 12
+        }
+      }
+    ]
+  },
+  "Time Woven Into Gold": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 635.04,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "base": {
+          "SPD": 12
+        }
+      },
+      {
+        "base": {
+          "SPD": 14
+        }
+      },
+      {
+        "base": {
+          "SPD": 16
+        }
+      },
+      {
+        "base": {
+          "SPD": 18
+        }
+      },
+      {
+        "base": {
+          "SPD": 20
+        }
+      }
+    ]
+  },
+  "Into the Unreachable Veil": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 635.04,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 14
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 20
+        }
+      }
+    ]
+  },
+  "Sweat Now, Cry Less": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 198.45
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 14
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 20
+        }
+      }
+    ]
+  },
+  "Geniuses' Greetings": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      }
+    ]
+  },
+  "Victory In a Blink": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 15
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 24
+        }
+      }
+    ]
+  },
+  "Reminiscence": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 635,
+      "ATK": 423.36,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Shadowburn": {
+    "path": "Remembrance",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "A Grounded Ascent": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 476.28,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Long Road Leads Home": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 661.5
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 60
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 70
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 80
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 90
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 100
+        }
+      }
+    ]
+  },
+  "Ninja Record: Sound Hunt": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 12
+        }
+      },
+      {
+        "percent": {
+          "HP": 15
+        }
+      },
+      {
+        "percent": {
+          "HP": 18
+        }
+      },
+      {
+        "percent": {
+          "HP": 21
+        }
+      },
+      {
+        "percent": {
+          "HP": 24
+        }
+      }
+    ]
+  },
+  "Ninjutsu Inscription: Dazzling Evilbreaker": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 60
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 70
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 80
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 90
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 100
+        }
+      }
+    ]
+  },
+  "Dream's Montage": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "SPD": 8
+        }
+      },
+      {
+        "percent": {
+          "SPD": 9
+        }
+      },
+      {
+        "percent": {
+          "SPD": 10
+        }
+      },
+      {
+        "percent": {
+          "SPD": 11
+        }
+      },
+      {
+        "percent": {
+          "SPD": 12
+        }
+      }
+    ]
+  },
+  "I Venture Forth to Hunt": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 635.04,
+      "DEF": 635.04
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 15
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 17.5
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 20
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 22.5
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 25
+        }
+      }
+    ]
+  },
+  "Scent Alone Stays True": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 60
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 70
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 80
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 90
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 100
+        }
+      }
+    ]
+  },
+  "Shadowed by Night": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 28
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 35
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 42
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 49
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 56
+        }
+      }
+    ]
+  },
+  "Dance at Sunset": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 36
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 42
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 48
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 54
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 60
+        }
+      }
+    ]
+  },
+  "Those Many Springs": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect Hit Rate": 60
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 70
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 80
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 90
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 100
+        }
+      }
+    ]
+  },
+  "Poised to Bloom": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      }
+    ]
+  },
+  "Whereabouts Should Dreams Rest": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 476.28,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 60
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 70
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 80
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 90
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 100
+        }
+      }
+    ]
+  },
+  "Yet Hope Is Priceless": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 19
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 22
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 25
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 28
+        }
+      }
+    ]
+  },
+  "Eternal Calculus": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 8
+        }
+      },
+      {
+        "percent": {
+          "ATK": 9
+        }
+      },
+      {
+        "percent": {
+          "ATK": 10
+        }
+      },
+      {
+        "percent": {
+          "ATK": 11
+        }
+      },
+      {
+        "percent": {
+          "ATK": 12
+        }
+      }
+    ]
+  },
+  "After the Charmony Fall": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 28
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 35
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 42
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 49
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 56
+        }
+      }
+    ]
+  },
+  "Flowing Nightglow": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 635.04,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Sailing Towards a Second Life": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 60
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 70
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 80
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 90
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 100
+        }
+      }
+    ]
+  },
+  "For Tomorrow's Journey": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      }
+    ]
+  },
+  "Boundless Choreo": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 8
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 10
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 14
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      }
+    ]
+  },
+  "Inherently Unjust Destiny": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 423.36,
+      "DEF": 661.5
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "DEF": 40
+        }
+      },
+      {
+        "percent": {
+          "DEF": 46
+        }
+      },
+      {
+        "percent": {
+          "DEF": 52
+        }
+      },
+      {
+        "percent": {
+          "DEF": 58
+        }
+      },
+      {
+        "percent": {
+          "DEF": 64
+        }
+      }
+    ]
+  },
+  "Along the Passing Shore": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 635.04,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 36
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 42
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 48
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 54
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 60
+        }
+      }
+    ]
+  },
+  "Concert for Two": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 370.44,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "DEF": 16
+        }
+      },
+      {
+        "percent": {
+          "DEF": 20
+        }
+      },
+      {
+        "percent": {
+          "DEF": 24
+        }
+      },
+      {
+        "percent": {
+          "DEF": 28
+        }
+      },
+      {
+        "percent": {
+          "DEF": 32
+        }
+      }
+    ]
+  },
+  "Earthly Escapade": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 529.2,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 32
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 39
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 46
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 53
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 60
+        }
+      }
+    ]
+  },
+  "Reforged Remembrance": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect Hit Rate": 40
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 45
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 50
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 55
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 60
+        }
+      }
+    ]
+  },
+  "Indelible Promise": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 28
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 35
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 42
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 49
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 56
+        }
+      }
+    ]
+  },
+  "Flames Afar": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Dreamville Adventure": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "The Day The Cosmos Fell": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 18
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 22
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      }
+    ]
+  },
+  "Final Victor": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 12
+        }
+      },
+      {
+        "percent": {
+          "ATK": 14
+        }
+      },
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 18
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      }
+    ]
+  },
+  "Destiny's Threads Forewoven": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 370.44,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect RES": 12
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 14
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 16
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 18
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 20
+        }
+      }
+    ]
+  },
+  "What Is Real?": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 423.36,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 24
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 30
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 36
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 42
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 48
+        }
+      }
+    ]
+  },
+  "It's Showtime": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Past Self in Mirror": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 60
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 70
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 80
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 90
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 100
+        }
+      }
+    ]
+  },
+  "Baptism of Pure Thought": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 20
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 23
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 26
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 29
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 32
+        }
+      }
+    ]
+  },
+  "An Instant Before A Gaze": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 36
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 42
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 48
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 54
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 60
+        }
+      }
+    ]
+  },
+  "Night of Fright": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 476.28,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Hey, Over Here": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 8
+        }
+      },
+      {
+        "percent": {
+          "HP": 9
+        }
+      },
+      {
+        "percent": {
+          "HP": 10
+        }
+      },
+      {
+        "percent": {
+          "HP": 11
+        }
+      },
+      {
+        "percent": {
+          "HP": 12
+        }
+      }
+    ]
+  },
+  "I Shall Be My Own Sword": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 582.12,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 20
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 23
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 26
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 29
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 32
+        }
+      }
+    ]
+  },
+  "Worrisome, Blissful": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 27
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 30
+        }
+      }
+    ]
+  },
+  "Patience Is All You Need": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Brighter Than the Sun": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 635.04,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 27
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 30
+        }
+      }
+    ]
+  },
+  "She Already Shut Her Eyes": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 1270.1,
+      "ATK": 423.36,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 24
+        }
+      },
+      {
+        "percent": {
+          "HP": 28
+        }
+      },
+      {
+        "percent": {
+          "HP": 32
+        }
+      },
+      {
+        "percent": {
+          "HP": 36
+        }
+      },
+      {
+        "percent": {
+          "HP": 40
+        }
+      }
+    ]
+  },
+  "Solitary Healing": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 20
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 25
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 30
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 35
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 40
+        }
+      }
+    ]
+  },
+  "The Unreachable Side": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1270.1,
+      "ATK": 582.12,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 27
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 30
+        }
+      }
+    ]
+  },
+  "Echoes of the Coffin": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 582.12,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      },
+      {
+        "percent": {
+          "ATK": 36
+        }
+      },
+      {
+        "percent": {
+          "ATK": 40
+        }
+      }
+    ]
+  },
+  "Incessant Rain": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect Hit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 28
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 32
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 36
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 40
+        }
+      }
+    ]
+  },
+  "Before the Tutorial Mission Starts": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect Hit Rate": 20
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 25
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 30
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 35
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 40
+        }
+      }
+    ]
+  },
+  "Something Irreplaceable": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 582.12,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      },
+      {
+        "percent": {
+          "ATK": 36
+        }
+      },
+      {
+        "percent": {
+          "ATK": 40
+        }
+      }
+    ]
+  },
+  "On the Fall of an Aeon": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 529.2,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "But the Battle Isn't Over": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 529.2,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Before Dawn": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 36
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 42
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 48
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 54
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 60
+        }
+      }
+    ]
+  },
+  "Night on the Milky Way": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 1164.2,
+      "ATK": 582.12,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Sleep Like the Dead": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit DMG": 30
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 35
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 40
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 45
+        }
+      },
+      {
+        "flat": {
+          "Crit DMG": 50
+        }
+      }
+    ]
+  },
+  "In the Night": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 27
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 30
+        }
+      }
+    ]
+  },
+  "Cruising in the Stellar Sea": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 529.2,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 8
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 10
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 14
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 16
+        }
+      }
+    ]
+  },
+  "Moment of Victory": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 595.35
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "DEF": 24
+        }
+      },
+      {
+        "percent": {
+          "DEF": 28
+        }
+      },
+      {
+        "percent": {
+          "DEF": 32
+        }
+      },
+      {
+        "percent": {
+          "DEF": 36
+        }
+      },
+      {
+        "percent": {
+          "DEF": 40
+        }
+      }
+    ]
+  },
+  "Texture of Memories": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 423.36,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect RES": 8
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 10
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 12
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 14
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 16
+        }
+      }
+    ]
+  },
+  "Time Waits for No One": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 1270.1,
+      "ATK": 476.28,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 18
+        }
+      },
+      {
+        "percent": {
+          "HP": 21
+        }
+      },
+      {
+        "percent": {
+          "HP": 24
+        }
+      },
+      {
+        "percent": {
+          "HP": 27
+        }
+      },
+      {
+        "percent": {
+          "HP": 30
+        }
+      }
+    ]
+  },
+  "In the Name of the World": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 582.12,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Nowhere to Run": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 529.2,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 30
+        }
+      },
+      {
+        "percent": {
+          "ATK": 36
+        }
+      },
+      {
+        "percent": {
+          "ATK": 42
+        }
+      },
+      {
+        "percent": {
+          "ATK": 48
+        }
+      }
+    ]
+  },
+  "Woof! Walk Time!": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 10
+        }
+      },
+      {
+        "percent": {
+          "ATK": 12.5
+        }
+      },
+      {
+        "percent": {
+          "ATK": 15
+        }
+      },
+      {
+        "percent": {
+          "ATK": 17.5
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      }
+    ]
+  },
+  "Under the Blue Sky": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      }
+    ]
+  },
+  "A Secret Vow": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "The Moles Welcome You": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Carve the Moon, Weave the Clouds": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Past and Future": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Dance! Dance! Dance!": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Planetary Rendezvous": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 423.36,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Memories of the Past": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 28
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 35
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 42
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 49
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 56
+        }
+      }
+    ]
+  },
+  "Today Is Another Peaceful Day": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 529.2,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "The Seriousness of Breakfast": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Geniuses' Repose": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      }
+    ]
+  },
+  "Make the World Clamor": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "The Birth of the Self": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Return to Darkness": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 529.2,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Crit Rate": 12
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 15
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 18
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 21
+        }
+      },
+      {
+        "flat": {
+          "Crit Rate": 24
+        }
+      }
+    ]
+  },
+  "River Flows in Spring": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Subscribe for More!": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Swordplay": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Only Silence Remains": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "ATK": 16
+        }
+      },
+      {
+        "percent": {
+          "ATK": 20
+        }
+      },
+      {
+        "percent": {
+          "ATK": 24
+        }
+      },
+      {
+        "percent": {
+          "ATK": 28
+        }
+      },
+      {
+        "percent": {
+          "ATK": 32
+        }
+      }
+    ]
+  },
+  "This Is Me!": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 370.44,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "DEF": 16
+        }
+      },
+      {
+        "percent": {
+          "DEF": 20
+        }
+      },
+      {
+        "percent": {
+          "DEF": 24
+        }
+      },
+      {
+        "percent": {
+          "DEF": 28
+        }
+      },
+      {
+        "percent": {
+          "DEF": 32
+        }
+      }
+    ]
+  },
+  "We Are Wildfire": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 740.9,
+      "ATK": 740.9,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Trend of the Universal Market": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 370.44,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "DEF": 16
+        }
+      },
+      {
+        "percent": {
+          "DEF": 20
+        }
+      },
+      {
+        "percent": {
+          "DEF": 24
+        }
+      },
+      {
+        "percent": {
+          "DEF": 28
+        }
+      },
+      {
+        "percent": {
+          "DEF": 32
+        }
+      }
+    ]
+  },
+  "Landau's Choice": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Day One of My New Life": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 370.44,
+      "DEF": 463.05
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "DEF": 16
+        }
+      },
+      {
+        "percent": {
+          "DEF": 18
+        }
+      },
+      {
+        "percent": {
+          "DEF": 20
+        }
+      },
+      {
+        "percent": {
+          "DEF": 22
+        }
+      },
+      {
+        "percent": {
+          "DEF": 24
+        }
+      }
+    ]
+  },
+  "Warmth Shortens Cold Nights": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 370.44,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "HP": 16
+        }
+      },
+      {
+        "percent": {
+          "HP": 20
+        }
+      },
+      {
+        "percent": {
+          "HP": 24
+        }
+      },
+      {
+        "percent": {
+          "HP": 28
+        }
+      },
+      {
+        "percent": {
+          "HP": 32
+        }
+      }
+    ]
+  },
+  "Quid Pro Quo": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Perfect Timing": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect RES": 16
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 20
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 24
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 28
+        }
+      },
+      {
+        "flat": {
+          "Effect RES": 32
+        }
+      }
+    ]
+  },
+  "Shared Feeling": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 423.36,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Post-Op Conversation": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 423.36,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "We Will Meet Again": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 529.2,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Fermata": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Break Effect": 16
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 20
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 24
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 28
+        }
+      },
+      {
+        "flat": {
+          "Break Effect": 32
+        }
+      }
+    ]
+  },
+  "Resolution Shines As Pearls of Sweat": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Eyes of the Prey": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {
+        "flat": {
+          "Effect Hit Rate": 20
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 25
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 30
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 35
+        }
+      },
+      {
+        "flat": {
+          "Effect Hit Rate": 40
+        }
+      }
+    ]
+  },
+  "Good Night and Sleep Well": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 476.28,
+      "DEF": 330.75
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Sneering": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 740.88,
+      "ATK": 370.44,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Lingering Tears": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 846.72,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Mutual Demise": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 370.44,
+      "DEF": 198.45
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Shattered Home": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 370.44,
+      "DEF": 198.45
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Collapsing Sky": {
+    "path": "Destruction",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 370.44,
+      "DEF": 198.45
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Mediation": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Meshing Cogs": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Chorus": {
+    "path": "Harmony",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Sagacity": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 740.9,
+      "ATK": 370.44,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Passkey": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 740.9,
+      "ATK": 370.44,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Data Bank": {
+    "path": "Erudition",
+    "baseStats": {
+      "HP": 740.9,
+      "ATK": 370.44,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Adversarial": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 740.9,
+      "ATK": 370.44,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Darting Arrow": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 740.9,
+      "ATK": 370.44,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Arrows": {
+    "path": "Hunt",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Pioneering": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 264.6,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Defense": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 264.6,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Amber": {
+    "path": "Preservation",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 264.6,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "DEF": 16
+        }
+      },
+      {
+        "percent": {
+          "DEF": 20
+        }
+      },
+      {
+        "percent": {
+          "DEF": 24
+        }
+      },
+      {
+        "percent": {
+          "DEF": 28
+        }
+      },
+      {
+        "percent": {
+          "DEF": 32
+        }
+      }
+    ]
+  },
+  "Multiplication": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 317.52,
+      "DEF": 198.45
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Fine Fruit": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 317.52,
+      "DEF": 198.45
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Cornucopia": {
+    "path": "Abundance",
+    "baseStats": {
+      "HP": 952.6,
+      "ATK": 264.6,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Hidden Shadow": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Loop": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
+  "Void": {
+    "path": "Nihility",
+    "baseStats": {
+      "HP": 846.7,
+      "ATK": 317.52,
+      "DEF": 264.6
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  }
+}

@@ -1,0 +1,169 @@
+{
+  "(None)": {
+    "2pc": {}
+  },
+  "Cosmic Life Sciences Institute": {
+    "2pc": {}
+  },
+  "Fallen Star Anchorage": {
+    "2pc": {
+      "flat": {
+        "Crit Rate": 8
+      }
+    }
+  },
+  "Punklorde Stage Zero": {
+    "2pc": {}
+  },
+  "City of Converging Stars": {
+    "2pc": {}
+  },
+  "Tengoku@Livestream": {
+    "2pc": {
+      "flat": {
+        "Crit DMG": 16
+      }
+    }
+  },
+  "Amphoreus, The Eternal Land": {
+    "2pc": {
+      "flat": {
+        "Crit Rate": 8
+      }
+    }
+  },
+  "Revelry by the Sea": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    }
+  },
+  "Arcadia of Woven Dreams": {
+    "2pc": {}
+  },
+  "Giant Tree of Rapt Brooding": {
+    "2pc": {
+      "percent": {
+        "SPD": 6
+      }
+    }
+  },
+  "Bone Collection's Serene Demesne": {
+    "2pc": {
+      "percent": {
+        "HP": 12
+      }
+    }
+  },
+  "The Wondrous BananAmusement Park": {
+    "2pc": {
+      "flat": {
+        "Crit DMG": 16
+      }
+    }
+  },
+  "Lushaka, the Sunken Seas": {
+    "2pc": {}
+  },
+  "Forge of the Kalpagni Lantern": {
+    "2pc": {
+      "percent": {
+        "SPD": 6
+      }
+    }
+  },
+  "Duran, Dynasty of Running Wolves": {
+    "2pc": {}
+  },
+  "Izumo Gensei and Takama Divine Realm": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    }
+  },
+  "Sigonia, the Unclaimed Desolation": {
+    "2pc": {
+      "flat": {
+        "Crit Rate": 4
+      }
+    }
+  },
+  "Penacony, Land of the Dreams": {
+    "2pc": {}
+  },
+  "Firmament Frontline: Glamoth": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    }
+  },
+  "Broken Keel": {
+    "2pc": {
+      "flat": {
+        "Effect RES": 10
+      }
+    }
+  },
+  "Rutilant Arena": {
+    "2pc": {
+      "flat": {
+        "Crit Rate": 8
+      }
+    }
+  },
+  "Sprightly Vonwacq": {
+    "2pc": {}
+  },
+  "Talia: Kingdom of Banditry": {
+    "2pc": {
+      "flat": {
+        "Break Effect": 16
+      }
+    }
+  },
+  "Inert Salsotto": {
+    "2pc": {
+      "flat": {
+        "Crit Rate": 8
+      }
+    }
+  },
+  "Celestial Differentiator": {
+    "2pc": {
+      "flat": {
+        "Crit DMG": 16
+      }
+    }
+  },
+  "Belobog of the Architects": {
+    "2pc": {
+      "percent": {
+        "DEF": 15
+      }
+    }
+  },
+  "Pan-Cosmic Commercial Enterprise": {
+    "2pc": {
+      "flat": {
+        "Effect Hit Rate": 10
+      }
+    }
+  },
+  "Fleet of the Ageless": {
+    "2pc": {
+      "percent": {
+        "HP": 12
+      }
+    }
+  },
+  "Space Sealing Station": {
+    "2pc": {
+      "percent": {
+        "ATK": 12
+      }
+    }
+  }
+}

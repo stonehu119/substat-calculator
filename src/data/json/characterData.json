@@ -1,0 +1,1558 @@
+{
+  "Robin • Summeretto": {
+    "path": "Remembrance",
+    "stats": {
+      "base": {
+        "HP": 1203.05,
+        "ATK": 601.52,
+        "DEF": 485.1,
+        "SPD": 98
+      },
+      "percent": {
+        "HP": 18
+      },
+      "flat": {
+        "SPD": 14,
+        "Crit Rate": 6.7
+      }
+    }
+  },
+  "Aventurine • Waveflair": {
+    "path": "Elation",
+    "stats": {
+      "base": {
+        "HP": 1164.24,
+        "ATK": 485.1,
+        "DEF": 606.38,
+        "SPD": 107
+      },
+      "flat": {
+        "SPD": 9,
+        "Crit Rate": 18.7
+      }
+    }
+  },
+  "Rin Tohsaka": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1047.82,
+        "ATK": 698.54,
+        "DEF": 460.84,
+        "SPD": 102
+      },
+      "percent": {
+        "ATK": 18
+      },
+      "flat": {
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Gilgamesh": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1125.43,
+        "ATK": 717.95,
+        "DEF": 509.355,
+        "SPD": 97
+      },
+      "percent": {
+        "ATK": 18
+      },
+      "flat": {
+        "Crit Rate": 18.7
+      }
+    }
+  },
+  "Himeko • Nova": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1125.43,
+        "ATK": 756.76,
+        "DEF": 485.1,
+        "SPD": 98
+      },
+      "percent": {
+        "ATK": 28
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Mortenax Blade": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1358.28,
+        "ATK": 543.312,
+        "DEF": 485.1,
+        "SPD": 107
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Evanescia": {
+    "path": "Elation",
+    "stats": {
+      "base": {
+        "HP": 1047.82,
+        "ATK": 737.35,
+        "DEF": 460.845,
+        "SPD": 104
+      },
+      "flat": {
+        "SPD": 5,
+        "Crit Rate": 18.7
+      }
+    }
+  },
+  "Silver Wolf Lv.999": {
+    "path": "Elation",
+    "stats": {
+      "base": {
+        "HP": 1047.82,
+        "ATK": 388.08,
+        "DEF": 654.89,
+        "SPD": 110
+      },
+      "flat": {
+        "SPD": 9,
+        "Crit Rate": 18.7
+      }
+    }
+  },
+  "Elation MC": {
+    "path": "Elation",
+    "stats": {
+      "base": {
+        "HP": 1086.62,
+        "ATK": 465.7,
+        "DEF": 630.63,
+        "SPD": 106
+      },
+      "percent": {
+        "ATK": 28
+      },
+      "flat": {
+        "Crit Rate": 12,
+        "Crit DMG": 13
+      }
+    }
+  },
+  "Ashveil": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 853.78,
+        "ATK": 776.16,
+        "DEF": 388.08,
+        "SPD": 106
+      },
+      "percent": {
+        "ATK": 10
+      },
+      "flat": {
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Sparxie": {
+    "path": "Elation",
+    "stats": {
+      "base": {
+        "HP": 1047.82,
+        "ATK": 640.33,
+        "DEF": 460.85,
+        "SPD": 107
+      },
+      "flat": {
+        "Crit Rate": 12,
+        "Crit DMG": 13.3
+      }
+    }
+  },
+  "Yao Guang": {
+    "path": "Elation",
+    "stats": {
+      "base": {
+        "HP": 1241.86,
+        "ATK": 465.7,
+        "DEF": 654.88,
+        "SPD": 101
+      },
+      "flat": {
+        "SPD": 9,
+        "Crit Rate": 18.7
+      }
+    }
+  },
+  "The Dahlia": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1086.62,
+        "ATK": 679.14,
+        "DEF": 606.38,
+        "SPD": 96
+      },
+      "flat": {
+        "SPD": 5,
+        "Break Effect": 37.3,
+        "Effect RES": 18
+      }
+    }
+  },
+  "Cyrene": {
+    "path": "Remembrance",
+    "stats": {
+      "base": {
+        "HP": 1397.1,
+        "ATK": 446.29,
+        "DEF": 582.12,
+        "SPD": 101
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "SPD": 9,
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Dan Heng PT": {
+    "path": "Preservation",
+    "stats": {
+      "base": {
+        "HP": 1047.8,
+        "ATK": 485.1,
+        "DEF": 848.92,
+        "SPD": 97
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 28,
+        "DEF": 22.5
+      }
+    }
+  },
+  "Evernight": {
+    "path": "Remembrance",
+    "stats": {
+      "base": {
+        "HP": 1319.5,
+        "ATK": 543.31,
+        "DEF": 582.12,
+        "SPD": 99
+      },
+      "percent": {
+        "HP": 18
+      },
+      "flat": {
+        "Crit Rate": 18.7,
+        "Crit DMG": 13.3
+      }
+    }
+  },
+  "Cerydra": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1358.3,
+        "ATK": 620.93,
+        "DEF": 620.93,
+        "SPD": 99
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 18
+      }
+    }
+  },
+  "Hysilens": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1203,
+        "ATK": 601.52,
+        "DEF": 601.52,
+        "SPD": 102
+      },
+      "percent": {
+        "ATK": 18
+      },
+      "flat": {
+        "SPD": 14,
+        "Effect Hit Rate": 10
+      }
+    }
+  },
+  "Archer": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 1164.2,
+        "ATK": 620.93,
+        "DEF": 485.1,
+        "SPD": 105
+      },
+      "percent": {
+        "ATK": 18
+      },
+      "flat": {
+        "Crit Rate": 6.7
+      }
+    }
+  },
+  "Saber": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1241.9,
+        "ATK": 601.52,
+        "DEF": 654.88,
+        "SPD": 101
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Phainon": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1435.9,
+        "ATK": 582.12,
+        "DEF": 703.39,
+        "SPD": 94
+      },
+      "flat": {
+        "SPD": 5,
+        "Crit Rate": 12,
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Cipher": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 931.4,
+        "ATK": 640.33,
+        "DEF": 509.36,
+        "SPD": 106
+      },
+      "flat": {
+        "SPD": 14,
+        "Effect Hit Rate": 10
+      }
+    }
+  },
+  "Hyacine": {
+    "path": "Remembrance",
+    "stats": {
+      "base": {
+        "HP": 1086.6,
+        "ATK": 388.08,
+        "DEF": 630.63,
+        "SPD": 110
+      },
+      "percent": {
+        "HP": 18
+      },
+      "flat": {
+        "SPD": 14,
+        "Effect RES": 10
+      }
+    }
+  },
+  "Anaxa": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 970.2,
+        "ATK": 756.76,
+        "DEF": 557.87,
+        "SPD": 97
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Castorice": {
+    "path": "Remembrance",
+    "stats": {
+      "base": {
+        "HP": 1629.9,
+        "ATK": 523.91,
+        "DEF": 485.1,
+        "SPD": 95
+      },
+      "flat": {
+        "Crit Rate": 18.7,
+        "Crit DMG": 13.3
+      }
+    }
+  },
+  "Mydei": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1552.3,
+        "ATK": 426.89,
+        "DEF": 194.04,
+        "SPD": 95
+      },
+      "percent": {
+        "HP": 18
+      },
+      "flat": {
+        "SPD": 5,
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Tribbie": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1047.8,
+        "ATK": 523.91,
+        "DEF": 727.65,
+        "SPD": 96
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "Crit Rate": 12,
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Aglaea": {
+    "path": "Remembrance",
+    "stats": {
+      "base": {
+        "HP": 1241.9,
+        "ATK": 698.54,
+        "DEF": 485.1,
+        "SPD": 102
+      },
+      "percent": {
+        "DEF": 12.5
+      },
+      "flat": {
+        "Crit Rate": 12,
+        "Effect RES": 22.4
+      }
+    }
+  },
+  "The Herta": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1164.2,
+        "ATK": 679.14,
+        "DEF": 485.1,
+        "SPD": 99
+      },
+      "percent": {
+        "ATK": 18
+      },
+      "flat": {
+        "SPD": 5
+      }
+    }
+  },
+  "Remembrance MC": {
+    "path": "Remembrance",
+    "stats": {
+      "base": {
+        "HP": 1047.8,
+        "ATK": 543.31,
+        "DEF": 630.63,
+        "SPD": 103
+      },
+      "percent": {
+        "HP": 14,
+        "ATK": 14
+      },
+      "flat": {
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Fugue": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1125.4,
+        "ATK": 582.12,
+        "DEF": 557.87,
+        "SPD": 102
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "SPD": 14,
+        "Break Effect": 24
+      }
+    }
+  },
+  "Sunday": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1241.9,
+        "ATK": 640.33,
+        "DEF": 533.61,
+        "SPD": 96
+      },
+      "percent": {
+        "DEF": 12.5
+      },
+      "flat": {
+        "Crit DMG": 37.3,
+        "Effect RES": 18
+      }
+    }
+  },
+  "Rappa": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1086.6,
+        "ATK": 717.95,
+        "DEF": 460.85,
+        "SPD": 96
+      },
+      "percent": {
+        "ATK": 28
+      },
+      "flat": {
+        "SPD": 9,
+        "Break Effect": 13.3
+      }
+    }
+  },
+  "Lingsha": {
+    "path": "Abundance",
+    "stats": {
+      "base": {
+        "HP": 1358.3,
+        "ATK": 679.14,
+        "DEF": 436.59,
+        "SPD": 98
+      },
+      "percent": {
+        "HP": 18,
+        "ATK": 10
+      },
+      "flat": {
+        "Break Effect": 37.3
+      }
+    }
+  },
+  "Moze": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 811.4,
+        "ATK": 599.76,
+        "DEF": 352.8,
+        "SPD": 111
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 18
+      },
+      "flat": {
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Feixiao": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 1047.8,
+        "ATK": 601.52,
+        "DEF": 388.08,
+        "SPD": 112
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 12.5
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Jiaoqiu": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1358.3,
+        "ATK": 601.52,
+        "DEF": 509.36,
+        "SPD": 98
+      },
+      "flat": {
+        "SPD": 5,
+        "Effect Hit Rate": 28
+      }
+    }
+  },
+  "Yunli": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1358.3,
+        "ATK": 679.14,
+        "DEF": 679.14,
+        "SPD": 94
+      },
+      "percent": {
+        "HP": 18,
+        "ATK": 28
+      },
+      "flat": {
+        "Crit Rate": 6.7
+      }
+    }
+  },
+  "March 7th (Hunt)": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 1058.4,
+        "ATK": 564.48,
+        "DEF": 441,
+        "SPD": 102
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 12.5
+      },
+      "flat": {
+        "Crit DMG": 24
+      }
+    }
+  },
+  "Jade": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1086.6,
+        "ATK": 659.74,
+        "DEF": 509.36,
+        "SPD": 103
+      },
+      "percent": {
+        "ATK": 18
+      },
+      "flat": {
+        "Effect RES": 10
+      }
+    }
+  },
+  "Firefly": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 815,
+        "ATK": 523.91,
+        "DEF": 776.16,
+        "SPD": 104
+      },
+      "flat": {
+        "SPD": 5,
+        "Break Effect": 37.3,
+        "Effect RES": 18
+      }
+    }
+  },
+  "Boothill": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 1203,
+        "ATK": 620.93,
+        "DEF": 436.59,
+        "SPD": 107
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 18
+      },
+      "flat": {
+        "Break Effect": 37.3
+      }
+    }
+  },
+  "Robin": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1280.7,
+        "ATK": 640.33,
+        "DEF": 485.1,
+        "SPD": 102
+      },
+      "percent": {
+        "HP": 18,
+        "ATK": 28
+      },
+      "flat": {
+        "SPD": 5
+      }
+    }
+  },
+  "Harmony MC": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1086.6,
+        "ATK": 446.29,
+        "DEF": 679.14,
+        "SPD": 105
+      },
+      "flat": {
+        "Break Effect": 37.3,
+        "Effect RES": 10
+      }
+    }
+  },
+  "Aventurine": {
+    "path": "Preservation",
+    "stats": {
+      "base": {
+        "HP": 1203,
+        "ATK": 446.29,
+        "DEF": 654.88,
+        "SPD": 106
+      },
+      "percent": {
+        "DEF": 35
+      },
+      "flat": {
+        "Effect RES": 10
+      }
+    }
+  },
+  "Acheron": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1125.4,
+        "ATK": 698.54,
+        "DEF": 436.59,
+        "SPD": 101
+      },
+      "percent": {
+        "ATK": 28
+      },
+      "flat": {
+        "Crit DMG": 24
+      }
+    }
+  },
+  "Gallagher": {
+    "path": "Abundance",
+    "stats": {
+      "base": {
+        "HP": 1305.4,
+        "ATK": 529.2,
+        "DEF": 441,
+        "SPD": 98
+      },
+      "percent": {
+        "HP": 18
+      },
+      "flat": {
+        "Break Effect": 13.3,
+        "Effect RES": 28
+      }
+    }
+  },
+  "Sparkle": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1397.1,
+        "ATK": 523.91,
+        "DEF": 485.1,
+        "SPD": 101
+      },
+      "percent": {
+        "HP": 28
+      },
+      "flat": {
+        "Crit DMG": 24,
+        "Effect RES": 10
+      }
+    }
+  },
+  "Misha": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1270.1,
+        "ATK": 599.76,
+        "DEF": 396.9,
+        "SPD": 96
+      },
+      "percent": {
+        "DEF": 22.5
+      },
+      "flat": {
+        "Crit Rate": 6.7
+      }
+    }
+  },
+  "Black Swan": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1086.6,
+        "ATK": 659.74,
+        "DEF": 485.1,
+        "SPD": 102
+      },
+      "percent": {
+        "ATK": 28
+      },
+      "flat": {
+        "Effect Hit Rate": 10
+      }
+    }
+  },
+  "Dr. Ratio": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 1047.8,
+        "ATK": 776.16,
+        "DEF": 460.85,
+        "SPD": 103
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 12.5
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Xueyi": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1058.4,
+        "ATK": 599.76,
+        "DEF": 396.9,
+        "SPD": 103
+      },
+      "percent": {
+        "HP": 18
+      },
+      "flat": {
+        "Break Effect": 37.3
+      }
+    }
+  },
+  "Ruan Mei": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1086.6,
+        "ATK": 659.74,
+        "DEF": 485.1,
+        "SPD": 104
+      },
+      "percent": {
+        "DEF": 22.5
+      },
+      "flat": {
+        "SPD": 5,
+        "Break Effect": 37.3
+      }
+    }
+  },
+  "Hanya": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 917.3,
+        "ATK": 564.48,
+        "DEF": 352.8,
+        "SPD": 110
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 28
+      },
+      "flat": {
+        "SPD": 9
+      }
+    }
+  },
+  "Argenti": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1047.8,
+        "ATK": 737.35,
+        "DEF": 363.82,
+        "SPD": 103
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 28
+      }
+    }
+  },
+  "Huohuo": {
+    "path": "Abundance",
+    "stats": {
+      "base": {
+        "HP": 1358.3,
+        "ATK": 601.52,
+        "DEF": 509.36,
+        "SPD": 98
+      },
+      "percent": {
+        "HP": 28
+      },
+      "flat": {
+        "SPD": 5,
+        "Effect RES": 18
+      }
+    }
+  },
+  "Guinaifen": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 882,
+        "ATK": 582.12,
+        "DEF": 441,
+        "SPD": 106
+      },
+      "flat": {
+        "Break Effect": 24,
+        "Effect Hit Rate": 10
+      }
+    }
+  },
+  "Topaz": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 931.4,
+        "ATK": 620.93,
+        "DEF": 412.33,
+        "SPD": 110
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Jingliu": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1435.9,
+        "ATK": 679.14,
+        "DEF": 485.1,
+        "SPD": 96
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "SPD": 9,
+        "Crit DMG": 37.3
+      }
+    }
+  },
+  "Lynx": {
+    "path": "Abundance",
+    "stats": {
+      "base": {
+        "HP": 1058.4,
+        "ATK": 493.92,
+        "DEF": 551.25,
+        "SPD": 100
+      },
+      "percent": {
+        "HP": 28,
+        "DEF": 22.5
+      },
+      "flat": {
+        "Effect RES": 10
+      }
+    }
+  },
+  "Fu Xuan": {
+    "path": "Preservation",
+    "stats": {
+      "base": {
+        "HP": 1474.7,
+        "ATK": 465.7,
+        "DEF": 606.38,
+        "SPD": 100
+      },
+      "percent": {
+        "HP": 18
+      },
+      "flat": {
+        "Crit Rate": 18.7,
+        "Effect RES": 10
+      }
+    }
+  },
+  "Dan Heng IL": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1241.9,
+        "ATK": 698.54,
+        "DEF": 363.82,
+        "SPD": 102
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Luka": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 917.3,
+        "ATK": 582.12,
+        "DEF": 485.1,
+        "SPD": 103
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 12.5
+      },
+      "flat": {
+        "Effect Hit Rate": 18
+      }
+    }
+  },
+  "Kafka": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1086.6,
+        "ATK": 679.14,
+        "DEF": 485.1,
+        "SPD": 100
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 28
+      },
+      "flat": {
+        "Effect Hit Rate": 18
+      }
+    }
+  },
+  "Blade": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1358.3,
+        "ATK": 543.31,
+        "DEF": 485.1,
+        "SPD": 97
+      },
+      "percent": {
+        "HP": 28
+      },
+      "flat": {
+        "Crit Rate": 12,
+        "Effect RES": 10
+      }
+    }
+  },
+  "Yukong": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 917.3,
+        "ATK": 599.76,
+        "DEF": 374.85,
+        "SPD": 107
+      },
+      "percent": {
+        "HP": 18,
+        "ATK": 10
+      }
+    }
+  },
+  "Luocha": {
+    "path": "Abundance",
+    "stats": {
+      "base": {
+        "HP": 1280.7,
+        "ATK": 756.76,
+        "DEF": 363.82,
+        "SPD": 101
+      },
+      "percent": {
+        "HP": 18,
+        "ATK": 28,
+        "DEF": 12.5
+      }
+    }
+  },
+  "Silver Wolf": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1047.8,
+        "ATK": 640.33,
+        "DEF": 640.33,
+        "SPD": 107
+      },
+      "percent": {
+        "ATK": 28
+      },
+      "flat": {
+        "Effect Hit Rate": 18
+      }
+    }
+  },
+  "Jing Yuan": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1164.2,
+        "ATK": 698.54,
+        "DEF": 485.1,
+        "SPD": 99
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 12.5
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
+  "Seele": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 931.4,
+        "ATK": 640.33,
+        "DEF": 363.82,
+        "SPD": 115
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 12.5
+      },
+      "flat": {
+        "Crit DMG": 24
+      }
+    }
+  },
+  "Arlan": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1199.5,
+        "ATK": 599.76,
+        "DEF": 330.75,
+        "SPD": 102
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 28
+      },
+      "flat": {
+        "Effect RES": 18
+      }
+    }
+  },
+  "Asta": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1023.1,
+        "ATK": 511.56,
+        "DEF": 463.05,
+        "SPD": 106
+      },
+      "percent": {
+        "DEF": 22.5
+      },
+      "flat": {
+        "Crit Rate": 6.7
+      }
+    }
+  },
+  "Bailu": {
+    "path": "Abundance",
+    "stats": {
+      "base": {
+        "HP": 1319.5,
+        "ATK": 562.72,
+        "DEF": 485.1,
+        "SPD": 98
+      },
+      "percent": {
+        "HP": 28,
+        "DEF": 22.5
+      },
+      "flat": {
+        "Effect RES": 10
+      }
+    }
+  },
+  "Bronya": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 1241.9,
+        "ATK": 582.12,
+        "DEF": 533.61,
+        "SPD": 99
+      },
+      "flat": {
+        "Crit DMG": 24,
+        "Effect RES": 10
+      }
+    }
+  },
+  "Clara": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1241.9,
+        "ATK": 737.35,
+        "DEF": 485.1,
+        "SPD": 90
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 28
+      }
+    }
+  },
+  "Destruction MC": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1203,
+        "ATK": 620.93,
+        "DEF": 460.85,
+        "SPD": 100
+      },
+      "percent": {
+        "HP": 18,
+        "ATK": 28,
+        "DEF": 12.5
+      }
+    }
+  },
+  "Dan Heng": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 882,
+        "ATK": 546.84,
+        "DEF": 396.9,
+        "SPD": 110
+      },
+      "percent": {
+        "ATK": 18,
+        "DEF": 12.5
+      }
+    }
+  },
+  "Gepard": {
+    "path": "Preservation",
+    "stats": {
+      "base": {
+        "HP": 1397.1,
+        "ATK": 543.31,
+        "DEF": 654.88,
+        "SPD": 92
+      },
+      "percent": {
+        "DEF": 12.5
+      },
+      "flat": {
+        "Effect RES": 18
+      }
+    }
+  },
+  "Herta": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 952.6,
+        "ATK": 582.12,
+        "DEF": 396.9,
+        "SPD": 100
+      },
+      "percent": {
+        "DEF": 22.5
+      },
+      "flat": {
+        "Crit Rate": 6.7
+      }
+    }
+  },
+  "Himeko": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1047.8,
+        "ATK": 756.76,
+        "DEF": 436.59,
+        "SPD": 96
+      },
+      "percent": {
+        "ATK": 18
+      },
+      "flat": {
+        "Effect RES": 10
+      }
+    }
+  },
+  "Hook": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1340.6,
+        "ATK": 617.4,
+        "DEF": 352.8,
+        "SPD": 94
+      },
+      "percent": {
+        "HP": 18,
+        "ATK": 28
+      },
+      "flat": {
+        "Crit DMG": 13.3
+      }
+    }
+  },
+  "March 7th": {
+    "path": "Preservation",
+    "stats": {
+      "base": {
+        "HP": 1058.4,
+        "ATK": 511.56,
+        "DEF": 573.3,
+        "SPD": 101
+      },
+      "percent": {
+        "DEF": 22.5
+      },
+      "flat": {
+        "Effect RES": 10
+      }
+    }
+  },
+  "Natasha": {
+    "path": "Abundance",
+    "stats": {
+      "base": {
+        "HP": 1164.2,
+        "ATK": 476.28,
+        "DEF": 507.15,
+        "SPD": 98
+      },
+      "percent": {
+        "HP": 28,
+        "DEF": 12.5
+      },
+      "flat": {
+        "Effect RES": 18
+      }
+    }
+  },
+  "Pela": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 987.8,
+        "ATK": 546.84,
+        "DEF": 463.05,
+        "SPD": 105
+      },
+      "percent": {
+        "ATK": 18
+      },
+      "flat": {
+        "Effect Hit Rate": 10
+      }
+    }
+  },
+  "Preservation MC": {
+    "path": "Preservation",
+    "stats": {
+      "base": {
+        "HP": 1241.9,
+        "ATK": 601.52,
+        "DEF": 606.38,
+        "SPD": 95
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 18,
+        "DEF": 35
+      }
+    }
+  },
+  "Qingque": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 1023.1,
+        "ATK": 652.68,
+        "DEF": 652.68,
+        "SPD": 98
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 12.5
+      }
+    }
+  },
+  "Sampo": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1023.1,
+        "ATK": 617.4,
+        "DEF": 396.9,
+        "SPD": 102
+      },
+      "percent": {
+        "ATK": 28
+      },
+      "flat": {
+        "Effect Hit Rate": 18,
+        "Effect RES": 10
+      }
+    }
+  },
+  "Serval": {
+    "path": "Erudition",
+    "stats": {
+      "base": {
+        "HP": 917.3,
+        "ATK": 652.68,
+        "DEF": 374.85,
+        "SPD": 104
+      },
+      "flat": {
+        "Crit Rate": 18.7,
+        "Effect Hit Rate": 18,
+        "Effect RES": 10
+      }
+    }
+  },
+  "Sushang": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 917.3,
+        "ATK": 564.48,
+        "DEF": 418.95,
+        "SPD": 107
+      },
+      "percent": {
+        "HP": 18,
+        "ATK": 28,
+        "DEF": 12.5
+      }
+    }
+  },
+  "Tingyun": {
+    "path": "Harmony",
+    "stats": {
+      "base": {
+        "HP": 846.7,
+        "ATK": 529.2,
+        "DEF": 396.9,
+        "SPD": 112
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 22.5
+      }
+    }
+  },
+  "Welt": {
+    "path": "Nihility",
+    "stats": {
+      "base": {
+        "HP": 1125.4,
+        "ATK": 620.93,
+        "DEF": 509.36,
+        "SPD": 102
+      },
+      "percent": {
+        "ATK": 28
+      },
+      "flat": {
+        "Effect RES": 10
+      }
+    }
+  },
+  "Yanqing": {
+    "path": "Hunt",
+    "stats": {
+      "base": {
+        "HP": 892.6,
+        "ATK": 892.6,
+        "DEF": 412.33,
+        "SPD": 109
+      },
+      "percent": {
+        "HP": 10,
+        "ATK": 28
+      }
+    }
+  }
+}

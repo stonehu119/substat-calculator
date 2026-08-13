@@ -1,14 +1,11 @@
-import { NONE, PLANAR_SETS, RELIC_SETS_2PC, RELIC_SETS_4PC, type PlanarSet, type RelicSet } from '../data/relics'
+import { NONE, PLANAR_SETS, RELIC_SETS_2PC, RELIC_SETS_4PC, type PlanarSet, type RelicSet } from '../data/data'
 import SearchableDropdown from './SearchableDropdown'
-import { PLANAR_SET_ICONS, RELIC_SET_ICONS } from '../data/icons'
+import { planarIcon, relicIcon } from '../data/icons'
 
 const getRelicIconUrl = (displayValue: string): string | undefined => {
   const baseName = displayValue.replace(/ \([24]pc\)$/, '') as RelicSet
-  return RELIC_SET_ICONS[baseName]
+  return relicIcon(baseName)
 }
-
-const getPlanarIconUrl = (displayValue: string): string | undefined =>
-  PLANAR_SET_ICONS[displayValue as PlanarSet]
 
 interface RelicSetsProps {
   set1: string
@@ -74,7 +71,7 @@ export default function RelicSets({
           onChange={onPlanarChange}
           label="Planar set"
           placeholder="Select planar set"
-          getIconUrl={getPlanarIconUrl}
+          getIconUrl={planarIcon}
           priorityItems={priorityPlanarSets}
         />
       </div>

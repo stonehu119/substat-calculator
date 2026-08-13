@@ -8,7 +8,7 @@ import OutputStats from './components/OutputStats'
 import type { FormState } from './types/formState'
 import { createDefaultFormState } from './data/defaults'
 import { characterPathMatchesLC, countTotalRolls, inputFormToRollCount } from './data/logic'
-import type { Character } from './data/characters'
+import type { Character } from './data/data'
 import { CHARACTER_PREFERENCES } from './data/characterPreferences'
 
 const OLD_STORAGE_KEY = 'sub-counter-state'
