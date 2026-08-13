@@ -26,9 +26,6 @@
         "DEF": 606.38,
         "SPD": 107
       },
-      "percent": {
-        "HP": 18
-      },
       "flat": {
         "SPD": 9,
         "Crit Rate": 18.7
@@ -112,9 +109,6 @@
         "DEF": 460.845,
         "SPD": 104
       },
-      "percent": {
-        "HP": 18
-      },
       "flat": {
         "SPD": 5,
         "Crit Rate": 18.7
@@ -129,9 +123,6 @@
         "ATK": 388.08,
         "DEF": 654.89,
         "SPD": 110
-      },
-      "percent": {
-        "HP": 18
       },
       "flat": {
         "SPD": 9,
@@ -183,9 +174,6 @@
         "DEF": 460.85,
         "SPD": 107
       },
-      "percent": {
-        "HP": 18
-      },
       "flat": {
         "Crit Rate": 12,
         "Crit DMG": 13.3
@@ -201,9 +189,6 @@
         "DEF": 654.88,
         "SPD": 101
       },
-      "percent": {
-        "HP": 18
-      },
       "flat": {
         "SPD": 9,
         "Crit Rate": 18.7
@@ -218,9 +203,6 @@
         "ATK": 679.14,
         "DEF": 606.38,
         "SPD": 96
-      },
-      "percent": {
-        "HP": 18
       },
       "flat": {
         "SPD": 5,
