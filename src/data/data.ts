@@ -4,6 +4,11 @@ import type { Substat } from "./substats"
 import characterData from "./characterData.json"
 import lightconeData from "./lightconeData.json"
 
+interface StatMod {
+  base?: Partial<Record<Substat, number>>,
+  flat?: Partial<Record<Substat, number>>,
+  percent?: Partial<Record<Substat, number>>,
+}
 
 // -------------------------------- PATH DATA ---------------------------------
 
@@ -28,11 +33,7 @@ export type Character = keyof typeof characterData
 
 interface CharData {
   path: string,
-  stats: {
-    base: Partial<Record<Substat, number>>,
-    percent?: Partial<Record<Substat, number>>,
-    flat?: Partial<Record<Substat, number>>,
-  }
+  stats: StatMod
 }
 
 const charData = characterData satisfies Record<Character, CharData> as Record<Character, CharData>
@@ -46,7 +47,7 @@ export const CHARACTER_DATA: Record<Character, StatModifier> = Object.fromEntrie
 ) as Record<Character, StatModifier>
 
 export const CHARACTER_PATH: Record<Character, Path> = Object.fromEntries(
-  Object.entries(characterData).map(([name, data]) => [name, data.path])
+  Object.entries(charData).map(([name, data]) => [name, data.path])
 ) as Record<Character, Path>
 
 // --------------------------------- LC DATA ----------------------------------
@@ -56,25 +57,19 @@ export const SUPERIMPOSITION_LEVELS = ['S1', 'S2', 'S3', 'S4', 'S5']
 export const LIGHT_CONES = Object.keys(lightconeData)
 export type LightCone = keyof typeof lightconeData
 
-export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = Object.fromEntries(
-  Object.entries(lightconeData).map(([name, data]) => [name, {
-    base: new StatSet(data.baseStats)
-  }])
-) as Record<LightCone, StatModifier>
-
-interface PathStatMod {
-  base?: Partial<Record<Substat, number>>,
-  flat?: Partial<Record<Substat, number>>,
-  percent?: Partial<Record<Substat, number>>,
-}
-
 interface LCData {
   path: string,
   baseStats: Partial<Record<Substat, number>>,
-  pathStats: PathStatMod[],
+  pathStats: StatMod[],
 }
 
 const lcData = lightconeData satisfies Record<LightCone, LCData> as Record<LightCone, LCData>
+
+export const LIGHT_CONE_BASE_STATS: Record<LightCone, StatModifier> = Object.fromEntries(
+  Object.entries(lcData).map(([name, data]) => [name, {
+    base: new StatSet(data.baseStats)
+  }])
+) as Record<LightCone, StatModifier>
 
 export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = Object.fromEntries(
   Object.entries(lcData).map(([name, data]) => [name, data.pathStats.map((statmod) => {
@@ -87,5 +82,5 @@ export const LIGHT_CONE_PATH_STATS: Record<LightCone, Array<StatModifier>> = Obj
 ) as Record<LightCone, Array<StatModifier>>
 
 export const LIGHT_CONE_PATH: Record<LightCone, Path> = Object.fromEntries(
-  Object.entries(lightconeData).map(([name, data]) => [name, data.path])
+  Object.entries(lcData).map(([name, data]) => [name, data.path])
 ) as Record<LightCone, Path>
