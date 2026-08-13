@@ -1,5 +1,4 @@
-import type { Character, LightCone } from './data'
-import type { RelicSet, PlanarSet } from './relics'
+import type { Character, LightCone, RelicSet, PlanarSet  } from './data'
 import noneIconUrl from '../assets/none-icon.svg'
 
 const charIconFiles = import.meta.glob<string>('../assets/icons/characters/*.webp', { eager: true, query: '?url', import: 'default' })

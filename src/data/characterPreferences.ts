@@ -1,5 +1,4 @@
-import type { Character, LightCone } from './data'
-import type { PlanarSet, RelicSet } from './relics'
+import type { Character, LightCone, RelicSet, PlanarSet } from './data'
 
 export interface CharacterPreferences {
   lightCones?: readonly LightCone[]

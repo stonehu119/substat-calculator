@@ -1,4 +1,4 @@
-import { BODY_MAIN_STATS, FEET_MAIN_STATS, ORB_MAIN_STATS, ROPE_MAIN_STATS } from '../data/relics';
+import { BODY_MAIN_STATS, FEET_MAIN_STATS, ORB_MAIN_STATS, ROPE_MAIN_STATS } from '../data/data';
 import SearchableDropdown from './SearchableDropdown';
 
 interface RelicMainsProps {

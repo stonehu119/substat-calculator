@@ -6,19 +6,17 @@ import {
   LIGHT_CONE_BASE_STATS,
   LIGHT_CONE_PATH,
   LIGHT_CONE_PATH_STATS,
-  type LightCone,
-  type Character
-} from "./data";
-import {
   getRelicStatMod,
   MAIN_STAT_VALUES,
   PLANAR_SET_DATA,
+  type LightCone,
+  type Character,
   type BodyMainStat,
   type FeetMainStat,
   type OrbMainStat,
   type PlanarSet,
   type RopeMainStat
-} from "./relics";
+} from "./data";
 import { STAT_NAMES, SUBSTAT_VALUES } from "./substats";
 
 export function characterPathMatchesLC(formState: FormState): boolean {

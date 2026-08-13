@@ -1,9 +1,10 @@
 import { StatSet, type StatModifier } from "../types/stats"
 import type { Substat } from "./substats"
 
-import characterData from "./characterData.json"
-import lightconeData from "./lightconeData.json"
-import relicData from "./relicData.json"
+import characterData from "./json/characterData.json"
+import lightconeData from "./json/lightconeData.json"
+import relicData from "./json/relicData.json"
+import planarData from "./json/planarData.json"
 
 interface StatMod {
   base?: Partial<Record<Substat, number>>,
@@ -88,6 +89,7 @@ export const LIGHT_CONE_PATH: Record<LightCone, Path> = Object.fromEntries(
 
 // -------------------------------- RELIC DATA --------------------------------
 
+export const NONE = "(None)"
 export const RELIC_SETS = Object.keys(relicData)
 export type RelicSet = keyof typeof relicData
 
@@ -113,3 +115,89 @@ export const RELIC_SET_4PC_DATA: Record<RelicSet, StatModifier> = Object.fromEnt
     flat: data["4pc"].flat && new StatSet(data["4pc"].flat),
   }])
 ) as Record<RelicSet, StatModifier>
+
+const appendText = (set: string, text: string) => set + (set == NONE ? "" : text )
+
+export const RELIC_SETS_2PC = RELIC_SETS.map(set => appendText(set, " (2pc)"))
+export const RELIC_SETS_4PC = RELIC_SETS.map(set => appendText(set, " (4pc)"))
+
+export function getRelicStatMod(displayString: string): StatModifier {
+  if (displayString == NONE) return RELIC_SET_DATA[NONE]
+  if (displayString.slice(-4, -3) == '2') return RELIC_SET_DATA[displayString.slice(0, -6) as RelicSet]
+  if (displayString.slice(-4, -3) == '4') return RELIC_SET_4PC_DATA[displayString.slice(0, -6) as RelicSet]
+  throw new Error("Could not resolve relic set input value")
+}
+
+// ------------------------------- PLANAR DATA --------------------------------
+
+export const PLANAR_SETS = Object.keys(planarData)
+export type PlanarSet = keyof typeof planarData
+
+interface PlanarData {
+  "2pc": StatMod,
+}
+
+const planarSetData = planarData satisfies Record<PlanarSet, PlanarData> as Record<PlanarSet, PlanarData>
+
+export const PLANAR_SET_DATA: Record<PlanarSet, StatModifier> = Object.fromEntries(
+  Object.entries(planarSetData).map(([name, data]) => [name, {
+    base: data["2pc"].base && new StatSet(data["2pc"].base),
+    percent: data["2pc"].percent && new StatSet(data["2pc"].percent),
+    flat: data["2pc"].flat && new StatSet(data["2pc"].flat),
+  }])
+) as Record<PlanarSet, StatModifier>
+
+// ------------------------------ MAIN STAT DATA ------------------------------
+
+export const BODY_MAIN_STATS = [
+  'Crit Rate',
+  'Crit DMG',
+  'EHR',
+  'Outgoing Healing',
+  'HP%',
+  'ATK%',
+  'DEF%',
+] as const
+
+export const FEET_MAIN_STATS = [
+  'SPD',
+  'HP%',
+  'ATK%',
+  'DEF%',
+] as const
+
+export const ORB_MAIN_STATS = [
+  'DMG Bonus',
+  'HP%',
+  'ATK%',
+  'DEF%',
+] as const
+
+export const ROPE_MAIN_STATS = [
+  'HP%',
+  'ATK%',
+  'DEF%',
+  'Break Effect',
+  'Energy Regeneration Rate',
+] as const
+
+export type BodyMainStat = typeof BODY_MAIN_STATS[number]
+export type FeetMainStat = typeof FEET_MAIN_STATS[number]
+export type OrbMainStat = typeof ORB_MAIN_STATS[number]
+export type RopeMainStat = typeof ROPE_MAIN_STATS[number]
+
+export type MainStat = BodyMainStat | FeetMainStat | OrbMainStat | RopeMainStat
+
+export const MAIN_STAT_VALUES: Record<MainStat, StatModifier> = {
+  'HP%' : { percent: new StatSet({"HP" : 43.2}) },
+  'ATK%' : { percent: new StatSet({"ATK" : 43.2}) },
+  'DEF%' : { percent: new StatSet({"DEF" : 54}) },
+  'SPD' : { flat: new StatSet({"SPD" : 25.0}) },
+  'Crit Rate' : { flat: new StatSet({"Crit Rate" : 32.4}) },
+  'Crit DMG' : { flat: new StatSet({"Crit DMG" : 64.8}) },
+  'EHR' : { flat: new StatSet({"Effect Hit Rate" : 43.2}) },
+  'Outgoing Healing' : {},
+  'DMG Bonus' : {},
+  'Break Effect' : { flat: new StatSet({"Break Effect" : 64.8}) },
+  'Energy Regeneration Rate' : {},
+} as const
