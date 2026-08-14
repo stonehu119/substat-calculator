@@ -132,7 +132,28 @@ const pathMap: Record<string, Path> = {
   "Warlock": "Nihility",
 }
 
-function transformCharacter(raw: unknown): TransformResult {
+/**
+ * Resolve a character's icon URL from the Fandom wiki via the MediaWiki imageinfo API.
+ * The stored character name maps directly to the wiki's `Character_<Name>_Icon.png` file.
+ */
+async function fandomCharacterIconUrl(name: string): Promise<string> {
+  const filename = `Character_${name.replaceAll(" ", "_")}_Icon.png`
+  const params = new URLSearchParams({
+    action: "query",
+    titles: `File:${filename}`,
+    prop: "imageinfo",
+    iiprop: "url",
+    format: "json",
+  })
+  const res = await fetch(`https://honkai-star-rail.fandom.com/api.php?${params}`)
+  if (!res.ok) throw new Error(`Fandom API HTTP ${res.status} for "${filename}"`)
+  const pages = (await res.json() as any).query.pages
+  const url = pages[Object.keys(pages)[0]]?.imageinfo?.[0]?.url
+  if (!url) throw new Error(`No Fandom icon found for "${filename}"`)
+  return url
+}
+
+async function transformCharacter(raw: unknown): Promise<TransformResult> {
   const data = raw as any
 
   const stats = data.stats["6"]
@@ -203,10 +224,10 @@ function transformCharacter(raw: unknown): TransformResult {
       flat: Object.keys(flat).length ? flat : undefined,
     },
   }
-  return { entry, iconUrl: "" }
+  return { entry, iconUrl: await fandomCharacterIconUrl(data.name).catch(() => "") }
 }
 
-function transformLightcone(raw: unknown, existing?: object): TransformResult {
+async function transformLightcone(raw: unknown, existing?: object): Promise<TransformResult> {
   const data = raw as any
   const stats = data.stats[6]
   const prev = existing as LightconeEntry | undefined
@@ -223,7 +244,7 @@ function transformLightcone(raw: unknown, existing?: object): TransformResult {
   return { entry, iconUrl: "" }
 }
 
-function transformRelic(raw: unknown, existing?: object): TransformResult {
+async function transformRelic(raw: unknown, existing?: object): Promise<TransformResult> {
   void raw
   // Relic/Planar set stats aren't in nanoka either........
   const prev = existing as RelicEntry | undefined
@@ -234,7 +255,7 @@ function transformRelic(raw: unknown, existing?: object): TransformResult {
   return { entry, iconUrl: "" }
 }
 
-function transformPlanar(raw: unknown, existing?: object): TransformResult {
+async function transformPlanar(raw: unknown, existing?: object): Promise<TransformResult> {
   void raw
   const prev = existing as PlanarEntry | undefined
   const entry: PlanarEntry = {
@@ -248,7 +269,7 @@ function transformPlanar(raw: unknown, existing?: object): TransformResult {
 const HANDLERS: Record<ItemKind, {
   jsonFile: string
   iconSubfolder: string
-  transform: (raw: unknown, existing?: object) => TransformResult
+  transform: (raw: unknown, existing?: object) => Promise<TransformResult>
 }> = {
   character: { jsonFile: "characterData.json", iconSubfolder: "characters",  transform: transformCharacter },
   lightcone: { jsonFile: "lightconeData.json", iconSubfolder: "light-cones", transform: transformLightcone },
@@ -303,7 +324,7 @@ async function processItem(name: string): Promise<void> {
   const handler = HANDLERS[kind]
 
   const data = loadJson(handler.jsonFile)
-  const { entry, iconUrl } = handler.transform(raw, data[name] as object | undefined)
+  const { entry, iconUrl } = await handler.transform(raw, data[name] as object | undefined)
   const updated = writeEntry(handler.jsonFile, data, name, entry)
   console.log(`  [${kind}] ${updated ? "updated" : "added"} entry -> ${handler.jsonFile}`)
 
