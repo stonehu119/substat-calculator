@@ -1,4 +1,21 @@
 {
+  "Dan Heng • Imbibitor Lunae": {
+    "path": "Destruction",
+    "stats": {
+      "base": {
+        "HP": 1241.8560000000002,
+        "ATK": 698.544,
+        "DEF": 363.82500000000005,
+        "SPD": 102
+      },
+      "percent": {
+        "HP": 10
+      },
+      "flat": {
+        "Crit Rate": 12
+      }
+    }
+  },
   "Robin • Summeretto": {
     "path": "Remembrance",
     "stats": {
