@@ -64,7 +64,6 @@ interface TransformResult {
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const JSON_DIR = join(root, "src", "data", "json")
 const ICONS_DIR = join(root, "src", "assets", "icons")
-const ICON_SIZE = 64
 
 // Must match the sanitize() function in src/data/icons.ts
 function sanitize(name: string): string {
@@ -132,7 +131,24 @@ const pathMap: Record<string, Path> = {
   "Warlock": "Nihility",
 }
 
-function transformCharacter(raw: unknown): TransformResult {
+async function fandomCharacterIconUrl(name: string): Promise<string> {
+  const filename = `Character_${name.replaceAll(" ", "_")}_Icon.png`
+  const params = new URLSearchParams({
+    action: "query",
+    titles: `File:${filename}`,
+    prop: "imageinfo",
+    iiprop: "url",
+    format: "json",
+  })
+  const res = await fetch(`https://honkai-star-rail.fandom.com/api.php?${params}`)
+  if (!res.ok) throw new Error(`Fandom API HTTP ${res.status} for "${filename}"`)
+  const pages = (await res.json() as any).query.pages
+  const url = pages[Object.keys(pages)[0]]?.imageinfo?.[0]?.url
+  if (!url) throw new Error(`No Fandom icon found for "${filename}"`)
+  return url
+}
+
+async function transformCharacter(raw: unknown): Promise<TransformResult> {
   const data = raw as any
 
   const stats = data.stats["6"]
@@ -203,10 +219,10 @@ function transformCharacter(raw: unknown): TransformResult {
       flat: Object.keys(flat).length ? flat : undefined,
     },
   }
-  return { entry, iconUrl: "" }
+  return { entry, iconUrl: await fandomCharacterIconUrl(data.name).catch(() => "") }
 }
 
-function transformLightcone(raw: unknown, existing?: object): TransformResult {
+async function transformLightcone(raw: unknown, existing?: object): Promise<TransformResult> {
   const data = raw as any
   const stats = data.stats[6]
   const prev = existing as LightconeEntry | undefined
@@ -220,10 +236,10 @@ function transformLightcone(raw: unknown, existing?: object): TransformResult {
     // Superimposition stats aren't in nanoka....
     pathStats: prev?.pathStats ?? [{}, {}, {}, {}, {}],
   }
-  return { entry, iconUrl: "" }
+  return { entry, iconUrl: `https://starrail.honeyhunterworld.com/img/item/${data.name.toLowerCase().replaceAll(" ", "-")}-item_icon.webp` }
 }
 
-function transformRelic(raw: unknown, existing?: object): TransformResult {
+async function transformRelic(raw: unknown, existing?: object): Promise<TransformResult> {
   void raw
   // Relic/Planar set stats aren't in nanoka either........
   const prev = existing as RelicEntry | undefined
@@ -234,7 +250,7 @@ function transformRelic(raw: unknown, existing?: object): TransformResult {
   return { entry, iconUrl: "" }
 }
 
-function transformPlanar(raw: unknown, existing?: object): TransformResult {
+async function transformPlanar(raw: unknown, existing?: object): Promise<TransformResult> {
   void raw
   const prev = existing as PlanarEntry | undefined
   const entry: PlanarEntry = {
@@ -248,7 +264,7 @@ function transformPlanar(raw: unknown, existing?: object): TransformResult {
 const HANDLERS: Record<ItemKind, {
   jsonFile: string
   iconSubfolder: string
-  transform: (raw: unknown, existing?: object) => TransformResult
+  transform: (raw: unknown, existing?: object) => Promise<TransformResult>
 }> = {
   character: { jsonFile: "characterData.json", iconSubfolder: "characters",  transform: transformCharacter },
   lightcone: { jsonFile: "lightconeData.json", iconSubfolder: "light-cones", transform: transformLightcone },
@@ -270,8 +286,9 @@ function writeEntry(jsonFile: string, data: Record<string, unknown>, name: strin
   return existed
 }
 
-async function downloadIcon(url: string, name: string, subfolder: string): Promise<void> {
+async function downloadIcon(url: string, name: string, subfolder: string, size: "sm" | "lg" = "sm"): Promise<void> {
   const outDir = join(ICONS_DIR, subfolder)
+  const ICON_SIZE = size === "sm" ? 64 : 80
   if (!existsSync(outDir)) throw new Error(`Icon directory missing: ${outDir}`)
   const outFile = join(outDir, `${sanitize(name)}.webp`)
 
@@ -303,12 +320,12 @@ async function processItem(name: string): Promise<void> {
   const handler = HANDLERS[kind]
 
   const data = loadJson(handler.jsonFile)
-  const { entry, iconUrl } = handler.transform(raw, data[name] as object | undefined)
+  const { entry, iconUrl } = await handler.transform(raw, data[name] as object | undefined)
   const updated = writeEntry(handler.jsonFile, data, name, entry)
   console.log(`  [${kind}] ${updated ? "updated" : "added"} entry -> ${handler.jsonFile}`)
 
   if (iconUrl) {
-    await downloadIcon(iconUrl, name, handler.iconSubfolder)
+    await downloadIcon(iconUrl, name, handler.iconSubfolder, kind === 'lightcone' ? "lg" : "sm")
     console.log(`  [${kind}] saved icon  -> icons/${handler.iconSubfolder}/${sanitize(name)}.webp`)
   } else {
     console.warn(`  [${kind}] no iconUrl — skipping icon download`)
