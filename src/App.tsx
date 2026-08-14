@@ -10,6 +10,7 @@ import { createDefaultFormState } from './data/defaults'
 import { characterPathMatchesLC, countTotalRolls, inputFormToRollCount } from './data/logic'
 import type { Character } from './data/data'
 import { CHARACTER_PREFERENCES } from './data/characterPreferences'
+import { VERSION } from './data/version'
 
 const OLD_STORAGE_KEY = 'sub-counter-state'
 const STORAGE_KEY = 'sub-counter-data'
@@ -140,7 +141,7 @@ function App() {
           <h1 className="text-4xl md:text-5xl font-extrabold text-blue-400 text-center mt-0 drop-shadow-lg tracking-wide">
             Star Rail Substat Counter
           </h1>
-          <span className="text-xs text-gray-500">Last updated for 4.5v5</span>
+          <span className="text-xs text-gray-500">Last updated for version {VERSION}</span>
         </div>
 
         {/* Mobile: single stacked layout */}

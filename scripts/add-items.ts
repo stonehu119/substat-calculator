@@ -12,7 +12,7 @@
  *
  */
 
-import { readFileSync, writeFileSync, existsSync } from "node:fs"
+import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs"
 import { execSync } from "node:child_process"
 import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
@@ -64,6 +64,7 @@ interface TransformResult {
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const JSON_DIR = join(root, "src", "data", "json")
 const ICONS_DIR = join(root, "src", "assets", "icons")
+const VERSION_FILE = join(root, "src", "data", "version.ts")
 
 // Must match the sanitize() function in src/data/icons.ts
 function sanitize(name: string): string {
@@ -313,6 +314,28 @@ function typeCheck(): boolean {
   }
 }
 
+// --------------------------------- version ----------------------------------
+
+async function fetchLatestVersion(): Promise<string> {
+  const res = await fetch("https://static.nanoka.cc/manifest.json")
+  if (!res.ok) throw new Error(`Manifest fetch failed: HTTP ${res.status}`)
+  return (await res.json() as any).hsr.latest
+}
+
+function writeVersionFile(version: string): void {
+  const contents =
+    "// Latest data version, sourced from nanoka's manifest.\n" +
+    "// Updated automatically by scripts/add-items.ts — do not edit by hand.\n" +
+    `export const VERSION = "${version}"\n`
+  writeFileSync(VERSION_FILE, contents)
+}
+
+// write version num for later GitHub Actions steps
+function exportVersionOutput(version: string): void {
+  const out = process.env.GITHUB_OUTPUT
+  if (out) appendFileSync(out, `version=${version}\n`)
+}
+
 // ----------------------------------- main -----------------------------------
 
 async function processItem(name: string): Promise<void> {
@@ -343,6 +366,13 @@ async function main(): Promise<void> {
     console.error('Usage: npm run add-items -- "Item One" "Item Two" ...')
     process.exit(1)
   }
+
+  // Sync the data version and hand it to the workflow before processing items,
+  // so the PR can be named even if some items later fail.
+  const version = await fetchLatestVersion()
+  writeVersionFile(version)
+  exportVersionOutput(version)
+  console.log(`Data version: ${version}`)
 
   const failures: { name: string; error: string }[] = []
 
