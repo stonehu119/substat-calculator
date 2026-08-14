@@ -15,6 +15,7 @@
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs"
+import { execSync } from "node:child_process"
 import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
 import sharp from "sharp"
@@ -152,15 +153,15 @@ function transformCharacter(raw: unknown): TransformResult {
     switch (entry.property_type) {
       case "HPAddedRatio":
         percent.HP = percent.HP ?? 0
-        percent.HP += entry.value
+        percent.HP += entry.value * 100
         break
       case "AttackAddedRatio":
         percent.ATK = percent.ATK ?? 0
-        percent.ATK += entry.value
+        percent.ATK += entry.value * 100
         break
       case "DefenceAddedRatio":
         percent.DEF = percent.DEF ?? 0
-        percent.DEF += entry.value
+        percent.DEF += entry.value * 100
         break
       case "SpeedDelta":
         flat.SPD = flat.SPD ?? 0
@@ -168,23 +169,23 @@ function transformCharacter(raw: unknown): TransformResult {
         break
       case "CriticalChanceBase":
         flat["Crit Rate"] = flat["Crit Rate"] ?? 0
-        flat["Crit Rate"] += entry.value
+        flat["Crit Rate"] += entry.value * 100
         break
       case "CriticalDamageBase":
         flat["Crit DMG"] = flat["Crit DMG"] ?? 0
-        flat["Crit DMG"] += entry.value
+        flat["Crit DMG"] += entry.value * 100
         break
       case "BreakDamageAddedRatioBase":
         flat["Break Effect"] = flat["Break Effect"] ?? 0
-        flat["Break Effect"] += entry.value
+        flat["Break Effect"] += entry.value * 100
         break
       case "StatusProbabilityBase":
         flat["Effect Hit Rate"] = flat["Effect Hit Rate"] ?? 0
-        flat["Effect Hit Rate"] += entry.value
+        flat["Effect Hit Rate"] += entry.value * 100
         break
       case "StatusResistanceBase":
         flat["Effect RES"] = flat["Effect RES"] ?? 0
-        flat["Effect RES"] += entry.value
+        flat["Effect RES"] += entry.value * 100
         break
       default:
         break
@@ -207,9 +208,10 @@ function transformCharacter(raw: unknown): TransformResult {
   return { entry, iconUrl: "" }
 }
 
-function transformLightcone(raw: unknown): TransformResult {
+function transformLightcone(raw: unknown, existing?: object): TransformResult {
   const data = raw as any
   const stats = data.stats[6]
+  const prev = existing as LightconeEntry | undefined
   const entry: LightconeEntry = {
     path: pathMap[data.base_type],
     baseStats: {
@@ -217,24 +219,28 @@ function transformLightcone(raw: unknown): TransformResult {
       ATK: stats.base_attack + stats.base_attack_add * 79,
       DEF: stats.base_defence + stats.base_defence_add * 79,
     },
-    pathStats: [{}, {}, {}, {}, {}],
+    // Superimposition stats aren't in nanoka....
+    pathStats: prev?.pathStats ?? [{}, {}, {}, {}, {}],
   }
   return { entry, iconUrl: "" }
 }
 
-function transformRelic(raw: unknown): TransformResult {
+function transformRelic(raw: unknown, existing?: object): TransformResult {
   void raw
+  // Relic/Planar set stats aren't in nanoka either........
+  const prev = existing as RelicEntry | undefined
   const entry: RelicEntry = {
-    "2pc": {},
-    "4pc": {},
+    "2pc": prev?.["2pc"] ?? {},
+    "4pc": prev?.["4pc"] ?? {},
   }
   return { entry, iconUrl: "" }
 }
 
-function transformPlanar(raw: unknown): TransformResult {
+function transformPlanar(raw: unknown, existing?: object): TransformResult {
   void raw
+  const prev = existing as PlanarEntry | undefined
   const entry: PlanarEntry = {
-    "2pc": {},
+    "2pc": prev?.["2pc"] ?? {},
   }
   return { entry, iconUrl: "" }
 }
@@ -245,7 +251,7 @@ function transformPlanar(raw: unknown): TransformResult {
 const HANDLERS: Record<ItemKind, {
   jsonFile: string
   iconSubfolder: string
-  transform: (raw: unknown) => TransformResult
+  transform: (raw: unknown, existing?: object) => TransformResult
 }> = {
   character: { jsonFile: "characterData.json", iconSubfolder: "characters",  transform: transformCharacter },
   lightcone: { jsonFile: "lightconeData.json", iconSubfolder: "light-cones", transform: transformLightcone },
@@ -255,14 +261,18 @@ const HANDLERS: Record<ItemKind, {
 
 // -------------------------------- side effects ------------------------------
 
-function writeEntry(jsonFile: string, name: string, entry: object): void {
-  const path = join(JSON_DIR, jsonFile)
-  const data = JSON.parse(readFileSync(path, "utf8")) as Record<string, unknown>
-  if (name in data) throw new Error(`"${name}" already exists in ${jsonFile}`)
+function loadJson(jsonFile: string): Record<string, unknown> {
+  return JSON.parse(readFileSync(join(JSON_DIR, jsonFile), "utf8")) as Record<string, unknown>
+}
 
-  // New entry first, mirroring how patch updates are added at the top of the file.
-  const updated = { [name]: entry, ...data }
-  writeFileSync(path, JSON.stringify(updated, null, 2) + "\n")
+/** Upsert `name` into `data` and write it back. Returns true if it updated an existing entry. */
+function writeEntry(jsonFile: string, data: Record<string, unknown>, name: string, entry: object): boolean {
+  const existed = name in data
+  // On update, reassigning an existing key preserves its position. On add, new entries go
+  // first, mirroring how patch updates are added at the top of the file.
+  const updated = existed ? { ...data, [name]: entry } : { [name]: entry, ...data }
+  writeFileSync(join(JSON_DIR, jsonFile), JSON.stringify(updated, null, 2) + "\n")
+  return existed
 }
 
 async function downloadIcon(url: string, name: string, subfolder: string): Promise<void> {
@@ -280,18 +290,27 @@ async function downloadIcon(url: string, name: string, subfolder: string): Promi
     .toFile(outFile)
 }
 
+/** Run the project build (`tsc -b && vite build`) as a type-check gate. Returns true on success. */
+function typeCheck(): boolean {
+  console.log("\nType-checking with `npm run build`...")
+  try {
+    execSync("npm run build", { cwd: root, stdio: "inherit" })
+    return true
+  } catch {
+    return false
+  }
+}
+
 // ----------------------------------- main -----------------------------------
 
 async function processItem(name: string): Promise<void> {
   const { kind, raw } = await resolveItem(name)
-  console.log(kind)
-  console.log((raw as any).name)
   const handler = HANDLERS[kind]
 
-  const { entry, iconUrl } = handler.transform(raw)
-
-  writeEntry(handler.jsonFile, name, entry)
-  console.log(`  [${kind}] wrote entry -> ${handler.jsonFile}`)
+  const data = loadJson(handler.jsonFile)
+  const { entry, iconUrl } = handler.transform(raw, data[name] as object | undefined)
+  const updated = writeEntry(handler.jsonFile, data, name, entry)
+  console.log(`  [${kind}] ${updated ? "updated" : "added"} entry -> ${handler.jsonFile}`)
 
   if (iconUrl) {
     await downloadIcon(iconUrl, name, handler.iconSubfolder)
@@ -322,14 +341,20 @@ async function main(): Promise<void> {
   }
 
   const ok = names.length - failures.length
-  console.log(`\n${ok}/${names.length} item(s) added.`)
+  console.log(`\n${ok}/${names.length} item(s) added or updated.`)
   if (failures.length > 0) {
     console.log("Failed:")
     for (const f of failures) console.log(`  - ${f.name}: ${f.error}`)
   }
-  console.log("Run `npm run build` to type-check the new entries.")
 
-  if (failures.length > 0) process.exit(1)
+  // Type-check the new/updated entries against the `satisfies` guards in data.ts.
+  let buildOk = true
+  if (ok > 0) {
+    buildOk = typeCheck()
+    if (!buildOk) console.error("\nType-check FAILED — new/updated entries need fixing.")
+  }
+
+  if (failures.length > 0 || !buildOk) process.exit(1)
 }
 
 main().catch((err) => {
