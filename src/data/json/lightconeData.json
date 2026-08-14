@@ -2,8 +2,8 @@
   "Rise and Sing": {
     "path": "Remembrance",
     "baseStats": {
-      "HP": 1164.24,
-      "ATK": 582.12,
+      "HP": 1164.2399999999998,
+      "ATK": 582.1199999999999,
       "DEF": 396.9
     },
     "pathStats": [
@@ -38,7 +38,7 @@
     "path": "Elation",
     "baseStats": {
       "HP": 952.56,
-      "ATK": 582.12,
+      "ATK": 582.1199999999999,
       "DEF": 529.2
     },
     "pathStats": [
@@ -159,7 +159,7 @@
     "baseStats": {
       "HP": 952.56,
       "ATK": 635.04,
-      "DEF": 463.05
+      "DEF": 463.04999999999995
     },
     "pathStats": [
       {
@@ -227,9 +227,9 @@
   "Reforged in Hellfire": {
     "path": "Nihility",
     "baseStats": {
-      "HP": 1270.08,
-      "ATK": 476.28,
-      "DEF": 463
+      "HP": 1375.92,
+      "ATK": 423.36,
+      "DEF": 463.04999999999995
     },
     "pathStats": [
       {
@@ -262,9 +262,9 @@
   "Until the Flowers Bloom Again": {
     "path": "Elation",
     "baseStats": {
-      "HP": 952.6,
-      "ATK": 635,
-      "DEF": 463
+      "HP": 952.56,
+      "ATK": 635.04,
+      "DEF": 463.04999999999995
     },
     "pathStats": [
       {
@@ -297,7 +297,7 @@
   "Welcome to the Cosmic City": {
     "path": "Elation",
     "baseStats": {
-      "HP": 1164.24,
+      "HP": 1164.2399999999998,
       "ATK": 476.28,
       "DEF": 529.2
     },
@@ -332,9 +332,9 @@
   "Tomorrow, Together": {
     "path": "Elation",
     "baseStats": {
-      "HP": 952.6,
+      "HP": 952.56,
       "ATK": 476.28,
-      "DEF": 330.8
+      "DEF": 330.75
     },
     "pathStats": [
       {
@@ -367,8 +367,8 @@
   "The Finale of a Lie": {
     "path": "Hunt",
     "baseStats": {
-      "HP": 846.7,
-      "ATK": 635,
+      "HP": 846.72,
+      "ATK": 635.04,
       "DEF": 529.2
     },
     "pathStats": [
@@ -402,9 +402,9 @@
   "Elation Brimming With Blessings": {
     "path": "Elation",
     "baseStats": {
-      "HP": 952.6,
+      "HP": 952.56,
       "ATK": 529.2,
-      "DEF": 463
+      "DEF": 463.04999999999995
     },
     "pathStats": [
       {
@@ -438,8 +438,8 @@
     "path": "Elation",
     "baseStats": {
       "HP": 1058.4,
-      "ATK": 582.1,
-      "DEF": 463
+      "ATK": 582.1199999999999,
+      "DEF": 463.04999999999995
     },
     "pathStats": [
       {
@@ -507,7 +507,7 @@
   "Mushy Shroomy's Adventures": {
     "path": "Elation",
     "baseStats": {
-      "HP": 846.7,
+      "HP": 846.72,
       "ATK": 476.28,
       "DEF": 396.9
     },
@@ -522,7 +522,7 @@
   "Today's Good Luck": {
     "path": "Elation",
     "baseStats": {
-      "HP": 952.6,
+      "HP": 952.56,
       "ATK": 529.2,
       "DEF": 396.9
     },
