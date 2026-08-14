@@ -140,7 +140,7 @@ function App() {
           <h1 className="text-4xl md:text-5xl font-extrabold text-blue-400 text-center mt-0 drop-shadow-lg tracking-wide">
             Star Rail Substat Counter
           </h1>
-          <span className="text-xs text-gray-500">Last updated for 4.5v4</span>
+          <span className="text-xs text-gray-500">Last updated for 4.5v5</span>
         </div>
 
         {/* Mobile: single stacked layout */}
