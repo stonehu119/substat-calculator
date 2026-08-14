@@ -10,8 +10,6 @@
  *   3. writes the entry into the matching src/data/json/*.json file
  *   4. downloads + resizes the icon into the matching assets subfolder
  *
- * Items are processed independently: one failure doesn't abort the batch — a summary
- * is printed at the end. Afterwards run `npm run build` to type-check every new entry.
  */
 
 import { readFileSync, writeFileSync, existsSync } from "node:fs"
@@ -24,7 +22,7 @@ import type { Path } from "../src/data/data"
 import type { Substat } from "../src/data/substats"
 
 // ------------------------------- schema types -------------------------------
-// Mirrors the shapes in src/data/data.ts.
+// Follows the interfaces in src/data/data.ts
 
 type StatMap = Partial<Record<Substat, number>>
 
@@ -42,7 +40,7 @@ interface CharacterEntry {
 interface LightconeEntry {
   path: Path
   baseStats: StatMap
-  pathStats: StatMod[] // one StatMod per superimposition level S1..S5
+  pathStats: StatMod[] // one StatMod per superimpose level
 }
 
 interface RelicEntry {
@@ -246,7 +244,6 @@ function transformPlanar(raw: unknown, existing?: object): TransformResult {
 }
 
 // ------------------------------- kind registry ------------------------------
-// Ties each kind to its JSON file, icon subfolder, and transform.
 
 const HANDLERS: Record<ItemKind, {
   jsonFile: string
@@ -265,11 +262,9 @@ function loadJson(jsonFile: string): Record<string, unknown> {
   return JSON.parse(readFileSync(join(JSON_DIR, jsonFile), "utf8")) as Record<string, unknown>
 }
 
-/** Upsert `name` into `data` and write it back. Returns true if it updated an existing entry. */
 function writeEntry(jsonFile: string, data: Record<string, unknown>, name: string, entry: object): boolean {
   const existed = name in data
-  // On update, reassigning an existing key preserves its position. On add, new entries go
-  // first, mirroring how patch updates are added at the top of the file.
+  // update preserves position, add places new entries at top
   const updated = existed ? { ...data, [name]: entry } : { [name]: entry, ...data }
   writeFileSync(join(JSON_DIR, jsonFile), JSON.stringify(updated, null, 2) + "\n")
   return existed
@@ -290,7 +285,7 @@ async function downloadIcon(url: string, name: string, subfolder: string): Promi
     .toFile(outFile)
 }
 
-/** Run the project build (`tsc -b && vite build`) as a type-check gate. Returns true on success. */
+// `npm run build` to verify the app compiles properly after an update
 function typeCheck(): boolean {
   console.log("\nType-checking with `npm run build`...")
   try {
@@ -347,7 +342,7 @@ async function main(): Promise<void> {
     for (const f of failures) console.log(`  - ${f.name}: ${f.error}`)
   }
 
-  // Type-check the new/updated entries against the `satisfies` guards in data.ts.
+  // Type-check the new/updated entries and that the app compiles with no errors
   let buildOk = true
   if (ok > 0) {
     buildOk = typeCheck()
