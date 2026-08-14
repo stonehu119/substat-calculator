@@ -333,7 +333,12 @@ async function processItem(name: string): Promise<void> {
 }
 
 async function main(): Promise<void> {
+  // Accept both `-- "Name A" "Name B"` and a single comma-separated `-- "Name A, Name B"`
+  // (the latter is how the GitHub Actions workflow passes its input).
   const names = process.argv.slice(2)
+    .flatMap(a => a.split(","))
+    .map(s => s.trim())
+    .filter(Boolean)
   if (names.length === 0) {
     console.error('Usage: npm run add-items -- "Item One" "Item Two" ...')
     process.exit(1)
