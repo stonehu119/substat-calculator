@@ -64,7 +64,6 @@ interface TransformResult {
 const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const JSON_DIR = join(root, "src", "data", "json")
 const ICONS_DIR = join(root, "src", "assets", "icons")
-const ICON_SIZE = 64
 
 // Must match the sanitize() function in src/data/icons.ts
 function sanitize(name: string): string {
@@ -132,10 +131,6 @@ const pathMap: Record<string, Path> = {
   "Warlock": "Nihility",
 }
 
-/**
- * Resolve a character's icon URL from the Fandom wiki via the MediaWiki imageinfo API.
- * The stored character name maps directly to the wiki's `Character_<Name>_Icon.png` file.
- */
 async function fandomCharacterIconUrl(name: string): Promise<string> {
   const filename = `Character_${name.replaceAll(" ", "_")}_Icon.png`
   const params = new URLSearchParams({
@@ -241,7 +236,7 @@ async function transformLightcone(raw: unknown, existing?: object): Promise<Tran
     // Superimposition stats aren't in nanoka....
     pathStats: prev?.pathStats ?? [{}, {}, {}, {}, {}],
   }
-  return { entry, iconUrl: "" }
+  return { entry, iconUrl: `https://starrail.honeyhunterworld.com/img/item/${data.name.toLowerCase().replaceAll(" ", "-")}-item_icon.webp` }
 }
 
 async function transformRelic(raw: unknown, existing?: object): Promise<TransformResult> {
@@ -291,8 +286,9 @@ function writeEntry(jsonFile: string, data: Record<string, unknown>, name: strin
   return existed
 }
 
-async function downloadIcon(url: string, name: string, subfolder: string): Promise<void> {
+async function downloadIcon(url: string, name: string, subfolder: string, size: "sm" | "lg" = "sm"): Promise<void> {
   const outDir = join(ICONS_DIR, subfolder)
+  const ICON_SIZE = size === "sm" ? 64 : 80
   if (!existsSync(outDir)) throw new Error(`Icon directory missing: ${outDir}`)
   const outFile = join(outDir, `${sanitize(name)}.webp`)
 
@@ -329,7 +325,7 @@ async function processItem(name: string): Promise<void> {
   console.log(`  [${kind}] ${updated ? "updated" : "added"} entry -> ${handler.jsonFile}`)
 
   if (iconUrl) {
-    await downloadIcon(iconUrl, name, handler.iconSubfolder)
+    await downloadIcon(iconUrl, name, handler.iconSubfolder, kind === 'lightcone' ? "lg" : "sm")
     console.log(`  [${kind}] saved icon  -> icons/${handler.iconSubfolder}/${sanitize(name)}.webp`)
   } else {
     console.warn(`  [${kind}] no iconUrl — skipping icon download`)
