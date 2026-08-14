@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       names:
-        description: 'Comma-separated character/LC names, exactly as they appear on nanoka.'
+        description: 'Semicolon-separated character/LC names, exactly as they appear on nanoka.'
         required: true
         type: string
 
