@@ -118,7 +118,7 @@ export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferenc
   },
   "Phainon": {
     lightCones: ["Thus Burns the Dawn", "On the Fall of an Aeon"],
-    relicSets: ["Wavestrider Captain", "Genius of Brilliant Stars"],
+    relicSets: ["Wavestrider Captain", "Genius of Brilliant Stars", "As Navigator Isee Sees it"],
     planarSets: ["Arcadia of Woven Dreams", "Rutilant Arena"],
   },
   "Cipher": {
