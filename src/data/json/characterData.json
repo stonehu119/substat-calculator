@@ -1,4 +1,22 @@
 {
+  "Dan Heng • Permansor Terrae": {
+    "path": "Preservation",
+    "stats": {
+      "base": {
+        "HP": 1047.816,
+        "ATK": 582.1199999999999,
+        "DEF": 776.1600000000001,
+        "SPD": 97
+      },
+      "percent": {
+        "ATK": 28,
+        "DEF": 22.5
+      },
+      "flat": {
+        "SPD": 5
+      }
+    }
+  },
   "Robin • Summeretto": {
     "path": "Remembrance",
     "stats": {
