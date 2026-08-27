@@ -1,4 +1,39 @@
 {
+  "Colors for Tomorrow": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 1058.4,
+      "ATK": 476.28,
+      "DEF": 595.3499999999999
+    },
+    "pathStats": [
+      {
+        "percent": {
+          "DEF": 48
+        }
+      },
+      {
+        "percent": {
+          "DEF": 60
+        }
+      },
+      {
+        "percent": {
+          "DEF": 72
+        }
+      },
+      {
+        "percent": {
+          "DEF": 84
+        }
+      },
+      {
+        "percent": {
+          "DEF": 96
+        }
+      }
+    ]
+  },
   "Rise and Sing": {
     "path": "Remembrance",
     "baseStats": {

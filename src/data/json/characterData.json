@@ -1,4 +1,22 @@
 {
+  "Pearl": {
+    "path": "Elation",
+    "stats": {
+      "base": {
+        "HP": 1203.0479999999998,
+        "ATK": 465.696,
+        "DEF": 727.6500000000001,
+        "SPD": 99
+      },
+      "percent": {
+        "DEF": 22.5
+      },
+      "flat": {
+        "SPD": 9,
+        "Effect RES": 10
+      }
+    }
+  },
   "Robin • Summeretto": {
     "path": "Remembrance",
     "stats": {
