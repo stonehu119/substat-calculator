@@ -47,6 +47,9 @@ jobs:
 
             **Items added/updated:**
             ${{ inputs.names }}
+
+            **Missing icons:**
+            ${{ steps.update.outputs.missing-icons }}
           branch: "update/${{ steps.update.outputs.version }}"
           base: "main"
           delete-branch: true
