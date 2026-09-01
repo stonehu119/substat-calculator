@@ -330,15 +330,19 @@ function writeVersionFile(version: string): void {
   writeFileSync(VERSION_FILE, contents)
 }
 
-// write version num for later GitHub Actions steps
-function exportVersionOutput(version: string): void {
+// Expose a value to later GitHub Actions steps. Uses the heredoc form so multi-line
+// values (e.g. the missing-icons list) work; no-op when not running in Actions.
+function exportOutput(name: string, value: string): void {
   const out = process.env.GITHUB_OUTPUT
-  if (out) appendFileSync(out, `version=${version}\n`)
+  if (!out) return
+  const delim = `EOF_${Math.random().toString(36).slice(2)}`
+  appendFileSync(out, `${name}<<${delim}\n${value}\n${delim}\n`)
 }
 
 // ----------------------------------- main -----------------------------------
 
-async function processItem(name: string): Promise<void> {
+/** Processes one item. Returns false if no icon was saved (non-fatal — icon can be added later). */
+async function processItem(name: string): Promise<boolean> {
   const { kind, raw } = await resolveItem(name)
   const handler = HANDLERS[kind]
 
@@ -348,11 +352,18 @@ async function processItem(name: string): Promise<void> {
   console.log(`  [${kind}] ${updated ? "updated" : "added"} entry -> ${handler.jsonFile}`)
 
   if (iconUrl) {
-    await downloadIcon(iconUrl, name, handler.iconSubfolder, kind === 'lightcone' ? "lg" : "sm")
-    console.log(`  [${kind}] saved icon  -> icons/${handler.iconSubfolder}/${sanitize(name)}.webp`)
-  } else {
-    console.warn(`  [${kind}] no iconUrl — skipping icon download`)
+    try {
+      await downloadIcon(iconUrl, name, handler.iconSubfolder, kind === 'lightcone' ? "lg" : "sm")
+      console.log(`  [${kind}] saved icon  -> icons/${handler.iconSubfolder}/${sanitize(name)}.webp`)
+      return true
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err)
+      console.warn(`  [${kind}] icon download failed (add manually): ${message}`)
+      return false
+    }
   }
+  console.warn(`  [${kind}] no iconUrl — add icon manually`)
+  return false
 }
 
 async function main(): Promise<void> {
@@ -371,15 +382,17 @@ async function main(): Promise<void> {
   // so the PR can be named even if some items later fail.
   const version = await fetchLatestVersion()
   writeVersionFile(version)
-  exportVersionOutput(version)
+  exportOutput("version", version)
   console.log(`Data version: ${version}`)
 
   const failures: { name: string; error: string }[] = []
+  const missingIcons: string[] = []
 
   for (const name of names) {
     console.log(`\n"${name}"`)
     try {
-      await processItem(name)
+      const iconSaved = await processItem(name)
+      if (!iconSaved) missingIcons.push(name)
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err)
       console.error(`  FAILED: ${message}`)
@@ -393,6 +406,15 @@ async function main(): Promise<void> {
     console.log("Failed:")
     for (const f of failures) console.log(`  - ${f.name}: ${f.error}`)
   }
+  // Non-fatal: a missing icon never fails the run, so it can't block PR creation.
+  if (missingIcons.length > 0) {
+    console.warn("\nIcons to add manually (download failed or unavailable):")
+    for (const n of missingIcons) console.warn(`  - ${n}`)
+  }
+  // Surface the missing-icon list in the PR body via the workflow.
+  exportOutput("missing-icons", missingIcons.length > 0
+    ? missingIcons.map(n => `- ${n}`).join("\n")
+    : "_None — all icons downloaded._")
 
   // Type-check the new/updated entries and that the app compiles with no errors
   let buildOk = true
