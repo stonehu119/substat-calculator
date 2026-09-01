@@ -8,7 +8,7 @@ export interface CharacterPreferences {
 
 export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferences>> = {
   "Pearl": {
-    lightCones: ["Colors for Tomorrow"],
+    lightCones: ["Colors for Tomorrow", "Elation Brimming With Blessings"],
     relicSets: ["Dreamlit Actor"],
   },
   "Robin • Summeretto": {
