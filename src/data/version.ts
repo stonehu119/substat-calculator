@@ -1,3 +1,3 @@
 // Latest data version, sourced from nanoka's manifest.
 // Updated automatically by scripts/add-items.ts — do not edit by hand.
-export const VERSION = "4.5.51"
+export const VERSION = "4.5.52"
