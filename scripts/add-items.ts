@@ -241,14 +241,16 @@ async function transformLightcone(raw: unknown, existing?: object): Promise<Tran
 }
 
 async function transformRelic(raw: unknown, existing?: object): Promise<TransformResult> {
-  void raw
+  const data = raw as any
+  const fileName = data.icon.split('/').pop()
+  const iconId = fileName.split('.')[0]
   // Relic/Planar set stats aren't in nanoka either........
   const prev = existing as RelicEntry | undefined
   const entry: RelicEntry = {
     "2pc": prev?.["2pc"] ?? {},
     "4pc": prev?.["4pc"] ?? {},
   }
-  return { entry, iconUrl: "" }
+  return { entry, iconUrl: `https://static.nanoka.cc/assets/hsr/itemfigures/${iconId}.webp` }
 }
 
 async function transformPlanar(raw: unknown, existing?: object): Promise<TransformResult> {

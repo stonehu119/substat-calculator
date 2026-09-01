@@ -1,4 +1,8 @@
 {
+  "(None)": {
+    "2pc": {},
+    "4pc": {}
+  },
   "The Edacious Heretic": {
     "2pc": {
       "percent": {
@@ -13,10 +17,6 @@
         "SPD": 6
       }
     },
-    "4pc": {}
-  },
-  "(None)": {
-    "2pc": {},
     "4pc": {}
   },
   "As Navigator Isee Sees it": {
