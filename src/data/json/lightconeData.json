@@ -232,31 +232,11 @@
       "DEF": 529.2
     },
     "pathStats": [
-      {
-        "percent": {
-          "ATK": 40
-        }
-      },
-      {
-        "percent": {
-          "ATK": 50
-        }
-      },
-      {
-        "percent": {
-          "ATK": 60
-        }
-      },
-      {
-        "percent": {
-          "ATK": 70
-        }
-      },
-      {
-        "percent": {
-          "ATK": 80
-        }
-      }
+      {},
+      {},
+      {},
+      {},
+      {}
     ]
   },
   "Reforged in Hellfire": {
