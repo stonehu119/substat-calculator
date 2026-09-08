@@ -1,0 +1,80 @@
+[
+  {
+    "description": "Light cone: Colors for Tomorrow\nPassive \"Ink Splash\": Increases the wearer's DEF by [#1: 48%/60%/72%/84%/96%]. When the wearer uses an Elation Skill on all allies, increases DMG taken by all enemies by [#4: 22%/27.5%/33%/38.5%/44%], lasting for [#3: 3] turn(s). Regenerates a fixed [#2: 10] Energy for the wearer, and restores HP equal to [#5: 10%/12.5%/15%/17.5%/20%] of the wearer's DEF for all allies.",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "Increases the wearer's DEF by [#1: 48%/60%/72%/84%/96%]",
+          "stat": "DEF",
+          "paramIndex": 1,
+          "multiplier": 1
+        }
+      ],
+      "excluded": [
+        { "text": "increases DMG taken by all enemies by [#4: ...]", "reason": "affects enemies, and is conditional on using an Elation Skill" },
+        { "text": "Regenerates a fixed [#2: 10] Energy", "reason": "Energy is not one of the nine stats" },
+        { "text": "restores HP equal to [#5: ...] of the wearer's DEF for all allies", "reason": "healing, not a Max HP bonus, and applies to allies" }
+      ]
+    }
+  },
+  {
+    "description": "Light cone: The Flower Remembers\nPassive \"Interdependence\": Increases the wearer's CRIT DMG by [#1: 24%/28%/32%/36%/40%]. The CRIT DMG dealt by the wearer's memosprite increases by [#2: 24%/30%/36%/42%/48%].",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "Increases the wearer's CRIT DMG by [#1: 24%/28%/32%/36%/40%]",
+          "stat": "Crit DMG",
+          "paramIndex": 1,
+          "multiplier": 1
+        }
+      ],
+      "excluded": [
+        { "text": "The CRIT DMG dealt by the wearer's memosprite increases by [#2: ...]", "reason": "applies to the memosprite, not the wearer" }
+      ]
+    }
+  },
+  {
+    "description": "Light cone: Thus Burns the Dawn\nPassive \"Dispossession\": The wearer's base SPD increases by [#1: 12/14/16/18/20]. When dealing DMG, ignores [#2: 18%/22.5%/27%/31.5%/36%] of the target's DEF. After the wearer uses Ultimate, gains \"Blazing Sun,\" which is removed at the start of the turn. While holding \"Blazing Sun,\" increases the wearer's DMG dealt by [#3: 60%/78%/96%/114%/132%].",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "The wearer's base SPD increases by [#1: 12/14/16/18/20]",
+          "stat": "SPD",
+          "paramIndex": 1,
+          "multiplier": 1
+        }
+      ],
+      "excluded": [
+        { "text": "ignores [#2: ...] of the target's DEF", "reason": "DEF ignore is not one of the nine stats" },
+        { "text": "While holding \"Blazing Sun,\" increases the wearer's DMG dealt by [#3: ...]", "reason": "DMG bonus, and conditional on holding a buff" }
+      ]
+    }
+  },
+  {
+    "description": "Light cone: A Little Getaway\nPassive \"Whisper\": Increases the wearer's Elation by [#1: 20%/25%/30%/35%/40%]. During the use of Elation Skill by the wearer, ignores [#2: 8%/10%/12%/14%/16%] of the target's DEF.",
+    "result": {
+      "effects": [],
+      "excluded": [
+        { "text": "Increases the wearer's Elation by [#1: ...]", "reason": "Path DMG bonus, not one of the nine stats" },
+        { "text": "ignores [#2: ...] of the target's DEF", "reason": "DEF ignore is not one of the nine stats, and is conditional" }
+      ]
+    }
+  },
+  {
+    "description": "Light cone: In the Night\nPassive \"Flowers and Butterflies\": Increases the wearer's CRIT Rate by [#1: 18%/21%/24%/27%/30%]. While the wearer is in battle, for every [#2: 10] SPD that exceeds 100, increases DMG dealt by Basic ATK and Skill by [#3: 6%/7%/8%/9%/10%]. At the same time, increases the CRIT DMG of Ultimate by [#4: 12%/14%/16%/18%/20%]. This effect can stack up to [#5: 6] time(s).",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "Increases the wearer's CRIT Rate by [#1: 18%/21%/24%/27%/30%]",
+          "stat": "Crit Rate",
+          "paramIndex": 1,
+          "multiplier": 1
+        }
+      ],
+      "excluded": [
+        { "text": "increases DMG dealt by Basic ATK and Skill by [#3: ...]", "reason": "DMG bonus, and scales with SPD over 100 in stacks" },
+        { "text": "increases the CRIT DMG of Ultimate by [#4: ...]", "reason": "CRIT DMG is a tracked stat but this is conditional, stacking, and only applies to Ultimate" }
+      ]
+    }
+  }
+]

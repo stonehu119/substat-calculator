@@ -19,7 +19,15 @@ import { fileURLToPath } from "node:url"
 import sharp from "sharp"
 
 import type { Path } from "../src/data/data"
-import type { Substat } from "../src/data/substats"
+import { STAT_NAMES, type Substat } from "../src/data/substats"
+
+// Local dev: load GOOGLE_AI_API_KEY (and any other secrets) from .env if present.
+// In CI these are injected directly as env vars by the workflow, so no .env exists there.
+try {
+  process.loadEnvFile()
+} catch {
+  // no .env file — fine, env vars may already be set (e.g. in GitHub Actions)
+}
 
 // ------------------------------- schema types -------------------------------
 // Follows the interfaces in src/data/data.ts
@@ -65,6 +73,11 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..")
 const JSON_DIR = join(root, "src", "data", "json")
 const ICONS_DIR = join(root, "src", "assets", "icons")
 const VERSION_FILE = join(root, "src", "data", "version.ts")
+const EXAMPLES_FILE = join(root, "scripts", "lightcone-examples.json")
+
+// Stat inference overwrites only empty entries by default, so hand-corrected values
+// survive a re-run. `--regen` re-infers everything named on the command line.
+const REGENERATE = process.argv.includes("--regen")
 
 // Must match the sanitize() function in src/data/icons.ts
 function sanitize(name: string): string {
@@ -223,10 +236,276 @@ async function transformCharacter(raw: unknown): Promise<TransformResult> {
   return { entry, iconUrl: await fandomCharacterIconUrl(data.name).catch(() => "") }
 }
 
+// --------------------------- description rendering --------------------------
+// nanoka descriptions carry Unity rich-text markup (<color=...>, <unbreak>, ...) plus
+// #N[fmt] placeholders indexing into a param_list — `#1[i]` is param_list[0]. A `%`
+// directly after a placeholder means the stored value is a ratio needing a x100 scale
+// (0.48 -> "48%"); without one the value is used as-is (3 -> "3" turns).
+//
+// Each placeholder renders as `[#N: v1/v2/v3/v4/v5]` — the values across superimposition
+// levels, keyed by the index the model cites back to us in `paramIndex`.
+
+interface ParsedDescription {
+  /** Markup-free text with every placeholder replaced by its `[#N: ...]` tag. */
+  text: string
+  /** 1-based indices of params whose placeholder carried a `%` (i.e. stored as ratios). */
+  percentParams: Set<number>
+}
+
+/** The [i]/[f1] format tags are deliberately ignored — rounding 0.275 to "28%" would
+ *  corrupt a real 27.5% value. toFixed guards float artifacts (0.275 * 100 = 27.500000000000004). */
+function formatParam(value: number, percent: string): string {
+  return `${Number((percent ? value * 100 : value).toFixed(4))}${percent}`
+}
+
+function parseDescription(desc: string, paramsByLevel: number[][]): ParsedDescription {
+  const percentParams = new Set<number>()
+  const text = desc
+    .replace(/\\n/g, "\n") // source stores line breaks as a literal backslash-n, not a real newline
+    .replace(/<[^>]*>/g, "")
+    .replace(/#(\d+)\[[^\]]*\](%?)/g, (placeholder, index: string, percent: string) => {
+      const values = paramsByLevel.map(params => params[Number(index) - 1])
+      if (values.some(v => v === undefined)) return placeholder // leave unresolved refs visible
+      if (percent) percentParams.add(Number(index))
+      const rendered = values.map(v => formatParam(v, percent))
+      // collapse when every level shares a value (turn counts, Energy, stack caps)
+      const distinct = [...new Set(rendered)]
+      return `[#${index}: ${(distinct.length === 1 ? distinct : rendered).join("/")}]`
+    })
+    .replace(/[ \t]+/g, " ")
+    .trim()
+  return { text, percentParams }
+}
+
+/** A light cone's passive, plus the per-level params its `[#N: ...]` tags refer to. */
+interface EffectSource extends ParsedDescription {
+  effectName: string
+  paramsByLevel: number[][]
+}
+
+function lightconeEffectSource(raw: unknown): EffectSource {
+  // NB: refinements.name is the *passive* name ("Ink Splash"), not the light cone's.
+  const { name, desc, level } = (raw as any).refinements
+  const paramsByLevel: number[][] = Object.keys(level)
+    .sort((a, b) => Number(a) - Number(b))
+    .map(key => level[key].param_list)
+  return { effectName: name, paramsByLevel, ...parseDescription(desc, paramsByLevel) }
+}
+
+/** The exact text handed to the model — shared with the few-shot examples so both match. */
+function inferencePrompt(name: string, source: EffectSource): string {
+  return `Light cone: ${name}\nPassive "${source.effectName}": ${source.text}`
+}
+
+// ------------------------------ stat inference ------------------------------
+// The model never sees or emits numbers: it only says which `[#N: ...]` tag is an
+// always-on stat buff and which stat it is. Values and buckets are derived here, which
+// makes the numeric half of the pipeline exact and consistent across all 5 levels.
+
+// Google retires pinned models, which surfaces here as a 404 and empty pathStats in the PR.
+// Override with GEMINI_MODEL to move on without a code change.
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite"
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`
+const MAX_ATTEMPTS = 3
+
+/** Stats stored as additive percentage points rather than a ratio of the base value. */
+const FLAT_STATS = new Set<Substat>(["Crit Rate", "Crit DMG", "Break Effect", "Effect Hit Rate", "Effect RES"])
+
+interface InferredEffect {
+  sourceText: string
+  stat: Substat
+  paramIndex: number
+  multiplier: number
+}
+
+interface InferenceResult {
+  effects: InferredEffect[]
+  excluded: { text: string; reason: string }[]
+}
+
+interface FewShotExample {
+  description: string
+  result: InferenceResult
+}
+
+// sourceText is ordered first so the model quotes its evidence before committing to a
+// stat and index — cheap grounding that structured output otherwise skips.
+const RESPONSE_SCHEMA = {
+  type: "OBJECT",
+  properties: {
+    effects: {
+      type: "ARRAY",
+      items: {
+        type: "OBJECT",
+        properties: {
+          sourceText: { type: "STRING" },
+          stat: { type: "STRING", enum: [...STAT_NAMES] },
+          paramIndex: { type: "INTEGER" },
+          multiplier: { type: "NUMBER" },
+        },
+        required: ["sourceText", "stat", "paramIndex", "multiplier"],
+        propertyOrdering: ["sourceText", "stat", "paramIndex", "multiplier"],
+      },
+    },
+    excluded: {
+      type: "ARRAY",
+      items: {
+        type: "OBJECT",
+        properties: {
+          text: { type: "STRING" },
+          reason: { type: "STRING" },
+        },
+        required: ["text", "reason"],
+        propertyOrdering: ["text", "reason"],
+      },
+    },
+  },
+  required: ["effects", "excluded"],
+  propertyOrdering: ["effects", "excluded"],
+}
+
+const SYSTEM_INSTRUCTION = `You extract permanent stat bonuses from Honkai: Star Rail light cone passive descriptions.
+
+Every number in the description is replaced by a tag of the form [#N: v1/v2/v3/v4/v5], where
+N is the parameter's index and the values are its superimposition levels S1-S5. A single value
+means the parameter is the same at every level.
+
+Report each effect that unconditionally modifies one of these nine stats ON THE WEARER, for as
+long as the light cone is equipped:
+${STAT_NAMES.join(", ")}
+
+Cite the tag number in paramIndex. NEVER report the value itself — only which tag it came from.
+
+EXCLUDE anything that is:
+- conditional or temporary: gated on "when"/"after"/"while"/"if", dependent on stacks or on a
+  buff the wearer must first gain, or "lasting for N turn(s)"
+- applied to anyone other than the wearer: allies, enemies, or the wearer's memosprite
+- not one of the nine stats: DMG bonuses, elemental or Path DMG (e.g. "increases the wearer's
+  Elation"), Energy, Energy Regeneration Rate, healing, shields, DEF ignore, RES PEN,
+  Weakness Break efficiency, or aggro
+List every excluded phrase in "excluded" with a short reason.
+
+Stat naming: "Max HP" is HP, "CRIT Rate" is Crit Rate, "CRIT DMG" is Crit DMG.
+Set multiplier to 1 unless the description states the bonus applies a fixed number of times
+(e.g. a stack count that is always maxed), in which case use that count.
+If nothing qualifies, return an empty effects array.`
+
+/** Quota (429) and overload (503) are routine on the free tier, so back off rather than
+ *  lose the item — a dropped call would silently leave pathStats empty. */
+async function postWithRetry(apiKey: string, body: object): Promise<any> {
+  let lastError = ""
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const res = await fetch(GEMINI_URL, {
+      method: "POST",
+      headers: { "content-type": "application/json", "x-goog-api-key": apiKey },
+      body: JSON.stringify(body),
+    })
+    if (res.ok) return res.json()
+
+    const text = await res.text()
+    lastError = `HTTP ${res.status}: ${text.slice(0, 200)}`
+    if (![429, 500, 503].includes(res.status) || attempt === MAX_ATTEMPTS) break
+
+    // Quota errors carry a RetryInfo hint; otherwise back off exponentially.
+    const hinted = Number(text.match(/"retryDelay":\s*"(\d+)s"/)?.[1])
+    const waitMs = Math.min(hinted > 0 ? hinted * 1000 : 2000 * 2 ** (attempt - 1), 60_000)
+    console.warn(`  [lightcone] Gemini ${res.status} — retrying in ${waitMs / 1000}s (${attempt}/${MAX_ATTEMPTS})`)
+    await new Promise(resolve => setTimeout(resolve, waitMs))
+  }
+  throw new Error(`Gemini ${lastError}`)
+}
+
+async function callGemini(apiKey: string, prompt: string): Promise<InferenceResult> {
+  const examples = JSON.parse(readFileSync(EXAMPLES_FILE, "utf8")) as FewShotExample[]
+  const body = await postWithRetry(apiKey, {
+    systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] },
+    contents: [
+      // few-shot as real turns rather than pasted into the system prompt
+      ...examples.flatMap(example => [
+        { role: "user", parts: [{ text: example.description }] },
+        { role: "model", parts: [{ text: JSON.stringify(example.result) }] },
+      ]),
+      { role: "user", parts: [{ text: prompt }] },
+    ],
+    generationConfig: {
+      temperature: 0,
+      responseMimeType: "application/json",
+      responseSchema: RESPONSE_SCHEMA,
+    },
+  })
+  const text = body.candidates?.[0]?.content?.parts?.[0]?.text
+  if (!text) throw new Error(`Gemini returned no content: ${JSON.stringify(body).slice(0, 300)}`)
+  return JSON.parse(text) as InferenceResult
+}
+
+/** Drops effects that are wrong in ways we can check without knowing the right answer. */
+function validateEffects(source: EffectSource, effects: InferredEffect[]): InferredEffect[] {
+  const paramCount = source.paramsByLevel[0]?.length ?? 0
+  const kept: InferredEffect[] = []
+  for (const effect of effects) {
+    const { stat, paramIndex, multiplier } = effect
+    const drop = (why: string) => console.warn(`  [lightcone] dropped inferred effect (${why}): ${JSON.stringify(effect)}`)
+
+    if (!(STAT_NAMES as readonly string[]).includes(stat)) { drop(`unknown stat "${stat}"`); continue }
+    if (!Number.isInteger(paramIndex) || paramIndex < 1 || paramIndex > paramCount) {
+      drop(`paramIndex ${paramIndex} outside 1..${paramCount}`); continue
+    }
+    if (!Number.isFinite(multiplier) || multiplier <= 0) { drop(`bad multiplier ${multiplier}`); continue }
+    if (kept.some(k => k.stat === stat)) { drop(`duplicate stat "${stat}"`); continue }
+
+    if (multiplier !== 1) console.warn(`  [lightcone] ${stat} uses multiplier ${multiplier} — verify manually`)
+    kept.push(effect)
+  }
+  return kept
+}
+
+function toPathStats(source: EffectSource, effects: InferredEffect[]): StatMod[] {
+  return source.paramsByLevel.map(params => {
+    const mod: StatMod = {}
+    for (const { stat, paramIndex, multiplier } of effects) {
+      const isPercent = source.percentParams.has(paramIndex)
+      // HP/ATK/DEF/SPD scale the base stat when written as a %, and are otherwise a raw
+      // addition to it (e.g. Thus Burns the Dawn's flat +12 SPD).
+      const bucket = FLAT_STATS.has(stat) ? "flat" : isPercent ? "percent" : "base"
+      const value = params[paramIndex - 1] * (isPercent ? 100 : 1) * multiplier
+      ;(mod[bucket] ??= {})[stat] = Number(value.toFixed(4))
+    }
+    return mod
+  })
+}
+
+/** Returns null when inference is unavailable or failed, so the caller can fall back. */
+async function inferPathStats(name: string, raw: unknown): Promise<StatMod[] | null> {
+  const apiKey = process.env.GOOGLE_AI_API_KEY
+  if (!apiKey) {
+    console.warn("  [lightcone] GOOGLE_AI_API_KEY not set — leaving pathStats empty")
+    return null
+  }
+  const source = lightconeEffectSource(raw)
+  try {
+    const result = await callGemini(apiKey, inferencePrompt(name, source))
+    const effects = validateEffects(source, result.effects)
+    for (const e of effects) console.log(`  [lightcone] ${e.stat} <- #${e.paramIndex} "${e.sourceText}"`)
+    if (effects.length === 0) console.log("  [lightcone] no always-on stat bonus found")
+    return toPathStats(source, effects)
+  } catch (err) {
+    console.warn(`  [lightcone] stat inference failed: ${err instanceof Error ? err.message : err}`)
+    return null
+  }
+}
+
 async function transformLightcone(raw: unknown, existing?: object): Promise<TransformResult> {
   const data = raw as any
   const stats = data.stats[6]
   const prev = existing as LightconeEntry | undefined
+
+  // nanoka has no superimposition stats, only the passive's description — so they get
+  // inferred from that text. Existing values are kept unless --regen is passed.
+  const alreadyFilled = prev?.pathStats?.some(mod => Object.keys(mod).length > 0)
+  const pathStats = alreadyFilled && !REGENERATE
+    ? prev!.pathStats
+    : await inferPathStats(data.name, raw) ?? prev?.pathStats ?? [{}, {}, {}, {}, {}]
+
   const entry: LightconeEntry = {
     path: pathMap[data.base_type],
     baseStats: {
@@ -234,8 +513,7 @@ async function transformLightcone(raw: unknown, existing?: object): Promise<Tran
       ATK: stats.base_attack + stats.base_attack_add * 79,
       DEF: stats.base_defence + stats.base_defence_add * 79,
     },
-    // Superimposition stats aren't in nanoka....
-    pathStats: prev?.pathStats ?? [{}, {}, {}, {}, {}],
+    pathStats,
   }
   return { entry, iconUrl: `https://starrail.honeyhunterworld.com/img/item/${data.name.toLowerCase().replaceAll(" ", "-")}-item_icon.webp` }
 }
@@ -372,6 +650,7 @@ async function main(): Promise<void> {
   // Accept both `-- "Name A" "Name B"` and a single semicolon-separated `-- "Name A; Name B"`
   // (the latter is how the GitHub Actions workflow passes its input).
   const names = process.argv.slice(2)
+    .filter(a => a !== "--regen")
     .flatMap(a => a.split(";"))
     .map(s => s.trim())
     .filter(Boolean)

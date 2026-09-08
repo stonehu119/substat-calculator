@@ -33,6 +33,7 @@ jobs:
         id: update
         env:
           NAMES: ${{ inputs.names }}
+          GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
         run: npm run add-items -- "$NAMES"
 
       - name: Create PR
