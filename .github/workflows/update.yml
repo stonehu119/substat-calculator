@@ -33,6 +33,7 @@ jobs:
         id: update
         env:
           NAMES: ${{ inputs.names }}
+          GOOGLE_AI_API_KEY: ${{ secrets.GOOGLE_AI_API_KEY }}
         run: npm run add-items -- "$NAMES"
 
       - name: Create PR
@@ -50,6 +51,15 @@ jobs:
 
             **Missing icons:**
             ${{ steps.update.outputs.missing-icons }}
+
+            ---
+
+            ## Inferred stats
+
+            Generated from each passive's description — please verify the values below
+            against the quoted text before merging.
+
+            ${{ steps.update.outputs.stat-changes }}
           branch: "update/${{ steps.update.outputs.version }}"
           base: "main"
           delete-branch: true
