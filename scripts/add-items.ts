@@ -2,7 +2,7 @@
 /**
  * Add new items (characters, light cones, relic sets, planar sets) to the data set
  *
- * Usage: npm run add-items -- "Item One" "Item Two" "Item Three" ...
+ * Usage: npm run add-items -- [--no-regen] "Item One" "Item Two" "Item Three" ...
  *
  * For each name the script:
  *   1. resolves what kind of item it is + fetches its raw source data
@@ -10,6 +10,9 @@
  *   3. writes the entry into the matching src/data/json/*.json file
  *   4. downloads + resizes the icon into the matching assets subfolder
  *
+ * Light cone superimposition stats aren't in the source data, so they are inferred from
+ * the passive's description (see "stat inference"). Pass --no-regen to leave light cones
+ * that already have stats untouched.
  */
 
 import { readFileSync, writeFileSync, appendFileSync, existsSync } from "node:fs"
@@ -65,6 +68,8 @@ type ItemKind = "character" | "lightcone" | "relic" | "planar"
 interface TransformResult {
   entry: object
   iconUrl: string
+  /** Markdown for the PR body, when stats were inferred rather than copied over. */
+  report?: string
 }
 
 // --------------------------------- paths ------------------------------------
@@ -75,9 +80,10 @@ const ICONS_DIR = join(root, "src", "assets", "icons")
 const VERSION_FILE = join(root, "src", "data", "version.ts")
 const EXAMPLES_FILE = join(root, "scripts", "lightcone-examples.json")
 
-// Stat inference overwrites only empty entries by default, so hand-corrected values
-// survive a re-run. `--regen` re-infers everything named on the command line.
-const REGENERATE = process.argv.includes("--regen")
+// Stat inference re-runs for every item named on the command line, so entries track the
+// source as it changes. `--no-regen` skips items that already have stats, preserving
+// hand-corrected values.
+const KEEP_EXISTING = process.argv.includes("--no-regen")
 
 // Must match the sanitize() function in src/data/icons.ts
 function sanitize(name: string): string {
@@ -474,8 +480,36 @@ function toPathStats(source: EffectSource, effects: InferredEffect[]): StatMod[]
   })
 }
 
+/** Renders what the model produced, for a reviewer to check against the description. */
+function formatApplied(pathStats: StatMod[]): string {
+  const keys = new Set<string>()
+  for (const mod of pathStats) {
+    for (const [bucket, stats] of Object.entries(mod)) {
+      for (const stat of Object.keys(stats)) keys.add(`${bucket}.${stat}`)
+    }
+  }
+  if (keys.size === 0) return "_no always-on stat bonus found_"
+
+  return [...keys].map(key => {
+    const [bucket, stat] = key.split(".")
+    const values = pathStats.map(mod => (mod as Record<string, StatMap>)[bucket]?.[stat as Substat] ?? 0)
+    return `- \`${key}\` → ${values.join(" / ")}`
+  }).join("\n")
+}
+
+/** The description exactly as the model saw it, plus the stats derived from its answer. */
+function formatReport(name: string, source: EffectSource, pathStats: StatMod[]): string {
+  const quoted = source.text.split("\n").map(line => `> ${line}`).join("\n")
+  return `### ${name} — "${source.effectName}"\n\n${quoted}\n\n**Applied:**\n${formatApplied(pathStats)}`
+}
+
+interface InferredPathStats {
+  pathStats: StatMod[]
+  report: string
+}
+
 /** Returns null when inference is unavailable or failed, so the caller can fall back. */
-async function inferPathStats(name: string, raw: unknown): Promise<StatMod[] | null> {
+async function inferPathStats(name: string, raw: unknown): Promise<InferredPathStats | null> {
   const apiKey = process.env.GOOGLE_AI_API_KEY
   if (!apiKey) {
     console.warn("  [lightcone] GOOGLE_AI_API_KEY not set — leaving pathStats empty")
@@ -487,7 +521,8 @@ async function inferPathStats(name: string, raw: unknown): Promise<StatMod[] | n
     const effects = validateEffects(source, result.effects)
     for (const e of effects) console.log(`  [lightcone] ${e.stat} <- #${e.paramIndex} "${e.sourceText}"`)
     if (effects.length === 0) console.log("  [lightcone] no always-on stat bonus found")
-    return toPathStats(source, effects)
+    const pathStats = toPathStats(source, effects)
+    return { pathStats, report: formatReport(name, source, pathStats) }
   } catch (err) {
     console.warn(`  [lightcone] stat inference failed: ${err instanceof Error ? err.message : err}`)
     return null
@@ -500,11 +535,9 @@ async function transformLightcone(raw: unknown, existing?: object): Promise<Tran
   const prev = existing as LightconeEntry | undefined
 
   // nanoka has no superimposition stats, only the passive's description — so they get
-  // inferred from that text. Existing values are kept unless --regen is passed.
+  // inferred from that text, unless --no-regen preserves what is already there.
   const alreadyFilled = prev?.pathStats?.some(mod => Object.keys(mod).length > 0)
-  const pathStats = alreadyFilled && !REGENERATE
-    ? prev!.pathStats
-    : await inferPathStats(data.name, raw) ?? prev?.pathStats ?? [{}, {}, {}, {}, {}]
+  const inferred = alreadyFilled && KEEP_EXISTING ? null : await inferPathStats(data.name, raw)
 
   const entry: LightconeEntry = {
     path: pathMap[data.base_type],
@@ -513,9 +546,13 @@ async function transformLightcone(raw: unknown, existing?: object): Promise<Tran
       ATK: stats.base_attack + stats.base_attack_add * 79,
       DEF: stats.base_defence + stats.base_defence_add * 79,
     },
-    pathStats,
+    pathStats: inferred?.pathStats ?? prev?.pathStats ?? [{}, {}, {}, {}, {}],
   }
-  return { entry, iconUrl: `https://starrail.honeyhunterworld.com/img/item/${data.name.toLowerCase().replaceAll(" ", "-")}-item_icon.webp` }
+  return {
+    entry,
+    iconUrl: `https://starrail.honeyhunterworld.com/img/item/${data.name.toLowerCase().replaceAll(" ", "-")}-item_icon.webp`,
+    report: inferred?.report,
+  }
 }
 
 async function transformRelic(raw: unknown, existing?: object): Promise<TransformResult> {
@@ -621,13 +658,19 @@ function exportOutput(name: string, value: string): void {
 
 // ----------------------------------- main -----------------------------------
 
-/** Processes one item. Returns false if no icon was saved (non-fatal — icon can be added later). */
-async function processItem(name: string): Promise<boolean> {
+interface ItemResult {
+  /** False if no icon was saved (non-fatal — icon can be added later). */
+  iconSaved: boolean
+  /** Markdown describing inferred stats, for the PR body. */
+  report?: string
+}
+
+async function processItem(name: string): Promise<ItemResult> {
   const { kind, raw } = await resolveItem(name)
   const handler = HANDLERS[kind]
 
   const data = loadJson(handler.jsonFile)
-  const { entry, iconUrl } = await handler.transform(raw, data[name] as object | undefined)
+  const { entry, iconUrl, report } = await handler.transform(raw, data[name] as object | undefined)
   const updated = writeEntry(handler.jsonFile, data, name, entry)
   console.log(`  [${kind}] ${updated ? "updated" : "added"} entry -> ${handler.jsonFile}`)
 
@@ -635,27 +678,27 @@ async function processItem(name: string): Promise<boolean> {
     try {
       await downloadIcon(iconUrl, name, handler.iconSubfolder, kind === 'lightcone' ? "lg" : "sm")
       console.log(`  [${kind}] saved icon  -> icons/${handler.iconSubfolder}/${sanitize(name)}.webp`)
-      return true
+      return { iconSaved: true, report }
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err)
       console.warn(`  [${kind}] icon download failed (add manually): ${message}`)
-      return false
+      return { iconSaved: false, report }
     }
   }
   console.warn(`  [${kind}] no iconUrl — add icon manually`)
-  return false
+  return { iconSaved: false, report }
 }
 
 async function main(): Promise<void> {
   // Accept both `-- "Name A" "Name B"` and a single semicolon-separated `-- "Name A; Name B"`
   // (the latter is how the GitHub Actions workflow passes its input).
   const names = process.argv.slice(2)
-    .filter(a => a !== "--regen")
+    .filter(a => a !== "--no-regen")
     .flatMap(a => a.split(";"))
     .map(s => s.trim())
     .filter(Boolean)
   if (names.length === 0) {
-    console.error('Usage: npm run add-items -- "Item One" "Item Two" ...')
+    console.error('Usage: npm run add-items -- [--no-regen] "Item One" "Item Two" ...')
     process.exit(1)
   }
 
@@ -668,12 +711,14 @@ async function main(): Promise<void> {
 
   const failures: { name: string; error: string }[] = []
   const missingIcons: string[] = []
+  const reports: string[] = []
 
   for (const name of names) {
     console.log(`\n"${name}"`)
     try {
-      const iconSaved = await processItem(name)
+      const { iconSaved, report } = await processItem(name)
       if (!iconSaved) missingIcons.push(name)
+      if (report) reports.push(report)
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err)
       console.error(`  FAILED: ${message}`)
@@ -696,6 +741,12 @@ async function main(): Promise<void> {
   exportOutput("missing-icons", missingIcons.length > 0
     ? missingIcons.map(n => `- ${n}`).join("\n")
     : "_None — all icons downloaded._")
+
+  // Inferred stats are the one part of the PR a human has to check, so the body shows
+  // the description the model read next to the values derived from its answer.
+  exportOutput("stat-changes", reports.length > 0
+    ? reports.join("\n\n")
+    : "_None — no stats were inferred._")
 
   // Type-check the new/updated entries and that the app compiles with no errors
   let buildOk = true

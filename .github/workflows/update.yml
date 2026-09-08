@@ -51,6 +51,15 @@ jobs:
 
             **Missing icons:**
             ${{ steps.update.outputs.missing-icons }}
+
+            ---
+
+            ## Inferred stats
+
+            Generated from each passive's description — please verify the values below
+            against the quoted text before merging.
+
+            ${{ steps.update.outputs.stat-changes }}
           branch: "update/${{ steps.update.outputs.version }}"
           base: "main"
           delete-branch: true
