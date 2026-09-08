@@ -2,9 +2,12 @@
 /**
  * Add new items (characters, light cones, relic sets, planar sets) to the data set
  *
- * Usage: npm run add-items -- [--no-regen] "Item One" "Item Two" "Item Three" ...
+ * Usage: npm run add-items -- [--no-regen] ["Item One" "Item Two" ...]
  *
- * For each name the script:
+ * With no names, the items to update are discovered from the manifest's `hsr.new` list —
+ * whatever the current data version changed. Otherwise the given names are used.
+ *
+ * For each item the script:
  *   1. resolves what kind of item it is + fetches its raw source data
  *   2. transforms that payload into the right JSON schema
  *   3. writes the entry into the matching src/data/json/*.json file
@@ -24,7 +27,7 @@ import { join, dirname } from "node:path"
 import { fileURLToPath } from "node:url"
 import sharp from "sharp"
 
-import { fetchLatestVersion, resolveItem } from "./lib/nanoka"
+import { discoverNew, fetchItem, fetchLatestVersion, locateByName, type ItemRef } from "./lib/nanoka"
 import { HANDLERS } from "./lib/transforms"
 import type { TransformOptions } from "./lib/types"
 
@@ -113,8 +116,9 @@ interface ItemResult {
   report?: string
 }
 
-async function processItem(name: string, version: string, opts: TransformOptions): Promise<ItemResult> {
-  const { kind, raw } = await resolveItem(name, version)
+async function processItem(ref: ItemRef, version: string, opts: TransformOptions): Promise<ItemResult> {
+  const { kind, name } = ref
+  const raw = await fetchItem(version, kind, ref.id)
   const handler = HANDLERS[kind]
 
   const data = loadJson(handler.jsonFile)
@@ -147,10 +151,6 @@ async function main(): Promise<void> {
     .flatMap(a => a.split(";"))
     .map(s => s.trim())
     .filter(Boolean)
-  if (names.length === 0) {
-    console.error('Usage: npm run add-items -- [--no-regen] "Item One" "Item Two" ...')
-    process.exit(1)
-  }
 
   // Sync the data version and hand it to the workflow before processing items,
   // so the PR can be named even if some items later fail.
@@ -159,25 +159,45 @@ async function main(): Promise<void> {
   exportOutput("version", version)
   console.log(`Data version: ${version}`)
 
+  // No names means "whatever this version changed". Each target is resolved lazily so one
+  // bad name fails only itself.
+  let targets: { label: string; resolve: () => Promise<ItemRef> }[]
+  if (names.length > 0) {
+    targets = names.map(name => ({ label: name, resolve: () => locateByName(name, version) }))
+  } else {
+    console.log("\nNo names given — discovering items changed in this version...")
+    const discovered = await discoverNew(version)
+    targets = discovered.map(ref => ({ label: ref.name, resolve: async () => ref }))
+    if (targets.length === 0) {
+      console.log("Nothing new in the manifest — no changes to make.")
+      exportOutput("missing-icons", "_None._")
+      exportOutput("stat-changes", "_None — the manifest listed no new items._")
+      exportOutput("item-names", "_None — the manifest listed no new items._")
+      return
+    }
+    console.log(`Found ${targets.length}: ${discovered.map(r => `${r.name} (${r.kind})`).join(", ")}`)
+  }
+  exportOutput("item-names", targets.map(t => `- ${t.label}`).join("\n"))
+
   const failures: { name: string; error: string }[] = []
   const missingIcons: string[] = []
   const reports: string[] = []
 
-  for (const name of names) {
-    console.log(`\n"${name}"`)
+  for (const target of targets) {
+    console.log(`\n"${target.label}"`)
     try {
-      const { iconSaved, report } = await processItem(name, version, opts)
-      if (!iconSaved) missingIcons.push(name)
+      const { iconSaved, report } = await processItem(await target.resolve(), version, opts)
+      if (!iconSaved) missingIcons.push(target.label)
       if (report) reports.push(report)
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err)
       console.error(`  FAILED: ${message}`)
-      failures.push({ name, error: message })
+      failures.push({ name: target.label, error: message })
     }
   }
 
-  const ok = names.length - failures.length
-  console.log(`\n${ok}/${names.length} item(s) added or updated.`)
+  const ok = targets.length - failures.length
+  console.log(`\n${ok}/${targets.length} item(s) added or updated.`)
   if (failures.length > 0) {
     console.log("Failed:")
     for (const f of failures) console.log(`  - ${f.name}: ${f.error}`)
