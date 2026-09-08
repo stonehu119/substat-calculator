@@ -5,8 +5,8 @@
   },
   "The Edacious Heretic": {
     "2pc": {
-      "percent": {
-        "ATK": 12
+      "flat": {
+        "Crit DMG": 16
       }
     },
     "4pc": {}
