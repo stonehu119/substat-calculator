@@ -3,9 +3,9 @@
     "path": "Elation",
     "stats": {
       "base": {
-        "HP": 1203.0479999999998,
+        "HP": 1203.048,
         "ATK": 465.696,
-        "DEF": 727.6500000000001,
+        "DEF": 727.65,
         "SPD": 99
       },
       "percent": {
@@ -21,8 +21,8 @@
     "path": "Remembrance",
     "stats": {
       "base": {
-        "HP": 1203.0479999999998,
-        "ATK": 601.5239999999999,
+        "HP": 1203.048,
+        "ATK": 601.524,
         "DEF": 485.1,
         "SPD": 95
       },
@@ -39,7 +39,7 @@
     "path": "Elation",
     "stats": {
       "base": {
-        "HP": 1164.2399999999998,
+        "HP": 1164.24,
         "ATK": 485.1,
         "DEF": 606.375,
         "SPD": 107
@@ -71,8 +71,8 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1125.4319999999998,
-        "ATK": 717.9480000000001,
+        "HP": 1125.432,
+        "ATK": 717.948,
         "DEF": 509.355,
         "SPD": 97
       },
@@ -88,7 +88,7 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 1125.4319999999998,
+        "HP": 1125.432,
         "ATK": 756.756,
         "DEF": 485.1,
         "SPD": 98
@@ -105,7 +105,7 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1358.2800000000002,
+        "HP": 1358.28,
         "ATK": 543.312,
         "DEF": 485.1,
         "SPD": 107
@@ -123,7 +123,7 @@
     "stats": {
       "base": {
         "HP": 1047.816,
-        "ATK": 737.3520000000001,
+        "ATK": 737.352,
         "DEF": 460.845,
         "SPD": 104
       },
@@ -137,14 +137,14 @@
     "path": "Elation",
     "stats": {
       "base": {
-        "HP": 1047.82,
+        "HP": 1047.816,
         "ATK": 388.08,
-        "DEF": 654.89,
+        "DEF": 654.885,
         "SPD": 110
       },
       "flat": {
-        "SPD": 9,
-        "Crit Rate": 18.7
+        "Crit Rate": 18.7,
+        "SPD": 9
       }
     }
   },
@@ -152,8 +152,8 @@
     "path": "Elation",
     "stats": {
       "base": {
-        "HP": 1086.62,
-        "ATK": 465.7,
+        "HP": 1086.624,
+        "ATK": 465.696,
         "DEF": 630.63,
         "SPD": 106
       },
@@ -162,7 +162,7 @@
       },
       "flat": {
         "Crit Rate": 12,
-        "Crit DMG": 13
+        "Crit DMG": 13.3
       }
     }
   },
@@ -170,9 +170,9 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 853.7760000000001,
-        "ATK": 776.1600000000001,
-        "DEF": 388.08000000000004,
+        "HP": 853.776,
+        "ATK": 776.16,
+        "DEF": 388.08,
         "SPD": 106
       },
       "percent": {
@@ -202,7 +202,7 @@
     "path": "Elation",
     "stats": {
       "base": {
-        "HP": 1241.8560000000002,
+        "HP": 1241.856,
         "ATK": 465.696,
         "DEF": 654.885,
         "SPD": 101
@@ -217,15 +217,15 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1086.62,
+        "HP": 1086.624,
         "ATK": 679.14,
-        "DEF": 606.38,
+        "DEF": 606.375,
         "SPD": 96
       },
       "flat": {
-        "SPD": 5,
         "Break Effect": 37.3,
-        "Effect RES": 18
+        "Effect RES": 18,
+        "SPD": 5
       }
     }
   },
@@ -233,8 +233,8 @@
     "path": "Remembrance",
     "stats": {
       "base": {
-        "HP": 1397.1,
-        "ATK": 446.29,
+        "HP": 1397.088,
+        "ATK": 446.292,
         "DEF": 582.12,
         "SPD": 101
       },
@@ -242,8 +242,8 @@
         "HP": 10
       },
       "flat": {
-        "SPD": 9,
-        "Crit DMG": 37.3
+        "Crit DMG": 37.3,
+        "SPD": 9
       }
     }
   },
@@ -252,8 +252,8 @@
     "stats": {
       "base": {
         "HP": 1047.816,
-        "ATK": 582.1199999999999,
-        "DEF": 776.1600000000001,
+        "ATK": 582.12,
+        "DEF": 776.16,
         "SPD": 97
       },
       "percent": {
@@ -269,8 +269,8 @@
     "path": "Remembrance",
     "stats": {
       "base": {
-        "HP": 1319.5,
-        "ATK": 543.31,
+        "HP": 1319.472,
+        "ATK": 543.312,
         "DEF": 582.12,
         "SPD": 99
       },
@@ -287,14 +287,14 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1358.3,
-        "ATK": 620.93,
-        "DEF": 620.93,
+        "HP": 1358.28,
+        "ATK": 620.928,
+        "DEF": 485.1,
         "SPD": 99
       },
       "percent": {
-        "HP": 10,
-        "ATK": 18
+        "ATK": 18,
+        "HP": 10
       }
     }
   },
@@ -302,9 +302,9 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1203,
-        "ATK": 601.52,
-        "DEF": 601.52,
+        "HP": 1203.048,
+        "ATK": 601.524,
+        "DEF": 485.1,
         "SPD": 102
       },
       "percent": {
@@ -320,8 +320,8 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 1164.2,
-        "ATK": 620.93,
+        "HP": 1164.24,
+        "ATK": 620.928,
         "DEF": 485.1,
         "SPD": 105
       },
@@ -337,9 +337,9 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1241.9,
-        "ATK": 601.52,
-        "DEF": 654.88,
+        "HP": 1241.856,
+        "ATK": 601.524,
+        "DEF": 654.885,
         "SPD": 101
       },
       "percent": {
@@ -354,15 +354,15 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1435.9,
+        "HP": 1435.896,
         "ATK": 582.12,
-        "DEF": 703.39,
+        "DEF": 703.395,
         "SPD": 94
       },
       "flat": {
-        "SPD": 5,
+        "Crit DMG": 37.3,
         "Crit Rate": 12,
-        "Crit DMG": 37.3
+        "SPD": 5
       }
     }
   },
@@ -370,9 +370,9 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 931.4,
-        "ATK": 640.33,
-        "DEF": 509.36,
+        "HP": 931.392,
+        "ATK": 640.332,
+        "DEF": 509.355,
         "SPD": 106
       },
       "flat": {
@@ -385,17 +385,17 @@
     "path": "Remembrance",
     "stats": {
       "base": {
-        "HP": 1086.6,
+        "HP": 1086.624,
         "ATK": 388.08,
         "DEF": 630.63,
         "SPD": 110
       },
       "percent": {
-        "HP": 18
+        "HP": 10
       },
       "flat": {
         "SPD": 14,
-        "Effect RES": 10
+        "Effect RES": 18
       }
     }
   },
@@ -404,8 +404,8 @@
     "stats": {
       "base": {
         "HP": 970.2,
-        "ATK": 756.76,
-        "DEF": 557.87,
+        "ATK": 756.756,
+        "DEF": 557.865,
         "SPD": 97
       },
       "percent": {
@@ -420,8 +420,8 @@
     "path": "Remembrance",
     "stats": {
       "base": {
-        "HP": 1629.9,
-        "ATK": 523.91,
+        "HP": 1629.936,
+        "ATK": 523.908,
         "DEF": 485.1,
         "SPD": 95
       },
@@ -435,8 +435,8 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1552.3,
-        "ATK": 426.89,
+        "HP": 1552.32,
+        "ATK": 426.888,
         "DEF": 194.04,
         "SPD": 95
       },
@@ -444,8 +444,8 @@
         "HP": 18
       },
       "flat": {
-        "SPD": 5,
-        "Crit DMG": 37.3
+        "Crit DMG": 37.3,
+        "SPD": 5
       }
     }
   },
@@ -453,8 +453,8 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1047.8,
-        "ATK": 523.91,
+        "HP": 1047.816,
+        "ATK": 523.908,
         "DEF": 727.65,
         "SPD": 96
       },
@@ -462,8 +462,8 @@
         "HP": 10
       },
       "flat": {
-        "Crit Rate": 12,
-        "Crit DMG": 37.3
+        "Crit DMG": 37.3,
+        "Crit Rate": 12
       }
     }
   },
@@ -471,8 +471,8 @@
     "path": "Remembrance",
     "stats": {
       "base": {
-        "HP": 1241.9,
-        "ATK": 698.54,
+        "HP": 1241.856,
+        "ATK": 698.544,
         "DEF": 485.1,
         "SPD": 102
       },
@@ -480,8 +480,7 @@
         "DEF": 12.5
       },
       "flat": {
-        "Crit Rate": 12,
-        "Effect RES": 22.4
+        "Crit Rate": 12
       }
     }
   },
@@ -489,7 +488,7 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 1164.2,
+        "HP": 1164.24,
         "ATK": 679.14,
         "DEF": 485.1,
         "SPD": 99
@@ -506,14 +505,14 @@
     "path": "Remembrance",
     "stats": {
       "base": {
-        "HP": 1047.8,
-        "ATK": 543.31,
+        "HP": 1047.816,
+        "ATK": 543.312,
         "DEF": 630.63,
         "SPD": 103
       },
       "percent": {
-        "HP": 14,
-        "ATK": 14
+        "ATK": 14,
+        "HP": 14
       },
       "flat": {
         "Crit DMG": 37.3
@@ -524,9 +523,9 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1125.4,
+        "HP": 1125.432,
         "ATK": 582.12,
-        "DEF": 557.87,
+        "DEF": 557.865,
         "SPD": 102
       },
       "percent": {
@@ -542,8 +541,8 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1241.9,
-        "ATK": 640.33,
+        "HP": 1241.856,
+        "ATK": 640.332,
         "DEF": 533.61,
         "SPD": 96
       },
@@ -560,9 +559,9 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 1086.6,
-        "ATK": 717.95,
-        "DEF": 460.85,
+        "HP": 1086.624,
+        "ATK": 717.948,
+        "DEF": 460.845,
         "SPD": 96
       },
       "percent": {
@@ -578,7 +577,7 @@
     "path": "Abundance",
     "stats": {
       "base": {
-        "HP": 1358.3,
+        "HP": 1358.28,
         "ATK": 679.14,
         "DEF": 436.59,
         "SPD": 98
@@ -596,14 +595,14 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 811.4,
+        "HP": 811.44,
         "ATK": 599.76,
         "DEF": 352.8,
         "SPD": 111
       },
       "percent": {
-        "HP": 10,
-        "ATK": 18
+        "ATK": 18,
+        "HP": 10
       },
       "flat": {
         "Crit DMG": 37.3
@@ -614,8 +613,8 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 1047.8,
-        "ATK": 601.52,
+        "HP": 1047.816,
+        "ATK": 601.524,
         "DEF": 388.08,
         "SPD": 112
       },
@@ -632,14 +631,14 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1358.3,
-        "ATK": 601.52,
-        "DEF": 509.36,
+        "HP": 1358.28,
+        "ATK": 601.524,
+        "DEF": 509.355,
         "SPD": 98
       },
       "flat": {
-        "SPD": 5,
-        "Effect Hit Rate": 28
+        "Effect Hit Rate": 28,
+        "SPD": 5
       }
     }
   },
@@ -647,14 +646,14 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1358.3,
+        "HP": 1358.28,
         "ATK": 679.14,
-        "DEF": 679.14,
+        "DEF": 460.845,
         "SPD": 94
       },
       "percent": {
-        "HP": 18,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 18
       },
       "flat": {
         "Crit Rate": 6.7
@@ -683,9 +682,9 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 1086.6,
-        "ATK": 659.74,
-        "DEF": 509.36,
+        "HP": 1086.624,
+        "ATK": 659.736,
+        "DEF": 509.355,
         "SPD": 103
       },
       "percent": {
@@ -700,15 +699,15 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 815,
-        "ATK": 523.91,
+        "HP": 814.968,
+        "ATK": 523.908,
         "DEF": 776.16,
         "SPD": 104
       },
       "flat": {
-        "SPD": 5,
         "Break Effect": 37.3,
-        "Effect RES": 18
+        "Effect RES": 18,
+        "SPD": 5
       }
     }
   },
@@ -716,14 +715,14 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 1203,
-        "ATK": 620.93,
+        "HP": 1203.048,
+        "ATK": 620.928,
         "DEF": 436.59,
         "SPD": 107
       },
       "percent": {
-        "HP": 10,
-        "ATK": 18
+        "ATK": 18,
+        "HP": 10
       },
       "flat": {
         "Break Effect": 37.3
@@ -734,14 +733,14 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1280.7,
-        "ATK": 640.33,
+        "HP": 1280.664,
+        "ATK": 640.332,
         "DEF": 485.1,
         "SPD": 102
       },
       "percent": {
-        "HP": 18,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 18
       },
       "flat": {
         "SPD": 5
@@ -752,8 +751,8 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1086.6,
-        "ATK": 446.29,
+        "HP": 1086.624,
+        "ATK": 446.292,
         "DEF": 679.14,
         "SPD": 105
       },
@@ -767,9 +766,9 @@
     "path": "Preservation",
     "stats": {
       "base": {
-        "HP": 1203,
-        "ATK": 446.29,
-        "DEF": 654.88,
+        "HP": 1203.048,
+        "ATK": 446.292,
+        "DEF": 654.885,
         "SPD": 106
       },
       "percent": {
@@ -784,8 +783,8 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1125.4,
-        "ATK": 698.54,
+        "HP": 1125.432,
+        "ATK": 698.544,
         "DEF": 436.59,
         "SPD": 101
       },
@@ -801,7 +800,7 @@
     "path": "Abundance",
     "stats": {
       "base": {
-        "HP": 1305.4,
+        "HP": 1305.36,
         "ATK": 529.2,
         "DEF": 441,
         "SPD": 98
@@ -810,8 +809,8 @@
         "HP": 18
       },
       "flat": {
-        "Break Effect": 13.3,
-        "Effect RES": 28
+        "Effect RES": 28,
+        "Break Effect": 13.3
       }
     }
   },
@@ -819,8 +818,8 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1397.1,
-        "ATK": 523.91,
+        "HP": 1397.088,
+        "ATK": 523.908,
         "DEF": 485.1,
         "SPD": 101
       },
@@ -837,7 +836,7 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1270.1,
+        "HP": 1270.08,
         "ATK": 599.76,
         "DEF": 396.9,
         "SPD": 96
@@ -854,8 +853,8 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1086.6,
-        "ATK": 659.74,
+        "HP": 1086.624,
+        "ATK": 659.736,
         "DEF": 485.1,
         "SPD": 102
       },
@@ -871,9 +870,9 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 1047.8,
+        "HP": 1047.816,
         "ATK": 776.16,
-        "DEF": 460.85,
+        "DEF": 460.845,
         "SPD": 103
       },
       "percent": {
@@ -906,8 +905,8 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1086.6,
-        "ATK": 659.74,
+        "HP": 1086.624,
+        "ATK": 659.736,
         "DEF": 485.1,
         "SPD": 104
       },
@@ -915,8 +914,8 @@
         "DEF": 22.5
       },
       "flat": {
-        "SPD": 5,
-        "Break Effect": 37.3
+        "Break Effect": 37.3,
+        "SPD": 5
       }
     }
   },
@@ -924,14 +923,14 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 917.3,
+        "HP": 917.28,
         "ATK": 564.48,
         "DEF": 352.8,
         "SPD": 110
       },
       "percent": {
-        "HP": 10,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 10
       },
       "flat": {
         "SPD": 9
@@ -942,14 +941,14 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 1047.8,
-        "ATK": 737.35,
-        "DEF": 363.82,
+        "HP": 1047.816,
+        "ATK": 737.352,
+        "DEF": 363.825,
         "SPD": 103
       },
       "percent": {
-        "HP": 10,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 10
       }
     }
   },
@@ -957,17 +956,17 @@
     "path": "Abundance",
     "stats": {
       "base": {
-        "HP": 1358.3,
-        "ATK": 601.52,
-        "DEF": 509.36,
+        "HP": 1358.28,
+        "ATK": 601.524,
+        "DEF": 509.355,
         "SPD": 98
       },
       "percent": {
         "HP": 28
       },
       "flat": {
-        "SPD": 5,
-        "Effect RES": 18
+        "Effect RES": 18,
+        "SPD": 5
       }
     }
   },
@@ -990,9 +989,9 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 931.4,
-        "ATK": 620.93,
-        "DEF": 412.33,
+        "HP": 931.392,
+        "ATK": 620.928,
+        "DEF": 412.335,
         "SPD": 110
       },
       "percent": {
@@ -1007,7 +1006,7 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1435.9,
+        "HP": 1435.896,
         "ATK": 679.14,
         "DEF": 485.1,
         "SPD": 96
@@ -1016,8 +1015,8 @@
         "HP": 10
       },
       "flat": {
-        "SPD": 9,
-        "Crit DMG": 37.3
+        "Crit DMG": 37.3,
+        "SPD": 9
       }
     }
   },
@@ -1043,9 +1042,9 @@
     "path": "Preservation",
     "stats": {
       "base": {
-        "HP": 1474.7,
-        "ATK": 465.7,
-        "DEF": 606.38,
+        "HP": 1474.704,
+        "ATK": 465.696,
+        "DEF": 606.375,
         "SPD": 100
       },
       "percent": {
@@ -1061,9 +1060,9 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1241.9,
-        "ATK": 698.54,
-        "DEF": 363.82,
+        "HP": 1241.856,
+        "ATK": 698.544,
+        "DEF": 363.825,
         "SPD": 102
       },
       "percent": {
@@ -1078,7 +1077,7 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 917.3,
+        "HP": 917.28,
         "ATK": 582.12,
         "DEF": 485.1,
         "SPD": 103
@@ -1096,14 +1095,14 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1086.6,
+        "HP": 1086.624,
         "ATK": 679.14,
         "DEF": 485.1,
         "SPD": 100
       },
       "percent": {
-        "HP": 10,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 10
       },
       "flat": {
         "Effect Hit Rate": 18
@@ -1114,8 +1113,8 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1358.3,
-        "ATK": 543.31,
+        "HP": 1358.28,
+        "ATK": 543.312,
         "DEF": 485.1,
         "SPD": 97
       },
@@ -1132,7 +1131,7 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 917.3,
+        "HP": 917.28,
         "ATK": 599.76,
         "DEF": 374.85,
         "SPD": 107
@@ -1147,14 +1146,14 @@
     "path": "Abundance",
     "stats": {
       "base": {
-        "HP": 1280.7,
-        "ATK": 756.76,
-        "DEF": 363.82,
+        "HP": 1280.664,
+        "ATK": 756.756,
+        "DEF": 363.825,
         "SPD": 101
       },
       "percent": {
-        "HP": 18,
         "ATK": 28,
+        "HP": 18,
         "DEF": 12.5
       }
     }
@@ -1163,9 +1162,9 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1047.8,
-        "ATK": 640.33,
-        "DEF": 640.33,
+        "HP": 1047.816,
+        "ATK": 640.332,
+        "DEF": 460.845,
         "SPD": 107
       },
       "percent": {
@@ -1180,8 +1179,8 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 1164.2,
-        "ATK": 698.54,
+        "HP": 1164.24,
+        "ATK": 698.544,
         "DEF": 485.1,
         "SPD": 99
       },
@@ -1198,9 +1197,9 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 931.4,
-        "ATK": 640.33,
-        "DEF": 363.82,
+        "HP": 931.392,
+        "ATK": 640.332,
+        "DEF": 363.825,
         "SPD": 115
       },
       "percent": {
@@ -1216,14 +1215,14 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1199.5,
+        "HP": 1199.52,
         "ATK": 599.76,
         "DEF": 330.75,
         "SPD": 102
       },
       "percent": {
-        "HP": 10,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 10
       },
       "flat": {
         "Effect RES": 18
@@ -1234,7 +1233,7 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1023.1,
+        "HP": 1023.12,
         "ATK": 511.56,
         "DEF": 463.05,
         "SPD": 106
@@ -1251,8 +1250,8 @@
     "path": "Abundance",
     "stats": {
       "base": {
-        "HP": 1319.5,
-        "ATK": 562.72,
+        "HP": 1319.472,
+        "ATK": 562.716,
         "DEF": 485.1,
         "SPD": 98
       },
@@ -1269,7 +1268,7 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 1241.9,
+        "HP": 1241.856,
         "ATK": 582.12,
         "DEF": 533.61,
         "SPD": 99
@@ -1284,14 +1283,14 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1241.9,
-        "ATK": 737.35,
+        "HP": 1241.856,
+        "ATK": 737.352,
         "DEF": 485.1,
         "SPD": 90
       },
       "percent": {
-        "HP": 10,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 10
       }
     }
   },
@@ -1299,14 +1298,14 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1203,
-        "ATK": 620.93,
-        "DEF": 460.85,
+        "HP": 1203.048,
+        "ATK": 620.928,
+        "DEF": 460.845,
         "SPD": 100
       },
       "percent": {
-        "HP": 18,
         "ATK": 28,
+        "HP": 18,
         "DEF": 12.5
       }
     }
@@ -1330,9 +1329,9 @@
     "path": "Preservation",
     "stats": {
       "base": {
-        "HP": 1397.1,
-        "ATK": 543.31,
-        "DEF": 654.88,
+        "HP": 1397.088,
+        "ATK": 543.312,
+        "DEF": 654.885,
         "SPD": 92
       },
       "percent": {
@@ -1347,7 +1346,7 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 952.6,
+        "HP": 952.56,
         "ATK": 582.12,
         "DEF": 396.9,
         "SPD": 100
@@ -1364,8 +1363,8 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 1047.8,
-        "ATK": 756.76,
+        "HP": 1047.816,
+        "ATK": 756.756,
         "DEF": 436.59,
         "SPD": 96
       },
@@ -1381,14 +1380,14 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1340.6,
+        "HP": 1340.64,
         "ATK": 617.4,
         "DEF": 352.8,
         "SPD": 94
       },
       "percent": {
-        "HP": 18,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 18
       },
       "flat": {
         "Crit DMG": 13.3
@@ -1416,7 +1415,7 @@
     "path": "Abundance",
     "stats": {
       "base": {
-        "HP": 1164.2,
+        "HP": 1164.24,
         "ATK": 476.28,
         "DEF": 507.15,
         "SPD": 98
@@ -1434,7 +1433,7 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 987.8,
+        "HP": 987.84,
         "ATK": 546.84,
         "DEF": 463.05,
         "SPD": 105
@@ -1451,15 +1450,15 @@
     "path": "Preservation",
     "stats": {
       "base": {
-        "HP": 1241.9,
-        "ATK": 601.52,
-        "DEF": 606.38,
+        "HP": 1241.856,
+        "ATK": 601.524,
+        "DEF": 606.375,
         "SPD": 95
       },
       "percent": {
-        "HP": 10,
+        "DEF": 35,
         "ATK": 18,
-        "DEF": 35
+        "HP": 10
       }
     }
   },
@@ -1467,9 +1466,9 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 1023.1,
+        "HP": 1023.12,
         "ATK": 652.68,
-        "DEF": 652.68,
+        "DEF": 441,
         "SPD": 98
       },
       "percent": {
@@ -1482,7 +1481,7 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1023.1,
+        "HP": 1023.12,
         "ATK": 617.4,
         "DEF": 396.9,
         "SPD": 102
@@ -1500,7 +1499,7 @@
     "path": "Erudition",
     "stats": {
       "base": {
-        "HP": 917.3,
+        "HP": 917.28,
         "ATK": 652.68,
         "DEF": 374.85,
         "SPD": 104
@@ -1516,14 +1515,14 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 917.3,
+        "HP": 917.28,
         "ATK": 564.48,
         "DEF": 418.95,
         "SPD": 107
       },
       "percent": {
-        "HP": 18,
         "ATK": 28,
+        "HP": 18,
         "DEF": 12.5
       }
     }
@@ -1532,7 +1531,7 @@
     "path": "Harmony",
     "stats": {
       "base": {
-        "HP": 846.7,
+        "HP": 846.72,
         "ATK": 529.2,
         "DEF": 396.9,
         "SPD": 112
@@ -1547,9 +1546,9 @@
     "path": "Nihility",
     "stats": {
       "base": {
-        "HP": 1125.4,
-        "ATK": 620.93,
-        "DEF": 509.36,
+        "HP": 1125.432,
+        "ATK": 620.928,
+        "DEF": 509.355,
         "SPD": 102
       },
       "percent": {
@@ -1564,14 +1563,14 @@
     "path": "Hunt",
     "stats": {
       "base": {
-        "HP": 892.6,
-        "ATK": 892.6,
-        "DEF": 412.33,
+        "HP": 892.584,
+        "ATK": 679.14,
+        "DEF": 412.335,
         "SPD": 109
       },
       "percent": {
-        "HP": 10,
-        "ATK": 28
+        "ATK": 28,
+        "HP": 10
       }
     }
   }
