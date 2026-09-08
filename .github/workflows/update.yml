@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       names:
-        description: 'Semicolon-separated character/LC names, exactly as they appear on nanoka.'
-        required: true
+        description: 'Semicolon-separated names, exactly as they appear on nanoka. Leave empty to update everything the manifest lists as new in this version.'
+        required: false
         type: string
 
 jobs:
@@ -47,7 +47,7 @@ jobs:
             **Data version:** ${{ steps.update.outputs.version }}
 
             **Items added/updated:**
-            ${{ inputs.names }}
+            ${{ steps.update.outputs.item-names }}
 
             **Missing icons:**
             ${{ steps.update.outputs.missing-icons }}
