@@ -249,27 +249,27 @@
     "pathStats": [
       {
         "percent": {
-          "HP": 24
-        }
-      },
-      {
-        "percent": {
           "HP": 30
         }
       },
       {
         "percent": {
-          "HP": 36
+          "HP": 37.5
         }
       },
       {
         "percent": {
-          "HP": 42
+          "HP": 45
         }
       },
       {
         "percent": {
-          "HP": 48
+          "HP": 52.5
+        }
+      },
+      {
+        "percent": {
+          "HP": 60
         }
       }
     ]
@@ -1029,7 +1029,7 @@
       },
       {
         "flat": {
-          "Crit DMG": 34
+          "Crit DMG": 36
         }
       },
       {
