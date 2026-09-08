@@ -90,6 +90,12 @@ function sanitize(name: string): string {
   return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")
 }
 
+// Base stats are a base plus 79 level-up increments, so binary float error lands in the low
+// digits (1203.0479999999998). No real value carries more than 3dp, making this lossless.
+function round3(value: number): number {
+  return Number(value.toFixed(3))
+}
+
 // ------------------------------ source adapter ------------------------------
 
 interface ResolvedItem {
@@ -230,9 +236,9 @@ async function transformCharacter(raw: unknown): Promise<TransformResult> {
     path: pathMap[data.base_type],
     stats: {
       base: {
-        HP: stats.hp_base + stats.hp_add * 79,
-        ATK: stats.attack_base + stats.attack_add * 79,
-        DEF: stats.defence_base + stats.defence_add * 79,
+        HP: round3(stats.hp_base + stats.hp_add * 79),
+        ATK: round3(stats.attack_base + stats.attack_add * 79),
+        DEF: round3(stats.defence_base + stats.defence_add * 79),
         SPD: stats.speed_base,
       },
       percent: Object.keys(percent).length ? percent : undefined,
@@ -542,9 +548,9 @@ async function transformLightcone(raw: unknown, existing?: object): Promise<Tran
   const entry: LightconeEntry = {
     path: pathMap[data.base_type],
     baseStats: {
-      HP: stats.base_hp + stats.base_hp_add * 79,
-      ATK: stats.base_attack + stats.base_attack_add * 79,
-      DEF: stats.base_defence + stats.base_defence_add * 79,
+      HP: round3(stats.base_hp + stats.base_hp_add * 79),
+      ATK: round3(stats.base_attack + stats.base_attack_add * 79),
+      DEF: round3(stats.base_defence + stats.base_defence_add * 79),
     },
     pathStats: inferred?.pathStats ?? prev?.pathStats ?? [{}, {}, {}, {}, {}],
   }
