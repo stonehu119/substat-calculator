@@ -1,0 +1,90 @@
+[
+  {
+    "description": "Relic set: Musketeer of Wild Wheat\n2pc bonus: Increases ATK by [#1: 12%].",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "Increases ATK by [#1: 12%]",
+          "stat": "ATK",
+          "paramIndex": 1,
+          "multiplier": 1
+        }
+      ],
+      "excluded": []
+    }
+  },
+  {
+    "description": "Relic set: Musketeer of Wild Wheat\n4pc bonus: The wearer's SPD increases by [#1: 6%] and DMG dealt by Basic ATK increases by [#2: 10%].",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "The wearer's SPD increases by [#1: 6%]",
+          "stat": "SPD",
+          "paramIndex": 1,
+          "multiplier": 1
+        }
+      ],
+      "excluded": [
+        { "text": "DMG dealt by Basic ATK increases by [#2: 10%]", "reason": "DMG bonus, not one of the nine stats" }
+      ]
+    }
+  },
+  {
+    "description": "Relic set: Passerby of Wandering Cloud\n2pc bonus: Increases Outgoing Healing by [#1: 10%].",
+    "result": {
+      "effects": [],
+      "excluded": [
+        { "text": "Increases Outgoing Healing by [#1: 10%]", "reason": "Outgoing Healing is not one of the nine stats" }
+      ]
+    }
+  },
+  {
+    "description": "Relic set: Space Sealing Station\n2pc bonus: Increases the wearer's ATK by [#1: 12%]. When the wearer's SPD reaches [#2: 120] or higher, the wearer's ATK increases by an extra [#3: 12%].",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "Increases the wearer's ATK by [#1: 12%]",
+          "stat": "ATK",
+          "paramIndex": 1,
+          "multiplier": 1
+        }
+      ],
+      "excluded": [
+        { "text": "When the wearer's SPD reaches [#2: 120] or higher, the wearer's ATK increases by an extra [#3: 12%]", "reason": "conditional on reaching a SPD threshold" }
+      ]
+    }
+  },
+  {
+    "description": "Relic set: Poet of Mourning Collapse\n4pc bonus: Decreases the wearer's SPD by [#6: 8%]. Before entering battle, if the wearer's SPD is lower than [#2: 110]/[#3: 95], increases the wearer's CRIT Rate by [#4: 20%]/[#5: 32%]. This effect applies to the wearer's memosprite at the same time.",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "Decreases the wearer's SPD by [#6: 8%]",
+          "stat": "SPD",
+          "paramIndex": 6,
+          "multiplier": -1
+        }
+      ],
+      "excluded": [
+        { "text": "if the wearer's SPD is lower than [#2: 110]/[#3: 95], increases the wearer's CRIT Rate by [#4: 20%]/[#5: 32%]", "reason": "conditional on a SPD threshold" }
+      ]
+    }
+  },
+  {
+    "description": "Relic set: Pioneer Diver of Dead Waters\n4pc bonus: Increases CRIT Rate by [#1: 4%]. The wearer deals [#2: 8%]/[#3: 12%] increased CRIT DMG to enemies with at least [#4: 2]/[#5: 3] debuffs. After the wearer inflicts a debuff on enemy targets, the aforementioned effects increase by 100%, lasting for [#6: 1] turn(s).",
+    "result": {
+      "effects": [
+        {
+          "sourceText": "Increases CRIT Rate by [#1: 4%]",
+          "stat": "Crit Rate",
+          "paramIndex": 1,
+          "multiplier": 1
+        }
+      ],
+      "excluded": [
+        { "text": "The wearer deals [#2: 8%]/[#3: 12%] increased CRIT DMG to enemies with at least [#4: 2]/[#5: 3] debuffs", "reason": "CRIT DMG is a tracked stat but this is conditional on enemy debuff count and only applies to DMG dealt to them" },
+        { "text": "the aforementioned effects increase by 100%, lasting for [#6: 1] turn(s)", "reason": "temporary and conditional" }
+      ]
+    }
+  }
+]
