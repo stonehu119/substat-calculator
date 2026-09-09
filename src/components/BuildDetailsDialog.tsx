@@ -388,6 +388,18 @@ function DialogPanel({
     return () => previous?.focus?.()
   }, [])
 
+  // While a sheet drag is in flight, stop the browser treating it as a scroll as
+  // well. A flick that reaches the browser leaves inertia running for a second or
+  // two afterwards, and the first tap in that window is spent stopping the scroll
+  // instead of hitting whatever was tapped. Has to be non-passive to be preventable,
+  // which rules out onTouchMove in JSX.
+  useEffect(() => {
+    if (!dragging) return
+    const block = (e: TouchEvent) => e.preventDefault()
+    document.addEventListener('touchmove', block, { passive: false })
+    return () => document.removeEventListener('touchmove', block)
+  }, [dragging])
+
   const onDragStart = (e: React.PointerEvent) => {
     // Sheet gesture only; the desktop modal does not drag, and controls keep their taps.
     if (isDesktopLayout()) return
@@ -434,7 +446,7 @@ function DialogPanel({
     <div className="fixed inset-0 z-50 flex items-end justify-center lg:items-center lg:p-6">
       <div
         onMouseDown={onClose}
-        className={`absolute inset-0 bg-black/75 transition-opacity duration-200 ease-out
+        className={`absolute inset-0 bg-black/75 touch-none transition-opacity duration-200 ease-out
           motion-reduce:transition-none ${visible ? 'opacity-100' : 'opacity-0'}`}
       />
 
@@ -447,7 +459,7 @@ function DialogPanel({
         aria-labelledby="build-details-title"
         style={dragY ? { translate: `0 ${dragY}px` } : undefined}
         className={`relative w-full max-h-[92dvh] bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
-          flex flex-col overflow-hidden
+          flex flex-col overflow-hidden touch-none lg:touch-auto
           lg:max-w-4xl lg:max-h-[88vh] lg:rounded-xl lg:border
           ${dragging ? '' : 'transition-[translate,scale,opacity] duration-200 ease-out motion-reduce:transition-none'}
           ${visible
@@ -519,7 +531,7 @@ function DialogPanel({
         </div>
 
         {/* Scroll body — the only scrollable region while the dialog is open */}
-        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain px-3 py-3.5 flex flex-col gap-2.5 lg:px-6 lg:py-4">
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain touch-pan-y px-3 py-3.5 flex flex-col gap-2.5 lg:px-6 lg:py-4">
           {breakdown === null ? (
             <p className="m-0 py-8 text-center text-sm text-gray-400">
               This build could not be read. Try reselecting the character.
