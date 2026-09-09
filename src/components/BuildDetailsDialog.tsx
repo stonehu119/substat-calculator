@@ -8,7 +8,7 @@ const DRAG_CLOSE_PX = 96
 const FLICK_PX_PER_MS = 0.5
 const ANIM_MS = 200
 
-// 7 columns: stat, base, bonus, flat, expected, in-game, rolls
+// 7 columns: stat, base, bonus, flat, default, in-game, rolls
 const TOTALS_COLS =
   'grid grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)_minmax(0,0.85fr)_minmax(0,0.95fr)_minmax(0,1.1fr)_minmax(0,1.15fr)_minmax(0,0.85fr)] gap-2'
 
@@ -174,7 +174,7 @@ function TotalsTable({ totals }: { totals: TotalRow[] }) {
       {/* Desktop: full 7-column table */}
       <div className="hidden lg:block">
         <div className={`${TOTALS_COLS} px-1 pb-2 border-b border-gray-700`}>
-          {['Stat', 'Base', 'Bonus', '+ Flat', '= Expected', 'In-game', 'Rolls'].map((head, i) => (
+          {['Stat', 'Base', 'Bonus', '+ Flat', '= Default', 'In-game', 'Rolls'].map((head, i) => (
             <span
               key={head}
               className={`text-[10px] leading-3.5 uppercase tracking-[0.09em] ${
@@ -206,7 +206,7 @@ function TotalsTable({ totals }: { totals: TotalRow[] }) {
                 {fmtStat(row.flat, row.unit)}
               </span>
               <span className={`text-xs text-right tabular-nums ${entered ? 'text-gray-100 font-semibold' : 'text-gray-400'}`}>
-                {fmtStat(row.expected, row.unit)}
+                {fmtStat(row.defaultValue, row.unit)}
               </span>
               {entered ? (
                 <span className="text-xs text-right tabular-nums text-blue-300 font-semibold">
@@ -239,12 +239,12 @@ function TotalsTable({ totals }: { totals: TotalRow[] }) {
             </div>
             <div className="text-[11px] leading-4 text-gray-500 tabular-nums">
               {row.base === null
-                ? 'flat only, no base × bonus'
+                ? fmtStat(row.flat, row.unit)
                 : `${fmtNumber(row.base)} × ${fmtBonusTerm(row.percent!)} + ${fmtStat(row.flat, row.unit)}`}
             </div>
             <div className="flex items-center gap-1.5 flex-wrap">
-              <span className="text-[11px] text-gray-400">Expected</span>
-              <span className="text-xs text-gray-100 font-semibold tabular-nums">{fmtStat(row.expected, row.unit)}</span>
+              <span className="text-[11px] text-gray-400">Default</span>
+              <span className="text-xs text-gray-100 font-semibold tabular-nums">{fmtStat(row.defaultValue, row.unit)}</span>
               <ChevronRight className="text-gray-600 shrink-0" />
               <span className="text-[11px] text-gray-400">In-game</span>
               <span className={`text-xs font-semibold tabular-nums ${
@@ -255,25 +255,11 @@ function TotalsTable({ totals }: { totals: TotalRow[] }) {
             </div>
           </div>
         ))}
-
-        {totals.some((row) => row.entered === null) && (
-          <div className="bg-gray-800/60 border border-dashed border-gray-700 rounded-lg px-2.5 py-2 flex flex-col gap-1.5">
-            <span className="text-[11px] leading-4 text-gray-500">Not entered — shown at their expected value</span>
-            <div className="flex flex-wrap gap-1.5">
-              {totals.filter((row) => row.entered === null).map((row) => (
-                <span key={row.stat} className="inline-flex items-baseline gap-1.5 px-2 py-0.5 rounded border border-gray-700">
-                  <span className="text-[11px] leading-4 text-gray-400">{row.stat}</span>
-                  <span className="text-xs leading-4 text-gray-400 tabular-nums">{fmtStat(row.expected, row.unit)}</span>
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
       <p className="m-0 mt-2.5 px-1 text-[11px] leading-4 text-gray-500">
-        Expected = Base × (1 + Bonus) + Flat. Whatever is left over between Expected and In-game is substats,
-        which is what the roll count measures. HP, ATK and DEF rolls are scaled against their base value.
+        "Default" = statline without any substats. Your sub count is calculated using the difference between
+        this value and the value you inputted ("In-Game").
       </p>
     </div>
   )

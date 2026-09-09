@@ -169,7 +169,8 @@ export interface TotalRow {
   base: number | null
   percent: number | null
   flat: number
-  expected: number
+  /** What the stat sits at with no substat rolls at all. */
+  defaultValue: number
   /** Null when the stat is unchecked in the form. */
   entered: number | null
   rolls: number | null
@@ -331,7 +332,7 @@ export function buildBreakdown(formState: FormState): Breakdown | null {
   try {
     const { sections, mods } = buildSections(formState)
     const combined = combineStatModifiers(mods)
-    const expected = calculateStatsNoSubs(combined)
+    const defaultStats = calculateStatsNoSubs(combined)
     const rollCounts = calculateRollCount(combined, formState.stats)
 
     const totals: TotalRow[] = STAT_NAMES.map((stat, id) => {
@@ -345,7 +346,7 @@ export function buildBreakdown(formState: FormState): Breakdown | null {
         base: scales ? base : null,
         percent: scales ? (combined.percent?.stats[stat] ?? 1) : null,
         flat: combined.flat?.stats[stat] ?? 0,
-        expected: expected.stats[stat],
+        defaultValue: defaultStats.stats[stat],
         entered: checked ? +input.value : null,
         rolls: checked ? rollCounts.stats[stat] : null,
       }

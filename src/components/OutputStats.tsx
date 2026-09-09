@@ -3,7 +3,7 @@ type OutputStatsProps = {
   mid: number | null
   high: number | null
   title?: string
-  /** Some entered stat is below its expected value, so no total can be counted. */
+  /** Some entered stat is below its default value, so no total can be counted. */
   invalid?: boolean
   onShowDetails: () => void
 }
