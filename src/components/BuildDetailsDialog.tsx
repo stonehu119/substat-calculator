@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { Breakdown, BreakdownRow, BreakdownSection, StatLine, TotalRow } from '../data/logic'
 import { charIcon, lcIcon, planarIcon, relicIcon } from '../data/icons'
 import unknownIconUrl from '../assets/unknown-icon.svg'
+import RollTotals from './RollTotals'
 
 const DRAG_CLOSE_PX = 96
 // A quick flick dismisses even when it did not travel far.
@@ -551,22 +552,14 @@ function DialogPanel({
 
               <TotalsTable totals={breakdown.totals} />
 
-              <div className="bg-gray-700 rounded p-3.5 grid grid-cols-3 gap-3 lg:gap-4 lg:p-4">
-                {([
-                  ['Low', 'Low rolls', breakdown.rolls?.low],
-                  ['Mid', 'Mid rolls', breakdown.rolls?.mid],
-                  ['High', 'High rolls', breakdown.rolls?.high],
-                ] as const).map(([short, long, value]) => (
-                  <div key={short} className="text-center">
-                    <div className="text-xs text-gray-400 mb-1.5 lg:text-sm">
-                      <span className="lg:hidden">{short}</span>
-                      <span className="hidden lg:inline">{long}</span>
-                    </div>
-                    <div className="text-xl lg:text-2xl font-semibold text-blue-300 tabular-nums">
-                      {value === undefined ? '—' : value.toFixed(2)}
-                    </div>
-                  </div>
-                ))}
+              {/* Same component the result card uses, so the two cannot drift apart */}
+              <div className="bg-gray-700 rounded-md px-4 py-3.5">
+                <RollTotals
+                  low={breakdown.rolls?.low ?? null}
+                  mid={breakdown.rolls?.mid ?? null}
+                  high={breakdown.rolls?.high ?? null}
+                  muted={breakdown.hasNegativeRoll}
+                />
               </div>
             </>
           )}
