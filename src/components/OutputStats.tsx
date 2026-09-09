@@ -3,7 +3,11 @@ type OutputStatsProps = {
   mid: number | null
   high: number | null
   title?: string
-  /** Some entered stat is below its default value, so no total can be counted. */
+  /**
+   * Some entered stat is below its default value, so no total can be counted.
+   * Shown as the red ring alone; the figures are already dashed out by null
+   * low/mid/high, and nothing here changes the card's height.
+   */
   invalid?: boolean
   onShowDetails: () => void
 }
@@ -52,29 +56,15 @@ export default function OutputStats({
         ))}
       </span>
 
-      {invalid && (
-        <span className="mt-3.5 flex items-start justify-center gap-2">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            strokeWidth="2" strokeLinecap="round" className="text-red-400 shrink-0 mt-px" aria-hidden="true">
-            <path d="M12 8v5" />
-            <path d="M12 16.4v.2" />
-            <circle cx="12" cy="12" r="9" />
-          </svg>
-          <span className="text-xs leading-[17px] text-red-400">Some stats are invalid.</span>
-        </span>
-      )}
-
+      {/* Stays neutral in both states: red is reserved for the result being wrong,
+          not for the action that explains it. */}
       <span className="mt-3.5 pt-3 border-t border-gray-600 flex items-center justify-center gap-2">
-        <span className={`text-[13px] leading-[18px] ${
-          invalid ? 'text-red-400 font-medium' : 'text-gray-300 group-hover:text-blue-300'
-        }`}>
-          Build details
+        <span className="text-[13px] leading-[18px] text-gray-300 group-hover:text-blue-300">
+          View details
         </span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
-          className={`shrink-0 transition-transform group-hover:translate-x-0.5 ${
-            invalid ? 'text-red-400' : 'text-gray-300 group-hover:text-blue-300'
-          }`}>
+          className="shrink-0 text-gray-300 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-300">
           <path d="M9 6l6 6-6 6" />
         </svg>
       </span>
