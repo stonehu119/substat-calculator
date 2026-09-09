@@ -1,4 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
+import AppHeader from './components/AppHeader'
+import BuildDetailsDialog from './components/BuildDetailsDialog'
 import CharacterDropdown from './components/CharacterDropdown'
 import LightCone from './components/LightCone'
 import RelicSets from './components/RelicSets'
@@ -7,10 +9,10 @@ import StatsInputs from './components/StatsInputs'
 import OutputStats from './components/OutputStats'
 import type { FormState } from './types/formState'
 import { createDefaultFormState } from './data/defaults'
-import { characterPathMatchesLC, countTotalRolls, inputFormToRollCount } from './data/logic'
+import { buildBreakdown, characterPathMatchesLC, countTotalRolls, inputFormToRollCount } from './data/logic'
 import type { Character } from './data/data'
+import { charIcon } from './data/icons'
 import { CHARACTER_PREFERENCES } from './data/characterPreferences'
-import { VERSION } from './data/version'
 
 const OLD_STORAGE_KEY = 'sub-counter-state'
 const STORAGE_KEY = 'sub-counter-data'
@@ -20,6 +22,7 @@ type SaveData = Partial<Record<Character, FormState>>
 
 function App() {
   const [formState, setFormState] = useState<FormState>(createDefaultFormState())
+  const [detailsOpen, setDetailsOpen] = useState(false)
 
   const saveFormData = useCallback((newFormState: FormState) => {
     const saved = localStorage.getItem(STORAGE_KEY)
@@ -82,6 +85,19 @@ function App() {
   )
   const [low, mid, high] = countTotalRolls(rollCounts)
 
+  // The full breakdown is only needed while the dialog is open.
+  const breakdown = detailsOpen ? buildBreakdown(formState) : null
+
+  const resultCard = (
+    <OutputStats
+      low={hasNegativeRoll ? null : low}
+      mid={hasNegativeRoll ? null : mid}
+      high={hasNegativeRoll ? null : high}
+      invalid={hasNegativeRoll}
+      onShowDetails={() => setDetailsOpen(true)}
+    />
+  )
+
   const buildSection = (
     <div className="flex flex-col gap-4">
       <CharacterDropdown
@@ -126,66 +142,65 @@ function App() {
         onStatsChange={(stats) => updateFormField('stats', stats)}
         rolls={statRolls}
       />
-      <OutputStats
-        low={hasNegativeRoll ? null : low}
-        mid={hasNegativeRoll ? null : mid}
-        high={hasNegativeRoll ? null : high}
-      />
+      {resultCard}
     </div>
   )
 
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col items-center px-2 pt-6 pb-4">
-      <div className="flex flex-col items-center w-full gap-8 max-w-6xl">
-        <div className="flex flex-col items-center gap-1">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-blue-400 text-center mt-0 drop-shadow-lg tracking-wide">
-            Star Rail Substat Counter
-          </h1>
-          <span className="text-xs text-gray-500">Last updated for version {VERSION}</span>
-        </div>
+    <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col">
+      <AppHeader />
 
-        {/* Mobile: single stacked layout */}
-        <div className="w-full max-w-md lg:hidden bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
-          {buildSection}
-          {statsSectionMobile}
-        </div>
-
-        {/* Desktop: two columns, build left, stats + result right */}
-        <div className="hidden lg:grid lg:grid-cols-[1fr_1fr] lg:gap-6 lg:w-full lg:items-stretch">
-          <section
-            className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4"
-            aria-label="Character and build"
-          >
-            <h2 className="text-lg font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1">
-              Build
-            </h2>
+      <div className="flex-1 flex flex-col items-center px-2 pt-6 pb-4">
+        <div className="flex flex-col items-center w-full gap-6 max-w-6xl">
+          {/* Mobile: single stacked layout */}
+          <div className="w-full max-w-md lg:hidden bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
             {buildSection}
-          </section>
-          <section
-            className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4 min-h-0"
-            aria-label="Stats input and result"
-          >
-            <h2 className="text-lg font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1 ">
-              Stats Input & Result
-            </h2>
-            <StatsInputs
-              stats={formState.stats}
-              onStatsChange={(stats) => updateFormField('stats', stats)}
-              rolls={statRolls}
-            />
-            <div className="flex-1 min-h-4" />
-            <OutputStats
-              low={hasNegativeRoll ? null : low}
-              mid={hasNegativeRoll ? null : mid}
-              high={hasNegativeRoll ? null : high}
-            />
-          </section>
+            {statsSectionMobile}
+          </div>
+
+          {/* Desktop: two columns, build left, stats + result right */}
+          <div className="hidden lg:grid lg:grid-cols-[1fr_1fr] lg:gap-6 lg:w-full lg:items-stretch">
+            <section
+              className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4"
+              aria-label="Character and build"
+            >
+              <h2 className="text-base font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1">
+                Build
+              </h2>
+              {buildSection}
+            </section>
+            <section
+              className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4 min-h-0"
+              aria-label="Stats input and result"
+            >
+              <h2 className="text-base font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1">
+                Stats Input &amp; Result
+              </h2>
+              <StatsInputs
+                stats={formState.stats}
+                onStatsChange={(stats) => updateFormField('stats', stats)}
+                rolls={statRolls}
+              />
+              <div className="flex-1 min-h-4" />
+              {resultCard}
+            </section>
+          </div>
         </div>
+
+        <footer className="mt-6 text-xs text-gray-500 text-center">
+          This is a fan-made tool for Honkai: Star Rail players.<br />
+          Website is not affiliated with HoYoverse.
+        </footer>
       </div>
-      <footer className="mt-6 text-xs text-gray-500 text-center">
-        This is a fan-made tool for Honkai: Star Rail players.<br />
-        Website is not affiliated with HoYoverse.
-      </footer>
+
+      {detailsOpen && (
+        <BuildDetailsDialog
+          breakdown={breakdown}
+          characterName={formState.character}
+          characterIconUrl={charIcon(formState.character)}
+          onClose={() => setDetailsOpen(false)}
+        />
+      )}
     </div>
   );
 }
