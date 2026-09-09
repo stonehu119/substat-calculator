@@ -459,7 +459,7 @@ function DialogPanel({
         aria-modal="true"
         aria-labelledby="build-details-title"
         style={dragY ? { translate: `0 ${dragY}px` } : undefined}
-        className={`relative w-full max-h-[92dvh] bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
+        className={`relative w-full max-h-[80dvh] bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
           flex flex-col overflow-hidden touch-none lg:touch-auto
           lg:max-w-4xl lg:max-h-[88vh] lg:rounded-xl lg:border
           ${dragging ? '' : 'transition-[translate,scale,opacity] duration-200 ease-out motion-reduce:transition-none'}
