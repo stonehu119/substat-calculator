@@ -494,7 +494,7 @@ function DialogPanel({
                 Build Details
               </h2>
               <p className="m-0 mt-0.5 text-[11px] leading-4 text-gray-400 lg:text-xs">
-                <span className="lg:hidden">{characterName} · every modifier before substats</span>
+                <span className="lg:hidden">{characterName} · stat modifiers</span>
                 <span className="hidden lg:inline">
                   Breakdown of every individual stat modifier applied on this build.
                 </span>
