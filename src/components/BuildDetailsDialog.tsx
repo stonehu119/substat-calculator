@@ -4,15 +4,19 @@ import { charIcon, lcIcon, planarIcon, relicIcon } from '../data/icons'
 import unknownIconUrl from '../assets/unknown-icon.svg'
 import RollTotals from './RollTotals'
 
-const DRAG_CLOSE_PX = 96
 // A quick flick dismisses even when it did not travel far.
 const FLICK_PX_PER_MS = 0.5
 const ANIM_MS = 200
-// The sheet opens to SHEET_HEIGHT_VH; dragging the handle up past
-// PULL_EXPAND_PX commits it to the taller SHEET_EXPANDED_HEIGHT_VH instead.
+// The sheet opens to SHEET_HEIGHT_VH. Dragging it up past EXPAND_THRESHOLD_VH
+// commits it to the taller SHEET_EXPANDED_HEIGHT_VH; dragging it down past
+// CLOSE_THRESHOLD_VH closes it — the same distance whichever height it started
+// from, so an expanded sheet never snaps back down to SHEET_HEIGHT_VH, only
+// closed or left expanded. Thresholds are in dvh rather than px so they scale
+// with the viewport instead of feeling different on a short vs. tall phone.
 const SHEET_HEIGHT_VH = 80
-const SHEET_EXPANDED_HEIGHT_VH = 92
-const PULL_EXPAND_PX = 40
+const SHEET_EXPANDED_HEIGHT_VH = 98
+const EXPAND_THRESHOLD_VH = 5
+const CLOSE_THRESHOLD_VH = 12
 
 // 7 columns: stat, base, bonus, flat, default, in-game, rolls
 const TOTALS_COLS =
@@ -453,28 +457,21 @@ function DialogPanel({
     setDragHeightVh(null)
 
     const delta = rawDelta.current
+    const deltaVh = (Math.abs(delta) / window.innerHeight) * 100
 
     if (delta < 0) {
       // Pulled up far enough: commit to the taller sheet. Otherwise snap back.
-      if (-delta > PULL_EXPAND_PX) setExpanded(true)
+      if (deltaVh > EXPAND_THRESHOLD_VH) setExpanded(true)
       setDragY(0)
       return
     }
 
-    if (expanded) {
-      // Once expanded there is no reason to drag it back down partway, so any
-      // deliberate downward drag closes it instead of shrinking to SHEET_HEIGHT_VH.
-      if (delta > 0) {
-        setDragY(panelRef.current?.offsetHeight ?? window.innerHeight)
-        onClose()
-      } else {
-        setDragY(0)
-      }
-      return
-    }
-
+    // Dragging down is the same gesture whether the sheet is at SHEET_HEIGHT_VH
+    // or expanded: past the threshold (or a flick) it closes, otherwise it
+    // springs back to whatever height it was already committed to — an
+    // expanded sheet never snaps down to SHEET_HEIGHT_VH along the way.
     const flicked = velocity.current > FLICK_PX_PER_MS && dragY > 8
-    if (dragY > DRAG_CLOSE_PX || flicked) {
+    if (deltaVh > CLOSE_THRESHOLD_VH || flicked) {
       // Carry the sheet the rest of the way down rather than letting it vanish mid-gesture.
       setDragY(panelRef.current?.offsetHeight ?? window.innerHeight)
       onClose()
@@ -514,7 +511,7 @@ function DialogPanel({
         aria-modal="true"
         aria-labelledby="build-details-title"
         style={panelStyle}
-        className={`relative w-full ${expanded ? 'max-h-[92dvh]' : 'max-h-[80dvh]'} bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
+        className={`relative w-full ${expanded ? 'max-h-[98dvh]' : 'max-h-[80dvh]'} bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
           flex flex-col overflow-hidden touch-none lg:touch-auto
           lg:max-w-4xl lg:max-h-[88vh] lg:rounded-xl lg:border
           ${dragging ? '' : 'transition-[translate,scale,opacity,max-height] duration-200 ease-out motion-reduce:transition-none'}
