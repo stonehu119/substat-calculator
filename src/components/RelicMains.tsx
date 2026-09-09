@@ -36,7 +36,7 @@ export default function RelicMains({
   return (
     <FieldGroup
       title="Relic main stats"
-      note="Head and Hands are always flat HP/ATK, so they are not listed."
+      note="Head/Hands are always flat HP/ATK, so they are not listed."
     >
       {/* Slot names match the dialog and the game: Body, Feet, Sphere, Rope */}
       <div className="grid grid-cols-2 gap-x-3 gap-y-2 sm:gap-x-4">
