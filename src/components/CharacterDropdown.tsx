@@ -1,5 +1,6 @@
 import SearchableDropdown from './SearchableDropdown'
-import { CHARACTERS } from '../data/data'
+import FieldGroup from './FieldGroup'
+import { CHARACTERS, CHARACTER_PATH, type Character } from '../data/data'
 import { charIcon } from '../data/icons'
 
 interface CharacterDropdownProps {
@@ -8,18 +9,22 @@ interface CharacterDropdownProps {
 }
 
 export default function CharacterDropdown({ value, onChange }: CharacterDropdownProps) {
+  const path = CHARACTER_PATH[value as Character]
+
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm text-gray-300 font-semibold">Character</label>
+    <FieldGroup
+      title="Character"
+      trailing={path && <span className="text-[11px] leading-4 text-gray-400">{path}</span>}
+    >
       <SearchableDropdown
         options={CHARACTERS}
         value={value}
         onChange={onChange}
-        label=""
+        label="Character"
         placeholder="Select character"
         customHeight="15.25rem"
         getIconUrl={charIcon}
       />
-    </div>
+    </FieldGroup>
   )
 }

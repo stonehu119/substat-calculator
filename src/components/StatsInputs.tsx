@@ -7,6 +7,8 @@ interface StatsInputsProps {
   rolls: Record<number, number>
 }
 
+const COLS = 'grid grid-cols-[minmax(0,7.5rem)_minmax(0,1fr)_4.5rem] gap-2.5 items-center'
+
 export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputsProps) {
   const toggleChecked = (i: number) => {
     onStatsChange({ ...stats, [i]: { ...stats[i], checked: !stats[i].checked } })
@@ -18,60 +20,56 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <label className="text-sm text-gray-300 font-semibold">Stats</label>
-
-      {/* Header row */}
-      <div className="grid grid-cols-[minmax(0,8rem)_minmax(0,1fr)_4rem] text-xs text-gray-400 px-1">
-        <span className="text-left">Stat</span>
-        <span className="text-left">Value</span>
-        <span className="text-center"># Mid rolls</span>
+    <div className="bg-gray-900 border border-gray-700 rounded-lg p-3 lg:p-3.5 flex flex-col gap-2">
+      <div className={`${COLS} px-0.5 pb-2 border-b border-gray-800`}>
+        <span className="text-[10px] leading-3.5 uppercase tracking-[0.09em] text-gray-500">Stat</span>
+        <span className="text-[10px] leading-3.5 uppercase tracking-[0.09em] text-gray-500">In-game value</span>
+        <span className="text-[10px] leading-3.5 uppercase tracking-[0.09em] text-gray-500 text-right">Rolls</span>
       </div>
 
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1.5">
         {Object.keys(stats).map((key) => {
           const i = Number(key)
           const s = stats[i]
+          const negative = s.checked && rolls[i] < 0
 
           return (
-            <div
-              key={i}
-              className="grid grid-cols-[minmax(0,7rem)_minmax(0,1fr)_4rem] items-center gap-2 px-1 py-1 rounded-md hover:bg-gray-800/60"
-            >
-              {/* Stat label + checkbox */}
+            <div key={i} className={`${COLS} ${s.checked ? '' : 'opacity-55'}`}>
               <label
                 htmlFor={`stat-${i}`}
-                className="flex items-center gap-2 text-xs text-gray-200 cursor-pointer"
+                className={`flex items-center gap-2.5 text-[13px] cursor-pointer ${
+                  s.checked ? 'text-gray-100' : 'text-gray-300'
+                }`}
               >
                 <input
                   type="checkbox"
                   id={`stat-${i}`}
-                  className="w-4 h-4 rounded cursor-pointer flex-shrink-0"
+                  className="w-4 h-4 rounded cursor-pointer flex-shrink-0 accent-blue-500"
                   checked={s.checked}
                   onChange={() => toggleChecked(i)}
                 />
                 <span className="truncate">{STAT_NAMES[i]}</span>
               </label>
 
-              {/* Numeric input */}
+              {/* text-base below lg keeps iOS from zooming the page on focus */}
               <input
                 type="number"
                 placeholder="0"
-                className={`w-full rounded px-2 py-1 text-sm text-left placeholder-gray-500 focus:outline-none focus:ring-2 ${
+                className={`w-full h-9 rounded-md px-2.5 text-base lg:text-sm tabular-nums placeholder-gray-500
+                  focus:outline-none focus:ring-2 ${
                   s.checked
-                    ? 'bg-gray-700 text-gray-100 focus:ring-blue-500 cursor-text'
-                    : 'bg-gray-600 text-gray-500 cursor-not-allowed'
-                }`}
+                    ? 'bg-gray-700 text-gray-100 cursor-text'
+                    : 'bg-gray-800 border border-gray-700 text-gray-500 cursor-not-allowed'
+                } ${negative ? 'ring-1 ring-red-800 focus:ring-red-500' : 'focus:ring-blue-500'}`}
                 disabled={!s.checked}
                 value={s.value}
                 onChange={(e) => setValue(i, e.target.value)}
               />
 
-              {/* Rolls output (placeholder) */}
-              <div className={`text-center text-xs tabular-nums min-w-[3rem] ${
-                s.checked && rolls[i] < 0 ? 'text-red-400' : 'text-gray-300'
+              <div className={`text-right text-[13px] tabular-nums ${
+                negative ? 'text-red-400 font-semibold' : s.checked ? 'text-gray-200' : 'text-gray-600'
               }`}>
-                {s.checked ? rolls[i].toFixed(2) : '—'}
+                {s.checked ? `${rolls[i] > 0 ? '+' : ''}${rolls[i].toFixed(2)}` : '—'}
               </div>
             </div>
           )

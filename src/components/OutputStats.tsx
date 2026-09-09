@@ -1,3 +1,5 @@
+import RollTotals from './RollTotals'
+
 type OutputStatsProps = {
   low: number | null
   mid: number | null
@@ -12,55 +14,28 @@ type OutputStatsProps = {
   onShowDetails: () => void
 }
 
-function fmt(value: number | null): string {
-  return value === null ? '—' : value.toFixed(2)
-}
-
 export default function OutputStats({
   low,
   mid,
   high,
-  title = "Total Roll Counts",
+  title,
   invalid = false,
   onShowDetails,
 }: OutputStatsProps) {
-  const columns: Array<[string, number | null]> = [
-    ['Low rolls', low],
-    ['Mid rolls', mid],
-    ['High rolls', high],
-  ]
-
   return (
     <button
       type="button"
       onClick={onShowDetails}
       aria-haspopup="dialog"
-      className={`group mt-4 w-full block bg-gray-700 rounded p-4 cursor-pointer transition-shadow
+      className={`group w-full block bg-gray-700 rounded-md px-4 py-3.5 text-left cursor-pointer transition-shadow
         focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
         ${invalid ? 'ring-1 ring-red-900 hover:ring-red-700' : 'hover:ring-1 hover:ring-blue-500/60'}`}
     >
-      <span className="block text-2xl md:text-3xl font-bold text-blue-300 mb-4 text-center">
-        {title}
-      </span>
+      <RollTotals low={low} mid={mid} high={high} title={title} muted={invalid} />
 
-      <span className="grid grid-cols-3 gap-4">
-        {columns.map(([label, value]) => (
-          <span key={label} className="block text-center">
-            <span className="block text-sm text-gray-400 mb-2">{label}</span>
-            <span className={`block text-2xl font-semibold tabular-nums ${
-              value === null ? 'text-gray-500' : 'text-blue-300'
-            }`}>
-              {fmt(value)}
-            </span>
-          </span>
-        ))}
-      </span>
-
-      {/* Stays neutral in both states: red is reserved for the result being wrong,
-          not for the action that explains it. */}
-      <span className="mt-3.5 pt-3 border-t border-gray-600 flex items-center justify-center gap-2">
+      <span className="mt-3.5 pt-3 border-t border-gray-600 flex items-center gap-2">
         <span className="text-[13px] leading-[18px] text-gray-300 group-hover:text-blue-300">
-          View details
+          Build details
         </span>
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
