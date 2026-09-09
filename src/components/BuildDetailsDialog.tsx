@@ -4,6 +4,9 @@ import { charIcon, lcIcon, planarIcon, relicIcon } from '../data/icons'
 import unknownIconUrl from '../assets/unknown-icon.svg'
 
 const DRAG_CLOSE_PX = 96
+// A quick flick dismisses even when it did not travel far.
+const FLICK_PX_PER_MS = 0.5
+const ANIM_MS = 200
 
 // 7 columns: stat, base, bonus, flat, expected, in-game, rolls
 const TOTALS_COLS =
@@ -276,22 +279,81 @@ function TotalsTable({ totals }: { totals: TotalRow[] }) {
   )
 }
 
+function prefersReducedMotion(): boolean {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches
+}
+
+// Matches the lg: breakpoint, where the sheet becomes a centred modal.
+function isDesktopLayout(): boolean {
+  return window.matchMedia('(min-width: 64rem)').matches
+}
+
 interface BuildDetailsDialogProps {
+  open: boolean
   breakdown: Breakdown | null
   characterName: string
   characterIconUrl?: string
   onClose: () => void
 }
 
-export default function BuildDetailsDialog({
+/**
+ * Holds the panel on screen through its exit transition. Everything that reaches
+ * outside the component — the scroll lock, focus, key handling — lives in
+ * DialogPanel, so none of it runs while the dialog is closed.
+ */
+export default function BuildDetailsDialog({ open, ...panelProps }: BuildDetailsDialogProps) {
+  const [mounted, setMounted] = useState(false)
+  const [visible, setVisible] = useState(false)
+  const [wasOpen, setWasOpen] = useState(open)
+
+  // Adjusting state while rendering, rather than in an effect, so opening and
+  // closing do not cost an extra commit each.
+  if (open !== wasOpen) {
+    setWasOpen(open)
+    if (open) setMounted(true)
+    else setVisible(false)
+  }
+
+  // Enter: flip to the open styles, but only once the closed ones have painted —
+  // without that there is nothing to animate from.
+  useEffect(() => {
+    if (!open || !mounted || visible) return
+    let inner = 0
+    const outer = requestAnimationFrame(() => {
+      inner = requestAnimationFrame(() => setVisible(true))
+    })
+    return () => {
+      cancelAnimationFrame(outer)
+      cancelAnimationFrame(inner)
+    }
+  }, [open, mounted, visible])
+
+  // Exit: drop the panel once its transition has run. Reopening midway cancels this.
+  useEffect(() => {
+    if (open || !mounted) return
+    const timer = setTimeout(() => setMounted(false), prefersReducedMotion() ? 0 : ANIM_MS)
+    return () => clearTimeout(timer)
+  }, [open, mounted])
+
+  if (!mounted) return null
+  return <DialogPanel visible={visible} {...panelProps} />
+}
+
+type DialogPanelProps = Omit<BuildDetailsDialogProps, 'open'> & { visible: boolean }
+
+function DialogPanel({
+  visible,
   breakdown,
   characterName,
   characterIconUrl,
   onClose,
-}: BuildDetailsDialogProps) {
+}: DialogPanelProps) {
   const panelRef = useRef<HTMLDivElement>(null)
   const closeRef = useRef<HTMLButtonElement>(null)
-  const dragStart = useRef<number | null>(null)
+  const dragOrigin = useRef<number | null>(null)
+  const lastSample = useRef<{ y: number, t: number } | null>(null)
+  const velocity = useRef(0)
+  const [dragging, setDragging] = useState(false)
   const [dragY, setDragY] = useState(0)
 
   // Lock the page behind the dialog. Padding compensates for the scrollbar the
@@ -341,52 +403,85 @@ export default function BuildDetailsDialog({
   }, [])
 
   const onDragStart = (e: React.PointerEvent) => {
-    dragStart.current = e.clientY
+    // Sheet gesture only; the desktop modal does not drag, and controls keep their taps.
+    if (isDesktopLayout()) return
+    if ((e.target as HTMLElement).closest('button')) return
+    dragOrigin.current = e.clientY
+    lastSample.current = { y: e.clientY, t: e.timeStamp }
+    velocity.current = 0
+    setDragging(true)
     e.currentTarget.setPointerCapture(e.pointerId)
   }
 
   const onDragMove = (e: React.PointerEvent) => {
-    if (dragStart.current === null) return
-    setDragY(Math.max(0, e.clientY - dragStart.current))
+    if (dragOrigin.current === null) return
+    const previous = lastSample.current
+    if (previous && e.timeStamp > previous.t) {
+      velocity.current = (e.clientY - previous.y) / (e.timeStamp - previous.t)
+    }
+    lastSample.current = { y: e.clientY, t: e.timeStamp }
+    setDragY(Math.max(0, e.clientY - dragOrigin.current))
   }
 
   const onDragEnd = () => {
-    if (dragStart.current === null) return
-    dragStart.current = null
-    if (dragY > DRAG_CLOSE_PX) onClose()
-    else setDragY(0)
+    if (dragOrigin.current === null) return
+    dragOrigin.current = null
+    setDragging(false)
+    const flicked = velocity.current > FLICK_PX_PER_MS && dragY > 8
+    if (dragY > DRAG_CLOSE_PX || flicked) {
+      // Carry the sheet the rest of the way down rather than letting it vanish mid-gesture.
+      setDragY(panelRef.current?.offsetHeight ?? window.innerHeight)
+      onClose()
+    } else {
+      setDragY(0)
+    }
+  }
+
+  const dragHandlers = {
+    onPointerDown: onDragStart,
+    onPointerMove: onDragMove,
+    onPointerUp: onDragEnd,
+    onPointerCancel: onDragEnd,
   }
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end justify-center bg-black/75 lg:items-center lg:p-6"
-      onMouseDown={onClose}
-    >
+    <div className="fixed inset-0 z-50 flex items-end justify-center lg:items-center lg:p-6">
+      <div
+        onMouseDown={onClose}
+        className={`absolute inset-0 bg-black/75 transition-opacity duration-200 ease-out
+          motion-reduce:transition-none ${visible ? 'opacity-100' : 'opacity-0'}`}
+      />
+
+      {/* Tailwind drives translate/scale through the standalone CSS properties, so the
+          drag offset uses translate too rather than a competing transform. */}
       <div
         ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="build-details-title"
-        onMouseDown={(e) => e.stopPropagation()}
-        style={dragY ? { transform: `translateY(${dragY}px)` } : undefined}
-        className={`w-full max-h-[92dvh] bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
+        style={dragY ? { translate: `0 ${dragY}px` } : undefined}
+        className={`relative w-full max-h-[92dvh] bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
           flex flex-col overflow-hidden
           lg:max-w-4xl lg:max-h-[88vh] lg:rounded-xl lg:border
-          ${dragY ? '' : 'transition-transform duration-200'}`}
+          ${dragging ? '' : 'transition-[translate,scale,opacity] duration-200 ease-out motion-reduce:transition-none'}
+          ${visible
+            ? 'translate-y-0 lg:scale-100 lg:opacity-100'
+            : 'translate-y-full lg:translate-y-0 lg:scale-95 lg:opacity-0'}`}
       >
         {/* Drag handle, touch only */}
         <div
-          className="flex justify-center pt-2.5 pb-1.5 shrink-0 cursor-grab touch-none lg:hidden"
-          onPointerDown={onDragStart}
-          onPointerMove={onDragMove}
-          onPointerUp={onDragEnd}
-          onPointerCancel={onDragEnd}
+          className="flex justify-center pt-2.5 pb-1.5 shrink-0 cursor-grab active:cursor-grabbing touch-none select-none lg:hidden"
+          {...dragHandlers}
         >
           <div className="w-10 h-1 rounded-full bg-gray-500" />
         </div>
 
-        {/* Header */}
-        <div className="flex items-start justify-between gap-3 px-4 pt-1.5 pb-3 border-b border-gray-700 shrink-0 lg:px-6 lg:pt-5 lg:pb-4">
+        {/* Header — doubles as a drag surface on the sheet */}
+        <div
+          {...dragHandlers}
+          className="flex items-start justify-between gap-3 px-4 pt-1.5 pb-3 border-b border-gray-700 shrink-0
+            touch-none select-none lg:touch-auto lg:select-auto lg:px-6 lg:pt-5 lg:pb-4"
+        >
           <div className="flex items-center gap-2.5 min-w-0 lg:items-start lg:gap-0 lg:flex-col">
             {characterIconUrl && (
               <img
@@ -438,7 +533,7 @@ export default function BuildDetailsDialog({
         </div>
 
         {/* Scroll body — the only scrollable region while the dialog is open */}
-        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden px-3 py-3.5 flex flex-col gap-2.5 lg:px-6 lg:py-4">
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden overscroll-contain px-3 py-3.5 flex flex-col gap-2.5 lg:px-6 lg:py-4">
           {breakdown === null ? (
             <p className="m-0 py-8 text-center text-sm text-gray-400">
               This build could not be read. Try reselecting the character.

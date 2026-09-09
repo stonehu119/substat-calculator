@@ -85,8 +85,9 @@ function App() {
   )
   const [low, mid, high] = countTotalRolls(rollCounts)
 
-  // The full breakdown is only needed while the dialog is open.
-  const breakdown = detailsOpen ? buildBreakdown(formState) : null
+  // Computed unconditionally: the dialog stays mounted through its closing
+  // animation, so it still needs a breakdown after detailsOpen flips false.
+  const breakdown = buildBreakdown(formState)
 
   const resultCard = (
     <OutputStats
@@ -193,14 +194,13 @@ function App() {
         </footer>
       </div>
 
-      {detailsOpen && (
-        <BuildDetailsDialog
-          breakdown={breakdown}
-          characterName={formState.character}
-          characterIconUrl={charIcon(formState.character)}
-          onClose={() => setDetailsOpen(false)}
-        />
-      )}
+      <BuildDetailsDialog
+        open={detailsOpen}
+        breakdown={breakdown}
+        characterName={formState.character}
+        characterIconUrl={charIcon(formState.character)}
+        onClose={() => setDetailsOpen(false)}
+      />
     </div>
   );
 }
