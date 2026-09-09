@@ -51,7 +51,8 @@ export interface SearchableDropdownProps {
   customHeight?: string
   getIconUrl?: (value: string) => string | undefined
   showIcons?: boolean
-  iconSize?: 'sm' | 'lg'
+  /** Render the label above the control. Off by default — groups label their own fields. */
+  showLabel?: boolean
   noMobileKeyboard?: boolean
   priorityItems?: readonly string[]
 }
@@ -65,14 +66,12 @@ export default function SearchableDropdown({
   customHeight,
   getIconUrl,
   showIcons = true,
-  iconSize = 'sm',
+  showLabel = false,
   noMobileKeyboard = false,
   priorityItems,
 }: SearchableDropdownProps) {
-  // left + size must sum to ≤ pl-12 (48px) so the input text start doesn't shift
-  const icon = iconSize === 'lg'
-    ? { size: 'w-10 h-10', left: 'left-1' }       // 4px + 40px = 44px
-    : { size: 'w-8 h-8 rounded-md', left: 'left-2.5' } // 10px + 32px = 42px
+  // 6px + 28px = 34px, so pl-10 (40px) keeps a clear gap before the text
+  const icon = { size: 'w-7 h-7 rounded-md', left: 'left-1.5' }
   const [isOpen, setIsOpen] = useState(false)
   const [openAbove, setOpenAbove] = useState(false)
   const [inputValue, setInputValue] = useState(value)
@@ -135,7 +134,9 @@ export default function SearchableDropdown({
 
   return (
     <div className="flex flex-col relative">
-      <label className="mb-1 text-sm text-gray-300">{label}</label>
+      {showLabel && label && (
+        <label className="mb-1 text-[11px] leading-4 text-gray-400">{label}</label>
+      )}
       <div ref={containerRef} className="relative">
         {showSelectedIcon && (
           <img
@@ -148,20 +149,29 @@ export default function SearchableDropdown({
         <input
           ref={inputRef}
           type="text"
+          aria-label={label || placeholder}
           inputMode={noMobileKeyboard ? 'none' : undefined}
           value={inputValue}
           onChange={handleInputChange}
           onFocus={onFocus}
           onBlur={handleBlur}
           placeholder={placeholder}
-          className={`w-full rounded py-2.5 focus:outline-none focus:ring-2 ${
-            showSelectedIcon ? 'pl-12 pr-3' : 'px-3'
+          /* text-base below lg keeps iOS from zooming the page on focus */
+          className={`w-full h-11 lg:h-10 rounded-md text-base lg:text-sm pr-9 focus:outline-none focus:ring-2 ${
+            showSelectedIcon ? 'pl-10' : 'pl-3'
           } ${
             value && !isValid && !isOpen
-              ? 'bg-red-900 text-red-100 placeholder-red-400 focus:ring-red-500'
+              ? 'bg-gray-700 text-red-200 placeholder-red-400 ring-1 ring-red-800 focus:ring-red-500'
               : 'bg-gray-700 text-gray-100 placeholder-gray-500 focus:ring-blue-500'
           }`}
         />
+        <svg
+          width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
       </div>
       {value && !isValid && !isOpen && (
         <p className="mt-1 text-xs text-red-400">Invalid selection</p>
@@ -170,7 +180,7 @@ export default function SearchableDropdown({
       {isOpen && filtered && (
         <ul
           ref={ulRef}
-          className={`absolute left-0 right-0 bg-gray-700 border border-gray-600 rounded overflow-y-auto z-10 ${
+          className={`absolute left-0 right-0 bg-gray-700 border border-gray-600 rounded-md overflow-y-auto z-20 shadow-xl ${
             openAbove ? 'bottom-full mb-1' : 'top-full mt-1'
           }`}
           style={{
@@ -187,7 +197,7 @@ export default function SearchableDropdown({
                   type="button"
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => handleSelect(item)}
-                  className="w-full text-left px-3 py-2 text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer flex items-center gap-2"
+                  className="w-full text-left px-2.5 py-2 text-sm text-gray-100 hover:bg-blue-600 focus:outline-none focus:bg-blue-600 cursor-pointer flex items-center gap-2.5"
                 >
                   {iconsActive && (
                     <LazyImg src={itemIconUrl} alt="" className={`${icon.size} object-cover flex-shrink-0`} rootRef={ulRef} />

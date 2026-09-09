@@ -27,7 +27,7 @@ export default function OutputStats({
       type="button"
       onClick={onShowDetails}
       aria-haspopup="dialog"
-      className={`group mt-4 w-full block bg-gray-700 rounded-md px-4 py-3.5 text-left cursor-pointer transition-shadow
+      className={`group w-full block bg-gray-700 rounded-md px-4 py-3.5 text-left cursor-pointer transition-shadow
         focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500
         ${invalid ? 'ring-1 ring-red-900 hover:ring-red-700' : 'hover:ring-1 hover:ring-blue-500/60'}`}
     >

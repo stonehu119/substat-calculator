@@ -100,7 +100,7 @@ function App() {
   )
 
   const buildSection = (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2.5">
       <CharacterDropdown
         value={formState.character}
         onChange={(value) => updateFormField('character', value)}
@@ -136,53 +136,60 @@ function App() {
     </div>
   )
 
-  const statsSectionMobile = (
-    <div className="flex flex-col gap-6">
-      <StatsInputs
-        stats={formState.stats}
-        onStatsChange={(stats) => updateFormField('stats', stats)}
-        rolls={statRolls}
-      />
-      {resultCard}
-    </div>
+  const statsInputs = (
+    <StatsInputs
+      stats={formState.stats}
+      onStatsChange={(stats) => updateFormField('stats', stats)}
+      rolls={statRolls}
+    />
+  )
+
+  const panelHeader = (title: string) => (
+    <h2 className="m-0 text-base font-semibold text-gray-200 border-b border-gray-700 pb-2.5">
+      {title}
+    </h2>
   )
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col">
       <AppHeader />
 
-      <div className="flex-1 flex flex-col items-center px-2 pt-6 pb-4">
-        <div className="flex flex-col items-center w-full gap-6 max-w-6xl">
-          {/* Mobile: single stacked layout */}
-          <div className="w-full max-w-md lg:hidden bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-6">
-            {buildSection}
-            {statsSectionMobile}
+      <div className="flex-1 flex flex-col items-center px-3 pt-5 pb-4">
+        <div className="w-full max-w-6xl flex flex-col items-center gap-4 lg:gap-6">
+          {/* Mobile: the same two panels, stacked */}
+          <div className="w-full max-w-md flex flex-col gap-4 lg:hidden">
+            <section
+              className="bg-gray-800 border border-gray-700 rounded-xl p-4 flex flex-col gap-3.5"
+              aria-label="Character and build"
+            >
+              {panelHeader('Build')}
+              {buildSection}
+            </section>
+            <section
+              className="bg-gray-800 border border-gray-700 rounded-xl p-4 flex flex-col gap-3.5"
+              aria-label="Stats input and result"
+            >
+              {panelHeader('Your stats')}
+              {statsInputs}
+              {resultCard}
+            </section>
           </div>
 
           {/* Desktop: two columns, build left, stats + result right */}
           <div className="hidden lg:grid lg:grid-cols-[1fr_1fr] lg:gap-6 lg:w-full lg:items-stretch">
             <section
-              className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4"
+              className="bg-gray-800 border border-gray-700 rounded-xl p-5 flex flex-col gap-3.5"
               aria-label="Character and build"
             >
-              <h2 className="text-base font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1">
-                Build
-              </h2>
+              {panelHeader('Build')}
               {buildSection}
             </section>
             <section
-              className="bg-gray-800 rounded-xl shadow-lg p-6 flex flex-col gap-4 min-h-0"
+              className="bg-gray-800 border border-gray-700 rounded-xl p-5 flex flex-col gap-3.5 min-h-0"
               aria-label="Stats input and result"
             >
-              <h2 className="text-base font-semibold text-gray-200 border-b border-gray-700 pb-2 -mt-1">
-                Stats Input &amp; Result
-              </h2>
-              <StatsInputs
-                stats={formState.stats}
-                onStatsChange={(stats) => updateFormField('stats', stats)}
-                rolls={statRolls}
-              />
-              <div className="flex-1 min-h-4" />
+              {panelHeader('Your stats')}
+              {statsInputs}
               {resultCard}
             </section>
           </div>
