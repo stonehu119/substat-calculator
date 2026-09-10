@@ -243,6 +243,11 @@ function buildSections(formState: FormState): { sections: BreakdownSection[], mo
   const pathStats = LIGHT_CONE_PATH_STATS[lightCone][superimposeIndex]
   const pathMatches = characterPathMatchesLC(formState)
   const passiveLines = effectLines(pathStats)
+  // Plenty of light cones have no substat-altering passive at all. Whether the
+  // path matches is then beside the point, so the badge and the mismatch note
+  // both drop away and the row just says there is no effect, like a relic set.
+  const hasPassive = passiveLines.length > 0
+  const passiveSkipped = hasPassive && !pathMatches
   sections.push({
     id: 'lightCone',
     kind: 'lightCone',
@@ -250,18 +255,18 @@ function buildSections(formState: FormState): { sections: BreakdownSection[], mo
     subtitle: `${LIGHT_CONE_PATH[lightCone]} · ${formState.superimposition}`,
     iconKey: lightCone,
     kicker: 'Light cone',
-    badge: pathMatches
-      ? { text: 'Path matches', tone: 'ok' }
-      : { text: 'Passive skipped', tone: 'warn' },
+    badge: !hasPassive
+      ? undefined
+      : pathMatches
+        ? { text: 'Path matches', tone: 'ok' }
+        : { text: 'Passive skipped', tone: 'warn' },
     rows: [
       { label: 'Base', lines: linesFrom(lightConeBase.base, 'auto') },
-      ...(passiveLines.length
-        ? [{ label: 'Passive', lines: passiveLines, signed: true, inactive: !pathMatches }]
-        : []),
+      { label: 'Passive', lines: passiveLines, signed: true, inactive: passiveSkipped },
     ],
-    note: pathMatches
-      ? undefined
-      : "The light cone's path does not match the character's, so its passive is not counted. Base HP, ATK and DEF still apply.",
+    note: passiveSkipped
+      ? "The light cone's path does not match the character's, so its passive is not counted. Base HP, ATK and DEF still apply."
+      : undefined,
   })
   mods.push(lightConeBase)
   if (pathMatches) mods.push(pathStats)
