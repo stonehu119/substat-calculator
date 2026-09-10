@@ -33,15 +33,19 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
           const i = Number(key)
           const s = stats[i]
           const negative = s.checked && rolls[i] < 0
+          // Dims the cells the checkbox switches off, but never the checkbox
+          // itself — greying the control you use to turn the row back on is
+          // what made an unchecked row look disabled rather than empty.
+          const dimmed = s.checked ? '' : 'opacity-55'
 
           return (
-            <div key={i} className={`${COLS} ${s.checked ? '' : 'opacity-55'}`}>
+            <div key={i} className={COLS}>
               <Checkbox
                 id={`stat-${i}`}
                 checked={s.checked}
                 onChange={() => toggleChecked(i)}
                 label={STAT_NAMES[i]}
-                className={s.checked ? 'text-gray-100' : 'text-gray-300'}
+                className={s.checked ? 'text-gray-100' : 'text-gray-400'}
               />
 
               {/* text-base below lg keeps iOS from zooming the page on focus.
@@ -53,7 +57,7 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
                 type="number"
                 placeholder="0"
                 className={`w-full h-9 rounded-md px-2.5 text-base lg:text-sm tabular-nums placeholder-gray-500
-                  transition-shadow focus:outline-none focus:ring-2 ${
+                  transition-shadow focus:outline-none focus:ring-2 ${dimmed} ${
                   s.checked
                     ? 'bg-gray-700 text-gray-100 cursor-text'
                     : 'bg-gray-800 border border-gray-700 text-gray-500 cursor-not-allowed'
@@ -69,7 +73,7 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
                 onChange={(e) => setValue(i, e.target.value)}
               />
 
-              <div className={`text-right text-[13px] tabular-nums ${
+              <div className={`text-right text-[13px] tabular-nums ${dimmed} ${
                 negative ? 'text-red-400 font-semibold' : s.checked ? 'text-gray-200' : 'text-gray-600'
               }`}>
                 {s.checked ? `${rolls[i] > 0 ? '+' : ''}${rolls[i].toFixed(2)}` : '—'}

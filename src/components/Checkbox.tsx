@@ -14,6 +14,11 @@ type CheckboxProps = {
  *
  * The hover ring hangs off the label rather than the box, so the whole click
  * target lights up instead of just the 20px square.
+ *
+ * Unchecked wears gray-700 — the same surface as an enabled input — rather than
+ * the gray-800 the disabled inputs use, so an empty box reads as waiting for a
+ * click instead of as switched off. For the same reason the caller must not dim
+ * this control: the box stays lit even when the rest of its row is greyed.
  */
 export default function Checkbox({ id, checked, onChange, label, className = '' }: CheckboxProps) {
   return (
@@ -28,7 +33,7 @@ export default function Checkbox({ id, checked, onChange, label, className = '' 
           checked={checked}
           onChange={onChange}
           className="peer w-5 h-5 appearance-none rounded-[5px] cursor-pointer transition
-            border border-gray-600 bg-gray-800
+            border border-gray-500 bg-gray-700
             checked:border-blue-500 checked:bg-blue-500
             group-hover:ring-1 group-hover:ring-blue-500/60
             focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
