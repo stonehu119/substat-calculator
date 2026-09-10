@@ -14,7 +14,7 @@ const ANIM_MS = 200
 // closed or left expanded. Thresholds are in dvh rather than px so they scale
 // with the viewport instead of feeling different on a short vs. tall phone.
 const SHEET_HEIGHT_VH = 80
-const SHEET_EXPANDED_HEIGHT_VH = 98
+const SHEET_EXPANDED_HEIGHT_VH = 100
 const EXPAND_THRESHOLD_VH = 5
 const CLOSE_THRESHOLD_VH = 12
 
@@ -511,7 +511,7 @@ function DialogPanel({
         aria-modal="true"
         aria-labelledby="build-details-title"
         style={panelStyle}
-        className={`relative w-full ${expanded ? 'max-h-[98dvh]' : 'max-h-[80dvh]'} bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
+        className={`relative w-full ${expanded ? 'max-h-[100dvh]' : 'max-h-[80dvh]'} bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
           flex flex-col overflow-hidden touch-none lg:touch-auto
           lg:max-w-4xl lg:max-h-[88vh] lg:rounded-xl lg:border
           ${dragging ? '' : 'transition-[translate,scale,opacity,max-height] duration-200 ease-out motion-reduce:transition-none'}
@@ -572,11 +572,11 @@ function DialogPanel({
               type="button"
               aria-label="Close"
               onClick={onClose}
-              className="w-11 h-11 lg:w-9 lg:h-9 rounded-md text-gray-400 flex items-center justify-center cursor-pointer
+              className="w-12 h-12 lg:w-9 lg:h-9 rounded-md text-gray-400 flex items-center justify-center cursor-pointer
                 hover:bg-gray-700 hover:text-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                aria-hidden="true" className="w-[22px] h-[22px] lg:w-5 lg:h-5">
                 <path d="M6 6l12 12M18 6L6 18" />
               </svg>
             </button>
