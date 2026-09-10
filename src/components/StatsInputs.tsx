@@ -51,16 +51,26 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
                 <span className="truncate">{STAT_NAMES[i]}</span>
               </label>
 
-              {/* text-base below lg keeps iOS from zooming the page on focus */}
+              {/* text-base below lg keeps iOS from zooming the page on focus.
+                  The ring branches are exclusive so a red field never picks up
+                  the blue hover, and transition-shadow fades it in the way the
+                  result card does; Tailwind scopes hover: to pointer devices,
+                  so none of it lingers after a tap on mobile. */}
               <input
                 type="number"
                 placeholder="0"
                 className={`w-full h-9 rounded-md px-2.5 text-base lg:text-sm tabular-nums placeholder-gray-500
-                  focus:outline-none focus:ring-2 ${
+                  transition-shadow focus:outline-none focus:ring-2 ${
                   s.checked
                     ? 'bg-gray-700 text-gray-100 cursor-text'
                     : 'bg-gray-800 border border-gray-700 text-gray-500 cursor-not-allowed'
-                } ${negative ? 'ring-1 ring-red-800 focus:ring-red-500' : 'focus:ring-blue-500'}`}
+                } ${
+                  negative
+                    ? 'ring-1 ring-red-800 hover:ring-red-700 focus:ring-red-500'
+                    : s.checked
+                      ? 'hover:ring-1 hover:ring-blue-500/60 focus:ring-blue-500'
+                      : 'focus:ring-blue-500'
+                }`}
                 disabled={!s.checked}
                 value={s.value}
                 onChange={(e) => setValue(i, e.target.value)}
