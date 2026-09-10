@@ -1,4 +1,5 @@
 import { STAT_NAMES } from "../data/substats"
+import Checkbox from "./Checkbox"
 import type { StatState } from "../types/formState"
 
 interface StatsInputsProps {
@@ -35,21 +36,13 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
 
           return (
             <div key={i} className={`${COLS} ${s.checked ? '' : 'opacity-55'}`}>
-              <label
-                htmlFor={`stat-${i}`}
-                className={`flex items-center gap-2.5 text-[13px] cursor-pointer ${
-                  s.checked ? 'text-gray-100' : 'text-gray-300'
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  id={`stat-${i}`}
-                  className="w-4 h-4 rounded cursor-pointer flex-shrink-0 accent-blue-500"
-                  checked={s.checked}
-                  onChange={() => toggleChecked(i)}
-                />
-                <span className="truncate">{STAT_NAMES[i]}</span>
-              </label>
+              <Checkbox
+                id={`stat-${i}`}
+                checked={s.checked}
+                onChange={() => toggleChecked(i)}
+                label={STAT_NAMES[i]}
+                className={s.checked ? 'text-gray-100' : 'text-gray-300'}
+              />
 
               {/* text-base below lg keeps iOS from zooming the page on focus.
                   The ring branches are exclusive so a red field never picks up
