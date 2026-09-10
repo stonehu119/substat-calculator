@@ -4,10 +4,19 @@ import { charIcon, lcIcon, planarIcon, relicIcon } from '../data/icons'
 import unknownIconUrl from '../assets/unknown-icon.svg'
 import RollTotals from './RollTotals'
 
-const DRAG_CLOSE_PX = 96
 // A quick flick dismisses even when it did not travel far.
 const FLICK_PX_PER_MS = 0.5
 const ANIM_MS = 200
+// The sheet opens to SHEET_HEIGHT_VH. Dragging it up past EXPAND_THRESHOLD_VH
+// commits it to the taller SHEET_EXPANDED_HEIGHT_VH; dragging it down past
+// CLOSE_THRESHOLD_VH closes it — the same distance whichever height it started
+// from, so an expanded sheet never snaps back down to SHEET_HEIGHT_VH, only
+// closed or left expanded. Thresholds are in dvh rather than px so they scale
+// with the viewport instead of feeling different on a short vs. tall phone.
+const SHEET_HEIGHT_VH = 80
+const SHEET_EXPANDED_HEIGHT_VH = 100
+const EXPAND_THRESHOLD_VH = 5
+const CLOSE_THRESHOLD_VH = 12
 
 // 7 columns: stat, base, bonus, flat, default, in-game, rolls
 const TOTALS_COLS =
@@ -340,8 +349,13 @@ function DialogPanel({
   const dragOrigin = useRef<number | null>(null)
   const lastSample = useRef<{ y: number, t: number } | null>(null)
   const velocity = useRef(0)
+  const rawDelta = useRef(0)
   const [dragging, setDragging] = useState(false)
   const [dragY, setDragY] = useState(0)
+  // Committed sheet height on mobile: false = SHEET_HEIGHT_VH, true = SHEET_EXPANDED_HEIGHT_VH.
+  const [expanded, setExpanded] = useState(false)
+  // Live max-height while pulling the sheet taller, overriding the committed one during the drag.
+  const [dragHeightVh, setDragHeightVh] = useState<number | null>(null)
 
   // Lock the page behind the dialog. Padding compensates for the scrollbar the
   // lock removes, so the page underneath does not jump sideways.
@@ -408,6 +422,7 @@ function DialogPanel({
     dragOrigin.current = e.clientY
     lastSample.current = { y: e.clientY, t: e.timeStamp }
     velocity.current = 0
+    rawDelta.current = 0
     setDragging(true)
     e.currentTarget.setPointerCapture(e.pointerId)
   }
@@ -419,15 +434,44 @@ function DialogPanel({
       velocity.current = (e.clientY - previous.y) / (e.timeStamp - previous.t)
     }
     lastSample.current = { y: e.clientY, t: e.timeStamp }
-    setDragY(Math.max(0, e.clientY - dragOrigin.current))
+
+    const delta = e.clientY - dragOrigin.current
+    rawDelta.current = delta
+
+    if (delta < 0) {
+      // Pulling up grows the sheet live, capped at the expanded height.
+      const baselineVh = expanded ? SHEET_EXPANDED_HEIGHT_VH : SHEET_HEIGHT_VH
+      const pulledVh = (-delta / window.innerHeight) * 100
+      setDragHeightVh(Math.min(SHEET_EXPANDED_HEIGHT_VH, baselineVh + pulledVh))
+      setDragY(0)
+    } else {
+      setDragHeightVh(null)
+      setDragY(delta)
+    }
   }
 
   const onDragEnd = () => {
     if (dragOrigin.current === null) return
     dragOrigin.current = null
     setDragging(false)
+    setDragHeightVh(null)
+
+    const delta = rawDelta.current
+    const deltaVh = (Math.abs(delta) / window.innerHeight) * 100
+
+    if (delta < 0) {
+      // Pulled up far enough: commit to the taller sheet. Otherwise snap back.
+      if (deltaVh > EXPAND_THRESHOLD_VH) setExpanded(true)
+      setDragY(0)
+      return
+    }
+
+    // Dragging down is the same gesture whether the sheet is at SHEET_HEIGHT_VH
+    // or expanded: past the threshold (or a flick) it closes, otherwise it
+    // springs back to whatever height it was already committed to — an
+    // expanded sheet never snaps down to SHEET_HEIGHT_VH along the way.
     const flicked = velocity.current > FLICK_PX_PER_MS && dragY > 8
-    if (dragY > DRAG_CLOSE_PX || flicked) {
+    if (deltaVh > CLOSE_THRESHOLD_VH || flicked) {
       // Carry the sheet the rest of the way down rather than letting it vanish mid-gesture.
       setDragY(panelRef.current?.offsetHeight ?? window.innerHeight)
       onClose()
@@ -442,6 +486,14 @@ function DialogPanel({
     onPointerUp: onDragEnd,
     onPointerCancel: onDragEnd,
   }
+
+  const panelStyle: React.CSSProperties | undefined =
+    dragY || dragHeightVh !== null
+      ? {
+          ...(dragY ? { translate: `0 ${dragY}px` } : null),
+          ...(dragHeightVh !== null ? { maxHeight: `${dragHeightVh}dvh` } : null),
+        }
+      : undefined
 
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center lg:items-center lg:p-6">
@@ -458,11 +510,11 @@ function DialogPanel({
         role="dialog"
         aria-modal="true"
         aria-labelledby="build-details-title"
-        style={dragY ? { translate: `0 ${dragY}px` } : undefined}
-        className={`relative w-full max-h-[92dvh] bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
+        style={panelStyle}
+        className={`relative w-full ${expanded ? 'max-h-[100dvh]' : 'max-h-[80dvh]'} bg-gray-800 border-t border-gray-700 rounded-t-2xl shadow-2xl
           flex flex-col overflow-hidden touch-none lg:touch-auto
           lg:max-w-4xl lg:max-h-[88vh] lg:rounded-xl lg:border
-          ${dragging ? '' : 'transition-[translate,scale,opacity] duration-200 ease-out motion-reduce:transition-none'}
+          ${dragging ? '' : 'transition-[translate,scale,opacity,max-height] duration-200 ease-out motion-reduce:transition-none'}
           ${visible
             ? 'translate-y-0 lg:scale-100 lg:opacity-100'
             : 'translate-y-full lg:translate-y-0 lg:scale-95 lg:opacity-0'}`}
@@ -520,11 +572,11 @@ function DialogPanel({
               type="button"
               aria-label="Close"
               onClick={onClose}
-              className="w-11 h-11 lg:w-9 lg:h-9 rounded-md text-gray-400 flex items-center justify-center cursor-pointer
+              className="w-12 h-12 lg:w-9 lg:h-9 rounded-md text-gray-400 flex items-center justify-center cursor-pointer
                 hover:bg-gray-700 hover:text-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"
+                aria-hidden="true" className="w-[22px] h-[22px] lg:w-5 lg:h-5">
                 <path d="M6 6l12 12M18 6L6 18" />
               </svg>
             </button>
