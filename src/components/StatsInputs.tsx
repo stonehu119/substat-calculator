@@ -1,4 +1,5 @@
 import { STAT_NAMES } from "../data/substats"
+import Checkbox from "./Checkbox"
 import type { StatState } from "../types/formState"
 
 interface StatsInputsProps {
@@ -32,41 +33,47 @@ export default function StatsInputs({ stats, onStatsChange, rolls }: StatsInputs
           const i = Number(key)
           const s = stats[i]
           const negative = s.checked && rolls[i] < 0
+          // Dims the cells the checkbox switches off, but never the checkbox
+          // itself — greying the control you use to turn the row back on is
+          // what made an unchecked row look disabled rather than empty.
+          const dimmed = s.checked ? '' : 'opacity-55'
 
           return (
-            <div key={i} className={`${COLS} ${s.checked ? '' : 'opacity-55'}`}>
-              <label
-                htmlFor={`stat-${i}`}
-                className={`flex items-center gap-2.5 text-[13px] cursor-pointer ${
-                  s.checked ? 'text-gray-100' : 'text-gray-300'
-                }`}
-              >
-                <input
-                  type="checkbox"
-                  id={`stat-${i}`}
-                  className="w-4 h-4 rounded cursor-pointer flex-shrink-0 accent-blue-500"
-                  checked={s.checked}
-                  onChange={() => toggleChecked(i)}
-                />
-                <span className="truncate">{STAT_NAMES[i]}</span>
-              </label>
+            <div key={i} className={COLS}>
+              <Checkbox
+                id={`stat-${i}`}
+                checked={s.checked}
+                onChange={() => toggleChecked(i)}
+                label={STAT_NAMES[i]}
+                className={s.checked ? 'text-gray-100' : 'text-gray-400'}
+              />
 
-              {/* text-base below lg keeps iOS from zooming the page on focus */}
+              {/* text-base below lg keeps iOS from zooming the page on focus.
+                  The ring branches are exclusive so a red field never picks up
+                  the blue hover, and transition-shadow fades it in the way the
+                  result card does; Tailwind scopes hover: to pointer devices,
+                  so none of it lingers after a tap on mobile. */}
               <input
                 type="number"
                 placeholder="0"
                 className={`w-full h-9 rounded-md px-2.5 text-base lg:text-sm tabular-nums placeholder-gray-500
-                  focus:outline-none focus:ring-2 ${
+                  transition-shadow focus:outline-none focus:ring-2 ${dimmed} ${
                   s.checked
                     ? 'bg-gray-700 text-gray-100 cursor-text'
                     : 'bg-gray-800 border border-gray-700 text-gray-500 cursor-not-allowed'
-                } ${negative ? 'ring-1 ring-red-800 focus:ring-red-500' : 'focus:ring-blue-500'}`}
+                } ${
+                  negative
+                    ? 'ring-1 ring-red-800 hover:ring-red-700 focus:ring-red-500'
+                    : s.checked
+                      ? 'hover:ring-1 hover:ring-blue-500/60 focus:ring-blue-500'
+                      : 'focus:ring-blue-500'
+                }`}
                 disabled={!s.checked}
                 value={s.value}
                 onChange={(e) => setValue(i, e.target.value)}
               />
 
-              <div className={`text-right text-[13px] tabular-nums ${
+              <div className={`text-right text-[13px] tabular-nums ${dimmed} ${
                 negative ? 'text-red-400 font-semibold' : s.checked ? 'text-gray-200' : 'text-gray-600'
               }`}>
                 {s.checked ? `${rolls[i] > 0 ? '+' : ''}${rolls[i].toFixed(2)}` : '—'}

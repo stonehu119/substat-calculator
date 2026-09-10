@@ -156,13 +156,17 @@ export default function SearchableDropdown({
           onFocus={onFocus}
           onBlur={handleBlur}
           placeholder={placeholder}
-          /* text-base below lg keeps iOS from zooming the page on focus */
-          className={`w-full h-11 lg:h-10 rounded-md text-base lg:text-sm pr-9 focus:outline-none focus:ring-2 ${
+          /* text-base below lg keeps iOS from zooming the page on focus.
+             The hover ring echoes the result card and fades in over the same
+             transition; Tailwind scopes hover: to pointer devices, so it never
+             sticks after a tap on mobile. */
+          className={`w-full h-11 lg:h-10 rounded-md text-base lg:text-sm pr-9 transition-shadow
+            focus:outline-none focus:ring-2 ${
             showSelectedIcon ? 'pl-10' : 'pl-3'
           } ${
             value && !isValid && !isOpen
-              ? 'bg-gray-700 text-red-200 placeholder-red-400 ring-1 ring-red-800 focus:ring-red-500'
-              : 'bg-gray-700 text-gray-100 placeholder-gray-500 focus:ring-blue-500'
+              ? 'bg-gray-700 text-red-200 placeholder-red-400 ring-1 ring-red-800 hover:ring-red-700 focus:ring-red-500'
+              : 'bg-gray-700 text-gray-100 placeholder-gray-500 hover:ring-1 hover:ring-blue-500/60 focus:ring-blue-500'
           }`}
         />
         <svg

@@ -15,3 +15,38 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+/* Tell the browser this is a dark UI. On its own this darkens every scrollbar
+   we cannot paint ourselves — macOS overlay scrollbars especially, where the
+   rules below have no effect — plus the canvas behind the app. */
+:root {
+  color-scheme: dark;
+}
+
+/* Thin gray scrollbars everywhere. gray-500 rather than the gray-600 used for
+   borders: the thumb sits on gray-700 in the dropdown list, and a border-weight
+   gray there is too faint to aim at. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-500) transparent;
+}
+
+/* Same look for Chromium below 121 and Safari below 18.2, which predate the two
+   properties above. Kept behind @supports because browsers that understand
+   scrollbar-color ignore ::-webkit-scrollbar entirely — side by side, this
+   block would be dead code everywhere it is not needed. */
+@supports not (scrollbar-color: auto) {
+  *::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: var(--color-gray-500);
+    border-radius: 4px;
+  }
+}
