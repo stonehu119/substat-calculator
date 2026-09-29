@@ -1,4 +1,54 @@
 {
+  "Upon the First Echo of \"Aha\"": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 952.56,
+      "ATK": 582.12,
+      "DEF": 529.2
+    },
+    "pathStats": [
+      {
+        "base": {
+          "SPD": 12
+        }
+      },
+      {
+        "base": {
+          "SPD": 14
+        }
+      },
+      {
+        "base": {
+          "SPD": 16
+        }
+      },
+      {
+        "base": {
+          "SPD": 18
+        }
+      },
+      {
+        "base": {
+          "SPD": 20
+        }
+      }
+    ]
+  },
+  "See You at the World's End!": {
+    "path": "Elation",
+    "baseStats": {
+      "HP": 846.72,
+      "ATK": 476.28,
+      "DEF": 396.9
+    },
+    "pathStats": [
+      {},
+      {},
+      {},
+      {},
+      {}
+    ]
+  },
   "Colors for Tomorrow": {
     "path": "Elation",
     "baseStats": {
