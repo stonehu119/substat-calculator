@@ -1,4 +1,20 @@
 {
+  "Aeon ★ Aha": {
+    "path": "Elation",
+    "stats": {
+      "base": {
+        "HP": 1047.816,
+        "ATK": 679.14,
+        "DEF": 509.355,
+        "SPD": 94
+      },
+      "flat": {
+        "Crit DMG": 37.3,
+        "Crit Rate": 12,
+        "SPD": 5
+      }
+    }
+  },
   "Pearl": {
     "path": "Elation",
     "stats": {
