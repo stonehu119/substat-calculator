@@ -7,6 +7,16 @@ export interface CharacterPreferences {
 }
 
 export const CHARACTER_PREFERENCES: Partial<Record<Character, CharacterPreferences>> = {
+  "Astra Yao": {
+    lightCones: ["Shine Bright Like Her"],
+    relicSets: [],
+    planarSets: []
+  },
+  "Ellen": {
+    lightCones: ["No Shifts on Rainy Days"],
+    relicSets: [],
+    planarSets: []
+  },
   "Aeon ★ Aha": {
     lightCones: ["Upon the First Echo of \"Aha\"", "See You at the World's End!"],
     relicSets: ["Dreamlit Actor", "Ever-Glorious Magical Girl"],
