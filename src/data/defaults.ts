@@ -24,6 +24,6 @@ export const createDefaultFormState = (): FormState => ({
   relicBody: "Crit Rate",
   relicFeet: "SPD",
   relicOrb: "HP%",
-  relicRope: "Energy Regeneration Rate",
+  relicRope: "HP%",
   stats: createDefaultStats(),
 })
