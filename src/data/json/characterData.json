@@ -20,9 +20,9 @@
     "path": "Destruction",
     "stats": {
       "base": {
-        "HP": 1125.432,
+        "HP": 1203.048,
         "ATK": 756.756,
-        "DEF": 485.1,
+        "DEF": 533.61,
         "SPD": 96
       },
       "flat": {
