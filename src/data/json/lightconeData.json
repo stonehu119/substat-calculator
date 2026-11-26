@@ -9,27 +9,27 @@
     "pathStats": [
       {
         "percent": {
-          "ATK": 24
-        }
-      },
-      {
-        "percent": {
-          "ATK": 30
-        }
-      },
-      {
-        "percent": {
           "ATK": 36
         }
       },
       {
         "percent": {
-          "ATK": 42
+          "ATK": 45
         }
       },
       {
         "percent": {
-          "ATK": 48
+          "ATK": 54
+        }
+      },
+      {
+        "percent": {
+          "ATK": 63
+        }
+      },
+      {
+        "percent": {
+          "ATK": 72
         }
       }
     ]
